@@ -41,6 +41,7 @@
 		D175C4EE230C35CE001B8DC6 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4EC230C35CE001B8DC6 /* RegisterViewController.swift */; };
 		D175C4EF230C35CE001B8DC6 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D175C4ED230C35CE001B8DC6 /* RegisterViewController.xib */; };
 		D175C4F1230C36B3001B8DC6 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4F0230C36B3001B8DC6 /* KeyboardLayoutConstraint.swift */; };
+		D175C4F3230C552F001B8DC6 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4F2230C552F001B8DC6 /* UserDefaultManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		D175C4EC230C35CE001B8DC6 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D175C4ED230C35CE001B8DC6 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		D175C4F0230C36B3001B8DC6 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
+		D175C4F2230C552F001B8DC6 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		F8455A52255EC42C57478B9D /* Pods-Gwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gwin.release.xcconfig"; path = "Target Support Files/Pods-Gwin/Pods-Gwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -209,6 +211,7 @@
 			children = (
 				D175C3C4230ADDC0001B8DC6 /* UIView+Utils.swift */,
 				D175C4F0230C36B3001B8DC6 /* KeyboardLayoutConstraint.swift */,
+				D175C4F2230C552F001B8DC6 /* UserDefaultManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				D175C4D7230BE84B001B8DC6 /* UserAPIRouter.swift in Sources */,
 				D100679F2309AA1F00114F6E /* ViewController.swift in Sources */,
 				D175C4BB230BCD97001B8DC6 /* Interactor.swift in Sources */,
+				D175C4F3230C552F001B8DC6 /* UserDefaultManager.swift in Sources */,
 				D175C4BA230BCD97001B8DC6 /* EmptyProtocol.swift in Sources */,
 				D175C4DC230C0487001B8DC6 /* User.swift in Sources */,
 				D175C4C6230BD0C4001B8DC6 /* ExampleBuilder.swift in Sources */,

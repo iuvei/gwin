@@ -53,10 +53,16 @@ class LoginViewController: UIViewController {
    // Pass the selected object to the new view controller.
    }
    */
+  @IBAction func rememberPressed(_ sender: Any) {
+    rememberButton.isSelected = !rememberButton.isSelected
+    UserDefaultManager.sharedInstance().rememberLoginInfo(rememberButton.isSelected)
+  }
 
   @IBAction func loginPressed(_ sender: Any) {
     guard let accountNo = accountNoTextfield.text, let password = accountNoTextfield.text else { return }
 
+    UserDefaultManager.sharedInstance().saveLoginInfo(accountNo: accountNo, password: password)
+    
     UserAPIClient.login(accountNo: accountNo, password: password) { (user, message) in
       if let `user` = user {
         if let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate {

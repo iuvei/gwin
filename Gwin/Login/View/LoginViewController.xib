@@ -57,6 +57,9 @@
                             <exclude reference="rmj-q0-e1t"/>
                         </mask>
                     </variation>
+                    <connections>
+                        <action selector="rememberPressed:" destination="-1" eventType="touchUpInside" id="Rm4-Hz-b0v"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceD-EJ-Npx">
                     <rect key="frame" x="51" y="206" width="347" height="21"/>
