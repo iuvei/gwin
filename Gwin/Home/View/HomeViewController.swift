@@ -10,27 +10,42 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+protocol HomeViewInput: AnyObject {
+  func updatePopularizeImage(images: [String])
+}
+
+protocol HomeViewOutput: AnyObject {
+  func viewDidLoad()
+}
+
+public protocol HomeViewControllerInput: AnyObject {
+}
+
 class HomeViewController: UIViewController {
+  weak var output: HomeViewOutput?
 
   private var carouselView: CarouselView!
 
+  init(output: HomeViewOutput? = nil) {
+    self.output = output
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.edgesForExtendedLayout = []
-
+    output?.viewDidLoad()
     // Do any additional setup after loading the view.
     setupViews()
-    UserAPIClient.login(accountNo: "steven", password: "123456") { user, message in
-      if let `user` = user {
-        print("user \(user)")
-      }
-    }
 
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    carouselView.updateView(dataSource: ["carousel_demo_1","carousel_demo_2"])
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -60,5 +75,15 @@ class HomeViewController: UIViewController {
       ])
   }
 
+}
+
+extension HomeViewController: HomeViewInput {
+  func updatePopularizeImage(images: [String]) {
+    carouselView.updateView(dataSource: images)
+  }
+}
+
+extension HomeViewController: HomeViewControllerInput {
+  
 }
 

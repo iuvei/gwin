@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="133.92857142857142"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Red Envelop Tabbar Controller-->
         <scene sceneID="tUE-7D-PNo">
             <objects>
-                <tabBarController storyboardIdentifier="tabbarController" automaticallyAdjustsScrollViewInsets="NO" id="lJJ-jA-Et1" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabbarController" automaticallyAdjustsScrollViewInsets="NO" id="lJJ-jA-Et1" customClass="RedEnvelopTabbarController" customModule="Gwin" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2yY-sv-yed">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

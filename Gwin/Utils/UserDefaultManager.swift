@@ -65,6 +65,14 @@ class UserDefaultManager {
     delete(key: .loginInfoUserName)
     delete(key: .loginInfoPassword)
   }
+
+  func loginInfoUserName() -> String? {
+    return get(key: .loginInfoUserName) as? String
+  }
+
+  func loginInfoPassword() -> String? {
+    return get(key: .loginInfoPassword) as? String
+  }
   // MARK: Helpers
 
   func standard () -> UserDefaults {

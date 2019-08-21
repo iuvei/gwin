@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		93470A1D4586D5734927ED93 /* Pods_Gwin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEBB42F20B4154F0C30418E /* Pods_Gwin.framework */; };
 		D100679D2309AA1F00114F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100679C2309AA1F00114F6E /* AppDelegate.swift */; };
-		D100679F2309AA1F00114F6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100679E2309AA1F00114F6E /* ViewController.swift */; };
 		D10067A22309AA1F00114F6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D10067A02309AA1F00114F6E /* Main.storyboard */; };
 		D10067A52309AA1F00114F6E /* Gwin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D10067A32309AA1F00114F6E /* Gwin.xcdatamodeld */; };
 		D10067A72309AA2500114F6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D10067A62309AA2500114F6E /* Assets.xcassets */; };
@@ -42,6 +41,13 @@
 		D175C4EF230C35CE001B8DC6 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D175C4ED230C35CE001B8DC6 /* RegisterViewController.xib */; };
 		D175C4F1230C36B3001B8DC6 /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4F0230C36B3001B8DC6 /* KeyboardLayoutConstraint.swift */; };
 		D175C4F3230C552F001B8DC6 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4F2230C552F001B8DC6 /* UserDefaultManager.swift */; };
+		D175C4F6230CF60F001B8DC6 /* NoticeAPIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4F5230CF60F001B8DC6 /* NoticeAPIRouter.swift */; };
+		D175C4F8230CF823001B8DC6 /* NoticeAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4F7230CF823001B8DC6 /* NoticeAPIClient.swift */; };
+		D175C4FA230CFA9D001B8DC6 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4F9230CFA9D001B8DC6 /* HomeInteractor.swift */; };
+		D175C4FC230CFB7F001B8DC6 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4FB230CFB7F001B8DC6 /* HomeRouter.swift */; };
+		D175C525230D0DCA001B8DC6 /* HomeViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C524230D0DCA001B8DC6 /* HomeViewComponent.swift */; };
+		D175C527230D0E46001B8DC6 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C526230D0E46001B8DC6 /* HomeBuilder.swift */; };
+		D175C529230D1036001B8DC6 /* RedEnvelopTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +55,6 @@
 		CAEBB42F20B4154F0C30418E /* Pods_Gwin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gwin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D10067992309AA1E00114F6E /* Gwin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gwin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D100679C2309AA1F00114F6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D100679E2309AA1F00114F6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D10067A12309AA1F00114F6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D10067A42309AA1F00114F6E /* Gwin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gwin.xcdatamodel; sourceTree = "<group>"; };
 		D10067A62309AA2500114F6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,6 +89,13 @@
 		D175C4ED230C35CE001B8DC6 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		D175C4F0230C36B3001B8DC6 /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		D175C4F2230C552F001B8DC6 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		D175C4F5230CF60F001B8DC6 /* NoticeAPIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeAPIRouter.swift; sourceTree = "<group>"; };
+		D175C4F7230CF823001B8DC6 /* NoticeAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeAPIClient.swift; sourceTree = "<group>"; };
+		D175C4F9230CFA9D001B8DC6 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		D175C4FB230CFB7F001B8DC6 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		D175C524230D0DCA001B8DC6 /* HomeViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewComponent.swift; sourceTree = "<group>"; };
+		D175C526230D0E46001B8DC6 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
+		D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedEnvelopTabbarController.swift; sourceTree = "<group>"; };
 		F8455A52255EC42C57478B9D /* Pods-Gwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gwin.release.xcconfig"; path = "Target Support Files/Pods-Gwin/Pods-Gwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,7 +159,6 @@
 				D10067BB2309B04D00114F6E /* Utils */,
 				D10067B12309AC6E00114F6E /* Home */,
 				D100679C2309AA1F00114F6E /* AppDelegate.swift */,
-				D100679E2309AA1F00114F6E /* ViewController.swift */,
 				D10067A02309AA1F00114F6E /* Main.storyboard */,
 				D10067A62309AA2500114F6E /* Assets.xcassets */,
 				D10067A82309AA2500114F6E /* LaunchScreen.storyboard */,
@@ -160,6 +171,7 @@
 		D10067B12309AC6E00114F6E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D175C523230D0DB2001B8DC6 /* Component */,
 				D10067B52309AC9700114F6E /* View */,
 				D10067B42309AC8A00114F6E /* Builder */,
 				D10067B32309AC8400114F6E /* Router */,
@@ -171,6 +183,7 @@
 		D10067B22309AC7C00114F6E /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				D175C4F9230CFA9D001B8DC6 /* HomeInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -178,6 +191,7 @@
 		D10067B32309AC8400114F6E /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				D175C4FB230CFB7F001B8DC6 /* HomeRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -185,6 +199,7 @@
 		D10067B42309AC8A00114F6E /* Builder */ = {
 			isa = PBXGroup;
 			children = (
+				D175C526230D0E46001B8DC6 /* HomeBuilder.swift */,
 			);
 			path = Builder;
 			sourceTree = "<group>";
@@ -194,6 +209,7 @@
 			children = (
 				D10067B82309AFAF00114F6E /* Carousel */,
 				D10067B62309ACB800114F6E /* HomeViewController.swift */,
+				D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -327,6 +343,7 @@
 		D175C4D5230BE836001B8DC6 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				D175C4F4230CF5EC001B8DC6 /* Notice */,
 				D175C4D8230C03D1001B8DC6 /* User */,
 			);
 			path = Networking;
@@ -358,6 +375,23 @@
 				D175C4EA230C29A3001B8DC6 /* ScreenManager.swift */,
 			);
 			path = Flow;
+			sourceTree = "<group>";
+		};
+		D175C4F4230CF5EC001B8DC6 /* Notice */ = {
+			isa = PBXGroup;
+			children = (
+				D175C4F5230CF60F001B8DC6 /* NoticeAPIRouter.swift */,
+				D175C4F7230CF823001B8DC6 /* NoticeAPIClient.swift */,
+			);
+			path = Notice;
+			sourceTree = "<group>";
+		};
+		D175C523230D0DB2001B8DC6 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				D175C524230D0DCA001B8DC6 /* HomeViewComponent.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 		E2E3FE475745C5AF91AA105F /* Frameworks */ = {
@@ -519,29 +553,35 @@
 				D175C4D4230BD5A1001B8DC6 /* LoginInteractor.swift in Sources */,
 				D175C4BC230BCD97001B8DC6 /* Router.swift in Sources */,
 				D175C4C0230BCE31001B8DC6 /* ExampleViewController.swift in Sources */,
+				D175C529230D1036001B8DC6 /* RedEnvelopTabbarController.swift in Sources */,
 				D175C4DA230C03E8001B8DC6 /* UserAPIClient.swift in Sources */,
 				D10067BA2309AFC700114F6E /* CarouselView.swift in Sources */,
 				D175C4E2230C1A53001B8DC6 /* UserInfo.swift in Sources */,
 				D175C4D7230BE84B001B8DC6 /* UserAPIRouter.swift in Sources */,
-				D100679F2309AA1F00114F6E /* ViewController.swift in Sources */,
 				D175C4BB230BCD97001B8DC6 /* Interactor.swift in Sources */,
+				D175C4FA230CFA9D001B8DC6 /* HomeInteractor.swift in Sources */,
 				D175C4F3230C552F001B8DC6 /* UserDefaultManager.swift in Sources */,
+				D175C4F6230CF60F001B8DC6 /* NoticeAPIRouter.swift in Sources */,
 				D175C4BA230BCD97001B8DC6 /* EmptyProtocol.swift in Sources */,
 				D175C4DC230C0487001B8DC6 /* User.swift in Sources */,
 				D175C4C6230BD0C4001B8DC6 /* ExampleBuilder.swift in Sources */,
 				D10067A52309AA1F00114F6E /* Gwin.xcdatamodeld in Sources */,
 				D175C4F1230C36B3001B8DC6 /* KeyboardLayoutConstraint.swift in Sources */,
 				D175C4EB230C29A3001B8DC6 /* ScreenManager.swift in Sources */,
+				D175C525230D0DCA001B8DC6 /* HomeViewComponent.swift in Sources */,
 				D175C47F230BCA42001B8DC6 /* ExampleRouter.swift in Sources */,
 				D175C4C3230BCFD9001B8DC6 /* ExampleInteractor.swift in Sources */,
+				D175C4FC230CFB7F001B8DC6 /* HomeRouter.swift in Sources */,
 				D100679D2309AA1F00114F6E /* AppDelegate.swift in Sources */,
 				D175C4CD230BD324001B8DC6 /* LoginViewController.swift in Sources */,
 				D175C4B9230BCD97001B8DC6 /* Component.swift in Sources */,
+				D175C4F8230CF823001B8DC6 /* NoticeAPIClient.swift in Sources */,
 				D175C4D2230BD570001B8DC6 /* LoginRouter.swift in Sources */,
 				D175C3C5230ADDC0001B8DC6 /* UIView+Utils.swift in Sources */,
 				D10067B72309ACB800114F6E /* HomeViewController.swift in Sources */,
 				D175C4EE230C35CE001B8DC6 /* RegisterViewController.swift in Sources */,
 				D175C4E7230C2177001B8DC6 /* WellcomeViewController.swift in Sources */,
+				D175C527230D0E46001B8DC6 /* HomeBuilder.swift in Sources */,
 				D175C4D0230BD4B2001B8DC6 /* LoginBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
