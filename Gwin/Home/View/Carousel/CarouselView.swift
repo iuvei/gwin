@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CarouselView: UIView {
 
@@ -89,9 +90,13 @@ class CarouselView: UIView {
 
     for i in 0 ..< dataSource.count {
       let imageView = UIImageView()
-      imageView.image = UIImage(named: dataSource[i])
       imageView.translatesAutoresizingMaskIntoConstraints = false
       imageView.contentMode = .scaleAspectFit
+
+      if let imageData = Data(base64Encoded: dataSource[i], options: []){
+        let image  = UIImage(data: imageData)
+        imageView.image = image
+      }
 
       contentView.addArrangedSubview(imageView)
 

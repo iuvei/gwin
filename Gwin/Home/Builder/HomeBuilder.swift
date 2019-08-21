@@ -17,9 +17,9 @@ public final class HomeBuilder {
   public func build() -> HomeRouter {
 
     let interactor = HomeInteractor()
-    let viewController = HomeViewController(output: interactor)
+    let viewController = HomeViewController()
 
-    interactor.router = router
+//    interactor.router = router
     interactor.view = viewController
 
     router.viewController = viewController

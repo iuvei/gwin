@@ -105,7 +105,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   public func setHomeAsRootViewControlelr() {
     if let _ = self.window {
       let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-      if let `navigationController` = navigationController, let tabbarController = storyboard.instantiateViewController(withIdentifier: "tabbarController") as? RedEnvelopTabbarController {
+      if let `navigationController` = navigationController {
+        let tabbarController = storyboard.instantiateViewController(withIdentifier: "tabbarController") 
         navigationController.initRootViewController(vc: tabbarController)
       }
     }

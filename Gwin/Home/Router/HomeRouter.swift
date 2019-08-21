@@ -19,7 +19,6 @@ final public class HomeRouter: Router, HomeRouterInput {
 
   public weak var viewController: (UIViewController & HomeViewControllerInput)!
   var interactor: HomeInteractor!
-  // MARK: - CategoryListingHomeRouterInput
 
   func homeRouterXXX() {
 

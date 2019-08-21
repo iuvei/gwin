@@ -69,7 +69,7 @@ class LoginViewController: UIViewController {
   }
 
   @IBAction func loginPressed(_ sender: Any) {
-    guard let accountNo = accountNoTextfield.text, let password = accountNoTextfield.text else { return }
+    guard let accountNo = accountNoTextfield.text, let password = passwordTextfield.text else { return }
 
     UserDefaultManager.sharedInstance().saveLoginInfo(accountNo: accountNo, password: password)
     

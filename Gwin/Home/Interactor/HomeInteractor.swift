@@ -8,9 +8,9 @@
 
 import Foundation
 
-final class HomeInteractor {
+final class HomeInteractor: HomeViewOutput {
 
-  weak var router: HomeRouterInput!
+//  weak var router: HomeRouterInput!
   var view: HomeViewInput!
 
   init() {
@@ -25,11 +25,9 @@ final class HomeInteractor {
       this.view.updatePopularizeImage(images: images)
     }
   }
-  
-}
 
-extension HomeInteractor: HomeViewOutput {
   func viewDidLoad() {
     fetchPopularizeImage()
   }
+
 }
