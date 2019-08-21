@@ -48,6 +48,9 @@
 		D175C525230D0DCA001B8DC6 /* HomeViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C524230D0DCA001B8DC6 /* HomeViewComponent.swift */; };
 		D175C527230D0E46001B8DC6 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C526230D0E46001B8DC6 /* HomeBuilder.swift */; };
 		D175C529230D1036001B8DC6 /* RedEnvelopTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */; };
+		D1E00B72230D8F0E00554CA4 /* LobbyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */; };
+		D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */ = {isa = PBXBuildFile; fileRef = D1E00B74230D950E00554CA4 /* LobbyJson.json */; };
+		D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B78230DA05200554CA4 /* WebContainerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +99,9 @@
 		D175C524230D0DCA001B8DC6 /* HomeViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewComponent.swift; sourceTree = "<group>"; };
 		D175C526230D0E46001B8DC6 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedEnvelopTabbarController.swift; sourceTree = "<group>"; };
+		D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyItemView.swift; sourceTree = "<group>"; };
+		D1E00B74230D950E00554CA4 /* LobbyJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LobbyJson.json; sourceTree = "<group>"; };
+		D1E00B78230DA05200554CA4 /* WebContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContainerController.swift; sourceTree = "<group>"; };
 		F8455A52255EC42C57478B9D /* Pods-Gwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gwin.release.xcconfig"; path = "Target Support Files/Pods-Gwin/Pods-Gwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +155,7 @@
 		D100679B2309AA1F00114F6E /* Gwin */ = {
 			isa = PBXGroup;
 			children = (
+				D1E00B73230D94E800554CA4 /* Resource */,
 				D175C4E9230C2984001B8DC6 /* Flow */,
 				D175C4E3230C2142001B8DC6 /* Wellcome */,
 				D175C4D5230BE836001B8DC6 /* Networking */,
@@ -160,7 +167,6 @@
 				D10067B12309AC6E00114F6E /* Home */,
 				D100679C2309AA1F00114F6E /* AppDelegate.swift */,
 				D10067A02309AA1F00114F6E /* Main.storyboard */,
-				D10067A62309AA2500114F6E /* Assets.xcassets */,
 				D10067A82309AA2500114F6E /* LaunchScreen.storyboard */,
 				D10067AB2309AA2500114F6E /* Info.plist */,
 				D10067A32309AA1F00114F6E /* Gwin.xcdatamodeld */,
@@ -210,6 +216,8 @@
 				D10067B82309AFAF00114F6E /* Carousel */,
 				D10067B62309ACB800114F6E /* HomeViewController.swift */,
 				D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */,
+				D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */,
+				D1E00B78230DA05200554CA4 /* WebContainerController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -394,6 +402,15 @@
 			path = Component;
 			sourceTree = "<group>";
 		};
+		D1E00B73230D94E800554CA4 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D10067A62309AA2500114F6E /* Assets.xcassets */,
+				D1E00B74230D950E00554CA4 /* LobbyJson.json */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		E2E3FE475745C5AF91AA105F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,6 +501,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */,
 				D175C4CE230BD324001B8DC6 /* LoginViewController.xib in Resources */,
 				D10067AA2309AA2500114F6E /* LaunchScreen.storyboard in Resources */,
 				D175C4E8230C2177001B8DC6 /* WellcomeViewController.xib in Resources */,
@@ -553,6 +571,7 @@
 				D175C4D4230BD5A1001B8DC6 /* LoginInteractor.swift in Sources */,
 				D175C4BC230BCD97001B8DC6 /* Router.swift in Sources */,
 				D175C4C0230BCE31001B8DC6 /* ExampleViewController.swift in Sources */,
+				D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */,
 				D175C529230D1036001B8DC6 /* RedEnvelopTabbarController.swift in Sources */,
 				D175C4DA230C03E8001B8DC6 /* UserAPIClient.swift in Sources */,
 				D10067BA2309AFC700114F6E /* CarouselView.swift in Sources */,
@@ -562,6 +581,7 @@
 				D175C4FA230CFA9D001B8DC6 /* HomeInteractor.swift in Sources */,
 				D175C4F3230C552F001B8DC6 /* UserDefaultManager.swift in Sources */,
 				D175C4F6230CF60F001B8DC6 /* NoticeAPIRouter.swift in Sources */,
+				D1E00B72230D8F0E00554CA4 /* LobbyItemView.swift in Sources */,
 				D175C4BA230BCD97001B8DC6 /* EmptyProtocol.swift in Sources */,
 				D175C4DC230C0487001B8DC6 /* User.swift in Sources */,
 				D175C4C6230BD0C4001B8DC6 /* ExampleBuilder.swift in Sources */,

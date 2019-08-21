@@ -29,7 +29,7 @@ public enum UserAPIRouter: URLRequestConvertible {
   // 3
   var method: HTTPMethod {
     switch self {
-    case .login, .checkCellphoneNo, .accountExist, .register, .userInfo :
+    case .login, .checkCellphoneNo, .accountExist, .register, .userInfo, .otherH5, .accountPrefix:
       return .post
     default:
       return .get
