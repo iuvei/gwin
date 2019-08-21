@@ -31,6 +31,11 @@ class LoginViewController: UIViewController {
 
     // Do any additional setup after loading the view.
     setupViews()
+    updateData()
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
   }
 
   func setupViews() {
@@ -44,6 +49,11 @@ class LoginViewController: UIViewController {
 
   }
 
+  func updateData() {
+    accountNoTextfield.text = UserDefaultManager.sharedInstance().loginInfoUserName()
+    passwordTextfield.text = UserDefaultManager.sharedInstance().loginInfoPassword()
+    loginButton.isSelected = UserDefaultManager.sharedInstance().isRememberLoginInfo()
+  }
   /*
    // MARK: - Navigation
 
@@ -53,12 +63,19 @@ class LoginViewController: UIViewController {
    // Pass the selected object to the new view controller.
    }
    */
+  @IBAction func rememberPressed(_ sender: Any) {
+    rememberButton.isSelected = !rememberButton.isSelected
+    UserDefaultManager.sharedInstance().rememberLoginInfo(rememberButton.isSelected)
+  }
 
   @IBAction func loginPressed(_ sender: Any) {
-    guard let accountNo = accountNoTextfield.text, let password = accountNoTextfield.text else { return }
+    guard let accountNo = accountNoTextfield.text, let password = passwordTextfield.text else { return }
 
+    UserDefaultManager.sharedInstance().saveLoginInfo(accountNo: accountNo, password: password)
+    
     UserAPIClient.login(accountNo: accountNo, password: password) { (user, message) in
       if let `user` = user {
+        RedEnvelopComponent.shared.user = user
         if let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate {
           appDelegate.setHomeAsRootViewControlelr()
         }
