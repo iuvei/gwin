@@ -51,6 +51,9 @@
 		D1E00B72230D8F0E00554CA4 /* LobbyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */; };
 		D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */ = {isa = PBXBuildFile; fileRef = D1E00B74230D950E00554CA4 /* LobbyJson.json */; };
 		D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B78230DA05200554CA4 /* WebContainerController.swift */; };
+		D1E00CFD230E931D00554CA4 /* RedEnvelopAPIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00CFC230E931D00554CA4 /* RedEnvelopAPIRouter.swift */; };
+		D1E00CFF230E932F00554CA4 /* RedEnvelopAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00CFE230E932F00554CA4 /* RedEnvelopAPIClient.swift */; };
+		D1E00D01230E9CFC00554CA4 /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D00230E9CFC00554CA4 /* RoomModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +105,9 @@
 		D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyItemView.swift; sourceTree = "<group>"; };
 		D1E00B74230D950E00554CA4 /* LobbyJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LobbyJson.json; sourceTree = "<group>"; };
 		D1E00B78230DA05200554CA4 /* WebContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContainerController.swift; sourceTree = "<group>"; };
+		D1E00CFC230E931D00554CA4 /* RedEnvelopAPIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedEnvelopAPIRouter.swift; sourceTree = "<group>"; };
+		D1E00CFE230E932F00554CA4 /* RedEnvelopAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedEnvelopAPIClient.swift; sourceTree = "<group>"; };
+		D1E00D00230E9CFC00554CA4 /* RoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
 		F8455A52255EC42C57478B9D /* Pods-Gwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gwin.release.xcconfig"; path = "Target Support Files/Pods-Gwin/Pods-Gwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +161,7 @@
 		D100679B2309AA1F00114F6E /* Gwin */ = {
 			isa = PBXGroup;
 			children = (
+				D1E00CFA230E92D400554CA4 /* Profile */,
 				D1E00B73230D94E800554CA4 /* Resource */,
 				D175C4E9230C2984001B8DC6 /* Flow */,
 				D175C4E3230C2142001B8DC6 /* Wellcome */,
@@ -351,6 +358,7 @@
 		D175C4D5230BE836001B8DC6 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				D1E00CFB230E930300554CA4 /* RedEnvelop */,
 				D175C4F4230CF5EC001B8DC6 /* Notice */,
 				D175C4D8230C03D1001B8DC6 /* User */,
 			);
@@ -409,6 +417,23 @@
 				D1E00B74230D950E00554CA4 /* LobbyJson.json */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		D1E00CFA230E92D400554CA4 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D1E00CFB230E930300554CA4 /* RedEnvelop */ = {
+			isa = PBXGroup;
+			children = (
+				D1E00CFC230E931D00554CA4 /* RedEnvelopAPIRouter.swift */,
+				D1E00CFE230E932F00554CA4 /* RedEnvelopAPIClient.swift */,
+				D1E00D00230E9CFC00554CA4 /* RoomModel.swift */,
+			);
+			path = RedEnvelop;
 			sourceTree = "<group>";
 		};
 		E2E3FE475745C5AF91AA105F /* Frameworks */ = {
@@ -576,6 +601,7 @@
 				D175C4DA230C03E8001B8DC6 /* UserAPIClient.swift in Sources */,
 				D10067BA2309AFC700114F6E /* CarouselView.swift in Sources */,
 				D175C4E2230C1A53001B8DC6 /* UserInfo.swift in Sources */,
+				D1E00CFF230E932F00554CA4 /* RedEnvelopAPIClient.swift in Sources */,
 				D175C4D7230BE84B001B8DC6 /* UserAPIRouter.swift in Sources */,
 				D175C4BB230BCD97001B8DC6 /* Interactor.swift in Sources */,
 				D175C4FA230CFA9D001B8DC6 /* HomeInteractor.swift in Sources */,
@@ -592,6 +618,7 @@
 				D175C47F230BCA42001B8DC6 /* ExampleRouter.swift in Sources */,
 				D175C4C3230BCFD9001B8DC6 /* ExampleInteractor.swift in Sources */,
 				D175C4FC230CFB7F001B8DC6 /* HomeRouter.swift in Sources */,
+				D1E00CFD230E931D00554CA4 /* RedEnvelopAPIRouter.swift in Sources */,
 				D100679D2309AA1F00114F6E /* AppDelegate.swift in Sources */,
 				D175C4CD230BD324001B8DC6 /* LoginViewController.swift in Sources */,
 				D175C4B9230BCD97001B8DC6 /* Component.swift in Sources */,
@@ -603,6 +630,7 @@
 				D175C4E7230C2177001B8DC6 /* WellcomeViewController.swift in Sources */,
 				D175C527230D0E46001B8DC6 /* HomeBuilder.swift in Sources */,
 				D175C4D0230BD4B2001B8DC6 /* LoginBuilder.swift in Sources */,
+				D1E00D01230E9CFC00554CA4 /* RoomModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,12 +785,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F59XSVKP6X;
 				INFOPLIST_FILE = Gwin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gwin.Gwin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gwin.redenvelope;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -775,12 +804,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F59XSVKP6X;
 				INFOPLIST_FILE = Gwin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gwin.Gwin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gwin.redenvelope;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

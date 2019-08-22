@@ -26,10 +26,12 @@ public enum UserAPIRouter: URLRequestConvertible {
   case logout(String, String)
   case otherH5(String, String)
   case accountPrefix(String)
+  case uploadImg(String, String, String)
+  case listImage(String, [String])
   // 3
   var method: HTTPMethod {
     switch self {
-    case .login, .checkCellphoneNo, .accountExist, .register, .userInfo, .otherH5, .accountPrefix:
+    case .login, .checkCellphoneNo, .accountExist, .register, .userInfo, .otherH5, .accountPrefix, .uploadImg, .listImage:
       return .post
     default:
       return .get
@@ -59,6 +61,10 @@ public enum UserAPIRouter: URLRequestConvertible {
       return "/JumpUrl"
     case .accountPrefix:
       return "/prefix"
+    case .uploadImg:
+      return "/UpdImg"
+    case .listImage:
+      return "/ImgList"
     }
   }
 
@@ -83,6 +89,11 @@ public enum UserAPIRouter: URLRequestConvertible {
       return ["ticket" : ticket , "data" : ["optype" : optype]]
     case .accountPrefix(let prefix):
       return ["data" : ["prefix" : prefix]]
+    case .uploadImg(let ticket, let userno, let imageData):
+      return ["ticket" : ticket , "data" : ["userno" : userno, "img": imageData]]
+    case .listImage(let ticket, let usernos):
+      return ["ticket" : ticket , "data" : usernos]
+
     default:
       return [:]
     }

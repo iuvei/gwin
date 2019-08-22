@@ -25,6 +25,14 @@ class WebContainerController: UIViewController {
     return view
   }()
 
+  private lazy var backButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.backgroundColor = .blue
+    button.addTarget(self, action: #selector(backButtonPressed(_:)), for: .touchUpInside)
+    return button
+  }()
+
   private var urlPath: String
   init(url: String) {
     self.urlPath = url
@@ -40,6 +48,8 @@ class WebContainerController: UIViewController {
     view.addSubview(headerView)
     view.addSubview(webView)
 
+    headerView.addSubview(backButton)
+
     NSLayoutConstraint.activate([
       headerView.topAnchor.constraint(equalTo: view.topAnchor),
       headerView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -51,6 +61,9 @@ class WebContainerController: UIViewController {
       webView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       webView.rightAnchor.constraint(equalTo: view.rightAnchor),
 
+      backButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+      backButton.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 10),
+      backButton.heightAnchor.constraint(equalToConstant: 30)
       ])
     // Do any additional setup after loading the view.
     if let url = URL(string: urlPath) {
@@ -70,6 +83,9 @@ class WebContainerController: UIViewController {
    }
    */
 
+  @objc func backButtonPressed(_ sender: UIButton) {
+    dismiss(animated: true, completion: nil)
+  }
 }
 
 extension WebContainerController: WKNavigationDelegate {
