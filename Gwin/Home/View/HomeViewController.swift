@@ -63,10 +63,13 @@ class HomeViewController: UIViewController {
     return view
   }()
 
+  private var lobbies: [LobbyItemModel] = []
+
   override func viewDidLoad() {
     super.viewDidLoad()
     self.edgesForExtendedLayout = []
     // Do any additional setup after loading the view.
+    loadLobbyData()
     setupViews()
     fetchPopularizeImage()
     fetchRollMessage()
@@ -148,6 +151,24 @@ class HomeViewController: UIViewController {
       contentView.heightAnchor.constraint(equalTo: containerStackView.heightAnchor)
       ])
   }
+  func loadLobbyData() {
+    if let path = Bundle.main.path(forResource: "LobbyJson", ofType: "json") {
+      do {
+        let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+        let jsonObj = try JSON(data: data).array
+
+        jsonObj?.forEach{ json in
+          let lobby = LobbyItemModel(dictionary: json)
+          lobby.key = "personal_center"
+          lobbies.append(lobby)
+        }
+      } catch {
+        // handle error
+        print("Abcdef")
+      }
+    }
+
+  }
 
   func bindDataToView() {
     let stackView1 = getStackView()
@@ -161,20 +182,20 @@ class HomeViewController: UIViewController {
       ])
 
     let buttonSize = view.frame.width / 4
-
-    for i in 0..<4 {
-      let button = UIButton()
+    var lobbyIndex = 0
+    if lobbies.count <= 0 {
+      return
+    }
+    for _ in 0..<4 {
+      let button = LobbyItemView(model: lobbies[lobbyIndex], output: self)
       button.translatesAutoresizingMaskIntoConstraints = false
-      if i % 2 == 0 {
-        button.backgroundColor = .red
-      }else{
-        button.backgroundColor = .blue
-      }
+
       NSLayoutConstraint.activate([
         button.widthAnchor.constraint(equalToConstant: buttonSize),
         button.heightAnchor.constraint(equalToConstant: itemHeight),
         ])
       stackView1.addArrangedSubview(button)
+      lobbyIndex += 1
     }
 
     //
@@ -188,19 +209,15 @@ class HomeViewController: UIViewController {
 
     let item2Width = view.frame.width / 2
 
-    for i in 0..<2 {
-      let button = UIButton()
+    for _ in 0..<2 {
+      let button = LobbyItemView(model: lobbies[lobbyIndex], axis: .horizontal, output: self)
       button.translatesAutoresizingMaskIntoConstraints = false
-      if i % 2 == 0 {
-        button.backgroundColor = .yellow
-      }else{
-        button.backgroundColor = .cyan
-      }
       NSLayoutConstraint.activate([
         button.widthAnchor.constraint(equalToConstant: item2Width),
         button.heightAnchor.constraint(equalToConstant: itemHeight),
         ])
       stackView2.addArrangedSubview(button)
+      lobbyIndex += 1
     }
 
     //
@@ -213,19 +230,17 @@ class HomeViewController: UIViewController {
 
     let item3Width = view.frame.width / 4
 
-    for i in 0..<4 {
-      let button = UIButton()
+    for _ in 0..<4 {
+      let button = LobbyItemView(model: lobbies[lobbyIndex], output: self)
       button.translatesAutoresizingMaskIntoConstraints = false
-      if i % 2 == 0 {
-        button.backgroundColor = .green
-      }else{
-        button.backgroundColor = .blue
-      }
+
       NSLayoutConstraint.activate([
         button.widthAnchor.constraint(equalToConstant: item3Width),
         button.heightAnchor.constraint(equalToConstant: itemHeight),
         ])
+
       stackView3.addArrangedSubview(button)
+      lobbyIndex += 1
     }
 
     //
@@ -239,19 +254,17 @@ class HomeViewController: UIViewController {
 
     let item4Width = view.frame.width / 4
 
-    for i in 0..<4 {
-      let button = UIButton()
+    for _ in 0..<4 {
+      let button = LobbyItemView(model: lobbies[lobbyIndex], output: self)
       button.translatesAutoresizingMaskIntoConstraints = false
-      if i % 2 == 0 {
-        button.backgroundColor = .black
-      }else{
-        button.backgroundColor = .red
-      }
+
       NSLayoutConstraint.activate([
         button.widthAnchor.constraint(equalToConstant: item4Width),
         button.heightAnchor.constraint(equalToConstant: itemHeight),
         ])
+
       stackView4.addArrangedSubview(button)
+      lobbyIndex += 1
     }
   }
 
@@ -294,6 +307,21 @@ extension HomeViewController: HomeViewInput {
 }
 
 extension HomeViewController: HomeViewControllerInput {
-  
+
 }
+
+extension HomeViewController: LobbyItemViewOuput {
+  func pressedLobbyItem(model: LobbyItemModel) {
+    guard let user = RedEnvelopComponent.shared.user else { return }
+
+    UserAPIClient.otherH5(ticket: user.ticket, optype: model.key) { (abc, def) in
+      print("Abcddef")
+      if let url = abc {
+        let webController = WebContainerController(url: url)
+        self.present(webController, animated:true, completion:nil)
+      }
+    }
+  }
+}
+
 

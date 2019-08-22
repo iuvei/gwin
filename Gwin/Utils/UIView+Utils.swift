@@ -31,6 +31,10 @@ extension UIView {
     layer.cornerRadius = radius
     layer.masksToBounds = true
   }
+  func forAutoLayout() -> UIView{
+    translatesAutoresizingMaskIntoConstraints = false
+    return self
+  }
 }
 
 extension UINavigationController {
