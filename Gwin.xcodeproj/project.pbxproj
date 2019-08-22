@@ -54,6 +54,9 @@
 		D1E00CFD230E931D00554CA4 /* RedEnvelopAPIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00CFC230E931D00554CA4 /* RedEnvelopAPIRouter.swift */; };
 		D1E00CFF230E932F00554CA4 /* RedEnvelopAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00CFE230E932F00554CA4 /* RedEnvelopAPIClient.swift */; };
 		D1E00D01230E9CFC00554CA4 /* RoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D00230E9CFC00554CA4 /* RoomModel.swift */; };
+		D1E00D04230EC0A000554CA4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D03230EC0A000554CA4 /* ProfileViewController.swift */; };
+		D1E00D06230EDF1D00554CA4 /* ProfileItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D05230EDF1D00554CA4 /* ProfileItemViewCell.swift */; };
+		D1E00D0B230EEE4F00554CA4 /* ProfileItems.json in Resources */ = {isa = PBXBuildFile; fileRef = D1E00D0A230EEE4F00554CA4 /* ProfileItems.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +111,9 @@
 		D1E00CFC230E931D00554CA4 /* RedEnvelopAPIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedEnvelopAPIRouter.swift; sourceTree = "<group>"; };
 		D1E00CFE230E932F00554CA4 /* RedEnvelopAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedEnvelopAPIClient.swift; sourceTree = "<group>"; };
 		D1E00D00230E9CFC00554CA4 /* RoomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomModel.swift; sourceTree = "<group>"; };
+		D1E00D03230EC0A000554CA4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D1E00D05230EDF1D00554CA4 /* ProfileItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemViewCell.swift; sourceTree = "<group>"; };
+		D1E00D0A230EEE4F00554CA4 /* ProfileItems.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProfileItems.json; sourceTree = "<group>"; };
 		F8455A52255EC42C57478B9D /* Pods-Gwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gwin.release.xcconfig"; path = "Target Support Files/Pods-Gwin/Pods-Gwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -415,6 +421,7 @@
 			children = (
 				D10067A62309AA2500114F6E /* Assets.xcassets */,
 				D1E00B74230D950E00554CA4 /* LobbyJson.json */,
+				D1E00D0A230EEE4F00554CA4 /* ProfileItems.json */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -422,6 +429,8 @@
 		D1E00CFA230E92D400554CA4 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				D1E00D03230EC0A000554CA4 /* ProfileViewController.swift */,
+				D1E00D05230EDF1D00554CA4 /* ProfileItemViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -528,6 +537,7 @@
 			files = (
 				D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */,
 				D175C4CE230BD324001B8DC6 /* LoginViewController.xib in Resources */,
+				D1E00D0B230EEE4F00554CA4 /* ProfileItems.json in Resources */,
 				D10067AA2309AA2500114F6E /* LaunchScreen.storyboard in Resources */,
 				D175C4E8230C2177001B8DC6 /* WellcomeViewController.xib in Resources */,
 				D10067A72309AA2500114F6E /* Assets.xcassets in Resources */,
@@ -602,6 +612,7 @@
 				D10067BA2309AFC700114F6E /* CarouselView.swift in Sources */,
 				D175C4E2230C1A53001B8DC6 /* UserInfo.swift in Sources */,
 				D1E00CFF230E932F00554CA4 /* RedEnvelopAPIClient.swift in Sources */,
+				D1E00D06230EDF1D00554CA4 /* ProfileItemViewCell.swift in Sources */,
 				D175C4D7230BE84B001B8DC6 /* UserAPIRouter.swift in Sources */,
 				D175C4BB230BCD97001B8DC6 /* Interactor.swift in Sources */,
 				D175C4FA230CFA9D001B8DC6 /* HomeInteractor.swift in Sources */,
@@ -614,6 +625,7 @@
 				D10067A52309AA1F00114F6E /* Gwin.xcdatamodeld in Sources */,
 				D175C4F1230C36B3001B8DC6 /* KeyboardLayoutConstraint.swift in Sources */,
 				D175C4EB230C29A3001B8DC6 /* ScreenManager.swift in Sources */,
+				D1E00D04230EC0A000554CA4 /* ProfileViewController.swift in Sources */,
 				D175C525230D0DCA001B8DC6 /* HomeViewComponent.swift in Sources */,
 				D175C47F230BCA42001B8DC6 /* ExampleRouter.swift in Sources */,
 				D175C4C3230BCFD9001B8DC6 /* ExampleInteractor.swift in Sources */,

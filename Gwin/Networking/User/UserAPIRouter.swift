@@ -93,9 +93,8 @@ public enum UserAPIRouter: URLRequestConvertible {
       return ["ticket" : ticket , "data" : ["userno" : userno, "img": imageData]]
     case .listImage(let ticket, let usernos):
       return ["ticket" : ticket , "data" : usernos]
-
-    default:
-      return [:]
+    case .userInfo(let ticket):
+      return ["ticket" : ticket]
     }
   }
 
