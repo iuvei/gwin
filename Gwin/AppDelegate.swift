@@ -112,6 +112,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
 
+  public func setLoginViewController() {
+    if let _ = self.window {
+      if let `navigationController` = navigationController {
+        if  let viewcontroller = LoginBuilder().build(withListener: nil).viewController {
+          navigationController.initRootViewController(vc: viewcontroller)
+        }
+      }
+    }
+  }
+
+  public func setWellcomeAsRootViewController() {
+    if let _ = self.window {
+      if let `navigationController` = navigationController {
+        let viewcontroller = WellcomeViewController(nibName: "WellcomeViewController", bundle: nil)
+        navigationController.initRootViewController(vc: viewcontroller)
+      }
+    }
+  }
 }
 
 

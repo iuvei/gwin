@@ -21,7 +21,7 @@ class WellcomeViewController: UIViewController {
     }
 
   func setupViews() {
-    setNavigationBackgroundColor(color: .red)
+    setNavigationBackgroundColor(color: UIColor(hexString:"D66850"))
     loginButton.rounded()
     registerButton.rounded()
   }

@@ -31,7 +31,7 @@ public enum UserAPIRouter: URLRequestConvertible {
   // 3
   var method: HTTPMethod {
     switch self {
-    case .login, .checkCellphoneNo, .accountExist, .register, .userInfo, .otherH5, .accountPrefix, .uploadImg, .listImage:
+    case .login, .logout, .checkCellphoneNo, .accountExist, .register, .userInfo, .otherH5, .accountPrefix, .uploadImg, .listImage:
       return .post
     default:
       return .get
@@ -93,9 +93,8 @@ public enum UserAPIRouter: URLRequestConvertible {
       return ["ticket" : ticket , "data" : ["userno" : userno, "img": imageData]]
     case .listImage(let ticket, let usernos):
       return ["ticket" : ticket , "data" : usernos]
-
-    default:
-      return [:]
+    case .userInfo(let ticket):
+      return ["ticket" : ticket]
     }
   }
 
