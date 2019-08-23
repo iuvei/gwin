@@ -198,10 +198,26 @@ class HomeViewController: UIViewController {
       lobbyIndex += 1
     }
 
-    //
+    //layout 2 games boom and bull
+    let seperateColor = UIColor(hexString: "#F7F7F7")
+
+    let firstSeperateView = UIView().forAutolayout()
+    firstSeperateView.backgroundColor = seperateColor
+
+    let firstGametitleLabel = getLabel(title: "title aaaaaa")
     let stackView2 = getStackView()
+    containerStackView.addArrangedSubview(firstSeperateView)
+    containerStackView.addArrangedSubview(firstGametitleLabel)
     containerStackView.addArrangedSubview(stackView2)
     NSLayoutConstraint.activate([
+      firstSeperateView.leftAnchor.constraint(equalTo: containerStackView.leftAnchor),
+      firstSeperateView.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
+      firstSeperateView.heightAnchor.constraint(equalToConstant: 8),
+
+      firstGametitleLabel.leftAnchor.constraint(equalTo: containerStackView.leftAnchor, constant: 10),
+      firstGametitleLabel.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
+      firstGametitleLabel.heightAnchor.constraint(equalToConstant: 35),
+
       stackView2.leftAnchor.constraint(equalTo: containerStackView.leftAnchor),
       stackView2.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
       stackView2.heightAnchor.constraint(equalToConstant: itemHeight)
@@ -221,9 +237,23 @@ class HomeViewController: UIViewController {
     }
 
     //
+    let lastSeperateView = UIView().forAutolayout()
+    lastSeperateView.backgroundColor = seperateColor
+    let lasttitleLabel = getLabel(title: "title bbbbbbb")
     let stackView3 = getStackView()
+    containerStackView.addArrangedSubview(lastSeperateView)
+    containerStackView.addArrangedSubview(lasttitleLabel)
     containerStackView.addArrangedSubview(stackView3)
+
     NSLayoutConstraint.activate([
+      lastSeperateView.leftAnchor.constraint(equalTo: containerStackView.leftAnchor),
+      lastSeperateView.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
+      lastSeperateView.heightAnchor.constraint(equalToConstant: 8),
+
+      lasttitleLabel.leftAnchor.constraint(equalTo: containerStackView.leftAnchor, constant: 10),
+      lasttitleLabel.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
+      lasttitleLabel.heightAnchor.constraint(equalToConstant: 35),
+
       stackView3.leftAnchor.constraint(equalTo: containerStackView.leftAnchor),
       stackView3.rightAnchor.constraint(equalTo: containerStackView.rightAnchor)
       ])
@@ -275,6 +305,13 @@ class HomeViewController: UIViewController {
     view.distribution = .fill
     return view
   }
+
+  private func getLabel(title: String) -> UILabel {
+    let label = UILabel().forAutolayout()
+    label.text = title
+    return label
+  }
+
   func fetchPopularizeImage() {
 
     guard let user = RedEnvelopComponent.shared.user else { return }

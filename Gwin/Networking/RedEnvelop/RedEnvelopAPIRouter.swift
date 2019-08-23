@@ -8,6 +8,15 @@
 
 import Alamofire
 
+enum RoomType {
+  static let boom: Int = 1
+  static let bull: Int = 2
+}
+
+enum LotteryHameNo: Int {
+  case abc = 6
+}
+
 public enum RedEnvelopAPIRouter: URLRequestConvertible {
   // 1
   enum Constants {
@@ -24,11 +33,12 @@ public enum RedEnvelopAPIRouter: URLRequestConvertible {
   case infoPackage(String, Int, Int)
   case historyPackage(String, Int, Int, Int)
   case statusPackage(String, Int, Int)
+  case lottery(String, String)
 
   // 3
   var method: HTTPMethod {
     switch self {
-    case .roomList, .loginin, .loginout, .sendPackage :
+    case .roomList, .loginin, .loginout, .sendPackage, .historyPackage, .statusPackage , .lottery:
       return .post
     default:
       return  .get
@@ -54,6 +64,8 @@ public enum RedEnvelopAPIRouter: URLRequestConvertible {
       return "/packet/history"
     case .statusPackage:
       return "/packet/status"
+    case .lottery:
+      return "/lottery/jumpurl"
     }
   }
 
@@ -76,6 +88,9 @@ public enum RedEnvelopAPIRouter: URLRequestConvertible {
       return [ "ticket" : ticket,  "data" : ["roomid": roomId, "packetid": packetid, "topnum": topnum]]
     case .statusPackage(let ticket, let roomId, let packetid):
       return [ "ticket" : ticket,  "data" : ["roomid": roomId, "packetid": packetid]]
+    case .lottery(let ticket, let gameno):
+      return [ "ticket" : ticket,  "data" : ["gameno": gameno]]
+
     }
   }
 

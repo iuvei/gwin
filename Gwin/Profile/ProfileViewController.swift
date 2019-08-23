@@ -85,7 +85,16 @@ class ProfileViewController: UIViewController {
    // Pass the selected object to the new view controller.
    }
    */
-
+  func logout(){
+    guard let `user` = RedEnvelopComponent.shared.user else { return }
+    UserAPIClient.logout(ticket: user.ticket, guid: user.guid) { (result, message) in
+      if result {
+        if let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate {
+          appDelegate.setWellcomeAsRootViewController()
+        }
+      }
+    }
+  }
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -108,6 +117,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
     return UITableViewCell()
 
+  }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     let item = menuItems[indexPath.row]
+    if item.key == "logout" {
+      logout()
+    }
   }
 }
 

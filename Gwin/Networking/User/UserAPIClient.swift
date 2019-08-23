@@ -31,8 +31,15 @@ class UserAPIClient {
     Alamofire.request(UserAPIRouter.login(accountNo, password)).responseJSON { (responseData) in
       if((responseData.result.value) != nil) {
         let jsonResponse = JSON(responseData.result.value!)
-        let user = User(dictionary: jsonResponse)
-        completion(user,nil)
+        let code = jsonResponse["code"].intValue
+        let msg = jsonResponse["msg"].string
+        var user: User? = nil
+
+        if  code == 1 {
+          user = User(dictionary: jsonResponse)
+        }
+
+        completion(user,msg)
       } else {
         completion(nil,responseData.error?.localizedDescription)
       }

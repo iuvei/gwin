@@ -19,9 +19,12 @@ enum ItemType {
 struct ProfileItemModel {
   var icon: String
   var title: String
+  var key: String
+
   init(json: JSON) {
     icon = json["icon"].stringValue
     title = json["title"].stringValue
+    key = json["key"].stringValue
   }
 }
 
@@ -88,6 +91,12 @@ class ProfileItemViewCell: UITableViewCell {
   func updateContent(data: ProfileItemModel) {
     iconImageView.image = UIImage(named: data.icon)
     titleLabel.text = data.title
+
+    if data.key == "logout" {
+      actionButton.isHidden = true
+    }else{
+      actionButton.isHidden = false
+    }
   }
 }
 

@@ -47,4 +47,21 @@ class RedEnvelopAPIClient {
       completion(isLogin, msg ?? responseData.error?.localizedDescription)
     }
   }
+
+  static func lottery(ticket: String, gameno: String, completion:@escaping (String?, String?)->Void) {
+    Alamofire.request(RedEnvelopAPIRouter.lottery(ticket, gameno)).responseJSON { (responseData) in
+      var msg: String? = nil
+      var url: String? = nil
+      if responseData.result.value != nil {
+        let jsonResponse = JSON(responseData.result.value!)
+        let code = jsonResponse["code"].intValue
+        msg = jsonResponse["msg"].string
+        if code == 1 {
+          let data = jsonResponse["data"]
+         url = data["url"].stringValue
+        }
+      }
+      completion(url, msg ?? responseData.error?.localizedDescription)
+    }
+  }
 }

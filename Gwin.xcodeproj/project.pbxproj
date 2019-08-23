@@ -57,6 +57,19 @@
 		D1E00D04230EC0A000554CA4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D03230EC0A000554CA4 /* ProfileViewController.swift */; };
 		D1E00D06230EDF1D00554CA4 /* ProfileItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D05230EDF1D00554CA4 /* ProfileItemViewCell.swift */; };
 		D1E00D0B230EEE4F00554CA4 /* ProfileItems.json in Resources */ = {isa = PBXBuildFile; fileRef = D1E00D0A230EEE4F00554CA4 /* ProfileItems.json */; };
+		D1E00D46230F9DDD00554CA4 /* RedEnvelopeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D45230F9DDD00554CA4 /* RedEnvelopeViewController.swift */; };
+		D1E00D6E230FCFD600554CA4 /* GameItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D6D230FCFD600554CA4 /* GameItemCell.swift */; };
+		D1E00D71230FD79E00554CA4 /* BullAPIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D70230FD79E00554CA4 /* BullAPIRouter.swift */; };
+		D1E00D73230FDCB800554CA4 /* BullAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D72230FDCB800554CA4 /* BullAPIClient.swift */; };
+		D1E00D75230FDEEC00554CA4 /* BullRoundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D74230FDEEC00554CA4 /* BullRoundModel.swift */; };
+		D1E00D77230FE11900554CA4 /* BankSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D76230FE11900554CA4 /* BankSettingModel.swift */; };
+		D1E00D79230FE5F600554CA4 /* BullPackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D78230FE5F600554CA4 /* BullPackageModel.swift */; };
+		D1E00D7B230FE89700554CA4 /* BullPackageUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D7A230FE89700554CA4 /* BullPackageUserModel.swift */; };
+		D1E00D7D230FEAFB00554CA4 /* BullPackageHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D7C230FEAFB00554CA4 /* BullPackageHistoryModel.swift */; };
+		D1E00D7F230FEBBE00554CA4 /* BullHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D7E230FEBBE00554CA4 /* BullHistoryModel.swift */; };
+		D1E00D81230FEC1C00554CA4 /* BullWagerInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D80230FEC1C00554CA4 /* BullWagerInfoModel.swift */; };
+		D1E00D83230FED7B00554CA4 /* BullBetDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D82230FED7B00554CA4 /* BullBetDetailModel.swift */; };
+		D1E00D85230FEE0800554CA4 /* BullWagerOddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D84230FEE0800554CA4 /* BullWagerOddModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +127,19 @@
 		D1E00D03230EC0A000554CA4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D1E00D05230EDF1D00554CA4 /* ProfileItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileItemViewCell.swift; sourceTree = "<group>"; };
 		D1E00D0A230EEE4F00554CA4 /* ProfileItems.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProfileItems.json; sourceTree = "<group>"; };
+		D1E00D45230F9DDD00554CA4 /* RedEnvelopeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedEnvelopeViewController.swift; sourceTree = "<group>"; };
+		D1E00D6D230FCFD600554CA4 /* GameItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameItemCell.swift; sourceTree = "<group>"; };
+		D1E00D70230FD79E00554CA4 /* BullAPIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullAPIRouter.swift; sourceTree = "<group>"; };
+		D1E00D72230FDCB800554CA4 /* BullAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullAPIClient.swift; sourceTree = "<group>"; };
+		D1E00D74230FDEEC00554CA4 /* BullRoundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullRoundModel.swift; sourceTree = "<group>"; };
+		D1E00D76230FE11900554CA4 /* BankSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSettingModel.swift; sourceTree = "<group>"; };
+		D1E00D78230FE5F600554CA4 /* BullPackageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullPackageModel.swift; sourceTree = "<group>"; };
+		D1E00D7A230FE89700554CA4 /* BullPackageUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullPackageUserModel.swift; sourceTree = "<group>"; };
+		D1E00D7C230FEAFB00554CA4 /* BullPackageHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullPackageHistoryModel.swift; sourceTree = "<group>"; };
+		D1E00D7E230FEBBE00554CA4 /* BullHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullHistoryModel.swift; sourceTree = "<group>"; };
+		D1E00D80230FEC1C00554CA4 /* BullWagerInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullWagerInfoModel.swift; sourceTree = "<group>"; };
+		D1E00D82230FED7B00554CA4 /* BullBetDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullBetDetailModel.swift; sourceTree = "<group>"; };
+		D1E00D84230FEE0800554CA4 /* BullWagerOddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullWagerOddModel.swift; sourceTree = "<group>"; };
 		F8455A52255EC42C57478B9D /* Pods-Gwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gwin.release.xcconfig"; path = "Target Support Files/Pods-Gwin/Pods-Gwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,6 +193,7 @@
 		D100679B2309AA1F00114F6E /* Gwin */ = {
 			isa = PBXGroup;
 			children = (
+				D1E00D44230F9DBF00554CA4 /* RedEnvelope */,
 				D1E00CFA230E92D400554CA4 /* Profile */,
 				D1E00B73230D94E800554CA4 /* Resource */,
 				D175C4E9230C2984001B8DC6 /* Flow */,
@@ -364,6 +391,7 @@
 		D175C4D5230BE836001B8DC6 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				D1E00D6F230FD78600554CA4 /* Bull */,
 				D1E00CFB230E930300554CA4 /* RedEnvelop */,
 				D175C4F4230CF5EC001B8DC6 /* Notice */,
 				D175C4D8230C03D1001B8DC6 /* User */,
@@ -443,6 +471,33 @@
 				D1E00D00230E9CFC00554CA4 /* RoomModel.swift */,
 			);
 			path = RedEnvelop;
+			sourceTree = "<group>";
+		};
+		D1E00D44230F9DBF00554CA4 /* RedEnvelope */ = {
+			isa = PBXGroup;
+			children = (
+				D1E00D45230F9DDD00554CA4 /* RedEnvelopeViewController.swift */,
+				D1E00D6D230FCFD600554CA4 /* GameItemCell.swift */,
+			);
+			path = RedEnvelope;
+			sourceTree = "<group>";
+		};
+		D1E00D6F230FD78600554CA4 /* Bull */ = {
+			isa = PBXGroup;
+			children = (
+				D1E00D70230FD79E00554CA4 /* BullAPIRouter.swift */,
+				D1E00D72230FDCB800554CA4 /* BullAPIClient.swift */,
+				D1E00D74230FDEEC00554CA4 /* BullRoundModel.swift */,
+				D1E00D76230FE11900554CA4 /* BankSettingModel.swift */,
+				D1E00D78230FE5F600554CA4 /* BullPackageModel.swift */,
+				D1E00D7A230FE89700554CA4 /* BullPackageUserModel.swift */,
+				D1E00D7C230FEAFB00554CA4 /* BullPackageHistoryModel.swift */,
+				D1E00D7E230FEBBE00554CA4 /* BullHistoryModel.swift */,
+				D1E00D80230FEC1C00554CA4 /* BullWagerInfoModel.swift */,
+				D1E00D82230FED7B00554CA4 /* BullBetDetailModel.swift */,
+				D1E00D84230FEE0800554CA4 /* BullWagerOddModel.swift */,
+			);
+			path = Bull;
 			sourceTree = "<group>";
 		};
 		E2E3FE475745C5AF91AA105F /* Frameworks */ = {
@@ -604,21 +659,30 @@
 			files = (
 				D175C4BD230BCD97001B8DC6 /* Workflow.swift in Sources */,
 				D175C4D4230BD5A1001B8DC6 /* LoginInteractor.swift in Sources */,
+				D1E00D7D230FEAFB00554CA4 /* BullPackageHistoryModel.swift in Sources */,
 				D175C4BC230BCD97001B8DC6 /* Router.swift in Sources */,
 				D175C4C0230BCE31001B8DC6 /* ExampleViewController.swift in Sources */,
 				D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */,
 				D175C529230D1036001B8DC6 /* RedEnvelopTabbarController.swift in Sources */,
 				D175C4DA230C03E8001B8DC6 /* UserAPIClient.swift in Sources */,
+				D1E00D79230FE5F600554CA4 /* BullPackageModel.swift in Sources */,
+				D1E00D7B230FE89700554CA4 /* BullPackageUserModel.swift in Sources */,
 				D10067BA2309AFC700114F6E /* CarouselView.swift in Sources */,
 				D175C4E2230C1A53001B8DC6 /* UserInfo.swift in Sources */,
 				D1E00CFF230E932F00554CA4 /* RedEnvelopAPIClient.swift in Sources */,
 				D1E00D06230EDF1D00554CA4 /* ProfileItemViewCell.swift in Sources */,
 				D175C4D7230BE84B001B8DC6 /* UserAPIRouter.swift in Sources */,
+				D1E00D71230FD79E00554CA4 /* BullAPIRouter.swift in Sources */,
 				D175C4BB230BCD97001B8DC6 /* Interactor.swift in Sources */,
+				D1E00D6E230FCFD600554CA4 /* GameItemCell.swift in Sources */,
 				D175C4FA230CFA9D001B8DC6 /* HomeInteractor.swift in Sources */,
+				D1E00D85230FEE0800554CA4 /* BullWagerOddModel.swift in Sources */,
 				D175C4F3230C552F001B8DC6 /* UserDefaultManager.swift in Sources */,
+				D1E00D73230FDCB800554CA4 /* BullAPIClient.swift in Sources */,
 				D175C4F6230CF60F001B8DC6 /* NoticeAPIRouter.swift in Sources */,
 				D1E00B72230D8F0E00554CA4 /* LobbyItemView.swift in Sources */,
+				D1E00D77230FE11900554CA4 /* BankSettingModel.swift in Sources */,
+				D1E00D83230FED7B00554CA4 /* BullBetDetailModel.swift in Sources */,
 				D175C4BA230BCD97001B8DC6 /* EmptyProtocol.swift in Sources */,
 				D175C4DC230C0487001B8DC6 /* User.swift in Sources */,
 				D175C4C6230BD0C4001B8DC6 /* ExampleBuilder.swift in Sources */,
@@ -628,11 +692,15 @@
 				D1E00D04230EC0A000554CA4 /* ProfileViewController.swift in Sources */,
 				D175C525230D0DCA001B8DC6 /* HomeViewComponent.swift in Sources */,
 				D175C47F230BCA42001B8DC6 /* ExampleRouter.swift in Sources */,
+				D1E00D46230F9DDD00554CA4 /* RedEnvelopeViewController.swift in Sources */,
 				D175C4C3230BCFD9001B8DC6 /* ExampleInteractor.swift in Sources */,
+				D1E00D7F230FEBBE00554CA4 /* BullHistoryModel.swift in Sources */,
+				D1E00D75230FDEEC00554CA4 /* BullRoundModel.swift in Sources */,
 				D175C4FC230CFB7F001B8DC6 /* HomeRouter.swift in Sources */,
 				D1E00CFD230E931D00554CA4 /* RedEnvelopAPIRouter.swift in Sources */,
 				D100679D2309AA1F00114F6E /* AppDelegate.swift in Sources */,
 				D175C4CD230BD324001B8DC6 /* LoginViewController.swift in Sources */,
+				D1E00D81230FEC1C00554CA4 /* BullWagerInfoModel.swift in Sources */,
 				D175C4B9230BCD97001B8DC6 /* Component.swift in Sources */,
 				D175C4F8230CF823001B8DC6 /* NoticeAPIClient.swift in Sources */,
 				D175C4D2230BD570001B8DC6 /* LoginRouter.swift in Sources */,
