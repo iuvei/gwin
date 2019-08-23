@@ -130,6 +130,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       }
     }
   }
+
+  public func setLaunchAsRootViewController () {
+    if let _ = self.window {
+      if let `navigationController` = navigationController {
+        let viewcontroller = LaunchViewController(nibName: "LaunchViewController", bundle: nil)
+        navigationController.initRootViewController(vc: viewcontroller)
+      }
+    }
+  }
 }
 
 

@@ -45,16 +45,39 @@ class WebContainerController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = .white
+    setupHeaderView()
+    setupWebview()
+  }
+
+  func setupHeaderView() {
     view.addSubview(headerView)
+    if #available(iOS 11, *) {
+      let guide = view.safeAreaLayoutGuide
+      NSLayoutConstraint.activate([
+        headerView.topAnchor.constraint(equalTo: guide.topAnchor),
+        headerView.leftAnchor.constraint(equalTo: guide.leftAnchor),
+        headerView.rightAnchor.constraint(equalTo: guide.rightAnchor),
+        headerView.heightAnchor.constraint(equalToConstant: 44),
+        ])
+
+    } else {
+      NSLayoutConstraint.activate([
+        headerView.topAnchor.constraint(equalTo: view.topAnchor),
+        headerView.leftAnchor.constraint(equalTo: view.leftAnchor),
+        headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
+        headerView.heightAnchor.constraint(equalToConstant: 44),
+        ])
+    }
+  }
+
+  func setupWebview() {
     view.addSubview(webView)
 
     headerView.addSubview(backButton)
 
     NSLayoutConstraint.activate([
-      headerView.topAnchor.constraint(equalTo: view.topAnchor),
-      headerView.leftAnchor.constraint(equalTo: view.leftAnchor),
-      headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
-      headerView.heightAnchor.constraint(equalToConstant: 44),
+
 
       webView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
       webView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -69,10 +92,7 @@ class WebContainerController: UIViewController {
     if let url = URL(string: urlPath) {
       webView.load(URLRequest(url: url))
     }
-
   }
-
-
   /*
    // MARK: - Navigation
 

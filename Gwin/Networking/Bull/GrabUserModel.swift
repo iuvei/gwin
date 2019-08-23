@@ -1,5 +1,5 @@
 //
-//  BullPackageUserModel.swift
+//  GrabUserModel.swift
 //  Gwin
 //
 //  Created by Hai Vu Van on 8/23/19.
@@ -8,7 +8,7 @@
 
 import SwiftyJSON
 
-class BullPackageUserModel {
+class GrabUserModel {
   var userno: String                  // string,
   var username: String                  // string,
   var packetamount: Float                  // Number,

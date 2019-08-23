@@ -160,5 +160,34 @@ class UserAPIClient {
       }
     }
   }
+
+  static func getUserImages(ticket: String, usernos: [String], completion: @escaping ([JSON]?, String?) -> Void) {
+    Alamofire.request(UserAPIRouter.listImage(ticket, usernos)).responseJSON { (responseData) in
+      var data: [JSON]? = nil
+      if((responseData.result.value) != nil) {
+        let jsonResponse = JSON(responseData.result.value!)
+        let msg = jsonResponse["msg"].stringValue
+        if let code = jsonResponse["code"].int, code == 1{
+          data = jsonResponse["data"].array
+        }
+        completion(data, msg)
+      } else {
+        completion(data,responseData.error?.localizedDescription)
+      }
+    }
+  }
+
+  static func uploadImage(ticket: String, userno: String, img: String, completion: @escaping (Bool, String?) -> Void) {
+    Alamofire.request(UserAPIRouter.uploadImg(ticket, userno, img)).responseJSON { (responseData) in
+      if((responseData.result.value) != nil) {
+        let jsonResponse = JSON(responseData.result.value!)
+        let msg = jsonResponse["msg"].stringValue
+        let code = jsonResponse["code"].intValue
+        completion(code == 1, msg)
+      } else {
+        completion(false,responseData.error?.localizedDescription)
+      }
+    }
+  }
 }
 

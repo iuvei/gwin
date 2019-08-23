@@ -1,57 +1,68 @@
 [
   {
     "icon":"profile_item_1",
-    "title":"title_a",
-    "key":""
+    "title":"个人中心",
+    "key":"personal_center",
+    "action": "webview"
   },
   {
     "icon":"profile_item_2",
-    "title":"title_a",
-    "key":""
+    "title":"邀请码",
+    "key":"qrcode",
+    "action": "qrcode"
   },
   {
     "icon":"profile_item_3",
-    "title":"title_a",
-    "key":""
+    "title":"推荐APP款",
+    "key":"recommended_app",
+    "action": "webview"
   },
   {
     "icon":"profile_item_4",
-    "title":"title_a",
-    "key":""
+    "title":"存取款",
+    "key":"deposits_withdrawals",
+    "action": "webview"
   },
   {
     "icon":"profile_item_5",
-    "title":"title_a",
-    "key":""
+    "title":"报表查询",
+    "key":"report_query",
+    "action": "webview"
   },
   {
     "icon":"profile_item_6",
-    "title":"title_a",
-    "key":""
+    "title":"开奖结果",
+    "key":"opening_result",
+    "action": "webview"
   },
   {
     "icon":"profile_item_7",
-    "title":"title_a",
-    "key":""
+    "title":"百果园开奖网",
+    "key":"lottery_network",
+    "action": "webview"
   },
   {
     "icon":"profile_item_8",
-    "title":"title_a",
-    "key":""
+    "title":"常见问题",
+    "key":"common_problem",
+    "action": "webview"
   },
   {
     "icon":"profile_item_9",
-    "title":"title_a",
-    "key":""
+    "title":"版本",
+    "key":"version",
+    "action": "version"
   },
   {
     "icon":"profile_item_10",
-    "title":"title_a",
-    "key":""
+    "title":"声音",
+    "key":"sound",
+    "action": "sound"
   },
   {
     "icon":"profile_item_11",
-    "title":"title_a",
-    "key":"logout"
+    "title":"退出",
+    "key":"logout",
+    "action": "logout"
   }
 ]

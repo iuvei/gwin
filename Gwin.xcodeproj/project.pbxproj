@@ -64,12 +64,16 @@
 		D1E00D75230FDEEC00554CA4 /* BullRoundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D74230FDEEC00554CA4 /* BullRoundModel.swift */; };
 		D1E00D77230FE11900554CA4 /* BankSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D76230FE11900554CA4 /* BankSettingModel.swift */; };
 		D1E00D79230FE5F600554CA4 /* BullPackageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D78230FE5F600554CA4 /* BullPackageModel.swift */; };
-		D1E00D7B230FE89700554CA4 /* BullPackageUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D7A230FE89700554CA4 /* BullPackageUserModel.swift */; };
+		D1E00D7B230FE89700554CA4 /* GrabUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D7A230FE89700554CA4 /* GrabUserModel.swift */; };
 		D1E00D7D230FEAFB00554CA4 /* BullPackageHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D7C230FEAFB00554CA4 /* BullPackageHistoryModel.swift */; };
 		D1E00D7F230FEBBE00554CA4 /* BullHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D7E230FEBBE00554CA4 /* BullHistoryModel.swift */; };
 		D1E00D81230FEC1C00554CA4 /* BullWagerInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D80230FEC1C00554CA4 /* BullWagerInfoModel.swift */; };
 		D1E00D83230FED7B00554CA4 /* BullBetDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D82230FED7B00554CA4 /* BullBetDetailModel.swift */; };
 		D1E00D85230FEE0800554CA4 /* BullWagerOddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D84230FEE0800554CA4 /* BullWagerOddModel.swift */; };
+		D1E00D8823102A6700554CA4 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D8623102A6700554CA4 /* LaunchViewController.swift */; };
+		D1E00D8923102A6700554CA4 /* LaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E00D8723102A6700554CA4 /* LaunchViewController.xib */; };
+		D1E00D8B23102D7300554CA4 /* PackageInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D8A23102D7300554CA4 /* PackageInfoModel.swift */; };
+		D1E00D8D23102F2B00554CA4 /* PackageHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D8C23102F2B00554CA4 /* PackageHistoryModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,12 +138,16 @@
 		D1E00D74230FDEEC00554CA4 /* BullRoundModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullRoundModel.swift; sourceTree = "<group>"; };
 		D1E00D76230FE11900554CA4 /* BankSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSettingModel.swift; sourceTree = "<group>"; };
 		D1E00D78230FE5F600554CA4 /* BullPackageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullPackageModel.swift; sourceTree = "<group>"; };
-		D1E00D7A230FE89700554CA4 /* BullPackageUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullPackageUserModel.swift; sourceTree = "<group>"; };
+		D1E00D7A230FE89700554CA4 /* GrabUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabUserModel.swift; sourceTree = "<group>"; };
 		D1E00D7C230FEAFB00554CA4 /* BullPackageHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullPackageHistoryModel.swift; sourceTree = "<group>"; };
 		D1E00D7E230FEBBE00554CA4 /* BullHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullHistoryModel.swift; sourceTree = "<group>"; };
 		D1E00D80230FEC1C00554CA4 /* BullWagerInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullWagerInfoModel.swift; sourceTree = "<group>"; };
 		D1E00D82230FED7B00554CA4 /* BullBetDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullBetDetailModel.swift; sourceTree = "<group>"; };
 		D1E00D84230FEE0800554CA4 /* BullWagerOddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullWagerOddModel.swift; sourceTree = "<group>"; };
+		D1E00D8623102A6700554CA4 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		D1E00D8723102A6700554CA4 /* LaunchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchViewController.xib; sourceTree = "<group>"; };
+		D1E00D8A23102D7300554CA4 /* PackageInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageInfoModel.swift; sourceTree = "<group>"; };
+		D1E00D8C23102F2B00554CA4 /* PackageHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageHistoryModel.swift; sourceTree = "<group>"; };
 		F8455A52255EC42C57478B9D /* Pods-Gwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gwin.release.xcconfig"; path = "Target Support Files/Pods-Gwin/Pods-Gwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -415,6 +423,8 @@
 			children = (
 				D175C4E5230C2177001B8DC6 /* WellcomeViewController.swift */,
 				D175C4E6230C2177001B8DC6 /* WellcomeViewController.xib */,
+				D1E00D8623102A6700554CA4 /* LaunchViewController.swift */,
+				D1E00D8723102A6700554CA4 /* LaunchViewController.xib */,
 			);
 			path = Wellcome;
 			sourceTree = "<group>";
@@ -469,6 +479,8 @@
 				D1E00CFC230E931D00554CA4 /* RedEnvelopAPIRouter.swift */,
 				D1E00CFE230E932F00554CA4 /* RedEnvelopAPIClient.swift */,
 				D1E00D00230E9CFC00554CA4 /* RoomModel.swift */,
+				D1E00D8A23102D7300554CA4 /* PackageInfoModel.swift */,
+				D1E00D8C23102F2B00554CA4 /* PackageHistoryModel.swift */,
 			);
 			path = RedEnvelop;
 			sourceTree = "<group>";
@@ -490,7 +502,7 @@
 				D1E00D74230FDEEC00554CA4 /* BullRoundModel.swift */,
 				D1E00D76230FE11900554CA4 /* BankSettingModel.swift */,
 				D1E00D78230FE5F600554CA4 /* BullPackageModel.swift */,
-				D1E00D7A230FE89700554CA4 /* BullPackageUserModel.swift */,
+				D1E00D7A230FE89700554CA4 /* GrabUserModel.swift */,
 				D1E00D7C230FEAFB00554CA4 /* BullPackageHistoryModel.swift */,
 				D1E00D7E230FEBBE00554CA4 /* BullHistoryModel.swift */,
 				D1E00D80230FEC1C00554CA4 /* BullWagerInfoModel.swift */,
@@ -593,6 +605,7 @@
 				D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */,
 				D175C4CE230BD324001B8DC6 /* LoginViewController.xib in Resources */,
 				D1E00D0B230EEE4F00554CA4 /* ProfileItems.json in Resources */,
+				D1E00D8923102A6700554CA4 /* LaunchViewController.xib in Resources */,
 				D10067AA2309AA2500114F6E /* LaunchScreen.storyboard in Resources */,
 				D175C4E8230C2177001B8DC6 /* WellcomeViewController.xib in Resources */,
 				D10067A72309AA2500114F6E /* Assets.xcassets in Resources */,
@@ -666,7 +679,8 @@
 				D175C529230D1036001B8DC6 /* RedEnvelopTabbarController.swift in Sources */,
 				D175C4DA230C03E8001B8DC6 /* UserAPIClient.swift in Sources */,
 				D1E00D79230FE5F600554CA4 /* BullPackageModel.swift in Sources */,
-				D1E00D7B230FE89700554CA4 /* BullPackageUserModel.swift in Sources */,
+				D1E00D7B230FE89700554CA4 /* GrabUserModel.swift in Sources */,
+				D1E00D8D23102F2B00554CA4 /* PackageHistoryModel.swift in Sources */,
 				D10067BA2309AFC700114F6E /* CarouselView.swift in Sources */,
 				D175C4E2230C1A53001B8DC6 /* UserInfo.swift in Sources */,
 				D1E00CFF230E932F00554CA4 /* RedEnvelopAPIClient.swift in Sources */,
@@ -698,6 +712,8 @@
 				D1E00D75230FDEEC00554CA4 /* BullRoundModel.swift in Sources */,
 				D175C4FC230CFB7F001B8DC6 /* HomeRouter.swift in Sources */,
 				D1E00CFD230E931D00554CA4 /* RedEnvelopAPIRouter.swift in Sources */,
+				D1E00D8823102A6700554CA4 /* LaunchViewController.swift in Sources */,
+				D1E00D8B23102D7300554CA4 /* PackageInfoModel.swift in Sources */,
 				D100679D2309AA1F00114F6E /* AppDelegate.swift in Sources */,
 				D175C4CD230BD324001B8DC6 /* LoginViewController.swift in Sources */,
 				D1E00D81230FEC1C00554CA4 /* BullWagerInfoModel.swift in Sources */,

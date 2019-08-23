@@ -20,7 +20,7 @@ class BullPackageModel {
   var stake: Float               // Number, 投注额
   var winnings: Float                  // Number, 盈亏
   var wagertime : String
-  var grabuser: [BullPackageUserModel]
+  var grabuser: [GrabUserModel]
 
   init(json: JSON) {
     userno = json["userno"].stringValue                 // string,
@@ -38,7 +38,7 @@ class BullPackageModel {
     
     if let grabusersJson = json["grabuser"].array {
       for userjon in grabusersJson {
-        let user = BullPackageUserModel(json: userjon)
+        let user = GrabUserModel(json: userjon)
         grabuser.append(user)
       }
     }

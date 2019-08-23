@@ -31,6 +31,11 @@ extension UIView {
     layer.cornerRadius = radius
     layer.masksToBounds = true
   }
+
+  func addBorder(color: UIColor = .white, width: CGFloat = 0) {
+    layer.borderColor = color.cgColor
+    layer.borderWidth = width
+  }
   
   @discardableResult
   public func forAutolayout() -> Self {
@@ -71,6 +76,10 @@ extension UIViewController {
   func setNavigationBackgroundColor(color: UIColor = .white) {
     navigationController?.navigationBar.barTintColor = color
 
+  }
+
+  func setTitle(title: String) {
+    self.navigationController?.setTitle(title: title)
   }
 }
 
