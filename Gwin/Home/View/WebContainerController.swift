@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class WebContainerController: UIViewController {
+class WebContainerController: BaseViewController {
 
   private lazy var webView: WKWebView = {
     let web = WKWebView()
@@ -48,6 +48,7 @@ class WebContainerController: UIViewController {
     view.backgroundColor = .white
     setupHeaderView()
     setupWebview()
+    showLoadingView()
   }
 
   func setupHeaderView() {
@@ -110,5 +111,8 @@ class WebContainerController: UIViewController {
 
 extension WebContainerController: WKNavigationDelegate {
 
+  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    hideLoadingView()
+  }
 }
 

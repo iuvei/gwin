@@ -17,7 +17,7 @@ protocol LoginViewOutput: AnyObject {
 public protocol LoginViewControllerInput: AnyObject {
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
   weak var output: LoginViewOutput?
 
@@ -72,8 +72,11 @@ class LoginViewController: UIViewController {
     guard let accountNo = accountNoTextfield.text, let password = passwordTextfield.text else { return }
 
     UserDefaultManager.sharedInstance().saveLoginInfo(accountNo: accountNo, password: password)
-    
-    UserAPIClient.login(accountNo: accountNo, password: password) { (user, message) in
+
+    showLoadingView()
+    UserAPIClient.login(accountNo: accountNo, password: password) {[weak self] (user, message) in
+      guard let `this` = self else { return }
+      this.hideLoadingView()
       if let `user` = user {
         RedEnvelopComponent.shared.user = user
         if let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate {

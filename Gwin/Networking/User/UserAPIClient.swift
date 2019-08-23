@@ -46,12 +46,19 @@ class UserAPIClient {
     }
   }
 
-  static func checkCellphoneNo(cellphone: String, completion: @escaping (JSON?, String?) -> Void) {
+  static func checkCellphoneNo(cellphone: String, completion: @escaping (String?, String?) -> Void) {
     Alamofire.request(UserAPIRouter.checkCellphoneNo(cellphone)).responseJSON { (responseData) in
       if((responseData.result.value) != nil) {
         let jsonResponse = JSON(responseData.result.value!)
-
-        completion(jsonResponse,nil)
+        let msg = jsonResponse["msg"].string
+        let code = jsonResponse["code"].intValue
+        
+        if code == 1 {
+          let data = jsonResponse["data"].stringValue
+          completion(data,msg)
+        }else{
+          completion(nil,msg)
+        }
       } else {
         completion(nil,responseData.error?.localizedDescription)
       }

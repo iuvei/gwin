@@ -85,6 +85,14 @@ class RegisterViewController: UIViewController {
   }
 
   @IBAction func phoneNumberPressed(_ sender: Any) {
+
+    guard let phoneno = phoneNumberTextfield.text else { return }
+
+    UserAPIClient.checkCellphoneNo(cellphone: phoneno) { (checkCode, errorMessage) in
+      if let code = checkCode {
+        print("code \(code)")
+      }
+    }
   }
 
   @IBAction func registerPressed(_ sender: Any) {

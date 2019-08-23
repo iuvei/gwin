@@ -22,7 +22,7 @@ protocol HomeViewOutput: AnyObject {
 public protocol HomeViewControllerInput: AnyObject {
 }
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
   weak var output: HomeViewOutput?
 
   private var carouselView: CarouselView!
