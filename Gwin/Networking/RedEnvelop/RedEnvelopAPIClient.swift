@@ -10,22 +10,27 @@ import Alamofire
 import SwiftyJSON
 
 class RedEnvelopAPIClient {
-  static func getRoomList(ticket: String, roomtype: Int, completion:@escaping (RoomModel?, String?)->Void) {
+  static func getRoomList(ticket: String, roomtype: Int, completion:@escaping ([RoomModel]?, String?)->Void) {
     Alamofire.request(RedEnvelopAPIRouter.roomList(ticket, roomtype)).responseJSON { (responseData) in
+      var rooms:[RoomModel] = []
       if responseData.result.value != nil {
         let jsonResponse = JSON(responseData.result.value!)
         let code = jsonResponse["code"].intValue
         let msg = jsonResponse["msg"].string
 
         if code == 1 {
-          let data = jsonResponse["data"]
-          let room = RoomModel(json: data)
-          completion(room, msg)
+          let data = jsonResponse["data"].arrayValue
+
+          for roomJson in data {
+            let room = RoomModel(json: roomJson)
+            rooms.append(room)
+          }
+          completion(rooms, msg)
           return
         }
       }
 
-      completion(nil, responseData.error?.localizedDescription)
+      completion(rooms, responseData.error?.localizedDescription)
     }
   }
 
@@ -39,15 +44,8 @@ class RedEnvelopAPIClient {
         let code = jsonResponse["code"].intValue
         msg = jsonResponse["msg"].string
 
-        if code == 1 {
-          let data = jsonResponse["data"]
-          let _roomId = data["roomid"].intValue
-          let _roomPwd = data["roompwd"].stringValue
+        isLogin =  code == 1
 
-          if roomId == _roomId && roomPwd == _roomPwd{
-            isLogin = true
-          }
-        }
       }
 
       completion(isLogin, msg ?? responseData.error?.localizedDescription)

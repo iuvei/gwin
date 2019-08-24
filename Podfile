@@ -12,5 +12,6 @@ pod 'Alamofire'
 pod 'SwiftyJSON'
 pod 'Kingfisher', '~> 5.7'
 pod 'MarqueeLabel'
+pod 'Starscream'
 
 end

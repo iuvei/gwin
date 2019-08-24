@@ -75,6 +75,17 @@
 		D1E00D8B23102D7300554CA4 /* PackageInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D8A23102D7300554CA4 /* PackageInfoModel.swift */; };
 		D1E00D8D23102F2B00554CA4 /* PackageHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D8C23102F2B00554CA4 /* PackageHistoryModel.swift */; };
 		D1E00D8F2310447E00554CA4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D8E2310447E00554CA4 /* BaseViewController.swift */; };
+		D1E00D912310EBC100554CA4 /* RoomDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D902310EBC100554CA4 /* RoomDetailViewController.swift */; };
+		D1E00D9623110A7100554CA4 /* PackageHistoryLeftViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D9423110A7100554CA4 /* PackageHistoryLeftViewCell.swift */; };
+		D1E00D9723110A7100554CA4 /* PackageHistoryLeftViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E00D9523110A7100554CA4 /* PackageHistoryLeftViewCell.xib */; };
+		D1E00D9A23110A8C00554CA4 /* PackageHistoryRightViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D9823110A8C00554CA4 /* PackageHistoryRightViewCell.swift */; };
+		D1E00D9B23110A8C00554CA4 /* PackageHistoryRightViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E00D9923110A8C00554CA4 /* PackageHistoryRightViewCell.xib */; };
+		D1E00D9E2311115200554CA4 /* CreateEnvelopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00D9C2311115200554CA4 /* CreateEnvelopViewController.swift */; };
+		D1E00D9F2311115200554CA4 /* CreateEnvelopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E00D9D2311115200554CA4 /* CreateEnvelopViewController.xib */; };
+		D1E00DA2231119AC00554CA4 /* PackageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00DA0231119AC00554CA4 /* PackageInfoViewController.swift */; };
+		D1E00DA3231119AC00554CA4 /* PackageInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E00DA1231119AC00554CA4 /* PackageInfoViewController.xib */; };
+		D1E00DA62311302E00554CA4 /* CreateEnvelopType2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00DA42311302E00554CA4 /* CreateEnvelopType2ViewController.swift */; };
+		D1E00DA72311302E00554CA4 /* CreateEnvelopType2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E00DA52311302E00554CA4 /* CreateEnvelopType2ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +161,17 @@
 		D1E00D8A23102D7300554CA4 /* PackageInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageInfoModel.swift; sourceTree = "<group>"; };
 		D1E00D8C23102F2B00554CA4 /* PackageHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageHistoryModel.swift; sourceTree = "<group>"; };
 		D1E00D8E2310447E00554CA4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		D1E00D902310EBC100554CA4 /* RoomDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailViewController.swift; sourceTree = "<group>"; };
+		D1E00D9423110A7100554CA4 /* PackageHistoryLeftViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageHistoryLeftViewCell.swift; sourceTree = "<group>"; };
+		D1E00D9523110A7100554CA4 /* PackageHistoryLeftViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackageHistoryLeftViewCell.xib; sourceTree = "<group>"; };
+		D1E00D9823110A8C00554CA4 /* PackageHistoryRightViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageHistoryRightViewCell.swift; sourceTree = "<group>"; };
+		D1E00D9923110A8C00554CA4 /* PackageHistoryRightViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackageHistoryRightViewCell.xib; sourceTree = "<group>"; };
+		D1E00D9C2311115200554CA4 /* CreateEnvelopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEnvelopViewController.swift; sourceTree = "<group>"; };
+		D1E00D9D2311115200554CA4 /* CreateEnvelopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateEnvelopViewController.xib; sourceTree = "<group>"; };
+		D1E00DA0231119AC00554CA4 /* PackageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageInfoViewController.swift; sourceTree = "<group>"; };
+		D1E00DA1231119AC00554CA4 /* PackageInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackageInfoViewController.xib; sourceTree = "<group>"; };
+		D1E00DA42311302E00554CA4 /* CreateEnvelopType2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEnvelopType2ViewController.swift; sourceTree = "<group>"; };
+		D1E00DA52311302E00554CA4 /* CreateEnvelopType2ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateEnvelopType2ViewController.xib; sourceTree = "<group>"; };
 		F8455A52255EC42C57478B9D /* Pods-Gwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gwin.release.xcconfig"; path = "Target Support Files/Pods-Gwin/Pods-Gwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -493,6 +515,17 @@
 			children = (
 				D1E00D45230F9DDD00554CA4 /* RedEnvelopeViewController.swift */,
 				D1E00D6D230FCFD600554CA4 /* GameItemCell.swift */,
+				D1E00D902310EBC100554CA4 /* RoomDetailViewController.swift */,
+				D1E00D9423110A7100554CA4 /* PackageHistoryLeftViewCell.swift */,
+				D1E00D9523110A7100554CA4 /* PackageHistoryLeftViewCell.xib */,
+				D1E00D9823110A8C00554CA4 /* PackageHistoryRightViewCell.swift */,
+				D1E00D9923110A8C00554CA4 /* PackageHistoryRightViewCell.xib */,
+				D1E00D9C2311115200554CA4 /* CreateEnvelopViewController.swift */,
+				D1E00D9D2311115200554CA4 /* CreateEnvelopViewController.xib */,
+				D1E00DA0231119AC00554CA4 /* PackageInfoViewController.swift */,
+				D1E00DA1231119AC00554CA4 /* PackageInfoViewController.xib */,
+				D1E00DA42311302E00554CA4 /* CreateEnvelopType2ViewController.swift */,
+				D1E00DA52311302E00554CA4 /* CreateEnvelopType2ViewController.xib */,
 			);
 			path = RedEnvelope;
 			sourceTree = "<group>";
@@ -605,13 +638,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E00D9F2311115200554CA4 /* CreateEnvelopViewController.xib in Resources */,
+				D1E00DA72311302E00554CA4 /* CreateEnvelopType2ViewController.xib in Resources */,
+				D1E00DA3231119AC00554CA4 /* PackageInfoViewController.xib in Resources */,
 				D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */,
 				D175C4CE230BD324001B8DC6 /* LoginViewController.xib in Resources */,
 				D1E00D0B230EEE4F00554CA4 /* ProfileItems.json in Resources */,
 				D1E00D8923102A6700554CA4 /* LaunchViewController.xib in Resources */,
+				D1E00D9B23110A8C00554CA4 /* PackageHistoryRightViewCell.xib in Resources */,
 				D10067AA2309AA2500114F6E /* LaunchScreen.storyboard in Resources */,
 				D175C4E8230C2177001B8DC6 /* WellcomeViewController.xib in Resources */,
 				D10067A72309AA2500114F6E /* Assets.xcassets in Resources */,
+				D1E00D9723110A7100554CA4 /* PackageHistoryLeftViewCell.xib in Resources */,
 				D10067A22309AA1F00114F6E /* Main.storyboard in Resources */,
 				D175C4EF230C35CE001B8DC6 /* RegisterViewController.xib in Resources */,
 			);
@@ -674,8 +712,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D175C4BD230BCD97001B8DC6 /* Workflow.swift in Sources */,
+				D1E00DA62311302E00554CA4 /* CreateEnvelopType2ViewController.swift in Sources */,
+				D1E00D9623110A7100554CA4 /* PackageHistoryLeftViewCell.swift in Sources */,
 				D175C4D4230BD5A1001B8DC6 /* LoginInteractor.swift in Sources */,
 				D1E00D7D230FEAFB00554CA4 /* BullPackageHistoryModel.swift in Sources */,
+				D1E00D9E2311115200554CA4 /* CreateEnvelopViewController.swift in Sources */,
 				D175C4BC230BCD97001B8DC6 /* Router.swift in Sources */,
 				D175C4C0230BCE31001B8DC6 /* ExampleViewController.swift in Sources */,
 				D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */,
@@ -691,6 +732,7 @@
 				D175C4D7230BE84B001B8DC6 /* UserAPIRouter.swift in Sources */,
 				D1E00D71230FD79E00554CA4 /* BullAPIRouter.swift in Sources */,
 				D175C4BB230BCD97001B8DC6 /* Interactor.swift in Sources */,
+				D1E00D9A23110A8C00554CA4 /* PackageHistoryRightViewCell.swift in Sources */,
 				D1E00D6E230FCFD600554CA4 /* GameItemCell.swift in Sources */,
 				D175C4FA230CFA9D001B8DC6 /* HomeInteractor.swift in Sources */,
 				D1E00D85230FEE0800554CA4 /* BullWagerOddModel.swift in Sources */,
@@ -721,6 +763,7 @@
 				D175C4CD230BD324001B8DC6 /* LoginViewController.swift in Sources */,
 				D1E00D81230FEC1C00554CA4 /* BullWagerInfoModel.swift in Sources */,
 				D175C4B9230BCD97001B8DC6 /* Component.swift in Sources */,
+				D1E00D912310EBC100554CA4 /* RoomDetailViewController.swift in Sources */,
 				D175C4F8230CF823001B8DC6 /* NoticeAPIClient.swift in Sources */,
 				D175C4D2230BD570001B8DC6 /* LoginRouter.swift in Sources */,
 				D175C3C5230ADDC0001B8DC6 /* UIView+Utils.swift in Sources */,
@@ -728,6 +771,7 @@
 				D175C4EE230C35CE001B8DC6 /* RegisterViewController.swift in Sources */,
 				D175C4E7230C2177001B8DC6 /* WellcomeViewController.swift in Sources */,
 				D175C527230D0E46001B8DC6 /* HomeBuilder.swift in Sources */,
+				D1E00DA2231119AC00554CA4 /* PackageInfoViewController.swift in Sources */,
 				D175C4D0230BD4B2001B8DC6 /* LoginBuilder.swift in Sources */,
 				D1E00D01230E9CFC00554CA4 /* RoomModel.swift in Sources */,
 				D1E00D8F2310447E00554CA4 /* BaseViewController.swift in Sources */,
