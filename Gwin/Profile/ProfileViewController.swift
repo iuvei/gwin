@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController {
   @IBOutlet weak var infoView: UIView!
   @IBOutlet weak var tableview: UITableView!
   
+  @IBOutlet weak var avatarImageView: UIImageView!
   @IBOutlet weak var allowCreditLabel: UILabel!
   @IBOutlet weak var creditLabel: UILabel!
   @IBOutlet weak var accountnoLabel: UILabel!
@@ -61,11 +62,26 @@ class ProfileViewController: UIViewController {
         this.accountNameLabel.text = userInfo.accountname
         this.allowCreditLabel.text = "\(userInfo.allowcreditquota)"
         this.creditLabel.text = "\(userInfo.usecreditquota)"
+        this.fetchUserImage(ticket: user.ticket, userno: userInfo.accountno)
       } else {
 
       }
 
     }
+  }
+
+  func fetchUserImage(ticket: String, userno: String) {
+    UserAPIClient.getUserImages(ticket: ticket, usernos: [userno]) { [weak self] (data, message) in
+      guard let this = self else { return }
+      guard let _data = data else { return }
+      let result =  _data.filter { return $0["userno"].stringValue == userno }.first
+
+      if let imageData = Data(base64Encoded: result?["img"].stringValue ?? "", options: []) {
+        let image  = UIImage(data: imageData)
+        this.avatarImageView.image = image
+      }
+    }
+
   }
 
   func setupViews() {
@@ -95,6 +111,18 @@ class ProfileViewController: UIViewController {
       }
     }
   }
+
+  func jumpURL(optType: String) {
+    guard let `user` = RedEnvelopComponent.shared.user else { return }
+    UserAPIClient.otherH5(ticket: user.ticket, optype: optType) {[weak self] (url, message) in
+      guard let `this` = self else { return }
+      
+      if let jumpurl = url {
+        let webview = WebContainerController(url: jumpurl)
+        this.present(webview, animated: true, completion: nil)
+      }
+    }
+  }
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -121,8 +149,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      let item = menuItems[indexPath.row]
-    if item.key == "logout" {
-      logout()
+    if item.action == "webview" {
+      jumpURL(optType: item.key)
+    }else{
+      if item.key == "logout" {
+        logout()
+      }
     }
   }
 }

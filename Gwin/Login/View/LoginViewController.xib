@@ -61,9 +61,9 @@
                         <action selector="rememberPressed:" destination="-1" eventType="touchUpInside" id="Rm4-Hz-b0v"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceD-EJ-Npx">
-                    <rect key="frame" x="51" y="206" width="347" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="记住密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ceD-EJ-Npx">
+                    <rect key="frame" x="51" y="208" width="347" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -73,7 +73,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Z9L-pn-qFH"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="登录"/>
                     <connections>
                         <action selector="loginPressed:" destination="-1" eventType="touchUpInside" id="Dcj-kp-fPJ"/>
                     </connections>

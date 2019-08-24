@@ -31,7 +31,35 @@ extension UIView {
     layer.cornerRadius = radius
     layer.masksToBounds = true
   }
-  
+
+  func addBorder(color: UIColor = .white, width: CGFloat = 0) {
+    layer.borderColor = color.cgColor
+    layer.borderWidth = width
+  }
+
+  func addShadow(color: UIColor = .black, opacity: Float = 0.5, offSet: CGSize = .zero , radius: CGFloat = 1, scale: Bool = true) {
+    layer.masksToBounds = false
+    layer.shadowColor = color.cgColor
+    layer.shadowOpacity = opacity
+    layer.shadowOffset = offSet
+    layer.shadowRadius = radius
+
+    layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+    layer.shouldRasterize = true
+    layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+  }
+
+  func boundInside(view: UIView) {
+    forAutolayout()
+    NSLayoutConstraint.activate([
+      topAnchor.constraint(equalTo: view.topAnchor),
+      leftAnchor.constraint(equalTo: view.leftAnchor),
+      bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      rightAnchor.constraint(equalTo: view.rightAnchor),
+
+      ])
+  }
+
   @discardableResult
   public func forAutolayout() -> Self {
     translatesAutoresizingMaskIntoConstraints = false
@@ -72,6 +100,13 @@ extension UIViewController {
     navigationController?.navigationBar.barTintColor = color
 
   }
+
+  func setTitle(title: String) {
+    self.navigationController?.setTitle(title: title)
+  }
+
+
+
 }
 
 extension UITextField {
@@ -103,3 +138,4 @@ extension UIColor {
     self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
   }
 }
+

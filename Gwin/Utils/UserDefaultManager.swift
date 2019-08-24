@@ -11,7 +11,7 @@ enum SaveManagerKeys: String {
   case saveLoginInfo = "saveLoginInfo"
   case loginInfoUserName = "loginInfoUserName"
   case loginInfoPassword = "loginInfoPassword"
-
+  case settingSound = "settingSound"
 }
 
 class UserDefaultManager {
@@ -73,6 +73,21 @@ class UserDefaultManager {
   func loginInfoPassword() -> String? {
     return get(key: .loginInfoPassword) as? String
   }
+
+  //MARK: Sound
+
+  func setSettingSound(on: Bool){
+    save(object: on, key: .settingSound)
+  }
+
+  func settingSound() -> Bool {
+    if let sound =  get(key: .settingSound) as? Bool {
+      return sound
+    }
+
+    return false
+  }
+
   // MARK: Helpers
 
   func standard () -> UserDefaults {
