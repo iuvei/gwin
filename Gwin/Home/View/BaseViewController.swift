@@ -14,11 +14,23 @@ class BaseViewController: UIViewController {
     static let loadingSize: CGFloat = 100
   }
 
+  private lazy var backButton: UIButton = {
+    let button = UIButton().forAutolayout()
+    button.setImage(UIImage(named: "back_button"), for: .normal)
+    button.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
+    button.backgroundColor = .purple
+    return button
+  }()
+
   private var loadingView: UIViewController?
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.edgesForExtendedLayout = []
+
+
+    let leftItem = UIBarButtonItem(customView: backButton)
+    self.navigationItem.leftBarButtonItem = leftItem
 
     // Do any additional setup after loading the view.
   }
@@ -73,5 +85,8 @@ class BaseViewController: UIViewController {
    }
    */
 
+  @objc func backPressed(_ sender: UIButton) {
+    self.navigationController?.popViewController(animated: true)
+  }
 }
 

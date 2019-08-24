@@ -159,7 +159,6 @@ class HomeViewController: BaseViewController {
 
         jsonObj?.forEach{ json in
           let lobby = LobbyItemModel(dictionary: json)
-          lobby.key = "personal_center"
           lobbies.append(lobby)
         }
       } catch {
@@ -351,14 +350,29 @@ extension HomeViewController: LobbyItemViewOuput {
   func pressedLobbyItem(model: LobbyItemModel) {
     guard let user = RedEnvelopComponent.shared.user else { return }
 
-    UserAPIClient.otherH5(ticket: user.ticket, optype: model.key) { (abc, def) in
-      print("Abcddef")
-      if let url = abc {
-        let webController = WebContainerController(url: url)
-        self.present(webController, animated:true, completion:nil)
+    if model.action == "lottery" {
+
+      RedEnvelopAPIClient.lottery(ticket: user.ticket, gameno: model.key) { (gameurl, def) in
+        print("Abcddef")
+        if let url = gameurl {
+          let webController = WebContainerController(url: url)
+          self.present(webController, animated:true, completion:nil)
+        }
       }
+    }else if model.action == "user" {
+      UserAPIClient.otherH5(ticket: user.ticket, optype: model.key) { (abc, def) in
+        print("Abcddef")
+        if let url = abc {
+          let webController = WebContainerController(url: url)
+          self.present(webController, animated:true, completion:nil)
+        }
+      }
+    }else{
+
     }
+
   }
 }
+
 
 

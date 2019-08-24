@@ -12,21 +12,22 @@ import Starscream
 
 class RoomDetailViewController: BaseViewController {
 
-  private lazy var headerView: UIView = {
-    let view = UIView().forAutolayout()
-    view.backgroundColor = .red
-    return view
-  }()
+  enum Constants {
+    static let bottomImages: [String] = ["boom_bottom_image_1","boom_bottom_image_2","boom_bottom_image_3","boom_bottom_image_4"]
+    static let bottomTitles: [String] = ["发扫雷包","发福利包","充值","提现"]
+  }
 
   private lazy var profileButton: UIButton = {
     let button = UIButton().forAutolayout()
-    button.backgroundColor = .green
+    button.imageView?.contentMode = .scaleAspectFit
+    button.setImage(UIImage(named: "boom_header_profile"), for: .normal)
     return button
   }()
 
   private lazy var newPackageButton: UIButton = {
     let button = UIButton().forAutolayout()
-    button.backgroundColor = .yellow
+    button.imageView?.contentMode = .scaleAspectFit
+    button.setImage(UIImage(named: "boom_header_envelop"), for: .normal)
     button.addTarget(self, action: #selector(createPackagePressed(_:)), for: .touchUpInside)
     return button
   }()
@@ -59,7 +60,8 @@ class RoomDetailViewController: BaseViewController {
 
   private lazy var plusButton: UIButton = {
     let button = UIButton().forAutolayout()
-    button.backgroundColor = .red
+    button.imageView?.contentMode = .scaleAspectFit
+    button.setImage(UIImage(named: "boom_bottom_plus"), for: .normal)
     button.addTarget(self, action: #selector(expandPressed(_:)), for: .touchUpInside)
     return button
   }()
@@ -95,9 +97,9 @@ class RoomDetailViewController: BaseViewController {
     view.backgroundColor = .white
     // Do any additional setup after loading the view.
     initWebsocket()
+    setupNavigatorViews()
     setupViews()
     setupTableView()
-    setupHeaderView()
     setupBottomView()
   }
 
@@ -111,24 +113,27 @@ class RoomDetailViewController: BaseViewController {
     socket.delegate = nil
   }
 
+  func setupNavigatorViews() {
+    let rightItem1 = UIBarButtonItem(customView: profileButton)
+    let rightItem2 = UIBarButtonItem(customView: newPackageButton)
+
+    self.navigationItem.rightBarButtonItems = [rightItem2, rightItem1]
+    self.setTitle(title: "可发可抢")
+  }
+
   func setupViews() {
-    view.addSubview(headerView)
     view.addSubview(tableView)
     view.addSubview(bottomView)
 
     if #available(iOS 11, *) {
       let guide = view.safeAreaLayoutGuide
       NSLayoutConstraint.activate([
-        headerView.topAnchor.constraint(equalTo: guide.topAnchor),
-        headerView.leftAnchor.constraint(equalTo: guide.leftAnchor),
-        headerView.rightAnchor.constraint(equalTo: guide.rightAnchor),
-        headerView.heightAnchor.constraint(equalToConstant:  44),
 
         bottomView.leftAnchor.constraint(equalTo: guide.leftAnchor),
         bottomView.rightAnchor.constraint(equalTo: guide.rightAnchor),
         bottomView.bottomAnchor.constraint(equalTo: guide.bottomAnchor),
 
-        tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+        tableView.topAnchor.constraint(equalTo: guide.topAnchor),
         tableView.leftAnchor.constraint(equalTo: guide.leftAnchor),
         tableView.rightAnchor.constraint(equalTo: guide.rightAnchor),
         tableView.bottomAnchor.constraint(equalTo: bottomView.topAnchor),
@@ -136,45 +141,16 @@ class RoomDetailViewController: BaseViewController {
         ])
     }else{
       NSLayoutConstraint.activate([
-        headerView.topAnchor.constraint(equalTo: view.topAnchor),
-        headerView.leftAnchor.constraint(equalTo: view.leftAnchor),
-        headerView.rightAnchor.constraint(equalTo: view.rightAnchor),
-        headerView.heightAnchor.constraint(equalToConstant:  44),
-
         bottomView.leftAnchor.constraint(equalTo: view.leftAnchor),
         bottomView.rightAnchor.constraint(equalTo: view.rightAnchor),
         bottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-        tableView.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+        tableView.topAnchor.constraint(equalTo: view.topAnchor),
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
         tableView.bottomAnchor.constraint(equalTo: bottomView.topAnchor),
         ])
     }
-  }
-
-  func setupHeaderView() {
-    headerView.addSubview(backButton)
-    headerView.addSubview(profileButton)
-    headerView.addSubview(newPackageButton)
-
-    NSLayoutConstraint.activate([
-
-      backButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
-      backButton.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 10),
-      backButton.widthAnchor.constraint(equalToConstant: 30),
-      backButton.heightAnchor.constraint(equalToConstant: 30),
-
-      headerView.trailingAnchor.constraint(equalTo: profileButton.trailingAnchor, constant: 10),
-      profileButton.widthAnchor.constraint(equalToConstant: 30),
-      profileButton.heightAnchor.constraint(equalToConstant: 30),
-      profileButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
-
-      newPackageButton.rightAnchor.constraint(equalTo: profileButton.leftAnchor, constant: -10),
-      newPackageButton.widthAnchor.constraint(equalToConstant: 30),
-      newPackageButton.heightAnchor.constraint(equalToConstant: 30),
-      newPackageButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
-      ])
   }
 
   func setupBottomView() {
@@ -186,18 +162,14 @@ class RoomDetailViewController: BaseViewController {
 
     bottomView.addArrangedSubview(labelStackView)
 
-    for i in 0..<4 {
+    for i in 0 ..< Constants.bottomImages.count {
       let button = UIButton().forAutolayout()
       button.tag = i
       button.addTarget(self, action: #selector(actionPressed(_:)), for: .touchUpInside)
-
-      if i % 3 == 0{
-        button.backgroundColor = .red
-      }else if i % 3 == 1{
-        button.backgroundColor = .blue
-      }else {
-        button.backgroundColor = .yellow
-      }
+      button.setTitle(Constants.bottomTitles[i], for: .normal)
+      button.setImage(UIImage(named: Constants.bottomImages[i]), for: .normal)
+      button.adjustImageAndTitleOffsetsForButton()
+      button.setTitleColor(.black, for: .normal)
       bottomButtonStackView.addArrangedSubview(button)
 
       NSLayoutConstraint.activate([
@@ -210,6 +182,7 @@ class RoomDetailViewController: BaseViewController {
     NSLayoutConstraint.activate([
       plusButton.widthAnchor.constraint(equalToConstant: 30),
       plusButton.heightAnchor.constraint(equalToConstant: 30),
+      plusButton.rightAnchor.constraint(equalTo: labelStackView.leftAnchor, constant: -10)
       ])
 
   }
@@ -233,10 +206,6 @@ class RoomDetailViewController: BaseViewController {
 
 
     sendMessage(jsonString)
-  }
-
-  @objc func backPressed(_ sender: UIButton){
-    dismiss(animated: true, completion: nil)
   }
 
   @objc func createPackagePressed(_ sender: UIButton) {
@@ -332,8 +301,7 @@ extension RoomDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let vc = PackageInfoViewController(nibName: "PackageInfoViewController", bundle: nil)
-    vc.hidesBottomBarWhenPushed = true
-    self.navigationController?.pushViewController(vc, animated: true)
+   present(vc, animated: true, completion: nil)
   }
 }
 

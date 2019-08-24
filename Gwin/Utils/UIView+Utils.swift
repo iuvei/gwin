@@ -139,3 +139,31 @@ extension UIColor {
   }
 }
 
+extension UIButton {
+   func adjustImageAndTitleOffsetsForButton(spacing: CGFloat = 6.0) {
+
+    if let image = self.imageView?.image {
+      let imageSize: CGSize = image.size
+      self.titleEdgeInsets = UIEdgeInsets(top: spacing, left: -imageSize.width, bottom: -(imageSize.height), right: 0.0)
+      let labelString = NSString(string: self.titleLabel!.text!)
+      let titleSize = labelString.size(withAttributes: [NSAttributedString.Key.font: self.titleLabel!.font])
+      self.imageEdgeInsets = UIEdgeInsets(top: -(titleSize.height + spacing), left: 0.0, bottom: 0.0, right: -titleSize.width)
+    }
+  }
+}
+
+
+extension Int {
+  var usefulDigits: Int {
+    var num = self
+    var count = 0
+    while num != 0 {
+      let digit = abs(num % 10)
+      if digit != 0 && self % digit == 0 {
+        count += 1
+      }
+      num = num / 10
+    }
+    return count
+  }
+}

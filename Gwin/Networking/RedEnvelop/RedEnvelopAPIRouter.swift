@@ -89,7 +89,7 @@ public enum RedEnvelopAPIRouter: URLRequestConvertible {
     case .statusPackage(let ticket, let roomId, let packetid):
       return [ "ticket" : ticket,  "data" : ["roomid": roomId, "packetid": packetid]]
     case .lottery(let ticket, let gameno):
-      return [ "ticket" : ticket,  "data" : ["gameno": gameno]]
+      return [ "ticket" : ticket,  "data" : ["gameno": Int(gameno) ?? Int.max]]
 
     }
   }

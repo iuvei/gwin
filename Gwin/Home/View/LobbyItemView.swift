@@ -14,11 +14,13 @@ class LobbyItemModel {
   var icon: String
   var name: String
   var key: String
+  var action: String
 
   init(dictionary: JSON) {
     icon = dictionary["icon"].stringValue
     name = dictionary["name"].stringValue
     key = dictionary["key"].stringValue
+    action = dictionary["action"].stringValue
 
   }
 }
@@ -56,6 +58,8 @@ class LobbyItemView: UIView {
     let view = UILabel()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.textAlignment = .center
+    view.numberOfLines = 0
+    view.font = UIFont.systemFont(ofSize: 15)
     return view
   }()
 

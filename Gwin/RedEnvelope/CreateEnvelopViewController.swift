@@ -10,12 +10,18 @@ import UIKit
 
 class CreateEnvelopViewController: BaseViewController {
 
+  enum Constans {
+    static let packageTagMaxLengh: Int = 1
+  }
+
   @IBOutlet weak var sendButton: UIButton!
   @IBOutlet weak var packageTagTextfield: UITextField!
 
   @IBOutlet weak var packageAmountTextfield: UITextField!
 
   @IBOutlet weak var packageSizeLabel: UILabel!
+  @IBOutlet weak var titleLabel: UILabel!
+
 
   var room: RoomModel
 
@@ -32,10 +38,23 @@ class CreateEnvelopViewController: BaseViewController {
     super.viewDidLoad()
 
     // Do any additional setup after loading the view.
-    packageSizeLabel.text = "\(room.packageSize)"
-    packageAmountTextfield.placeholder = "\(room.stake1)-\(room.stake2)"
+    setupViews()
   }
 
+
+  func setupViews() {
+    packageTagTextfield.rounded()
+    packageAmountTextfield.rounded()
+    sendButton.rounded()
+
+    packageSizeLabel.text = "\(room.packageSize)"
+    packageAmountTextfield.placeholder = "\(room.stake1)-\(room.stake2)"
+
+
+    packageTagTextfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+    packageTagTextfield.delegate = self
+    packageAmountTextfield.delegate = self
+  }
 
   /*
    // MARK: - Navigation
@@ -46,6 +65,11 @@ class CreateEnvelopViewController: BaseViewController {
    // Pass the selected object to the new view controller.
    }
    */
+
+  @objc func textFieldDidChange(_ sender: UITextField) {
+    titleLabel.text = "$$$$$: \(sender.text ?? "")"
+  }
+
   @IBAction func sendPackagePressed(_ sender: Any) {
     guard let amountText = packageAmountTextfield.text, let amount = Int(amountText) else { return }
     guard let tag = packageTagTextfield.text else { return }
@@ -58,5 +82,24 @@ class CreateEnvelopViewController: BaseViewController {
     }
   }
 
+}
+
+extension CreateEnvelopViewController : UITextFieldDelegate {
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    guard let textFieldText = textField.text,
+      let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+        return false
+    }
+    let substringToReplace = textFieldText[rangeOfTextToReplace]
+    let count = textFieldText.count - substringToReplace.count + string.count
+    if textField == packageTagTextfield {
+
+      return count <= Constans.packageTagMaxLengh
+    } else if textField == packageAmountTextfield {
+      return count <= room.stake2.usefulDigits
+    }
+
+    return true
+  }
 }
 

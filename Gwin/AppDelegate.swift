@@ -103,12 +103,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: - Utils
 
   public func setHomeAsRootViewControlelr() {
-    if let _ = self.window {
+    if let window = self.window {
       let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-      if let `navigationController` = navigationController {
-        let tabbarController = storyboard.instantiateViewController(withIdentifier: "tabbarController") 
-        navigationController.initRootViewController(vc: tabbarController)
-      }
+        let tabbarController = storyboard.instantiateViewController(withIdentifier: "tabbarController")
+
+      window.rootViewController = tabbarController
+      window.makeKeyAndVisible()
     }
   }
 

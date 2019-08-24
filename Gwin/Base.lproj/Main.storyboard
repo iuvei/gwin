@@ -42,6 +42,9 @@
                             <userDefinedRuntimeAttribute type="color" keyPath="barTintColor">
                                 <color key="value" red="0.84422427415847778" green="0.40203452110290527" blue="0.32153546810150146" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
@@ -138,11 +141,11 @@
             </objects>
             <point key="canvasLocation" x="2164" y="1769"/>
         </scene>
-        <!--Item-->
+        <!--首页-->
         <scene sceneID="ak9-fN-5bR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qMv-Ze-U3O" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="tabbar_1" selectedImage="tabbar_1" id="lGx-Er-h2k"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="tabbar_1" selectedImage="tabbar_1" id="lGx-Er-h2k"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GtO-Ws-uIY">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -173,11 +176,11 @@
             </objects>
             <point key="canvasLocation" x="1141" y="1769"/>
         </scene>
-        <!--Item-->
+        <!--扫雷-->
         <scene sceneID="Jab-vx-nta">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iJ1-im-SvJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="tabbar_2" id="vPq-ku-vZF"/>
+                    <tabBarItem key="tabBarItem" title="扫雷" image="tabbar_2" id="vPq-ku-vZF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KtM-a7-WF8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -192,11 +195,11 @@
             </objects>
             <point key="canvasLocation" x="2164" y="966"/>
         </scene>
-        <!--Item-->
+        <!--牛牛-->
         <scene sceneID="8Dy-8b-RHk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yec-Pc-FMQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="tabbar_3" id="2Oc-zJ-vId"/>
+                    <tabBarItem key="tabBarItem" title="牛牛" image="tabbar_3" id="2Oc-zJ-vId"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LOE-K4-cCg">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -463,11 +466,11 @@
             </objects>
             <point key="canvasLocation" x="-1149.2753623188407" y="1853.5714285714284"/>
         </scene>
-        <!--Item-->
+        <!--彩票-->
         <scene sceneID="gBl-TN-3Ts">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3uq-eL-w4f" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="tabbar_4" id="Ixb-NS-fbq"/>
+                    <tabBarItem key="tabBarItem" title="彩票" image="tabbar_4" id="Ixb-NS-fbq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Xdh-c2-Fhu">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -482,11 +485,11 @@
             </objects>
             <point key="canvasLocation" x="196" y="966"/>
         </scene>
-        <!--Item-->
+        <!--我的-->
         <scene sceneID="4wY-Av-UfU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h9I-ee-D9J" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="tabbar_5" id="kmx-71-DAU"/>
+                    <tabBarItem key="tabBarItem" title="我的" image="tabbar_5" id="kmx-71-DAU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0I9-8B-zhK">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
