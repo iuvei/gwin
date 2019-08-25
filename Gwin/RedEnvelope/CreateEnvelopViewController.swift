@@ -15,9 +15,9 @@ class CreateEnvelopViewController: BaseViewController {
   }
 
   @IBOutlet weak var sendButton: UIButton!
-  @IBOutlet weak var packageTagTextfield: UITextField!
+  @IBOutlet weak var packageTagTextfield: UITextFieldPadding!
 
-  @IBOutlet weak var packageAmountTextfield: UITextField!
+  @IBOutlet weak var packageAmountTextfield: UITextFieldPadding!
 
   @IBOutlet weak var packageSizeLabel: UILabel!
   @IBOutlet weak var titleLabel: UILabel!

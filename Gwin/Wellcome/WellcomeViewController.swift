@@ -12,13 +12,18 @@ class WellcomeViewController: UIViewController {
 
   @IBOutlet weak var loginButton: UIButton!
   @IBOutlet weak var registerButton: UIButton!
-  
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-      setupViews()
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    // Do any additional setup after loading the view.
+    setupViews()
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+
+  }
 
   func setupViews() {
     setNavigationBackgroundColor(color: UIColor(hexString:"D66850"))
@@ -26,15 +31,15 @@ class WellcomeViewController: UIViewController {
     registerButton.rounded()
   }
 
-    /*
-    // MARK: - Navigation
+  /*
+   // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   // Get the new view controller using segue.destination.
+   // Pass the selected object to the new view controller.
+   }
+   */
 
   @IBAction func loginPressed(_ sender: Any) {
     let router = LoginBuilder().build(withListener: nil)
@@ -47,3 +52,4 @@ class WellcomeViewController: UIViewController {
     self.navigationController?.pushViewController(registerVC, animated: true)
   }
 }
+

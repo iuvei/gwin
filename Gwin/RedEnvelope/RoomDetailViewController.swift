@@ -21,6 +21,7 @@ class RoomDetailViewController: BaseViewController {
     let button = UIButton().forAutolayout()
     button.imageView?.contentMode = .scaleAspectFit
     button.setImage(UIImage(named: "boom_header_profile"), for: .normal)
+    button.addTarget(self, action: #selector(profilePressed(_:)), for: .touchUpInside)
     return button
   }()
 
@@ -105,9 +106,15 @@ class RoomDetailViewController: BaseViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    self.tabBarController?.tabBar.isHidden = false
+    guard let user = RedEnvelopComponent.shared.user else { return }
+
+    UserAPIClient.systemtime(ticket: user.ticket) { (systemtime) in
+      if let timer = systemtime {
+        RedEnvelopComponent.shared.systemtime = timer.toDate()
+      }
+    }
   }
-  
+
   deinit {
     socket.disconnect(forceTimeout: 0)
     socket.delegate = nil
@@ -117,7 +124,7 @@ class RoomDetailViewController: BaseViewController {
     let rightItem1 = UIBarButtonItem(customView: profileButton)
     let rightItem2 = UIBarButtonItem(customView: newPackageButton)
 
-    self.navigationItem.rightBarButtonItems = [rightItem2, rightItem1]
+    self.navigationItem.rightBarButtonItems = [rightItem1, rightItem2]
     self.setTitle(title: "可发可抢")
   }
 
@@ -155,12 +162,17 @@ class RoomDetailViewController: BaseViewController {
 
   func setupBottomView() {
     let buttonSize = view.frame.size.width / 4
+    let firstSeperateView = UIView().forAutolayout()
+    let secondSeperateView = UIView().forAutolayout()
+    firstSeperateView.backgroundColor = .groupTableViewBackground
+    secondSeperateView.backgroundColor = .groupTableViewBackground
 
     let labelStackView = getHorizontalStackView()
     labelStackView.addArrangedSubview(bottomTitleLabel)
     labelStackView.addArrangedSubview(plusButton)
-
+    bottomView.addArrangedSubview(firstSeperateView)
     bottomView.addArrangedSubview(labelStackView)
+    bottomView.addArrangedSubview(secondSeperateView)
 
     for i in 0 ..< Constants.bottomImages.count {
       let button = UIButton().forAutolayout()
@@ -180,6 +192,9 @@ class RoomDetailViewController: BaseViewController {
     }
 
     NSLayoutConstraint.activate([
+      firstSeperateView.heightAnchor.constraint(equalToConstant: 1),
+      secondSeperateView.heightAnchor.constraint(equalToConstant: 1),
+
       plusButton.widthAnchor.constraint(equalToConstant: 30),
       plusButton.heightAnchor.constraint(equalToConstant: 30),
       plusButton.rightAnchor.constraint(equalTo: labelStackView.leftAnchor, constant: -10)
@@ -190,7 +205,7 @@ class RoomDetailViewController: BaseViewController {
   func setupTableView() {
     tableView.register(UINib(nibName: "PackageHistoryRightViewCell", bundle: nil), forCellReuseIdentifier: "PackageHistoryRightViewCell")
     tableView.register(UINib(nibName: "PackageHistoryLeftViewCell", bundle: nil), forCellReuseIdentifier: "PackageHistoryLeftViewCell")
-
+    tableView.separatorStyle = .none
     tableView.delegate = self
     tableView.dataSource = self
   }
@@ -212,6 +227,12 @@ class RoomDetailViewController: BaseViewController {
     showCreatePackage()
   }
 
+  @objc func profilePressed(_ sender: UIButton) {
+    if let delegate = UIApplication.shared.delegate as? AppDelegate {
+      delegate.selectTabIndex(index: TabIndex.profile)
+    }
+  }
+
   @objc func expandPressed(_ sender: UIButton){
     plusButton.isSelected = !plusButton.isSelected
     if plusButton.isSelected {
@@ -228,9 +249,9 @@ class RoomDetailViewController: BaseViewController {
     } else if tag == 1 {
       showCreatePackageType2()
     } else if tag == 2 {
-
+      openWebview(optType: "withdrawals")
     } else if tag == 3 {
-
+      openWebview(optType: "deposits")
     }
   }
 }
@@ -263,6 +284,18 @@ extension RoomDetailViewController {
     self.navigationController?.pushViewController(vc, animated: true)
   }
 
+  fileprivate func openWebview(optType : String) {
+    guard let `user` = RedEnvelopComponent.shared.user else { return }
+    UserAPIClient.otherH5(ticket: user.ticket, optype: optType) {[weak self] (url, message) in
+      guard let `this` = self else { return }
+
+      if let jumpurl = url {
+        let webview = WebContainerController(url: jumpurl)
+        this.present(webview, animated: true, completion: nil)
+      }
+    }
+  }
+
   fileprivate func getHorizontalStackView() -> UIStackView {
     let stack = UIStackView().forAutolayout()
     stack.axis = .horizontal
@@ -284,14 +317,14 @@ extension RoomDetailViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
     let model = histories[indexPath.row]
-    if userno == model.userno {
+    if userno != model.userno {
       if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
-
+        cell.selectionStyle = .none
         cell.updateViews(model: model)
       }
     } else {
       if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryRightViewCell", for: indexPath) as? PackageHistoryRightViewCell {
-
+        cell.selectionStyle = .none
         cell.updateViews(model: model)
       }
     }
@@ -300,8 +333,11 @@ extension RoomDetailViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let vc = PackageInfoViewController(nibName: "PackageInfoViewController", bundle: nil)
-   present(vc, animated: true, completion: nil)
+    let model = histories[indexPath.row]
+
+    let vc = GrabEnvelopViewController(package: model, delegate: self)
+    vc.modalPresentationStyle = .overCurrentContext
+    present(vc, animated: true, completion: nil)
   }
 }
 
@@ -325,10 +361,19 @@ extension RoomDetailViewController: WebSocketDelegate {
 
     let json = JSON(parseJSON: text).arrayValue
 
+    var usernos: [String] = []
     for packageJson in json {
       let package = PackageHistoryModel(json: packageJson)
       histories.append(package)
+      if ImageManager.shared.getImage(userno: package.userno) == nil {
+        usernos.append(package.userno)
+      }
     }
+
+    ImageManager.shared.downloadImage(usernos: usernos) { [weak self ] in
+      self?.tableView.reloadData()
+    }
+
     tableView.reloadData()
     //    [{"roomid":5,"packetid":158983,"userno":"steven2","username":"","packetamount":200.00,"packettag":"5","wagertime":"2019-08-24 12:03:31"},{"roomid":5,"packetid":158984,"userno":"steven2","username":"","packetamount":2006.00,"packettag":"2","wagertime":"2019-08-24 12:03:48"}]
 
@@ -340,6 +385,18 @@ extension RoomDetailViewController: WebSocketDelegate {
   }
 }
 
+extension RoomDetailViewController: GrabEnvelopPopupDelegate {
+  func closePopup() {
+
+  }
+
+  func openPackageInfo(package: PackageInfoModel?, roomid: Int, packageid: Int64) {
+    let infoVc = PackageInfoViewController(model: package, roomid: roomid, packageid: packageid)
+    present(infoVc, animated: true, completion: nil)
+  }
+
+
+}
 
 
 

@@ -102,10 +102,9 @@ extension UIViewController {
   }
 
   func setTitle(title: String) {
+    
     self.navigationController?.setTitle(title: title)
   }
-
-
 
 }
 
@@ -155,15 +154,27 @@ extension UIButton {
 
 extension Int {
   var usefulDigits: Int {
-    var num = self
-    var count = 0
-    while num != 0 {
-      let digit = abs(num % 10)
-      if digit != 0 && self % digit == 0 {
-        count += 1
-      }
-      num = num / 10
+    let number = self
+    let string = String(number)
+    let digits = string.compactMap{ $0.wholeNumberValue }
+    return digits.count
+  }
+}
+
+
+extension String {
+  func toDate(withFormat format: String = "yyyy-MM-dd HH:mm:ss") -> Date {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = format
+    guard let date = dateFormatter.date(from: self) else {
+      preconditionFailure("Take a look to your format")
     }
-    return count
+    return date
+  }
+}
+
+extension Date {
+  static func - (lhs: Date, rhs: Date) -> TimeInterval {
+    return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
   }
 }

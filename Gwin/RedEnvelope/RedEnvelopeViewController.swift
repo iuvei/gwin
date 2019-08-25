@@ -16,7 +16,7 @@ class RedEnvelopeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.edgesForExtendedLayout = []
-
+    setTitle(title: "扫雷")
     // Do any additional setup after loading the view.
     setupViews()
     fetchRoomList()
@@ -58,6 +58,14 @@ class RedEnvelopeViewController: UIViewController {
 }
 
 extension RedEnvelopeViewController: UITableViewDelegate, UITableViewDataSource {
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    return UIView()
+  }
+
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 0.1
+  }
+
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return rooms.count
   }
@@ -66,6 +74,7 @@ extension RedEnvelopeViewController: UITableViewDelegate, UITableViewDataSource 
 
     if let cell = tableView.dequeueReusableCell(withIdentifier: "envelopRoomCell", for: indexPath) as? GameItemCell {
       let model = rooms[indexPath.row]
+      cell.selectionStyle = .none
       cell.updateView(model: model)
       return cell
     }
@@ -76,22 +85,48 @@ extension RedEnvelopeViewController: UITableViewDelegate, UITableViewDataSource 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let model  = rooms[indexPath.row]
 
-    doLogin(room: model)
-
+    if model.roomPwd.count > 0 {
+      showInputPassword(room: model)
+    } else {
+      doLogin(room: model)
+    }
   }
 
   func doLogin(room: RoomModel) {
 
     guard let user = RedEnvelopComponent.shared.user else { return }
+    guard let userno = RedEnvelopComponent.shared.userno else { return }
 
     RedEnvelopAPIClient.roomLogin(ticket: user.ticket, roomId: room.roomId, roomPwd: room.roomPwd) { (success, message) in
 
       if success {
-        let vc = RoomDetailViewController(userno: "steven", room: room)
+        let vc = RoomDetailViewController(userno: userno , room: room)
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
       }
     }
+  }
+}
+
+extension RedEnvelopeViewController {
+  fileprivate func showInputPassword(room: RoomModel) {
+    let alertVC = UIAlertController(title: nil, message: "room password", preferredStyle: .alert)
+    alertVC.addTextField(configurationHandler: { (textField) in
+      textField.isSecureTextEntry = true
+      textField.placeholder = "Enter password"
+    })
+
+    let saveAction = UIAlertAction(title: "Save", style: .default, handler: { [weak self] alert -> Void in
+      if let firstTextField = alertVC.textFields?[0], let roompwd = firstTextField.text, roompwd == room.roomPwd {
+        self?.doLogin(room: room)
+      }
+    })
+
+    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+
+    alertVC.addAction(cancelAction)
+    alertVC.addAction(saveAction)
+    present(alertVC, animated: true, completion: nil)
   }
 }
 

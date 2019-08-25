@@ -133,6 +133,10 @@ class UserAPIClient {
         let jsonResponse = JSON(responseData.result.value!)
         let code = jsonResponse["code"].boolValue
         let msg = jsonResponse["msg"].stringValue
+        if code, let delegate = UIApplication.shared.delegate as? AppDelegate {
+            delegate.stopFetchUserStatus()
+        }
+        
         completion(code, msg)
       } else {
         completion(false,responseData.error?.localizedDescription)
@@ -193,6 +197,26 @@ class UserAPIClient {
         completion(code == 1, msg)
       } else {
         completion(false,responseData.error?.localizedDescription)
+      }
+    }
+  }
+
+  static func systemtime(ticket: String, completion: @escaping (String?) -> Void) {
+    Alamofire.request(UserAPIRouter.systemtime(ticket)).responseJSON { (responseData) in
+      if((responseData.result.value) != nil) {
+        let jsonResponse = JSON(responseData.result.value!)
+        let _ = jsonResponse["msg"].stringValue
+        let code = jsonResponse["code"].intValue
+
+        if code == 1 {
+          let data = jsonResponse["data"]
+          let systemtime = data["systemtime"].string
+          completion(systemtime)
+        } else {
+          completion(nil)
+        }
+      } else {
+        completion(nil)
       }
     }
   }

@@ -84,7 +84,7 @@ class RedEnvelopAPIClient {
     }
   }
 
-  static func grabPackage(ticket: String, roomid: Int, packageid: Int, completion:@escaping (PackageInfoModel?, String?)->Void) {
+  static func grabPackage(ticket: String, roomid: Int, packageid: Int64, completion:@escaping (PackageInfoModel?, String?)->Void) {
     Alamofire.request(RedEnvelopAPIRouter.grabPackage(ticket, roomid, packageid)).responseJSON { (responseData) in
       if responseData.result.value != nil {
         let jsonResponse = JSON(responseData.result.value!)
@@ -104,7 +104,7 @@ class RedEnvelopAPIClient {
     }
   }
 
-  static func infoPackage(ticket: String, roomid: Int, packageid: Int, completion:@escaping (PackageInfoModel?, String?)->Void) {
+  static func infoPackage(ticket: String, roomid: Int, packageid: Int64, completion:@escaping (PackageInfoModel?, String?)->Void) {
     Alamofire.request(RedEnvelopAPIRouter.infoPackage(ticket, roomid, packageid)).responseJSON { (responseData) in
       if responseData.result.value != nil {
         let jsonResponse = JSON(responseData.result.value!)

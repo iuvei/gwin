@@ -1,33 +1,40 @@
 [
     {
       "icon": "game_1",
-      "name":"game 1",
-      "key":""
+      "name":"TEXT",
+      "key":"deposits",
+      "action": "user"
     },
     {
       "icon": "game_2",
-      "name":"game 1",
-      "key":""
+      "name":"TEXT",
+      "key":"withdrawals",
+      "action": "user"
     },
     {
       "icon": "game_3",
-      "name":"game 1",
-      "key":""
+      "name":"TEXT",
+      "key":"common_problem",
+      "action": "user"
     },
     {
       "icon": "game_4",
-      "name":"game 1",
-      "key":""
+      "name":"TEXT",
+      "key":"customer_service",
+      "action": "user"
     },
     {
       "icon": "game_5",
       "name":"game 1",
-      "key":""
+      "key":"1",
+      "action": "envelop"
     },
     {
       "icon": "game_6",
       "name":"game 1",
-      "key":""
+      "key":"2",
+      "action": "envelop"
+
     },
     {
       "icon": "game_7",

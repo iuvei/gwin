@@ -59,7 +59,7 @@ class LobbyItemView: UIView {
     view.translatesAutoresizingMaskIntoConstraints = false
     view.textAlignment = .center
     view.numberOfLines = 0
-    view.font = UIFont.systemFont(ofSize: 15)
+    view.font = UIFont.systemFont(ofSize: 14)
     return view
   }()
 

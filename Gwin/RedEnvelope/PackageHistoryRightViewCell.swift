@@ -13,7 +13,9 @@ class PackageHistoryRightViewCell: UITableViewCell {
   @IBOutlet weak var avatarImageView: UIImageView!
   @IBOutlet weak var backgroundImageView: UIImageView!
 
-    override func awakeFromNib() {
+  @IBOutlet weak var amountLabel: UILabel!
+  @IBOutlet weak var wagerTimeLabel: UILabel!
+  override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
       usernameLabel.textAlignment = .right
@@ -26,5 +28,20 @@ class PackageHistoryRightViewCell: UITableViewCell {
     }
   func updateViews(model: PackageHistoryModel){
     usernameLabel.text = model.userno
+    
+    if model.packettag.count > 0 {
+      amountLabel.text = "\(model.packetamount)-\(model.packettag)"
+    }else {
+      amountLabel.text = "\(model.packetamount)"
+    }
+
+    wagerTimeLabel.text = "\(model.packetid) \(model.wagertime)"
+
+    if let imagebase64 = ImageManager.shared.getImage(userno: model.userno) {
+      if let imageData = Data(base64Encoded: imagebase64, options: []) {
+        let image  = UIImage(data: imageData)
+        avatarImageView.image = image
+      }
+    }
   }
 }

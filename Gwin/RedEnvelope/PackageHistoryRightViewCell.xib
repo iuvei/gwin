@@ -20,21 +20,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEg-07-RRT">
-                        <rect key="frame" x="220" y="131" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="221" y="127" width="31" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Js-U2-Jmi">
-                        <rect key="frame" x="22" y="131" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="22" y="127" width="31" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xv9-mF-tO1">
-                        <rect key="frame" x="220" y="20" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="226.5" y="20" width="35.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_item_1" translatesAutoresizingMaskIntoConstraints="NO" id="Aca-Zn-pvo">
@@ -45,7 +45,7 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69l-zf-aK1">
-                        <rect key="frame" x="10" y="51" width="252" height="80"/>
+                        <rect key="frame" x="10" y="47" width="252" height="80"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="package_right_bg" translatesAutoresizingMaskIntoConstraints="NO" id="G6R-Xb-qIc">
                                 <rect key="frame" x="12" y="0.0" width="240" height="80"/>
@@ -98,15 +98,17 @@
                     <constraint firstAttribute="trailing" secondItem="Aca-Zn-pvo" secondAttribute="trailing" constant="8" id="g5k-7i-eV3"/>
                     <constraint firstItem="69l-zf-aK1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="hP8-86-J8X"/>
                     <constraint firstItem="69l-zf-aK1" firstAttribute="top" secondItem="Xv9-mF-tO1" secondAttribute="bottom" constant="10" id="hQu-mC-giX"/>
-                    <constraint firstItem="vEg-07-RRT" firstAttribute="trailing" secondItem="69l-zf-aK1" secondAttribute="trailing" id="ugF-B5-ob8"/>
+                    <constraint firstItem="vEg-07-RRT" firstAttribute="trailing" secondItem="69l-zf-aK1" secondAttribute="trailing" constant="-10" id="ugF-B5-ob8"/>
                     <constraint firstItem="Aca-Zn-pvo" firstAttribute="leading" secondItem="69l-zf-aK1" secondAttribute="trailing" constant="10" id="zEm-68-CrL"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="amountLabel" destination="lCN-SL-yxu" id="pQy-97-yTe"/>
                 <outlet property="avatarImageView" destination="Aca-Zn-pvo" id="qkT-Mn-eyi"/>
                 <outlet property="backgroundImageView" destination="G6R-Xb-qIc" id="s5v-yl-Loa"/>
                 <outlet property="usernameLabel" destination="Xv9-mF-tO1" id="PQp-7J-eXo"/>
+                <outlet property="wagerTimeLabel" destination="vEg-07-RRT" id="Agu-GM-eJk"/>
             </connections>
             <point key="canvasLocation" x="131.15942028985509" y="155.02232142857142"/>
         </tableViewCell>

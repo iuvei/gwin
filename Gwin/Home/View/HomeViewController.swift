@@ -37,9 +37,16 @@ class HomeViewController: BaseViewController {
   private var messageLabel: MarqueeLabel = {
     var label = MarqueeLabel.init(frame: .zero, duration: 8.0, fadeLength: 10.0)
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.textColor = .black
+    label.textColor = .gray
     label.type = .continuous
     return label
+  }()
+
+  private lazy var volumeImageView: UIImageView = {
+    let image = UIImageView().forAutolayout()
+    image.image = UIImage(named: "image_volume")
+    image.contentMode = .scaleAspectFit
+    return image
   }()
 
   private var scrollView: UIScrollView = {
@@ -73,12 +80,14 @@ class HomeViewController: BaseViewController {
     setupViews()
     fetchPopularizeImage()
     fetchRollMessage()
-
+    fetchPopupMessage()
+    fetchUserStatus()
     bindDataToView()
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    hideBackButton()
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -115,8 +124,15 @@ class HomeViewController: BaseViewController {
 
 
     messageView.addSubview(messageLabel)
+    messageView.addSubview(volumeImageView)
+
     NSLayoutConstraint.activate([
-      messageLabel.leftAnchor.constraint(equalTo: messageView.leftAnchor),
+      volumeImageView.leftAnchor.constraint(equalTo: messageView.leftAnchor),
+      volumeImageView.topAnchor.constraint(equalTo: messageView.topAnchor, constant: 4),
+      volumeImageView.centerYAnchor.constraint(equalTo: messageView.centerYAnchor),
+      volumeImageView.widthAnchor.constraint(equalTo: volumeImageView.heightAnchor),
+
+      messageLabel.leftAnchor.constraint(equalTo: volumeImageView.rightAnchor, constant: 5),
       messageLabel.topAnchor.constraint(equalTo: messageView.topAnchor),
       messageLabel.rightAnchor.constraint(equalTo: messageView.rightAnchor),
       messageLabel.bottomAnchor.constraint(equalTo: messageView.bottomAnchor)
@@ -203,7 +219,7 @@ class HomeViewController: BaseViewController {
     let firstSeperateView = UIView().forAutolayout()
     firstSeperateView.backgroundColor = seperateColor
 
-    let firstGametitleLabel = getLabel(title: "title aaaaaa")
+    let firstGametitleLabel = TitleStackView(prefix: "title1 : ", title: "ccccccccccc").forAutolayout()
     let stackView2 = getStackView()
     containerStackView.addArrangedSubview(firstSeperateView)
     containerStackView.addArrangedSubview(firstGametitleLabel)
@@ -238,7 +254,7 @@ class HomeViewController: BaseViewController {
     //
     let lastSeperateView = UIView().forAutolayout()
     lastSeperateView.backgroundColor = seperateColor
-    let lasttitleLabel = getLabel(title: "title bbbbbbb")
+    let lasttitleLabel = TitleStackView(prefix: "title2 : ", title: "xxxxxxxx").forAutolayout()
     let stackView3 = getStackView()
     containerStackView.addArrangedSubview(lastSeperateView)
     containerStackView.addArrangedSubview(lasttitleLabel)
@@ -334,6 +350,21 @@ class HomeViewController: BaseViewController {
     }
   }
 
+  func fetchPopupMessage() {
+    guard let user = RedEnvelopComponent.shared.user else { return }
+
+    NoticeAPIClient.getPopupMsg(ticket: user.ticket) { [weak self] (message, errormessage) in
+      let popupVc = MessagePopupController(message: message)
+      popupVc.modalPresentationStyle = .overCurrentContext
+      self?.present(popupVc, animated: true, completion: nil)
+    }
+  }
+
+  func fetchUserStatus() {
+    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+      appDelegate.startFetchUserStatus()
+    }
+  }
 }
 
 extension HomeViewController: HomeViewInput {
@@ -361,11 +392,15 @@ extension HomeViewController: LobbyItemViewOuput {
       }
     }else if model.action == "user" {
       UserAPIClient.otherH5(ticket: user.ticket, optype: model.key) { (abc, def) in
-        print("Abcddef")
         if let url = abc {
           let webController = WebContainerController(url: url)
           self.present(webController, animated:true, completion:nil)
         }
+      }
+    }else if model.action == "envelop" {
+      let key = Int(model.key) ?? 0
+      if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let index =  TabIndex(rawValue:key){
+        appDelegate.selectTabIndex(index: index)
       }
     }else{
 

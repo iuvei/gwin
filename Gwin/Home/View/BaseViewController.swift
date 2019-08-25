@@ -18,7 +18,8 @@ class BaseViewController: UIViewController {
     let button = UIButton().forAutolayout()
     button.setImage(UIImage(named: "back_button"), for: .normal)
     button.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
-    button.backgroundColor = .purple
+    button.backgroundColor = .clear
+    button.semanticContentAttribute = .forceLeftToRight
     return button
   }()
 
@@ -66,6 +67,16 @@ class BaseViewController: UIViewController {
 
     view.addSubview(alert.view)
     alert.view.boundInside(view: view)
+  }
+
+  func addBackButton() {
+    let leftItem = UIBarButtonItem(customView: backButton)
+    self.navigationItem.leftBarButtonItem = leftItem
+  }
+
+  func hideBackButton() {
+    self.navigationItem.leftBarButtonItems = []
+    self.navigationItem.setHidesBackButton(true, animated:true);
   }
 
   func hideLoadingView() {
