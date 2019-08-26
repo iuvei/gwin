@@ -28,10 +28,12 @@ public enum UserAPIRouter: URLRequestConvertible {
   case accountPrefix(String)
   case uploadImg(String, String, String)
   case listImage(String, [String])
+  case systemtime(String)
+
   // 3
   var method: HTTPMethod {
     switch self {
-    case .login, .logout, .checkCellphoneNo, .accountExist, .register, .userInfo, .otherH5, .accountPrefix, .uploadImg, .listImage:
+    case .login, .logout, .checkCellphoneNo, .accountExist, .register, .userInfo, .otherH5, .accountPrefix, .uploadImg, .listImage, .systemtime, .setOnline:
       return .post
     default:
       return .get
@@ -65,6 +67,8 @@ public enum UserAPIRouter: URLRequestConvertible {
       return "/UpdImg"
     case .listImage:
       return "/ImgList"
+    case .systemtime:
+      return "/systemtime"
     }
   }
 
@@ -94,6 +98,8 @@ public enum UserAPIRouter: URLRequestConvertible {
     case .listImage(let ticket, let usernos):
       return ["ticket" : ticket , "data" : usernos]
     case .userInfo(let ticket):
+      return ["ticket" : ticket]
+    case .systemtime(let ticket):
       return ["ticket" : ticket]
     }
   }

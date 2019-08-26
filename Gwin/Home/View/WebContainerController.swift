@@ -21,19 +21,20 @@ class WebContainerController: BaseViewController {
   private lazy var headerView: UIView = {
     let view = UIView()
     view.translatesAutoresizingMaskIntoConstraints = false
-    view.backgroundColor = .red
+    view.backgroundColor = UIColor(hexString:"D66850")
     return view
   }()
 
   private lazy var backButton: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.backgroundColor = .blue
+    button.setImage(UIImage(named: "back_button"), for: .normal)
     button.addTarget(self, action: #selector(backButtonPressed(_:)), for: .touchUpInside)
     return button
   }()
 
   private var urlPath: String
+  
   init(url: String) {
     self.urlPath = url
     super.init(nibName: nil, bundle: nil)

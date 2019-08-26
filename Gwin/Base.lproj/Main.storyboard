@@ -42,6 +42,9 @@
                             <userDefinedRuntimeAttribute type="color" keyPath="barTintColor">
                                 <color key="value" red="0.84422427415847778" green="0.40203452110290527" blue="0.32153546810150146" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
@@ -111,6 +114,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="0Ph-SK-YlA">
                                 <rect key="frame" x="0.0" y="118" width="414" height="695"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="dataSource" destination="bDY-Jz-Q1t" id="BdW-zc-JKR"/>
                                     <outlet property="delegate" destination="bDY-Jz-Q1t" id="Tk9-7L-atQ"/>
@@ -138,11 +142,11 @@
             </objects>
             <point key="canvasLocation" x="2164" y="1769"/>
         </scene>
-        <!--Item-->
+        <!--首页-->
         <scene sceneID="ak9-fN-5bR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qMv-Ze-U3O" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="tabbar_1" selectedImage="tabbar_1" id="lGx-Er-h2k"/>
+                    <tabBarItem key="tabBarItem" title="首页" image="tabbar_1" selectedImage="tabbar_1" id="lGx-Er-h2k"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GtO-Ws-uIY">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -173,11 +177,11 @@
             </objects>
             <point key="canvasLocation" x="1141" y="1769"/>
         </scene>
-        <!--Item-->
+        <!--扫雷-->
         <scene sceneID="Jab-vx-nta">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iJ1-im-SvJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="tabbar_2" id="vPq-ku-vZF"/>
+                    <tabBarItem key="tabBarItem" title="扫雷" image="tabbar_2" id="vPq-ku-vZF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KtM-a7-WF8">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -192,11 +196,11 @@
             </objects>
             <point key="canvasLocation" x="2164" y="966"/>
         </scene>
-        <!--Item-->
+        <!--牛牛-->
         <scene sceneID="8Dy-8b-RHk">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yec-Pc-FMQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="tabbar_3" id="2Oc-zJ-vId"/>
+                    <tabBarItem key="tabBarItem" title="牛牛" image="tabbar_3" id="2Oc-zJ-vId"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="LOE-K4-cCg">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -245,7 +249,7 @@
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="100" constant="40" id="fRm-y8-HZA"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <variation key="default">
                                                                     <mask key="constraints">
@@ -281,7 +285,7 @@
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="g0P-lN-GuF"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7a-uV-HjT">
@@ -333,7 +337,7 @@
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="n1A-HS-l0r"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6kM-T5-zen">
@@ -369,7 +373,7 @@
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="tJP-RM-KV1"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oxe-Kj-3Pd">
@@ -463,11 +467,11 @@
             </objects>
             <point key="canvasLocation" x="-1149.2753623188407" y="1853.5714285714284"/>
         </scene>
-        <!--Item-->
+        <!--彩票-->
         <scene sceneID="gBl-TN-3Ts">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3uq-eL-w4f" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="tabbar_4" id="Ixb-NS-fbq"/>
+                    <tabBarItem key="tabBarItem" title="彩票" image="tabbar_4" id="Ixb-NS-fbq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Xdh-c2-Fhu">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -482,11 +486,12 @@
             </objects>
             <point key="canvasLocation" x="196" y="966"/>
         </scene>
-        <!--Item-->
+        <!--我的-->
         <scene sceneID="4wY-Av-UfU">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R9Q-Ko-V2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h9I-ee-D9J" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="tabbar_5" id="kmx-71-DAU"/>
+                    <tabBarItem key="tabBarItem" title="我的" image="tabbar_5" id="kmx-71-DAU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0I9-8B-zhK">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -497,7 +502,6 @@
                         <segue destination="VIq-BP-YV2" kind="relationship" relationship="rootViewController" id="Gwo-Dz-32C"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R9Q-Ko-V2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1148" y="1146"/>
         </scene>

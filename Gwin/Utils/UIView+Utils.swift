@@ -102,10 +102,9 @@ extension UIViewController {
   }
 
   func setTitle(title: String) {
+    
     self.navigationController?.setTitle(title: title)
   }
-
-
 
 }
 
@@ -139,3 +138,43 @@ extension UIColor {
   }
 }
 
+extension UIButton {
+   func adjustImageAndTitleOffsetsForButton(spacing: CGFloat = 6.0) {
+
+    if let image = self.imageView?.image {
+      let imageSize: CGSize = image.size
+      self.titleEdgeInsets = UIEdgeInsets(top: spacing, left: -imageSize.width, bottom: -(imageSize.height), right: 0.0)
+      let labelString = NSString(string: self.titleLabel!.text!)
+      let titleSize = labelString.size(withAttributes: [NSAttributedString.Key.font: self.titleLabel!.font])
+      self.imageEdgeInsets = UIEdgeInsets(top: -(titleSize.height + spacing), left: 0.0, bottom: 0.0, right: -titleSize.width)
+    }
+  }
+}
+
+
+extension Int {
+  var usefulDigits: Int {
+    let number = self
+    let string = String(number)
+    let digits = string.compactMap{ $0.wholeNumberValue }
+    return digits.count
+  }
+}
+
+
+extension String {
+  func toDate(withFormat format: String = "yyyy-MM-dd HH:mm:ss") -> Date {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = format
+    guard let date = dateFormatter.date(from: self) else {
+      preconditionFailure("Take a look to your format")
+    }
+    return date
+  }
+}
+
+extension Date {
+  static func - (lhs: Date, rhs: Date) -> TimeInterval {
+    return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+  }
+}

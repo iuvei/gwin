@@ -86,6 +86,14 @@
 		D1E00DA3231119AC00554CA4 /* PackageInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E00DA1231119AC00554CA4 /* PackageInfoViewController.xib */; };
 		D1E00DA62311302E00554CA4 /* CreateEnvelopType2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00DA42311302E00554CA4 /* CreateEnvelopType2ViewController.swift */; };
 		D1E00DA72311302E00554CA4 /* CreateEnvelopType2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E00DA52311302E00554CA4 /* CreateEnvelopType2ViewController.xib */; };
+		D1E00DAA23116F4700554CA4 /* GrabEnvelopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00DA823116F4700554CA4 /* GrabEnvelopViewController.swift */; };
+		D1E00DAB23116F4700554CA4 /* GrabEnvelopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E00DA923116F4700554CA4 /* GrabEnvelopViewController.xib */; };
+		D1E00DAD23118C7100554CA4 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00DAC23118C7100554CA4 /* ImageManager.swift */; };
+		D1E00DAF231279B000554CA4 /* MessagePopupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00DAE231279B000554CA4 /* MessagePopupController.swift */; };
+		D1E00DB12312CEA600554CA4 /* TitleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00DB02312CEA500554CA4 /* TitleStackView.swift */; };
+		D1E00DB32312D26400554CA4 /* UITextFieldPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00DB22312D26400554CA4 /* UITextFieldPadding.swift */; };
+		D1E00DB72312DC8600554CA4 /* GrabUserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00DB52312DC8600554CA4 /* GrabUserViewCell.swift */; };
+		D1E00DB82312DC8600554CA4 /* GrabUserViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1E00DB62312DC8600554CA4 /* GrabUserViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -172,6 +180,14 @@
 		D1E00DA1231119AC00554CA4 /* PackageInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PackageInfoViewController.xib; sourceTree = "<group>"; };
 		D1E00DA42311302E00554CA4 /* CreateEnvelopType2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEnvelopType2ViewController.swift; sourceTree = "<group>"; };
 		D1E00DA52311302E00554CA4 /* CreateEnvelopType2ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateEnvelopType2ViewController.xib; sourceTree = "<group>"; };
+		D1E00DA823116F4700554CA4 /* GrabEnvelopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabEnvelopViewController.swift; sourceTree = "<group>"; };
+		D1E00DA923116F4700554CA4 /* GrabEnvelopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrabEnvelopViewController.xib; sourceTree = "<group>"; };
+		D1E00DAC23118C7100554CA4 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		D1E00DAE231279B000554CA4 /* MessagePopupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePopupController.swift; sourceTree = "<group>"; };
+		D1E00DB02312CEA500554CA4 /* TitleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleStackView.swift; sourceTree = "<group>"; };
+		D1E00DB22312D26400554CA4 /* UITextFieldPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldPadding.swift; sourceTree = "<group>"; };
+		D1E00DB52312DC8600554CA4 /* GrabUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabUserViewCell.swift; sourceTree = "<group>"; };
+		D1E00DB62312DC8600554CA4 /* GrabUserViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrabUserViewCell.xib; sourceTree = "<group>"; };
 		F8455A52255EC42C57478B9D /* Pods-Gwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gwin.release.xcconfig"; path = "Target Support Files/Pods-Gwin/Pods-Gwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -291,6 +307,7 @@
 				D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */,
 				D1E00B78230DA05200554CA4 /* WebContainerController.swift */,
 				D1E00D8E2310447E00554CA4 /* BaseViewController.swift */,
+				D1E00DAE231279B000554CA4 /* MessagePopupController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -299,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				D10067B92309AFC700114F6E /* CarouselView.swift */,
+				D1E00DB02312CEA500554CA4 /* TitleStackView.swift */,
 			);
 			path = Carousel;
 			sourceTree = "<group>";
@@ -458,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				D175C4EA230C29A3001B8DC6 /* ScreenManager.swift */,
+				D1E00DAC23118C7100554CA4 /* ImageManager.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -513,6 +532,7 @@
 		D1E00D44230F9DBF00554CA4 /* RedEnvelope */ = {
 			isa = PBXGroup;
 			children = (
+				D1E00DB42312DC6100554CA4 /* View */,
 				D1E00D45230F9DDD00554CA4 /* RedEnvelopeViewController.swift */,
 				D1E00D6D230FCFD600554CA4 /* GameItemCell.swift */,
 				D1E00D902310EBC100554CA4 /* RoomDetailViewController.swift */,
@@ -526,6 +546,9 @@
 				D1E00DA1231119AC00554CA4 /* PackageInfoViewController.xib */,
 				D1E00DA42311302E00554CA4 /* CreateEnvelopType2ViewController.swift */,
 				D1E00DA52311302E00554CA4 /* CreateEnvelopType2ViewController.xib */,
+				D1E00DA823116F4700554CA4 /* GrabEnvelopViewController.swift */,
+				D1E00DA923116F4700554CA4 /* GrabEnvelopViewController.xib */,
+				D1E00DB22312D26400554CA4 /* UITextFieldPadding.swift */,
 			);
 			path = RedEnvelope;
 			sourceTree = "<group>";
@@ -546,6 +569,15 @@
 				D1E00D84230FEE0800554CA4 /* BullWagerOddModel.swift */,
 			);
 			path = Bull;
+			sourceTree = "<group>";
+		};
+		D1E00DB42312DC6100554CA4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D1E00DB52312DC8600554CA4 /* GrabUserViewCell.swift */,
+				D1E00DB62312DC8600554CA4 /* GrabUserViewCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		E2E3FE475745C5AF91AA105F /* Frameworks */ = {
@@ -649,9 +681,11 @@
 				D10067AA2309AA2500114F6E /* LaunchScreen.storyboard in Resources */,
 				D175C4E8230C2177001B8DC6 /* WellcomeViewController.xib in Resources */,
 				D10067A72309AA2500114F6E /* Assets.xcassets in Resources */,
+				D1E00DB82312DC8600554CA4 /* GrabUserViewCell.xib in Resources */,
 				D1E00D9723110A7100554CA4 /* PackageHistoryLeftViewCell.xib in Resources */,
 				D10067A22309AA1F00114F6E /* Main.storyboard in Resources */,
 				D175C4EF230C35CE001B8DC6 /* RegisterViewController.xib in Resources */,
+				D1E00DAB23116F4700554CA4 /* GrabEnvelopViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,9 +751,11 @@
 				D175C4D4230BD5A1001B8DC6 /* LoginInteractor.swift in Sources */,
 				D1E00D7D230FEAFB00554CA4 /* BullPackageHistoryModel.swift in Sources */,
 				D1E00D9E2311115200554CA4 /* CreateEnvelopViewController.swift in Sources */,
+				D1E00DB12312CEA600554CA4 /* TitleStackView.swift in Sources */,
 				D175C4BC230BCD97001B8DC6 /* Router.swift in Sources */,
 				D175C4C0230BCE31001B8DC6 /* ExampleViewController.swift in Sources */,
 				D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */,
+				D1E00DAD23118C7100554CA4 /* ImageManager.swift in Sources */,
 				D175C529230D1036001B8DC6 /* RedEnvelopTabbarController.swift in Sources */,
 				D175C4DA230C03E8001B8DC6 /* UserAPIClient.swift in Sources */,
 				D1E00D79230FE5F600554CA4 /* BullPackageModel.swift in Sources */,
@@ -757,14 +793,18 @@
 				D1E00D75230FDEEC00554CA4 /* BullRoundModel.swift in Sources */,
 				D175C4FC230CFB7F001B8DC6 /* HomeRouter.swift in Sources */,
 				D1E00CFD230E931D00554CA4 /* RedEnvelopAPIRouter.swift in Sources */,
+				D1E00DB32312D26400554CA4 /* UITextFieldPadding.swift in Sources */,
 				D1E00D8823102A6700554CA4 /* LaunchViewController.swift in Sources */,
 				D1E00D8B23102D7300554CA4 /* PackageInfoModel.swift in Sources */,
 				D100679D2309AA1F00114F6E /* AppDelegate.swift in Sources */,
 				D175C4CD230BD324001B8DC6 /* LoginViewController.swift in Sources */,
+				D1E00DAF231279B000554CA4 /* MessagePopupController.swift in Sources */,
 				D1E00D81230FEC1C00554CA4 /* BullWagerInfoModel.swift in Sources */,
 				D175C4B9230BCD97001B8DC6 /* Component.swift in Sources */,
 				D1E00D912310EBC100554CA4 /* RoomDetailViewController.swift in Sources */,
+				D1E00DAA23116F4700554CA4 /* GrabEnvelopViewController.swift in Sources */,
 				D175C4F8230CF823001B8DC6 /* NoticeAPIClient.swift in Sources */,
+				D1E00DB72312DC8600554CA4 /* GrabUserViewCell.swift in Sources */,
 				D175C4D2230BD570001B8DC6 /* LoginRouter.swift in Sources */,
 				D175C3C5230ADDC0001B8DC6 /* UIView+Utils.swift in Sources */,
 				D10067B72309ACB800114F6E /* HomeViewController.swift in Sources */,

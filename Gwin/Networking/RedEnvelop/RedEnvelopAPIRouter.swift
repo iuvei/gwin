@@ -29,16 +29,15 @@ public enum RedEnvelopAPIRouter: URLRequestConvertible {
   case loginin(String, Int, String)
   case loginout(String, Int)
   case sendPackage(String, Int, Int, Int, String)
-  case grabPackage(String, Int, Int)
-  case infoPackage(String, Int, Int)
+  case grabPackage(String, Int, Int64)
+  case infoPackage(String, Int, Int64)
   case historyPackage(String, Int, Int, Int)
   case statusPackage(String, Int, Int)
   case lottery(String, String)
-
   // 3
   var method: HTTPMethod {
     switch self {
-    case .roomList, .loginin, .loginout, .sendPackage, .historyPackage, .statusPackage , .lottery:
+    case .roomList, .loginin, .loginout, .sendPackage, .historyPackage, .infoPackage, .statusPackage , .lottery:
       return .post
     default:
       return  .get
@@ -66,6 +65,7 @@ public enum RedEnvelopAPIRouter: URLRequestConvertible {
       return "/packet/status"
     case .lottery:
       return "/lottery/jumpurl"
+
     }
   }
 
@@ -89,7 +89,7 @@ public enum RedEnvelopAPIRouter: URLRequestConvertible {
     case .statusPackage(let ticket, let roomId, let packetid):
       return [ "ticket" : ticket,  "data" : ["roomid": roomId, "packetid": packetid]]
     case .lottery(let ticket, let gameno):
-      return [ "ticket" : ticket,  "data" : ["gameno": gameno]]
+      return [ "ticket" : ticket,  "data" : ["gameno": Int(gameno) ?? Int.max]]
 
     }
   }

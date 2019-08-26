@@ -1,73 +1,94 @@
 [
     {
       "icon": "game_1",
-      "name":"game 1",
-      "key":""
+      "name":"TEXT",
+      "key":"deposits",
+      "action": "user"
     },
     {
       "icon": "game_2",
-      "name":"game 1",
-      "key":""
+      "name":"TEXT",
+      "key":"withdrawals",
+      "action": "user"
     },
     {
       "icon": "game_3",
-      "name":"game 1",
-      "key":""
+      "name":"TEXT",
+      "key":"common_problem",
+      "action": "user"
     },
     {
       "icon": "game_4",
-      "name":"game 1",
-      "key":""
+      "name":"TEXT",
+      "key":"customer_service",
+      "action": "user"
     },
     {
       "icon": "game_5",
       "name":"game 1",
-      "key":""
+      "key":"1",
+      "action": "envelop"
     },
     {
       "icon": "game_6",
       "name":"game 1",
-      "key":""
+      "key":"2",
+      "action": "envelop"
+
     },
     {
       "icon": "game_7",
-      "name":"game 1",
-      "key":""
+      "name":"重庆时时彩",
+      "key":"6",
+      "action": "lottery"
+
     },
     {
       "icon": "game_8",
-      "name":"game 1",
-      "key":""
+      "name":"北京PK10",
+      "key":"11",
+      "action": "lottery"
+
     },
     {
       "icon": "game_9",
-      "name":"game 1",
-      "key":""
+      "name":"幸运飞艇",
+      "key":"21",
+      "action": "lottery"
+
     },
     {
       "icon": "game_10",
-      "name":"game 1",
-      "key":""
+      "name":"PC蛋蛋",
+      "key":"31",
+      "action": "lottery"
+
     },
     {
       "icon": "game_11",
-      "name":"game 1",
-      "key":""
+      "name":"EPS赛马180",
+      "key":"34",
+      "action": "lottery"
     },
     {
       "icon": "game_12",
-      "name":"game 1",
-      "key":""
+      "name":"EPS赛马300",
+      "key":"35",
+      "action": "lottery"
+
     },
     {
       "icon": "game_13",
-      "name":"game 1",
-      "key":""
+      "name":"超级快5_3min",
+      "key":"36",
+      "action": "lottery"
+
     },
     {
       "icon": "game_14",
-      "name":"game 1",
-      "key":""
+      "name":"超级快5_5min",
+      "key":"37",
+      "action": "lottery"
     }
     
 ]

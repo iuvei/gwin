@@ -12,8 +12,8 @@ class CreateEnvelopType2ViewController: BaseViewController {
 
 
 
-  @IBOutlet weak var ammountTextfield: UITextField!
-  @IBOutlet weak var sizeTextfield: UITextField!
+  @IBOutlet weak var ammountTextfield: UITextFieldPadding!
+  @IBOutlet weak var sizeTextfield: UITextFieldPadding!
   @IBOutlet weak var createButton: UIButton!
 
   var room: RoomModel
@@ -28,23 +28,25 @@ class CreateEnvelopType2ViewController: BaseViewController {
   }
 
   override func viewDidLoad() {
-        super.viewDidLoad()
+    super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
+    ammountTextfield.rounded()
+    sizeTextfield.rounded()
     ammountTextfield.placeholder = "\(room.stake1)-\(room.stake2)"
     sizeTextfield.placeholder = "10-200"
-    }
+  }
 
 
-    /*
-    // MARK: - Navigation
+  /*
+   // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   // Get the new view controller using segue.destination.
+   // Pass the selected object to the new view controller.
+   }
+   */
   @IBAction func createPressed(_ sender: Any) {
 
     guard let amountText = ammountTextfield.text, let amount = Int(amountText) else { return }
@@ -60,3 +62,4 @@ class CreateEnvelopType2ViewController: BaseViewController {
 
 
 }
+

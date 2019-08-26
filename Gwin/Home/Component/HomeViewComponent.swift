@@ -7,16 +7,31 @@
 //
 
 import Foundation
+
+public enum TabIndex: Int {
+  case home = 0, boom, bull, lottery, profile
+}
+
 public protocol RedEnvelopDependency {
   var user: User? { get }
+  var systemtime: Date? { get }
+  var userno: String? { get }
 }
 
 class RedEnvelopComponent: RedEnvelopDependency  {
+  static let limitTime: Int  = 6 
   static let shared = RedEnvelopComponent()
 
   var user: User?
+  var systemtime: Date?
+  var userno: String?
 
   init(user: User? = nil) {
     self.user = user
+  }
+
+  func clearData() {
+    user = nil
+    userno = nil
   }
 }

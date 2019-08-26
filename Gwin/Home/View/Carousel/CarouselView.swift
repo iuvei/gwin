@@ -31,16 +31,24 @@ class CarouselView: UIView {
   }()
 
   private var contentViewWidthConstraint: NSLayoutConstraint?
+  private var timer: Timer?
+  private var index: Int = 0
 
   init(dataSource: [String] = []) {
     self.dataSource = dataSource
     super.init(frame: .zero)
     setupViews()
     updateView(dataSource: dataSource)
+    timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(autoScroll), userInfo: nil, repeats: true)
   }
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+
+  deinit {
+    timer?.invalidate()
+    timer = nil
   }
 
   func setupViews() {
@@ -49,7 +57,7 @@ class CarouselView: UIView {
   }
 
   func setupScrollView() {
-    backgroundColor = .red
+    backgroundColor = .groupTableViewBackground
     scrollView = UIScrollView()
     scrollView.translatesAutoresizingMaskIntoConstraints = false
     scrollView.delegate = self
@@ -97,14 +105,8 @@ class CarouselView: UIView {
         let image  = UIImage(data: imageData)
         imageView.image = image
       }
-
+      imageView.backgroundColor = .groupTableViewBackground
       contentView.addArrangedSubview(imageView)
-
-      if i % 2 == 0 {
-        imageView.backgroundColor = .blue
-      } else {
-        imageView.backgroundColor = .yellow
-      }
 
       NSLayoutConstraint.activate([
         imageView.heightAnchor.constraint(equalTo: heightAnchor),
@@ -114,6 +116,14 @@ class CarouselView: UIView {
 
     scrollView.contentSize =  CGSize(width: frame.width * CGFloat(dataSource.count), height: 1.0)
   }
+
+  @objc func autoScroll() {
+    index = (index + 1) % dataSource.count
+    let width = UIScreen.main.bounds.width
+    scrollView.setContentOffset(CGPoint(x: (CGFloat)(index) * width , y: 0), animated: true) 
+    pageControl.currentPage = index
+
+  }
 }
 
 extension CarouselView: UIScrollViewDelegate {
@@ -121,6 +131,7 @@ extension CarouselView: UIScrollViewDelegate {
     let width = frame.size.width
     if width > 0 {
       let pageIndex = round(scrollView.contentOffset.x/frame.size.width)
+      index = Int(pageIndex)
       pageControl.currentPage = Int(pageIndex)
     }
 

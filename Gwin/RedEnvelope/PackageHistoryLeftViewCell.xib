@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="387" height="164.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="\" translatesAutoresizingMaskIntoConstraints="NO" id="G9f-6g-aAF">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_item_1" translatesAutoresizingMaskIntoConstraints="NO" id="G9f-6g-aAF">
                         <rect key="frame" x="8" y="8" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="H5w-S3-ES6"/>
@@ -27,13 +27,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FQ-XB-9Qb">
-                        <rect key="frame" x="78" y="18" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="78" y="18" width="35.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8b3-9f-7m3">
-                        <rect key="frame" x="78" y="49" width="299" height="80"/>
+                        <rect key="frame" x="78" y="45" width="299" height="80"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="package_left_bg" translatesAutoresizingMaskIntoConstraints="NO" id="NrB-VO-2Ce">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="80"/>
@@ -67,15 +67,15 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obw-63-bWE">
-                        <rect key="frame" x="78" y="129" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="88" y="125" width="31" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKz-fg-qEL">
-                        <rect key="frame" x="335" y="129" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="287" y="125" width="31" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -84,28 +84,36 @@
                     <constraint firstItem="0FQ-XB-9Qb" firstAttribute="top" secondItem="G9f-6g-aAF" secondAttribute="top" constant="10" id="Jdc-Pw-TTl"/>
                     <constraint firstItem="G9f-6g-aAF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="O2G-Nc-WYI"/>
                     <constraint firstItem="kKz-fg-qEL" firstAttribute="top" secondItem="8b3-9f-7m3" secondAttribute="bottom" id="OFf-4a-MAl"/>
+                    <constraint firstItem="kKz-fg-qEL" firstAttribute="trailing" secondItem="NrB-VO-2Ce" secondAttribute="trailing" id="RrO-JV-VI6"/>
                     <constraint firstItem="8b3-9f-7m3" firstAttribute="top" secondItem="0FQ-XB-9Qb" secondAttribute="bottom" constant="10" id="U2K-R9-WL9"/>
                     <constraint firstItem="G9f-6g-aAF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="XJB-6h-R80"/>
                     <constraint firstItem="kKz-fg-qEL" firstAttribute="trailing" secondItem="8b3-9f-7m3" secondAttribute="trailing" id="ehT-Uv-9Ce"/>
                     <constraint firstItem="8b3-9f-7m3" firstAttribute="leading" secondItem="G9f-6g-aAF" secondAttribute="trailing" constant="10" id="ffT-hA-uBD"/>
                     <constraint firstItem="kKz-fg-qEL" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="obw-63-bWE" secondAttribute="trailing" constant="10" id="fza-ee-cfL"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0FQ-XB-9Qb" secondAttribute="trailing" constant="10" id="n4F-yf-krq"/>
-                    <constraint firstItem="obw-63-bWE" firstAttribute="leading" secondItem="NrB-VO-2Ce" secondAttribute="leading" id="nhj-7p-CGu"/>
+                    <constraint firstItem="obw-63-bWE" firstAttribute="leading" secondItem="NrB-VO-2Ce" secondAttribute="leading" constant="10" id="nhj-7p-CGu"/>
                     <constraint firstItem="0FQ-XB-9Qb" firstAttribute="leading" secondItem="G9f-6g-aAF" secondAttribute="trailing" constant="10" id="p3j-h9-ljr"/>
                     <constraint firstAttribute="trailing" secondItem="8b3-9f-7m3" secondAttribute="trailing" constant="10" id="rd8-R0-caQ"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="ehT-Uv-9Ce"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="amountLabel" destination="oRE-Et-hyb" id="lIB-tZ-yqe"/>
                 <outlet property="avatarImageView" destination="G9f-6g-aAF" id="Fdf-92-cIB"/>
                 <outlet property="backgroundImageView" destination="NrB-VO-2Ce" id="had-SL-AvZ"/>
                 <outlet property="usernameLabel" destination="0FQ-XB-9Qb" id="co9-h1-uBc"/>
+                <outlet property="wagerTimeLabel" destination="kKz-fg-qEL" id="xH0-MG-foy"/>
             </connections>
             <point key="canvasLocation" x="-0.7246376811594204" y="76.004464285714278"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="\" width="16" height="16"/>
         <image name="package_left_bg" width="354" height="118"/>
+        <image name="profile_item_1" width="90" height="90"/>
     </resources>
 </document>

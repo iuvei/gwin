@@ -65,19 +65,24 @@ class RegisterViewController: UIViewController {
    */
 
   private func validateAccountNo() -> String? {
-    return nil
+    return userTextfield.text
   }
 
   private func validatePassword() -> String? {
+    guard let password = passwordTextfield.text, let confirm = passwordConfirmTextfield.text else { return nil }
+    if password == confirm {
+      return password
+    }
+    
     return nil
   }
 
   private func validateCode() -> String? {
-    return nil
+    return confirmTextfield.text
   }
 
   private func validatePhonenumber() -> String? {
-    return nil
+    return phoneNumberTextfield.text
   }
 
   @objc func tappedView(_ sende: UIGestureRecognizer) {
@@ -88,9 +93,10 @@ class RegisterViewController: UIViewController {
 
     guard let phoneno = phoneNumberTextfield.text else { return }
 
-    UserAPIClient.checkCellphoneNo(cellphone: phoneno) { (checkCode, errorMessage) in
+    UserAPIClient.checkCellphoneNo(cellphone: phoneno) { [weak self] (checkCode, errorMessage) in
       if let code = checkCode {
         print("code \(code)")
+        self?.confirmTextfield.text = code
       }
     }
   }

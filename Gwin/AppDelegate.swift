@@ -11,13 +11,15 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+ 
 
   var window: UIWindow?
   var navigationController: UINavigationController?
-
+  var timer: Timer?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    configureNavigator()
     let frame = UIScreen.main.bounds
     window = UIWindow(frame: frame)
 
@@ -103,39 +105,101 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: - Utils
 
   public func setHomeAsRootViewControlelr() {
-    if let _ = self.window {
+    if let window = self.window {
       let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-      if let `navigationController` = navigationController {
-        let tabbarController = storyboard.instantiateViewController(withIdentifier: "tabbarController") 
-        navigationController.initRootViewController(vc: tabbarController)
-      }
+        let tabbarController = storyboard.instantiateViewController(withIdentifier: "tabbarController")
+
+      window.rootViewController = tabbarController
+      window.makeKeyAndVisible()
     }
   }
 
   public func setLoginViewController() {
-    if let _ = self.window {
+    if let window = self.window {
       if let `navigationController` = navigationController {
         if  let viewcontroller = LoginBuilder().build(withListener: nil).viewController {
           navigationController.initRootViewController(vc: viewcontroller)
+          window.rootViewController = navigationController
+          window.makeKeyAndVisible()
         }
       }
     }
   }
 
   public func setWellcomeAsRootViewController() {
-    if let _ = self.window {
-      if let `navigationController` = navigationController {
-        let viewcontroller = WellcomeViewController(nibName: "WellcomeViewController", bundle: nil)
-        navigationController.initRootViewController(vc: viewcontroller)
-      }
+    if let window = self.window {
+        let wellcomeViewController = WellcomeViewController(nibName: "WellcomeViewController", bundle: nil)
+        navigationController = UINavigationController(rootViewController: wellcomeViewController)
+        window.rootViewController = navigationController
     }
   }
 
   public func setLaunchAsRootViewController () {
-    if let _ = self.window {
+    if let window = self.window {
       if let `navigationController` = navigationController {
         let viewcontroller = LaunchViewController(nibName: "LaunchViewController", bundle: nil)
         navigationController.initRootViewController(vc: viewcontroller)
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+      }
+    }
+  }
+
+  func configureNavigator() {
+    let attrs = [
+      NSAttributedString.Key.foregroundColor: UIColor.red,
+      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)
+    ]
+
+    UINavigationBar.appearance().titleTextAttributes = attrs
+
+    let barColor = UIColor(hexString:"D66850")
+    UINavigationBar.appearance().backgroundColor =  barColor
+    UINavigationBar.appearance().barTintColor = barColor
+    UINavigationBar.appearance().tintColor = .white
+
+    UIBarButtonItem.appearance().tintColor =  barColor
+    UITabBar.appearance().backgroundColor =  barColor
+    UINavigationBar.appearance().isTranslucent = false
+  }
+
+  func selectTabIndex(index: TabIndex) {
+    if let _window = window{
+      if let tabBarController = _window.rootViewController as? UITabBarController {
+        tabBarController.selectedIndex = index.rawValue
+      }
+    }
+  }
+
+  func startFetchUserStatus() {
+    if let _ = timer {
+      timer?.invalidate()
+      timer = nil
+    }
+
+    timer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(getUerOnline), userInfo: nil, repeats: true)
+  }
+
+  func stopFetchUserStatus() {
+    if let _ = timer {
+      timer?.invalidate()
+      timer = nil
+    }
+  }
+
+  @objc func getUerOnline() {
+
+    guard let user = RedEnvelopComponent.shared.user else { return }
+
+    UserAPIClient.setOnline(ticket: user.ticket, guid: user.guid) { [weak self] (onlineStatus, errorMessage) in
+      if let status =  onlineStatus {
+        if status == .loginOtherPlace {
+          UserAPIClient.logout(ticket: user.ticket, guid: user.guid, completion: {  [weak self](success, msg) in
+            if success {
+              self?.setWellcomeAsRootViewController()
+            }
+          })
+        }
       }
     }
   }

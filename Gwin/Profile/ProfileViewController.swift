@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: BaseViewController {
 
   enum Constants {
     static let cellHeight: CGFloat = 35
@@ -33,6 +33,11 @@ class ProfileViewController: UIViewController {
     initData()
     setupViews()
     fetchUserInfo()
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    hideBackButton()
   }
 
   func initData() {
@@ -71,17 +76,16 @@ class ProfileViewController: UIViewController {
   }
 
   func fetchUserImage(ticket: String, userno: String) {
-    UserAPIClient.getUserImages(ticket: ticket, usernos: [userno]) { [weak self] (data, message) in
+    ImageManager.shared.downloadImage(usernos: [userno]) { [weak self] in
       guard let this = self else { return }
-      guard let _data = data else { return }
-      let result =  _data.filter { return $0["userno"].stringValue == userno }.first
 
-      if let imageData = Data(base64Encoded: result?["img"].stringValue ?? "", options: []) {
-        let image  = UIImage(data: imageData)
-        this.avatarImageView.image = image
+      if let imagebase64 = ImageManager.shared.getImage(userno: userno) {
+        if let imageData = Data(base64Encoded: imagebase64, options: []) {
+          let image  = UIImage(data: imageData)
+          this.avatarImageView.image = image
+        }
       }
     }
-
   }
 
   func setupViews() {
@@ -102,8 +106,11 @@ class ProfileViewController: UIViewController {
    }
    */
   func logout(){
+
     guard let `user` = RedEnvelopComponent.shared.user else { return }
-    UserAPIClient.logout(ticket: user.ticket, guid: user.guid) { (result, message) in
+    showLoadingView()
+    UserAPIClient.logout(ticket: user.ticket, guid: user.guid) {[weak self] (result, message) in
+      self?.hideLoadingView()
       if result {
         if let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate {
           appDelegate.setWellcomeAsRootViewController()
@@ -114,9 +121,10 @@ class ProfileViewController: UIViewController {
 
   func jumpURL(optType: String) {
     guard let `user` = RedEnvelopComponent.shared.user else { return }
+    showLoadingView()
     UserAPIClient.otherH5(ticket: user.ticket, optype: optType) {[weak self] (url, message) in
       guard let `this` = self else { return }
-      
+      this.hideLoadingView()
       if let jumpurl = url {
         let webview = WebContainerController(url: jumpurl)
         this.present(webview, animated: true, completion: nil)

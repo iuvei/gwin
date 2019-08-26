@@ -11,11 +11,12 @@ import UIKit
 class GameItemCell: UITableViewCell {
   enum Constants{
     static let signalSize: CGFloat = 8
+    static let defaultMargin: CGFloat = 8
   }
 
   private lazy var roomImageView: UIImageView = {
     let imageView = UIImageView().forAutolayout()
-    imageView.image = UIImage(named: "profile_item_1")
+    imageView.image = UIImage(named: "boom_room_1")
     return imageView
   }()
 
@@ -64,10 +65,10 @@ class GameItemCell: UITableViewCell {
     contentView.addSubview(signalView)
 
     NSLayoutConstraint.activate([
-      roomImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-      roomImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-      roomImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-      roomImageView.widthAnchor.constraint(equalTo: contentView.heightAnchor),
+      roomImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.defaultMargin),
+      roomImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Constants.defaultMargin),
+      roomImageView.widthAnchor.constraint(equalTo: roomImageView.heightAnchor),
+      roomImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 
       titleLabel.leftAnchor.constraint(equalTo: roomImageView.rightAnchor, constant: 10),
       titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),

@@ -78,6 +78,7 @@ class LoginViewController: BaseViewController {
       guard let `this` = self else { return }
       this.hideLoadingView()
       if let `user` = user {
+        RedEnvelopComponent.shared.userno = accountNo
         RedEnvelopComponent.shared.user = user
         if let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate {
           appDelegate.setHomeAsRootViewControlelr()
