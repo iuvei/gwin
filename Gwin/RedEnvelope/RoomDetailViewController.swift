@@ -9,6 +9,8 @@
 import UIKit
 import SwiftyJSON
 import Starscream
+import CoreData
+import MarqueeLabel
 
 class RoomDetailViewController: BaseViewController {
 
@@ -19,6 +21,7 @@ class RoomDetailViewController: BaseViewController {
 
   private lazy var profileButton: UIButton = {
     let button = UIButton().forAutolayout()
+    button.imageEdgeInsets  = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     button.imageView?.contentMode = .scaleAspectFit
     button.setImage(UIImage(named: "boom_header_profile"), for: .normal)
     button.addTarget(self, action: #selector(profilePressed(_:)), for: .touchUpInside)
@@ -27,6 +30,7 @@ class RoomDetailViewController: BaseViewController {
 
   private lazy var newPackageButton: UIButton = {
     let button = UIButton().forAutolayout()
+    button.imageEdgeInsets  = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     button.imageView?.contentMode = .scaleAspectFit
     button.setImage(UIImage(named: "boom_header_envelop"), for: .normal)
     button.addTarget(self, action: #selector(createPackagePressed(_:)), for: .touchUpInside)
@@ -55,7 +59,7 @@ class RoomDetailViewController: BaseViewController {
 
   private lazy var bottomTitleLabel: UILabel = {
     let title = UILabel().forAutolayout()
-    title.text = "accccdddd"
+    title.text = RedEnvelopComponent.shared.rollMsg
     return title
   }()
 
@@ -81,6 +85,8 @@ class RoomDetailViewController: BaseViewController {
   var socket: WebSocket
 
   private var histories: [PackageHistoryModel] = []
+  private var openPackages: [NSManagedObject] = []
+  
   init(userno: String, room: RoomModel) {
     self.userno = userno
     self.room = room
@@ -96,7 +102,9 @@ class RoomDetailViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
+    setTitle(title: "可发可抢")
     // Do any additional setup after loading the view.
+    fetchOpenPackages()
     initWebsocket()
     setupNavigatorViews()
     setupViews()
@@ -113,6 +121,10 @@ class RoomDetailViewController: BaseViewController {
         RedEnvelopComponent.shared.systemtime = timer.toDate()
       }
     }
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
   }
 
   deinit {
@@ -199,6 +211,7 @@ class RoomDetailViewController: BaseViewController {
       plusButton.heightAnchor.constraint(equalToConstant: 30),
       plusButton.rightAnchor.constraint(equalTo: labelStackView.leftAnchor, constant: -10)
       ])
+
 
   }
 
@@ -304,6 +317,42 @@ extension RoomDetailViewController {
   }
 }
 
+extension RoomDetailViewController {
+  fileprivate func fetchOpenPackages() {
+    if let userno = RedEnvelopComponent.shared.userno {
+      openPackages = LocalDataManager.shared.fetchPackages(userno: userno)
+    }
+  }
+
+  private func isOpenPackage(packageid: Int64) -> Bool {
+    for obj in openPackages {
+      if packageid == obj.value(forKey: "packageid") as? Int64 {
+        return true
+      }
+    }
+    return false
+  }
+
+  private func updateCellAsOpened(packageid: Int64){
+    var rowIndex: Int = -1
+    for i in 0 ..< histories.count {
+      let package = histories[i]
+      if package.packetid == packageid {
+        rowIndex = i
+        break
+      }
+    }
+
+    if rowIndex >= 0 {
+      let indexPath = IndexPath(row: rowIndex, section: 0)
+      tableView.beginUpdates()
+      tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.top)
+      tableView.endUpdates()
+    }
+    
+  }
+}
+
 extension RoomDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -311,21 +360,25 @@ extension RoomDetailViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    print("table count \(histories.count)")
     return histories.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
     let model = histories[indexPath.row]
+    let isOpen = isOpenPackage(packageid: model.packetid)
+
+    print("isopen : \(isOpen)")
     if userno != model.userno {
       if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
         cell.selectionStyle = .none
-        cell.updateViews(model: model)
+        cell.updateViews(model: model, isOpen:isOpen)
       }
     } else {
       if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryRightViewCell", for: indexPath) as? PackageHistoryRightViewCell {
         cell.selectionStyle = .none
-        cell.updateViews(model: model)
+        cell.updateViews(model: model, isOpen: isOpen)
       }
     }
 
@@ -334,10 +387,14 @@ extension RoomDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let model = histories[indexPath.row]
-
-    let vc = GrabEnvelopViewController(package: model, delegate: self)
-    vc.modalPresentationStyle = .overCurrentContext
-    present(vc, animated: true, completion: nil)
+    if isOpenPackage(packageid: model.packetid) {
+      let infoVc = PackageInfoViewController(model: nil, roomid: room.roomId, packageid: model.packetid)
+      present(infoVc, animated: true, completion: nil)
+    }else {
+      let vc = GrabEnvelopViewController(package: model, delegate: self)
+      vc.modalPresentationStyle = .overCurrentContext
+      present(vc, animated: true, completion: nil)
+    }
   }
 }
 
@@ -370,10 +427,10 @@ extension RoomDetailViewController: WebSocketDelegate {
       }
     }
 
-    ImageManager.shared.downloadImage(usernos: usernos) { [weak self ] in
-      self?.tableView.reloadData()
-    }
-
+//    ImageManager.shared.downloadImage(usernos: usernos) { [weak self ] in
+//      self?.tableView.reloadData()
+//    }
+//
     tableView.reloadData()
     //    [{"roomid":5,"packetid":158983,"userno":"steven2","username":"","packetamount":200.00,"packettag":"5","wagertime":"2019-08-24 12:03:31"},{"roomid":5,"packetid":158984,"userno":"steven2","username":"","packetamount":2006.00,"packettag":"2","wagertime":"2019-08-24 12:03:48"}]
 
@@ -391,8 +448,21 @@ extension RoomDetailViewController: GrabEnvelopPopupDelegate {
   }
 
   func openPackageInfo(package: PackageInfoModel?, roomid: Int, packageid: Int64) {
-    let infoVc = PackageInfoViewController(model: package, roomid: roomid, packageid: packageid)
-    present(infoVc, animated: true, completion: nil)
+
+//    if let _ = package, let userno = RedEnvelopComponent.shared.userno {
+      if let package = LocalDataManager.shared.savePackage(userno: userno, packageid: packageid) {
+        openPackages.append(package)
+        updateCellAsOpened(packageid: packageid)
+//        DispatchQueue.main.async { [weak self] in
+//          self?.tableView.reloadData()
+//        }
+      }
+//    }
+
+//    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+      let infoVc = PackageInfoViewController(model: package, roomid: roomid, packageid: packageid)
+      self.present(infoVc, animated: true, completion: nil)
+//    }
   }
 
 

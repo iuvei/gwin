@@ -54,6 +54,7 @@ class CreateEnvelopViewController: BaseViewController {
     packageTagTextfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     packageTagTextfield.delegate = self
     packageAmountTextfield.delegate = self
+  
   }
 
   /*
@@ -67,7 +68,7 @@ class CreateEnvelopViewController: BaseViewController {
    */
 
   @objc func textFieldDidChange(_ sender: UITextField) {
-    titleLabel.text = "$$$$$: \(sender.text ?? "")"
+    titleLabel.text = "¥ \(sender.text ?? "")"
   }
 
   @IBAction func sendPackagePressed(_ sender: Any) {

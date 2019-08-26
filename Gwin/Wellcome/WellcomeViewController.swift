@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WellcomeViewController: UIViewController {
+class WellcomeViewController: BaseViewController {
 
   @IBOutlet weak var loginButton: UIButton!
   @IBOutlet weak var registerButton: UIButton!
@@ -18,6 +18,25 @@ class WellcomeViewController: UIViewController {
 
     // Do any additional setup after loading the view.
     setupViews()
+
+    if UserDefaultManager.sharedInstance().autoLogin() {
+      guard let userno = UserDefaultManager.sharedInstance().loginInfoUserName() else {return}
+      guard let password = UserDefaultManager.sharedInstance().loginInfoPassword() else {return}
+      
+      showLoadingView()
+      UserAPIClient.login(accountNo: userno, password: password) {[weak self] (user, message) in
+        guard let `this` = self else { return }
+        this.hideLoadingView()
+        if let `user` = user {
+          RedEnvelopComponent.shared.userno = userno
+          RedEnvelopComponent.shared.user = user
+          if let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.setHomeAsRootViewControlelr()
+          }
+        }
+      }
+
+    }
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -26,8 +45,8 @@ class WellcomeViewController: UIViewController {
   }
 
   func setupViews() {
-    setNavigationBackgroundColor(color: UIColor(hexString:"D66850"))
     loginButton.rounded()
+    loginButton.applyGradient(withColours: [UIColor(hexString: "D7566A"), UIColor(hexString: "e75f48")], gradientOrientation: .horizontal)
     registerButton.rounded()
   }
 

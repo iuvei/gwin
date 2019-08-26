@@ -27,7 +27,7 @@ class PackageHistoryLeftViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-  func updateViews(model: PackageHistoryModel){
+  func updateViews(model: PackageHistoryModel, isOpen: Bool){
     usernameLabel.text = model.userno
     
     if model.packettag.count > 0 {
@@ -41,6 +41,15 @@ class PackageHistoryLeftViewCell: UITableViewCell {
       if let imageData = Data(base64Encoded: imagebase64, options: []) {
         let image  = UIImage(data: imageData)
         avatarImageView.image = image
+      }
+    }
+
+    DispatchQueue.main.async { [weak self] in
+      self?.backgroundImageView.image = nil
+      if isOpen {
+        self?.backgroundImageView.image = UIImage(named: "package_left_bg_read")
+      } else {
+        self?.backgroundImageView.image = UIImage(named: "package_left_bg")
       }
     }
   }

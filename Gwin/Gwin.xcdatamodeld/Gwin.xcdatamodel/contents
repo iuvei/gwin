@@ -3,8 +3,9 @@
     <entity name="PackageInfo" representedClassName="PackageInfo" syncable="YES" codeGenerationType="class">
         <attribute name="isread" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="packageid" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="userno" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="PackageInfo" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="PackageInfo" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>

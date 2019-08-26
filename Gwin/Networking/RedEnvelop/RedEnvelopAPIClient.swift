@@ -124,7 +124,28 @@ class RedEnvelopAPIClient {
     }
   }
 
-  static func historyPackage(ticket: String, roomid: Int, packageid: Int, topnum: Int, completion:@escaping ([PackageHistoryModel], String?)->Void) {
+  static func statusPackage(ticket: String, roomid: Int, packageid: Int64, completion:@escaping (PackageStatus?, String?)->Void) {
+    Alamofire.request(RedEnvelopAPIRouter.statusPackage(ticket, roomid, packageid)).responseJSON { (responseData) in
+      if responseData.result.value != nil {
+        let jsonResponse = JSON(responseData.result.value!)
+        let code = jsonResponse["code"].intValue
+        let msg = jsonResponse["msg"].string
+//        var  package:PackageInfoModel? = nil
+        var packageStatus:PackageStatus? = nil
+        if code == 1 {
+          let data = jsonResponse["data"]
+          let status = data["status"].intValue
+          packageStatus = PackageStatus(rawValue: status)
+        }
+
+        completion(packageStatus, msg ?? responseData.error?.localizedDescription)
+      } else {
+        completion(nil,responseData.error?.localizedDescription)
+      }
+    }
+  }
+
+  static func historyPackage(ticket: String, roomid: Int, packageid: Int64, topnum: Int, completion:@escaping ([PackageHistoryModel], String?)->Void) {
     Alamofire.request(RedEnvelopAPIRouter.historyPackage(ticket, roomid, packageid, topnum)).responseJSON { (responseData) in
       if responseData.result.value != nil {
         var histories: [PackageHistoryModel] = []
@@ -147,20 +168,20 @@ class RedEnvelopAPIClient {
     }
   }
 
-  static func historyPackage(ticket: String, roomid: Int, packageid: Int, completion:@escaping (Bool, Int, String?)->Void) {
-    Alamofire.request(RedEnvelopAPIRouter.statusPackage(ticket, roomid, packageid)).responseJSON { (responseData) in
-      if responseData.result.value != nil {
-        let jsonResponse = JSON(responseData.result.value!)
-        let code = jsonResponse["code"].intValue
-        let msg = jsonResponse["msg"].string
-        let data = jsonResponse["data"]
-        let status = data["status"].intValue
-        completion(code == 1, status, msg ?? responseData.error?.localizedDescription)
-      } else {
-        completion(false, 0, responseData.error?.localizedDescription)
-      }
-    }
-  }
+//  static func historyPackage(ticket: String, roomid: Int, packageid: Int, completion:@escaping (Bool, Int, String?)->Void) {
+//    Alamofire.request(RedEnvelopAPIRouter.statusPackage(ticket, roomid, packageid)).responseJSON { (responseData) in
+//      if responseData.result.value != nil {
+//        let jsonResponse = JSON(responseData.result.value!)
+//        let code = jsonResponse["code"].intValue
+//        let msg = jsonResponse["msg"].string
+//        let data = jsonResponse["data"]
+//        let status = data["status"].intValue
+//        completion(code == 1, status, msg ?? responseData.error?.localizedDescription)
+//      } else {
+//        completion(false, 0, responseData.error?.localizedDescription)
+//      }
+//    }
+//  }
 
   static func lottery(ticket: String, gameno: String, completion:@escaping (String?, String?)->Void) {
     Alamofire.request(RedEnvelopAPIRouter.lottery(ticket, gameno)).responseJSON { (responseData) in

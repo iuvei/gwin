@@ -134,6 +134,7 @@ class UserAPIClient {
         let code = jsonResponse["code"].boolValue
         let msg = jsonResponse["msg"].stringValue
         if code, let delegate = UIApplication.shared.delegate as? AppDelegate {
+            UserDefaultManager.sharedInstance().removeAutoLogin()
             delegate.stopFetchUserStatus()
         }
         
@@ -163,9 +164,9 @@ class UserAPIClient {
     Alamofire.request(UserAPIRouter.accountPrefix(prefix)).responseJSON { (responseData) in
       if((responseData.result.value) != nil) {
         let jsonResponse = JSON(responseData.result.value!)
-        let code = jsonResponse["code"].boolValue
+        let code = jsonResponse["code"].intValue
         let msg = jsonResponse["msg"].stringValue
-        completion(code, msg)
+        completion(code == 1, msg)
       } else {
         completion(false,responseData.error?.localizedDescription)
       }

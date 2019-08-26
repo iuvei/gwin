@@ -11,6 +11,7 @@ enum SaveManagerKeys: String {
   case saveLoginInfo = "saveLoginInfo"
   case loginInfoUserName = "loginInfoUserName"
   case loginInfoPassword = "loginInfoPassword"
+  case autologin = "autologin"
   case settingSound = "settingSound"
 }
 
@@ -50,14 +51,32 @@ class UserDefaultManager {
     if let value =  get(key: .saveLoginInfo) as? Bool {
       return value
     }
+    return false
+  }
+
+  func autoLogin() ->Bool {
+    if let autologin = get(key: .autologin) as? Bool, autologin == true , let _ = loginInfoUserName(), let _ = loginInfoPassword() {
+      return true
+    }
 
     return false
   }
 
+  func removeAutoLogin() {
+    delete(key: .autologin)
+  }
+
+  func setAutoLogin() {
+
+  }
+  
   func saveLoginInfo(accountNo: String, password: String) {
     if isRememberLoginInfo() {
       save(object: accountNo, key: .loginInfoUserName)
       save(object: password, key: .loginInfoPassword)
+      save(object: true, key: .autologin)
+    } else {
+      removeLoginInfo()
     }
   }
 

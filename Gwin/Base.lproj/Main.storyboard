@@ -37,10 +37,10 @@
                         <color key="backgroundColor" red="0.83921568627450982" green="0.40784313725490196" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
-                                <color key="value" red="1" green="0.24837390710000001" blue="0.22447763200000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="value" red="0.98431372549019602" green="0.91764705882352937" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="barTintColor">
-                                <color key="value" red="0.84422427415847778" green="0.40203452110290527" blue="0.32153546810150146" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="value" red="0.90588235289999997" green="0.37254901959999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,11 +94,31 @@
                                         </constraints>
                                         <state key="normal" title="Button" image="image_volume"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCA-i3-qy6" customClass="MarqueeLabel" customModule="MarqueeLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCA-i3-qy6">
                                         <rect key="frame" x="40" y="6.5" width="369" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="scrollDuration">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="scrollRate">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="animationDelay">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leadingBuffer">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -135,6 +155,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bEx-e8-Lfk"/>
                     <connections>
+                        <outlet property="rollMsgLabel" destination="dCA-i3-qy6" id="NRq-Kj-dXV"/>
                         <outlet property="tableView" destination="0Ph-SK-YlA" id="ehr-UM-4XN"/>
                     </connections>
                 </viewController>
@@ -161,17 +182,88 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="133.92857142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Game Room View Controller-->
         <scene sceneID="9Hm-xI-UrP">
             <objects>
-                <viewController id="I2h-w8-hwb" sceneMemberID="viewController">
+                <viewController id="I2h-w8-hwb" customClass="GameRoomViewController" customModule="Gwin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cOW-WE-Aaa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kHn-Ti-3r5">
+                                <rect key="frame" x="0.0" y="88" width="414" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHz-Hq-m0w">
+                                        <rect key="frame" x="5" y="2.5" width="25" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="UHb-gL-gnJ"/>
+                                            <constraint firstAttribute="height" constant="25" id="xOv-Od-zqB"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="image_volume"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tV9-Lu-th6">
+                                        <rect key="frame" x="40" y="6.5" width="369" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="scrollDuration">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="scrollRate">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="leadingBuffer">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="trailingBuffer">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="fadeLength">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="animationDelay">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="tV9-Lu-th6" firstAttribute="leading" secondItem="NHz-Hq-m0w" secondAttribute="trailing" constant="10" id="BND-kd-wgr"/>
+                                    <constraint firstItem="NHz-Hq-m0w" firstAttribute="leading" secondItem="kHn-Ti-3r5" secondAttribute="leading" constant="5" id="cn4-bQ-tJ4"/>
+                                    <constraint firstItem="tV9-Lu-th6" firstAttribute="centerY" secondItem="kHn-Ti-3r5" secondAttribute="centerY" id="ecF-98-Ckd"/>
+                                    <constraint firstAttribute="trailing" secondItem="tV9-Lu-th6" secondAttribute="trailing" constant="5" id="pCQ-gO-ufQ"/>
+                                    <constraint firstItem="NHz-Hq-m0w" firstAttribute="centerY" secondItem="kHn-Ti-3r5" secondAttribute="centerY" id="xOC-dw-QAH"/>
+                                    <constraint firstAttribute="height" constant="30" id="yY3-WU-e34"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IrZ-eZ-8aZ">
+                                <rect key="frame" x="0.0" y="118" width="414" height="695"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="I2h-w8-hwb" id="5Mh-a8-rzl"/>
+                                    <outlet property="delegate" destination="I2h-w8-hwb" id="IKY-8X-cJ9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="0.38894998390000002" blue="0.34542737410000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="IrZ-eZ-8aZ" firstAttribute="leading" secondItem="Jgl-uT-ETe" secondAttribute="leading" id="9Hw-Wr-9lb"/>
+                            <constraint firstItem="kHn-Ti-3r5" firstAttribute="leading" secondItem="cOW-WE-Aaa" secondAttribute="leading" id="AHz-B5-lNS"/>
+                            <constraint firstItem="IrZ-eZ-8aZ" firstAttribute="top" secondItem="kHn-Ti-3r5" secondAttribute="bottom" id="TRd-6y-cex"/>
+                            <constraint firstItem="kHn-Ti-3r5" firstAttribute="top" secondItem="Jgl-uT-ETe" secondAttribute="top" id="ZUd-OZ-2XT"/>
+                            <constraint firstItem="Jgl-uT-ETe" firstAttribute="trailing" secondItem="kHn-Ti-3r5" secondAttribute="trailing" id="eGa-7a-1zN"/>
+                            <constraint firstItem="Jgl-uT-ETe" firstAttribute="trailing" secondItem="IrZ-eZ-8aZ" secondAttribute="trailing" id="fa1-of-YZ0"/>
+                            <constraint firstItem="Jgl-uT-ETe" firstAttribute="bottom" secondItem="IrZ-eZ-8aZ" secondAttribute="bottom" id="mgy-0K-e8v"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Jgl-uT-ETe"/>
                     </view>
                     <navigationItem key="navigationItem" id="05c-o6-A5V"/>
+                    <connections>
+                        <outlet property="rollMsgLabel" destination="tV9-Lu-th6" id="QaT-0z-yzr"/>
+                        <outlet property="tableView" destination="IrZ-eZ-8aZ" id="DU0-YS-XjI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N9H-oy-UGx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -489,7 +581,6 @@
         <!--我的-->
         <scene sceneID="4wY-Av-UfU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R9Q-Ko-V2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h9I-ee-D9J" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" image="tabbar_5" id="kmx-71-DAU"/>
                     <toolbarItems/>
@@ -502,6 +593,7 @@
                         <segue destination="VIq-BP-YV2" kind="relationship" relationship="rootViewController" id="Gwo-Dz-32C"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R9Q-Ko-V2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1148" y="1146"/>
         </scene>

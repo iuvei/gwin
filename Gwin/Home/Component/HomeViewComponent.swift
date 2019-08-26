@@ -16,6 +16,7 @@ public protocol RedEnvelopDependency {
   var user: User? { get }
   var systemtime: Date? { get }
   var userno: String? { get }
+  var rollMsg: String? { get }
 }
 
 class RedEnvelopComponent: RedEnvelopDependency  {
@@ -25,7 +26,8 @@ class RedEnvelopComponent: RedEnvelopDependency  {
   var user: User?
   var systemtime: Date?
   var userno: String?
-
+  var rollMsg: String?
+  
   init(user: User? = nil) {
     self.user = user
   }
@@ -33,5 +35,6 @@ class RedEnvelopComponent: RedEnvelopDependency  {
   func clearData() {
     user = nil
     userno = nil
+    rollMsg = nil
   }
 }

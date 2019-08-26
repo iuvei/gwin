@@ -63,16 +63,16 @@ class ProfileItemViewCell: UITableViewCell {
   private lazy var copyButton: UIButton = {
     let button = UIButton().forAutolayout()
     button.rounded(radius: 4)
-    button.addBorder(color: .red, width: 1)
+    button.addBorder(color:UIColor(hexString: "e75f48"), width: 1)
     button.setTitle("复制", for: .normal)
-    button.setTitleColor(.red, for: .normal)
+    button.setTitleColor(UIColor(hexString: "e75f48"), for: .normal)
     return button
   }()
 
   private lazy var qrcodeLabel: UILabel = {
     let label = UILabel().forAutolayout()
-    label.font = UIFont.systemFont(ofSize: 14)
-    label.textColor = .red
+    label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+    label.textColor = UIColor(hexString: "e75f48")
     label.text = "QRCODE"
     label.textAlignment = .right
     return label
@@ -125,7 +125,7 @@ class ProfileItemViewCell: UITableViewCell {
       ])
   }
 
-  func updateContent(data: ProfileItemModel) {
+  func updateContent(data: ProfileItemModel, qrcode: String? = nil) {
     model = data
     iconImageView.image = UIImage(named: data.icon)
     titleLabel.text = data.title
@@ -150,7 +150,7 @@ class ProfileItemViewCell: UITableViewCell {
     copyButton.isHidden = !isQRCodeItem
     qrcodeLabel.isHidden = !isQRCodeItem
     actionButton.isHidden = isQRCodeItem || data.action == ProfileItemAction.logout.rawValue
-
+    qrcodeLabel.text = qrcode
   }
 
   @objc func actionButtonPressed(_ sender: UIButton) {

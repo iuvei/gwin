@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: BaseViewController {
 
   @IBOutlet weak var userImageView: UIImageView!
   @IBOutlet weak var userTextfield: UITextField!
@@ -26,8 +26,6 @@ class RegisterViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    // Do any additional setup after loading the view.
     setupViews()
   }
 
@@ -42,11 +40,21 @@ class RegisterViewController: UIViewController {
     phoneNumberButton.rounded()
     registerButton.rounded()
     //
+    userTextfield.addPaddingLeft()
     linkCodeTextfield.setLeftIcon(imageName: "register_2")
     phoneNumberTextfield.setLeftIcon(imageName: "register_3")
     confirmTextfield.setLeftIcon(imageName: "register_4")
     passwordTextfield.setLeftIcon(imageName: "register_5")
     passwordConfirmTextfield.setLeftIcon(imageName: "register_6")
+
+    //
+
+    userTextfield.setRightIcon()
+    linkCodeTextfield.setRightIcon()
+    phoneNumberTextfield.setRightIcon()
+    confirmTextfield.setRightIcon()
+    passwordTextfield.setRightIcon()
+    passwordConfirmTextfield.setRightIcon()
 
     //
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tappedView(_:)))
@@ -117,6 +125,62 @@ class RegisterViewController: UIViewController {
     }
   }
 
+  func checkReferenceCode() {
+    if let code = linkCodeTextfield.text, code.count > 0 {
+      UserAPIClient.accountPrefix(prefix: code) { [weak self](success, error) in
+        if success {
+          self?.linkCodeTextfield.showCorrectIcon()
+        }else {
+          self?.linkCodeTextfield.showErrorIcon()
+        }
+      }
+    } else {
+      linkCodeTextfield.showErrorIcon()
+    }
+  }
 }
 
 
+extension RegisterViewController: UITextFieldDelegate {
+  
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    //textField.removeValidateIcon()
+  }
+
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    let count = textField.text?.count ?? 0
+    if textField == linkCodeTextfield {
+      checkReferenceCode()
+    } else if textField == passwordConfirmTextfield {
+      if count < 6 {
+        textField.showErrorIcon()
+      } else {
+        if passwordConfirmTextfield.text != passwordTextfield.text {
+          passwordConfirmTextfield.showErrorIcon()
+        } else {
+          passwordConfirmTextfield.showCorrectIcon()
+        }
+      }
+    } else if textField == passwordTextfield {
+      if count < 6 {
+        textField.showErrorIcon()
+      }
+    } else if textField == phoneNumberTextfield {
+      if count < 10 {
+        textField.showErrorIcon()
+      }else {
+        textField.showCorrectIcon()
+      }
+    } else if textField == userTextfield {
+      if count < 6 {
+        textField.showErrorIcon()
+      }else {
+        textField.showCorrectIcon()
+      }
+    }
+
+    if  count == 0 {
+      textField.showErrorIcon()
+    }
+  }
+}

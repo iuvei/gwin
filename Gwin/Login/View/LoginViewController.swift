@@ -29,7 +29,6 @@ class LoginViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setTitle(title:"登录")
-    // Do any additional setup after loading the view.
     setupViews()
     updateData()
   }
@@ -42,7 +41,7 @@ class LoginViewController: BaseViewController {
     accountNoTextfield.rounded()
     passwordTextfield.rounded()
     loginButton.rounded()
-
+    rememberButton.rounded(radius: 2)
 
     accountNoTextfield.setLeftIcon(imageName: "login_phone")
     passwordTextfield.setLeftIcon(imageName: "login_password")
@@ -52,7 +51,7 @@ class LoginViewController: BaseViewController {
   func updateData() {
     accountNoTextfield.text = UserDefaultManager.sharedInstance().loginInfoUserName()
     passwordTextfield.text = UserDefaultManager.sharedInstance().loginInfoPassword()
-    loginButton.isSelected = UserDefaultManager.sharedInstance().isRememberLoginInfo()
+    rememberButton.isSelected = UserDefaultManager.sharedInstance().isRememberLoginInfo()
   }
   /*
    // MARK: - Navigation

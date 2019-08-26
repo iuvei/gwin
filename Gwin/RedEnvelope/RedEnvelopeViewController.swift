@@ -11,6 +11,7 @@ import UIKit
 class RedEnvelopeViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var rollMsgLabel: UILabel!
 
   var rooms: [RoomModel] = []
   override func viewDidLoad() {
@@ -22,12 +23,12 @@ class RedEnvelopeViewController: UIViewController {
     fetchRoomList()
   }
 
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    self.tabBarController?.tabBar.isHidden = false
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
   }
 
   func setupViews() {
+    rollMsgLabel.text = RedEnvelopComponent.shared.rollMsg
     tableView.register(GameItemCell.self, forCellReuseIdentifier: "envelopRoomCell")
   }
 
@@ -93,7 +94,6 @@ extension RedEnvelopeViewController: UITableViewDelegate, UITableViewDataSource 
   }
 
   func doLogin(room: RoomModel) {
-
     guard let user = RedEnvelopComponent.shared.user else { return }
     guard let userno = RedEnvelopComponent.shared.userno else { return }
 

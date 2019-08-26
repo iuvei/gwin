@@ -36,7 +36,6 @@ class HomeViewController: BaseViewController {
 
   private var messageLabel: MarqueeLabel = {
     var label = MarqueeLabel.init(frame: .zero, duration: 8.0, fadeLength: 10.0)
-    label.translatesAutoresizingMaskIntoConstraints = false
     label.textColor = .gray
     label.type = .continuous
     return label
@@ -137,7 +136,6 @@ class HomeViewController: BaseViewController {
       messageLabel.rightAnchor.constraint(equalTo: messageView.rightAnchor),
       messageLabel.bottomAnchor.constraint(equalTo: messageView.bottomAnchor)
       ])
-
     //
     setupScrollView()
   }
@@ -187,6 +185,10 @@ class HomeViewController: BaseViewController {
 
   func bindDataToView() {
     let stackView1 = getStackView()
+    let seperateColor = UIColor(hexString: "#f6f6f6")
+    let firstSeperateView = UIView().forAutolayout()
+    firstSeperateView.backgroundColor = seperateColor
+    containerStackView.addArrangedSubview(firstSeperateView)
     containerStackView.addArrangedSubview(stackView1)
     let itemHeight = view.frame.width / 4
 
@@ -214,20 +216,21 @@ class HomeViewController: BaseViewController {
     }
 
     //layout 2 games boom and bull
-    let seperateColor = UIColor(hexString: "#F7F7F7")
+    let secondSeperateView = UIView().forAutolayout()
+    secondSeperateView.backgroundColor = seperateColor
 
-    let firstSeperateView = UIView().forAutolayout()
-    firstSeperateView.backgroundColor = seperateColor
-
-    let firstGametitleLabel = TitleStackView(prefix: "title1 : ", title: "ccccccccccc").forAutolayout()
+    let firstGametitleLabel = TitleStackView(prefix: "红包专场", title: "抢红包新玩法来袭").forAutolayout()
     let stackView2 = getStackView()
-    containerStackView.addArrangedSubview(firstSeperateView)
+    containerStackView.addArrangedSubview(secondSeperateView)
     containerStackView.addArrangedSubview(firstGametitleLabel)
     containerStackView.addArrangedSubview(stackView2)
     NSLayoutConstraint.activate([
       firstSeperateView.leftAnchor.constraint(equalTo: containerStackView.leftAnchor),
       firstSeperateView.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
       firstSeperateView.heightAnchor.constraint(equalToConstant: 8),
+      secondSeperateView.leftAnchor.constraint(equalTo: containerStackView.leftAnchor),
+      secondSeperateView.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
+      secondSeperateView.heightAnchor.constraint(equalToConstant: 8),
 
       firstGametitleLabel.leftAnchor.constraint(equalTo: containerStackView.leftAnchor, constant: 10),
       firstGametitleLabel.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
@@ -254,7 +257,7 @@ class HomeViewController: BaseViewController {
     //
     let lastSeperateView = UIView().forAutolayout()
     lastSeperateView.backgroundColor = seperateColor
-    let lasttitleLabel = TitleStackView(prefix: "title2 : ", title: "xxxxxxxx").forAutolayout()
+    let lasttitleLabel = TitleStackView(prefix: "快乐彩票", title: " 20分钟一期 , 实时结算").forAutolayout()
     let stackView3 = getStackView()
     containerStackView.addArrangedSubview(lastSeperateView)
     containerStackView.addArrangedSubview(lasttitleLabel)
@@ -342,6 +345,7 @@ class HomeViewController: BaseViewController {
 
     NoticeAPIClient.getRollMsg(ticket: user.ticket, msgType: 0) { [weak self] (rollMsg, msg) in
       guard let this = self else { return  }
+      RedEnvelopComponent.shared.rollMsg = rollMsg
       this.messageLabel.text = rollMsg
     }
 

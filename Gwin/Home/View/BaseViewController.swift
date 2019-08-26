@@ -15,11 +15,13 @@ class BaseViewController: UIViewController {
   }
 
   private lazy var backButton: UIButton = {
-    let button = UIButton().forAutolayout()
+    let button = UIButton()
     button.setImage(UIImage(named: "back_button"), for: .normal)
     button.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
     button.backgroundColor = .clear
     button.semanticContentAttribute = .forceLeftToRight
+    button.contentEdgeInsets = UIEdgeInsets(top: 5, left: -10, bottom: 5, right: 10)
+    button.imageView?.contentMode = .scaleAspectFit
     return button
   }()
 

@@ -10,12 +10,17 @@ import UIKit
 
 class CreateEnvelopType2ViewController: BaseViewController {
 
+  enum Constans {
+    static let packageTagMaxLengh: Int = 1
+  }
 
 
+  @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var ammountTextfield: UITextFieldPadding!
   @IBOutlet weak var sizeTextfield: UITextFieldPadding!
   @IBOutlet weak var createButton: UIButton!
 
+  @IBOutlet weak var stakeLabel: UILabel!
   var room: RoomModel
 
   init(room: RoomModel) {
@@ -31,13 +36,23 @@ class CreateEnvelopType2ViewController: BaseViewController {
     super.viewDidLoad()
 
     // Do any additional setup after loading the view.
-    ammountTextfield.rounded()
-    sizeTextfield.rounded()
-    ammountTextfield.placeholder = "\(room.stake1)-\(room.stake2)"
-    sizeTextfield.placeholder = "10-200"
+    setupViews()
   }
 
 
+  func setupViews() {
+    ammountTextfield.rounded()
+    ammountTextfield.placeholder = "\(room.stake1)-\(room.stake2)"
+    ammountTextfield.delegate = self
+    ammountTextfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+
+    sizeTextfield.rounded()
+    sizeTextfield.placeholder = "10-200"
+    sizeTextfield.delegate = self
+
+    stakeLabel.text = "\(room.stake1)-\(room.stake2)元"
+    createButton.rounded()
+  }
   /*
    // MARK: - Navigation
 
@@ -61,5 +76,30 @@ class CreateEnvelopType2ViewController: BaseViewController {
   }
 
 
+}
+
+extension CreateEnvelopType2ViewController {
+  @objc func textFieldDidChange(_ sender: UITextField) {
+    titleLabel.text = "¥ \(sender.text ?? "")"
+  }
+}
+
+extension CreateEnvelopType2ViewController : UITextFieldDelegate {
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    guard let textFieldText = textField.text,
+      let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+        return false
+    }
+    let substringToReplace = textFieldText[rangeOfTextToReplace]
+    let count = textFieldText.count - substringToReplace.count + string.count
+
+    if textField == ammountTextfield {
+      return count <= room.stake2.usefulDigits
+    } else if textField == sizeTextfield {
+      return count <= 200.usefulDigits
+    }
+
+    return true
+  }
 }
 

@@ -18,6 +18,8 @@ class GrabEnvelopViewController: UIViewController {
   @IBOutlet weak var grabButton: UIButton!
   @IBOutlet weak var avatarImageView: UIImageView!
 
+  @IBOutlet weak var usernoLabel: UILabel!
+  @IBOutlet weak var amountLabel: UILabel!
   var package: PackageHistoryModel
   var delegate: GrabEnvelopPopupDelegate?
   init(package: PackageHistoryModel, delegate: GrabEnvelopPopupDelegate? = nil) {
@@ -32,6 +34,31 @@ class GrabEnvelopViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    checkPackageExpeire()
+    getPackageStatus()
+    setupViews()
+  }
+
+  func setupViews() {
+    ImageManager.shared.downloadImage(usernos: [package.userno]) {
+      if let string = ImageManager.shared.getImage(userno: self.package.userno) {
+        if let data = Data(base64Encoded: string, options: []) {
+          self.avatarImageView.image = UIImage(data: data)
+        }
+      }
+    }
+
+    if package.packettag.count > 0 {
+      amountLabel.text = "\(package.packetamount)-\(package.packettag)"
+    }else {
+      amountLabel.text = "\(package.packetamount)"
+
+    }
+    
+    usernoLabel.text = package.userno
+  }
+
+  func checkPackageExpeire() {
 
     let packageDate = package.wagertime.toDate()
     if let systemtime = RedEnvelopComponent.shared.systemtime {
@@ -42,29 +69,23 @@ class GrabEnvelopViewController: UIViewController {
         grabButton.isHidden = true
       }
     }
-
-    ImageManager.shared.downloadImage(usernos: [package.userno]) {
-      if let string = ImageManager.shared.getImage(userno: self.package.userno) {
-        if let data = Data(base64Encoded: string, options: []) {
-          self.avatarImageView.image = UIImage(data: data)
-        }
-      }
-    }
-    // Do any additional setup after loading the view.
   }
 
-
-  /*
-   // MARK: - Navigation
-
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destination.
-   // Pass the selected object to the new view controller.
-   }
-   */
   func showPackageInfoView() {
 
+  }
+
+  func getPackageStatus() {
+
+    guard let user = RedEnvelopComponent.shared.user else { return }
+
+    RedEnvelopAPIClient.statusPackage(ticket: user.ticket, roomid: package.roomid, packageid: package.packetid) {[weak self] (status, errorMessage) in
+      if let `status` = status, status == .canGrab {
+        self?.grabButton.isHidden = false
+      }else {
+        self?.grabButton.isHidden = true
+      }
+    }
   }
 
   @IBAction func grabPackagePressed(_ sender: Any) {

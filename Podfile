@@ -10,7 +10,7 @@ target 'Gwin' do
 pod 'RxSwift', '4.5.0'
 pod 'Alamofire'
 pod 'SwiftyJSON'
-pod 'Kingfisher', '~> 5.7'
+#pod 'Kingfisher', '~> 5.7'
 pod 'MarqueeLabel'
 pod 'Starscream'
 

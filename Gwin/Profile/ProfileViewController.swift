@@ -25,6 +25,8 @@ class ProfileViewController: BaseViewController {
   @IBOutlet weak var accountnoLabel: UILabel!
   @IBOutlet weak var accountNameLabel: UILabel!
   private var menuItems:[ProfileItemModel] = []
+  private var userInfo:UserInfo?
+
   override func viewDidLoad() {
     super.viewDidLoad()
     self.edgesForExtendedLayout = []
@@ -61,6 +63,7 @@ class ProfileViewController: BaseViewController {
     guard let user = RedEnvelopComponent.shared.user else { return }
     UserAPIClient.userInfo(ticket: user.ticket) { [weak self] (userInfo, errorMessage) in
       guard let this = self else { return }
+      this.userInfo = userInfo
       if let `userInfo` = userInfo {
         print("userInfo \(userInfo)")
         this.accountnoLabel.text = userInfo.accountno
@@ -68,6 +71,7 @@ class ProfileViewController: BaseViewController {
         this.allowCreditLabel.text = "\(userInfo.allowcreditquota)"
         this.creditLabel.text = "\(userInfo.usecreditquota)"
         this.fetchUserImage(ticket: user.ticket, userno: userInfo.accountno)
+        this.reloadQrCodeCell()
       } else {
 
       }
@@ -131,6 +135,13 @@ class ProfileViewController: BaseViewController {
       }
     }
   }
+
+  func reloadQrCodeCell() {
+    let indexPath = IndexPath(item: 1, section: 0)
+    tableview.beginUpdates()
+    tableview.reloadRows(at: [indexPath], with: .none)
+    tableview.endUpdates()
+  }
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
@@ -146,7 +157,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "profileItemCell", for: indexPath) as? ProfileItemViewCell {
       let item = menuItems[indexPath.row]
-      cell.updateContent(data: item)
+      cell.updateContent(data: item, qrcode: self.userInfo?.refercode)
       return cell
 
     }
