@@ -12,7 +12,7 @@ import SwiftyJSON
 class ProfileViewController: BaseViewController {
 
   enum Constants {
-    static let cellHeight: CGFloat = 35
+    static let cellHeight: CGFloat = 40
   }
 
 
@@ -67,7 +67,13 @@ class ProfileViewController: BaseViewController {
       if let `userInfo` = userInfo {
         print("userInfo \(userInfo)")
         this.accountnoLabel.text = userInfo.accountno
-        this.accountNameLabel.text = userInfo.accountname
+        
+        if userInfo.accountname.count > 0 {
+          this.accountNameLabel.text = userInfo.accountname
+        } else {
+          this.accountNameLabel.text = userInfo.accountno
+        }
+
         this.allowCreditLabel.text = "\(userInfo.allowcreditquota)"
         this.creditLabel.text = "\(userInfo.usecreditquota)"
         this.fetchUserImage(ticket: user.ticket, userno: userInfo.accountno)

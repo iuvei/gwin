@@ -15,6 +15,7 @@
 		D10067AA2309AA2500114F6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D10067A82309AA2500114F6E /* LaunchScreen.storyboard */; };
 		D10067B72309ACB800114F6E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10067B62309ACB800114F6E /* HomeViewController.swift */; };
 		D10067BA2309AFC700114F6E /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10067B92309AFC700114F6E /* CarouselView.swift */; };
+		D170F385231440B700468D64 /* ScrollLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D170F384231440B700468D64 /* ScrollLabel.swift */; };
 		D175C3C5230ADDC0001B8DC6 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C3C4230ADDC0001B8DC6 /* UIView+Utils.swift */; };
 		D175C47F230BCA42001B8DC6 /* ExampleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C47E230BCA42001B8DC6 /* ExampleRouter.swift */; };
 		D175C4B9230BCD97001B8DC6 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4B1230BCCC9001B8DC6 /* Component.swift */; };
@@ -111,6 +112,7 @@
 		D10067AB2309AA2500114F6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D10067B62309ACB800114F6E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D10067B92309AFC700114F6E /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		D170F384231440B700468D64 /* ScrollLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollLabel.swift; sourceTree = "<group>"; };
 		D175C3C4230ADDC0001B8DC6 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		D175C47E230BCA42001B8DC6 /* ExampleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleRouter.swift; sourceTree = "<group>"; };
 		D175C484230BCB90001B8DC6 /* Shiitake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shiitake.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -334,6 +336,7 @@
 			children = (
 				D175C3C4230ADDC0001B8DC6 /* UIView+Utils.swift */,
 				D175C4F0230C36B3001B8DC6 /* KeyboardLayoutConstraint.swift */,
+				D170F384231440B700468D64 /* ScrollLabel.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -773,6 +776,7 @@
 				D1E00DB12312CEA600554CA4 /* TitleStackView.swift in Sources */,
 				D175C4BC230BCD97001B8DC6 /* Router.swift in Sources */,
 				D175C4C0230BCE31001B8DC6 /* ExampleViewController.swift in Sources */,
+				D170F385231440B700468D64 /* ScrollLabel.swift in Sources */,
 				D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */,
 				D1E00DAD23118C7100554CA4 /* ImageManager.swift in Sources */,
 				D175C529230D1036001B8DC6 /* RedEnvelopTabbarController.swift in Sources */,

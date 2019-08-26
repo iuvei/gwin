@@ -34,10 +34,8 @@ class HomeViewController: BaseViewController {
     return view
   }()
 
-  private var messageLabel: MarqueeLabel = {
-    var label = MarqueeLabel.init(frame: .zero, duration: 8.0, fadeLength: 10.0)
-    label.textColor = .gray
-    label.type = .continuous
+  private var messageLabel: ScrollLabel = {
+    var label = ScrollLabel().forAutolayout()
     return label
   }()
 
@@ -132,9 +130,9 @@ class HomeViewController: BaseViewController {
       volumeImageView.widthAnchor.constraint(equalTo: volumeImageView.heightAnchor),
 
       messageLabel.leftAnchor.constraint(equalTo: volumeImageView.rightAnchor, constant: 5),
-      messageLabel.topAnchor.constraint(equalTo: messageView.topAnchor),
+      messageLabel.centerYAnchor.constraint(equalTo: messageView.centerYAnchor),
       messageLabel.rightAnchor.constraint(equalTo: messageView.rightAnchor),
-      messageLabel.bottomAnchor.constraint(equalTo: messageView.bottomAnchor)
+      messageLabel.heightAnchor.constraint(equalTo: messageView.heightAnchor)
       ])
     //
     setupScrollView()
@@ -346,7 +344,7 @@ class HomeViewController: BaseViewController {
     NoticeAPIClient.getRollMsg(ticket: user.ticket, msgType: 0) { [weak self] (rollMsg, msg) in
       guard let this = self else { return  }
       RedEnvelopComponent.shared.rollMsg = rollMsg
-      this.messageLabel.text = rollMsg
+      this.messageLabel.updateContent(message: rollMsg)
     }
 
     UserAPIClient.otherH5(ticket: user.ticket, optype: Optype.recommended_app) { (abc, xyz) in
