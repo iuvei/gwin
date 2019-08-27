@@ -81,6 +81,7 @@ class UserDefaultManager {
   }
 
   func removeLoginInfo(){
+    delete(key: .saveLoginInfo)
     delete(key: .loginInfoUserName)
     delete(key: .loginInfoPassword)
   }

@@ -110,19 +110,19 @@ extension RedEnvelopeViewController: UITableViewDelegate, UITableViewDataSource 
 
 extension RedEnvelopeViewController {
   fileprivate func showInputPassword(room: RoomModel) {
-    let alertVC = UIAlertController(title: nil, message: "room password", preferredStyle: .alert)
+    let alertVC = UIAlertController(title: nil, message: "请输入房间密码", preferredStyle: .alert)
     alertVC.addTextField(configurationHandler: { (textField) in
       textField.isSecureTextEntry = true
-      textField.placeholder = "Enter password"
+      textField.placeholder = "请输入房间密码"
     })
 
-    let saveAction = UIAlertAction(title: "Save", style: .default, handler: { [weak self] alert -> Void in
+    let saveAction = UIAlertAction(title: "确认", style: .default, handler: { [weak self] alert -> Void in
       if let firstTextField = alertVC.textFields?[0], let roompwd = firstTextField.text, roompwd == room.roomPwd {
         self?.doLogin(room: room)
       }
     })
 
-    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+    let cancelAction = UIAlertAction(title: "取消", style: .default, handler: nil)
 
     alertVC.addAction(cancelAction)
     alertVC.addAction(saveAction)

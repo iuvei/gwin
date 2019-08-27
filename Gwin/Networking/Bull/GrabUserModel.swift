@@ -15,6 +15,7 @@ class GrabUserModel {
   var packettag: String              // string, 玩法名称
   var winnings: Float                  // Number, 盈亏
   var wagertime: String
+  var status: String?
 
   init(json: JSON) {
      userno = json["userno"].stringValue                  // string,
@@ -23,5 +24,6 @@ class GrabUserModel {
      packettag = json["packettag"].stringValue             // string, 玩法名称
      winnings = json["winnings"].floatValue                  // Number, 盈亏
      wagertime = json["wagertime"].stringValue
+    status = json["status"].string
   }
 }

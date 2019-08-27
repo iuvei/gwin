@@ -29,16 +29,17 @@ class ScrollLabel: UIView {
     addSubview(webview)
 
     NSLayoutConstraint.activate([
-    webview.topAnchor.constraint(equalTo: topAnchor),
-    webview.leftAnchor.constraint(equalTo: leftAnchor),
-    webview.bottomAnchor.constraint(equalTo: bottomAnchor),
-    webview.rightAnchor.constraint(equalTo: rightAnchor),
+      webview.heightAnchor.constraint(equalToConstant: 25),
+      webview.leftAnchor.constraint(equalTo: leftAnchor),
+      webview.centerYAnchor.constraint(equalTo: centerYAnchor , constant: -3),
+      webview.rightAnchor.constraint(equalTo: rightAnchor),
 
       ])
   }
 
   func updateContent(message: String?) {
-    let marquee = "<html><body><marquee>\(message ?? "")</marquee></body></html>"
+    let marquee = "<html><body><font size=\"2\" face=\"sans-serif\"> <marquee>\(message ?? "")</marquee>>/font></body></html>"
     webview.loadHTMLString(marquee, baseURL: nil)
   }
 }
+

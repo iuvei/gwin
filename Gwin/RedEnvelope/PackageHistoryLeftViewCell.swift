@@ -16,6 +16,7 @@ class PackageHistoryLeftViewCell: UITableViewCell {
   @IBOutlet weak var amountLabel: UILabel!
   @IBOutlet weak var wagerTimeLabel: UILabel!
   
+  @IBOutlet weak var statusImageView: UIImageView!
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -43,14 +44,10 @@ class PackageHistoryLeftViewCell: UITableViewCell {
         avatarImageView.image = image
       }
     }
-
-    DispatchQueue.main.async { [weak self] in
-      self?.backgroundImageView.image = nil
       if isOpen {
-        self?.backgroundImageView.image = UIImage(named: "package_left_bg_read")
+        backgroundImageView.image = UIImage(named: "package_left_bg_read")
       } else {
-        self?.backgroundImageView.image = UIImage(named: "package_left_bg")
+        backgroundImageView.image = UIImage(named: "package_left_bg")
       }
-    }
   }
 }

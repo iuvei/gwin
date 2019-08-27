@@ -55,7 +55,7 @@
                                     </constraints>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMU-ZI-oKl">
                                     <rect key="frame" x="380.5" y="80" width="17.5" height="21"/>
@@ -78,7 +78,7 @@
                                     </constraints>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="红包发包范围:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6A-ed-POU">
                                     <rect key="frame" x="16" y="182" width="109" height="21"/>
@@ -161,7 +161,7 @@
                         <constraint firstItem="ESs-FH-Hsw" firstAttribute="width" secondItem="fhb-cD-IjY" secondAttribute="width" id="2Dn-fA-qO1"/>
                         <constraint firstItem="ESs-FH-Hsw" firstAttribute="leading" secondItem="fhb-cD-IjY" secondAttribute="leading" id="Gs5-L6-AmQ"/>
                         <constraint firstItem="ESs-FH-Hsw" firstAttribute="top" secondItem="fhb-cD-IjY" secondAttribute="top" id="e6e-fT-Qxs"/>
-                        <constraint firstAttribute="bottom" secondItem="ESs-FH-Hsw" secondAttribute="bottom" id="mGA-fw-pQa"/>
+                        <constraint firstAttribute="bottom" secondItem="ESs-FH-Hsw" secondAttribute="bottom" id="mGA-fw-pQa" customClass="KeyboardLayoutConstraint" customModule="Gwin" customModuleProvider="target"/>
                         <constraint firstAttribute="trailing" secondItem="ESs-FH-Hsw" secondAttribute="trailing" id="mmr-Q2-hrJ"/>
                         <constraint firstItem="ESs-FH-Hsw" firstAttribute="height" secondItem="fhb-cD-IjY" secondAttribute="height" id="nuJ-u1-pj1"/>
                     </constraints>
@@ -172,7 +172,7 @@
                 <constraint firstItem="fhb-cD-IjY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="CbV-gK-dxZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fhb-cD-IjY" secondAttribute="trailing" id="OAp-mk-hkB"/>
                 <constraint firstItem="fhb-cD-IjY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="e5k-wS-VtW"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fhb-cD-IjY" secondAttribute="bottom" id="w7t-66-MIE" customClass="KeyboardLayoutConstraint" customModule="Gwin" customModuleProvider="target"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fhb-cD-IjY" secondAttribute="bottom" id="w7t-66-MIE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

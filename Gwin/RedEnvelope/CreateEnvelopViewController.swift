@@ -36,7 +36,7 @@ class CreateEnvelopViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    setTitle(title: "可发可抢")
     // Do any additional setup after loading the view.
     setupViews()
   }
@@ -67,13 +67,23 @@ class CreateEnvelopViewController: BaseViewController {
    }
    */
 
+  func validateAmounInput(amount: Int) -> Bool {
+    let inrange = amount >= room.stake1 && amount <= room.stake2
+    if !inrange {
+      packageAmountTextfield.showErrorIcon(viewMode: .unlessEditing)
+    }
+
+    return inrange
+  }
+
   @objc func textFieldDidChange(_ sender: UITextField) {
     titleLabel.text = "¥ \(sender.text ?? "")"
   }
 
   @IBAction func sendPackagePressed(_ sender: Any) {
-    guard let amountText = packageAmountTextfield.text, let amount = Int(amountText) else { return }
-    guard let tag = packageTagTextfield.text else { return }
+    guard let amountText = packageAmountTextfield.text, let amount = Int(amountText), validateAmounInput(amount: amount) else { return }
+
+    guard let tag = packageTagTextfield.text, tag.count > 0 else { return }
     guard let user = RedEnvelopComponent.shared.user else { return }
 
     RedEnvelopAPIClient.sendPackage(ticket: user.ticket, roomid: room.roomId, packageamount: amount, packagesize: room.packageSize, packagetag: tag) {[weak self] (success, message) in
@@ -91,16 +101,24 @@ extension CreateEnvelopViewController : UITextFieldDelegate {
       let rangeOfTextToReplace = Range(range, in: textFieldText) else {
         return false
     }
+
     let substringToReplace = textFieldText[rangeOfTextToReplace]
     let count = textFieldText.count - substringToReplace.count + string.count
-    if textField == packageTagTextfield {
 
+    if textField == packageTagTextfield {
       return count <= Constans.packageTagMaxLengh
     } else if textField == packageAmountTextfield {
+
       return count <= room.stake2.usefulDigits
     }
 
     return true
   }
+
+//  func textFieldDidEndEditing(_ textField: UITextField) {
+//    if textField == packageAmountTextfield {
+//    let amount = Int(textField.text ?? "0") ?? 0
+//
+//  }
 }
 

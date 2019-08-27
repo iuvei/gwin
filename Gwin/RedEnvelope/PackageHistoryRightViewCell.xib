@@ -25,8 +25,8 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Js-U2-Jmi">
-                        <rect key="frame" x="22" y="127" width="31" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="红包炸雷" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Js-U2-Jmi">
+                        <rect key="frame" x="22" y="127" width="49.5" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -65,6 +65,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hZ0-9K-z7y">
+                                <rect key="frame" x="182" y="15" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jlL-qV-W4e"/>
+                                    <constraint firstAttribute="width" constant="50" id="phb-JQ-mRz"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -72,10 +79,12 @@
                             <constraint firstAttribute="height" constant="80" id="5Ge-LO-sod"/>
                             <constraint firstItem="G6R-Xb-qIc" firstAttribute="top" secondItem="69l-zf-aK1" secondAttribute="top" id="8iU-1g-HNU"/>
                             <constraint firstItem="jIv-ae-IJw" firstAttribute="top" secondItem="lCN-SL-yxu" secondAttribute="bottom" constant="8" id="BYS-yg-ccH"/>
+                            <constraint firstAttribute="trailing" secondItem="hZ0-9K-z7y" secondAttribute="trailing" constant="20" id="Ebf-U0-oyg"/>
                             <constraint firstItem="lCN-SL-yxu" firstAttribute="top" secondItem="69l-zf-aK1" secondAttribute="top" constant="15" id="LCB-vk-8JV"/>
                             <constraint firstItem="jIv-ae-IJw" firstAttribute="leading" secondItem="lCN-SL-yxu" secondAttribute="leading" id="RMf-cg-ZRx"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="S6g-ku-iH8"/>
                             <constraint firstItem="lCN-SL-yxu" firstAttribute="leading" secondItem="G6R-Xb-qIc" secondAttribute="leading" constant="68" id="Vwe-8s-8aE"/>
+                            <constraint firstItem="hZ0-9K-z7y" firstAttribute="centerY" secondItem="69l-zf-aK1" secondAttribute="centerY" id="Yht-Jq-GFo"/>
                             <constraint firstAttribute="bottom" secondItem="G6R-Xb-qIc" secondAttribute="bottom" id="mgo-yp-s36"/>
                             <constraint firstItem="G6R-Xb-qIc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="69l-zf-aK1" secondAttribute="leading" id="pYd-Na-daM"/>
                         </constraints>
@@ -107,10 +116,11 @@
                 <outlet property="amountLabel" destination="lCN-SL-yxu" id="pQy-97-yTe"/>
                 <outlet property="avatarImageView" destination="Aca-Zn-pvo" id="qkT-Mn-eyi"/>
                 <outlet property="backgroundImageView" destination="G6R-Xb-qIc" id="s5v-yl-Loa"/>
+                <outlet property="statusImageView" destination="hZ0-9K-z7y" id="D9M-TZ-VMQ"/>
                 <outlet property="usernameLabel" destination="Xv9-mF-tO1" id="PQp-7J-eXo"/>
                 <outlet property="wagerTimeLabel" destination="vEg-07-RRT" id="Agu-GM-eJk"/>
             </connections>
-            <point key="canvasLocation" x="131.15942028985509" y="155.02232142857142"/>
+            <point key="canvasLocation" x="130.43478260869566" y="155.02232142857142"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -34,8 +34,8 @@ class CreateEnvelopType2ViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
     // Do any additional setup after loading the view.
+    setTitle(title: "福利红包")
     setupViews()
   }
 
@@ -100,6 +100,18 @@ extension CreateEnvelopType2ViewController : UITextFieldDelegate {
     }
 
     return true
+  }
+
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    if textField == ammountTextfield {
+      let amount = Int(textField.text ?? "0") ?? 0
+      let inrange = amount >= room.stake1 && amount <= room.stake2
+      if inrange {
+        ammountTextfield.showCorrectIcon()
+      } else {
+        ammountTextfield.showErrorIcon()
+      }
+    }
   }
 }
 

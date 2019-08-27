@@ -37,5 +37,24 @@ class PackageInfoModel {
       grabuser.append(user)
     }
   }
+
+  func getStatus(userno: String) -> Bool {
+    let yoursgrabs = grabuser.filter{ return $0.userno == userno && $0.status?.contains("1") ?? false}
+    if let _ = yoursgrabs.first {
+      return true
+    }
+
+    return false
+  }
+
+  func isGrabBiggest(userno: String) -> Bool {
+
+    let sorted = grabuser.sorted(by: {$0.packetamount > $1.packetamount})
+    if let first = sorted.first {
+      return first.userno == userno
+    }
+
+    return false
+  }
 }
 

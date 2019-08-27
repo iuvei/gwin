@@ -118,10 +118,12 @@ class CarouselView: UIView {
   }
 
   @objc func autoScroll() {
-    index = (index + 1) % dataSource.count
-    let width = UIScreen.main.bounds.width
-    scrollView.setContentOffset(CGPoint(x: (CGFloat)(index) * width , y: 0), animated: true) 
-    pageControl.currentPage = index
+    if dataSource.count > 0 {
+      index = (index + 1) % dataSource.count
+      let width = UIScreen.main.bounds.width
+      scrollView.setContentOffset(CGPoint(x: (CGFloat)(index) * width , y: 0), animated: true)
+      pageControl.currentPage = index
+    }
 
   }
 }

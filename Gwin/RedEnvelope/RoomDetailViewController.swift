@@ -17,6 +17,7 @@ class RoomDetailViewController: BaseViewController {
   enum Constants {
     static let bottomImages: [String] = ["boom_bottom_image_1","boom_bottom_image_2","boom_bottom_image_3","boom_bottom_image_4"]
     static let bottomTitles: [String] = ["发扫雷包","发福利包","充值","提现"]
+    static let notifySize: CGFloat = 35
   }
 
   private lazy var profileButton: UIButton = {
@@ -44,6 +45,26 @@ class RoomDetailViewController: BaseViewController {
     return button
   }()
 
+  private lazy var notifyView: UIView = {
+    let view = UIView().forAutolayout()
+    view.isHidden = true
+    return view
+  }()
+
+  private lazy var notifyBackground: UIImageView = {
+    let imageView = UIImageView().forAutolayout()
+    imageView.image = UIImage(named: "room_notify")
+    imageView.contentMode = .scaleAspectFit
+    return imageView
+  }()
+
+  private lazy var notifyLabel: UILabel = {
+    let label = UILabel().forAutolayout()
+    label.textAlignment = .center
+    label.textColor = .white
+    return label
+  }()
+
   private var tableView: UITableView = {
     let tableView = UITableView(frame: .zero).forAutolayout()
 
@@ -57,9 +78,9 @@ class RoomDetailViewController: BaseViewController {
     return view
   }()
 
-  private lazy var bottomTitleLabel: UILabel = {
-    let title = UILabel().forAutolayout()
-    title.text = RedEnvelopComponent.shared.rollMsg
+  private lazy var bottomTitleLabel: ScrollLabel = {
+    let title = ScrollLabel().forAutolayout()
+    title.updateContent(message: "红包炸雷")
     return title
   }()
 
@@ -86,7 +107,7 @@ class RoomDetailViewController: BaseViewController {
 
   private var histories: [PackageHistoryModel] = []
   private var openPackages: [NSManagedObject] = []
-  
+
   init(userno: String, room: RoomModel) {
     self.userno = userno
     self.room = room
@@ -109,6 +130,7 @@ class RoomDetailViewController: BaseViewController {
     setupNavigatorViews()
     setupViews()
     setupTableView()
+    setupNotifiView()
     setupBottomView()
   }
 
@@ -172,6 +194,28 @@ class RoomDetailViewController: BaseViewController {
     }
   }
 
+  func setupNotifiView() {
+    view.addSubview(notifyView)
+    notifyView.addSubview(notifyBackground)
+    notifyView.addSubview(notifyLabel)
+
+    NSLayoutConstraint.activate([
+      notifyView.widthAnchor.constraint(equalToConstant: 35),
+      notifyView.heightAnchor.constraint(equalToConstant: 35),
+      notifyView.rightAnchor.constraint(equalTo: tableView.rightAnchor, constant: -10),
+      notifyView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor),
+
+      notifyBackground.topAnchor.constraint(equalTo: notifyView.topAnchor),
+      notifyBackground.leftAnchor.constraint(equalTo: notifyView.leftAnchor),
+      notifyBackground.rightAnchor.constraint(equalTo: notifyView.rightAnchor),
+      notifyBackground.bottomAnchor.constraint(equalTo: notifyView.bottomAnchor),
+
+      notifyLabel.centerXAnchor.constraint(equalTo: notifyView.centerXAnchor),
+      notifyLabel.centerYAnchor.constraint(equalTo: notifyView.centerYAnchor),
+
+      ])
+  }
+
   func setupBottomView() {
     let buttonSize = view.frame.size.width / 4
     let firstSeperateView = UIView().forAutolayout()
@@ -209,10 +253,9 @@ class RoomDetailViewController: BaseViewController {
 
       plusButton.widthAnchor.constraint(equalToConstant: 30),
       plusButton.heightAnchor.constraint(equalToConstant: 30),
-      plusButton.rightAnchor.constraint(equalTo: labelStackView.leftAnchor, constant: -10)
+      plusButton.rightAnchor.constraint(equalTo: labelStackView.leftAnchor, constant: -10),
+
       ])
-
-
   }
 
   func setupTableView() {
@@ -333,6 +376,24 @@ extension RoomDetailViewController {
     return false
   }
 
+  private func isBoomed(packageid: Int64) -> Bool {
+    for obj in openPackages {
+      if packageid == obj.value(forKey: "packageid") as? Int64 {
+        return obj.value(forKey: "isBoom") as? Bool ?? false
+      }
+    }
+    return false
+  }
+
+  private func isBiggest(packageid: Int64) -> Bool {
+    for obj in openPackages {
+      if packageid == obj.value(forKey: "packageid") as? Int64 {
+        return obj.value(forKey: "isbiggest") as? Bool ?? false
+      }
+    }
+    return false
+  }
+
   private func updateCellAsOpened(packageid: Int64){
     var rowIndex: Int = -1
     for i in 0 ..< histories.count {
@@ -349,7 +410,7 @@ extension RoomDetailViewController {
       tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.top)
       tableView.endUpdates()
     }
-    
+
   }
 }
 
@@ -368,17 +429,21 @@ extension RoomDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
     let model = histories[indexPath.row]
     let isOpen = isOpenPackage(packageid: model.packetid)
-
+    let isBoom = isBoomed(packageid: model.packetid)
+    let isKing = isBiggest(packageid: model.packetid)
+    
     print("isopen : \(isOpen)")
     if userno != model.userno {
       if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
         cell.selectionStyle = .none
         cell.updateViews(model: model, isOpen:isOpen)
+        return cell
       }
     } else {
       if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryRightViewCell", for: indexPath) as? PackageHistoryRightViewCell {
         cell.selectionStyle = .none
         cell.updateViews(model: model, isOpen: isOpen)
+        return cell
       }
     }
 
@@ -427,10 +492,16 @@ extension RoomDetailViewController: WebSocketDelegate {
       }
     }
 
-//    ImageManager.shared.downloadImage(usernos: usernos) { [weak self ] in
-//      self?.tableView.reloadData()
-//    }
-//
+    ImageManager.shared.downloadImage(usernos: usernos) { [weak self ] in
+      DispatchQueue.main.async {
+        self?.tableView.reloadData()
+      }
+    }
+    //
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+      self?.updateNotifyView()
+    }
+    
     tableView.reloadData()
     //    [{"roomid":5,"packetid":158983,"userno":"steven2","username":"","packetamount":200.00,"packettag":"5","wagertime":"2019-08-24 12:03:31"},{"roomid":5,"packetid":158984,"userno":"steven2","username":"","packetamount":2006.00,"packettag":"2","wagertime":"2019-08-24 12:03:48"}]
 
@@ -449,23 +520,51 @@ extension RoomDetailViewController: GrabEnvelopPopupDelegate {
 
   func openPackageInfo(package: PackageInfoModel?, roomid: Int, packageid: Int64) {
 
-//    if let _ = package, let userno = RedEnvelopComponent.shared.userno {
-      if let package = LocalDataManager.shared.savePackage(userno: userno, packageid: packageid) {
-        openPackages.append(package)
-        updateCellAsOpened(packageid: packageid)
-//        DispatchQueue.main.async { [weak self] in
-//          self?.tableView.reloadData()
-//        }
-      }
-//    }
+    //    if let _ = package, let userno = RedEnvelopComponent.shared.userno {
+    let isbiggest = package?.isGrabBiggest(userno: userno) ?? false
+    let isBoomed = package?.getStatus(userno: userno) ?? false
+    if let saved = LocalDataManager.shared.savePackage(userno: userno, packageid: packageid, status: isBoomed, isbiggest: isbiggest) {
+      openPackages.append(saved)
+      updateCellAsOpened(packageid: packageid)
+      //        DispatchQueue.main.async { [weak self] in
+      //          self?.tableView.reloadData()
+      //        }
+    }
+    //    }
 
-//    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-      let infoVc = PackageInfoViewController(model: package, roomid: roomid, packageid: packageid)
-      self.present(infoVc, animated: true, completion: nil)
-//    }
+    //    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+    let infoVc = PackageInfoViewController(model: package, roomid: roomid, packageid: packageid)
+    self.present(infoVc, animated: true, completion: nil)
+    //    }
   }
 
 
+}
+
+extension RoomDetailViewController {
+  fileprivate func updateNotifyView() {
+    if let lastVisibleIndexPath = tableView.indexPathsForVisibleRows?.last {
+      let lastRow = lastVisibleIndexPath.row
+      let unshowRow = histories.count - (lastRow + 1)
+
+      notifyLabel.text = "\(unshowRow)"
+      notifyView.isHidden = unshowRow <= 0
+    }
+  }
+}
+
+extension RoomDetailViewController: UIScrollViewDelegate {
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    if scrollView == tableView {
+      updateNotifyView()
+    }
+  }
+
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    if scrollView == tableView {
+      updateNotifyView()
+    }
+  }
 }
 
 

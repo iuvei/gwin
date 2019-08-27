@@ -15,6 +15,8 @@ class PackageHistoryRightViewCell: UITableViewCell {
 
   @IBOutlet weak var amountLabel: UILabel!
   @IBOutlet weak var wagerTimeLabel: UILabel!
+  @IBOutlet weak var statusImageView: UIImageView!
+  
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -26,7 +28,7 @@ class PackageHistoryRightViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-  func updateViews(model: PackageHistoryModel, isOpen: Bool){
+  func updateViews(model: PackageHistoryModel, isOpen: Bool, isKing: Bool = false, isBoomed: Bool = false){
     usernameLabel.text = model.userno
     
     if model.packettag.count > 0 {
@@ -41,15 +43,25 @@ class PackageHistoryRightViewCell: UITableViewCell {
       if let imageData = Data(base64Encoded: imagebase64, options: []) {
         let image  = UIImage(data: imageData)
         avatarImageView.image = image
+        wagerTimeLabel.text = "\(model.packetid) \(model.wagertime)"
       }
     }
-    
-    DispatchQueue.main.async { [weak self] in
-      self?.backgroundImageView.image = nil
-      if isOpen {
-        self?.backgroundImageView.image = UIImage(named: "package_left_bg_read")
+
+    if isOpen {
+      backgroundImageView.image = UIImage(named: "package_right_bg_read")
+    } else {
+      backgroundImageView.image = UIImage(named: "package_right_bg")
+    }
+
+    if isBoomed {
+      statusImageView.isHidden = false
+      statusImageView.image = UIImage(named: "grabuser_boom")
+    } else {
+      if isKing {
+        statusImageView.isHidden = false
+        statusImageView.image = UIImage(named: "grabuser_king")
       } else {
-        self?.backgroundImageView.image = UIImage(named: "package_left_bg")
+        statusImageView.isHidden = true
       }
     }
   }

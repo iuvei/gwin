@@ -10,7 +10,9 @@ import UIKit
 
 class RegisterViewController: BaseViewController {
 
-  @IBOutlet weak var userImageView: UIImageView!
+  @IBOutlet weak var userImageView: UIButton!
+
+  @IBOutlet weak var prefixLabel: UILabel!
   @IBOutlet weak var userTextfield: UITextField!
   @IBOutlet weak var linkCodeTextfield: UITextField!
   @IBOutlet weak var phoneNumberTextfield: UITextField!
@@ -23,6 +25,8 @@ class RegisterViewController: BaseViewController {
 
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var contentView: UIView!
+
+  private var prefix: String?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -115,11 +119,22 @@ class RegisterViewController: BaseViewController {
     let password =  validatePassword()
     let code =  validateCode()
     let cellphone =  validatePhonenumber()
-
+    guard let `prefix` = prefix else { return }
+    showLoadingView()
     if let `accountNo` = accountNo, let `password` = password, let `code` = code, let `cellphone` = cellphone {
-      UserAPIClient.register(accountNo: accountNo, password: password, code: code, cellphone: cellphone) { (user, message) in
-        if let _ = user, let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate {
+      UserAPIClient.register(accountNo: "\(prefix)\(accountNo)", password: password, code: code, cellphone: cellphone) { [weak self] (user, message) in
+        guard let this = self else { return }
+        this.hideLoadingView()
+
+        if let `user` = user, let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate {
+          UserDefaultManager.sharedInstance().removeLoginInfo()
+          RedEnvelopComponent.shared.user = user
+          RedEnvelopComponent.shared.userno = "\(prefix)\(accountNo)"
           appDelegate.setHomeAsRootViewControlelr()
+        } else {
+          if let msg = message {
+            this.showAlertMessage(message: msg)
+          }
         }
       }
     }
@@ -127,8 +142,11 @@ class RegisterViewController: BaseViewController {
 
   func checkReferenceCode() {
     if let code = linkCodeTextfield.text, code.count > 0 {
-      UserAPIClient.accountPrefix(prefix: code) { [weak self](success, error) in
-        if success {
+      UserAPIClient.accountPrefix(prefix: code) { [weak self](prefix, error) in
+        self?.prefixLabel.text = prefix
+        self?.prefix = prefix
+
+        if let _ = prefix {
           self?.linkCodeTextfield.showCorrectIcon()
         }else {
           self?.linkCodeTextfield.showErrorIcon()

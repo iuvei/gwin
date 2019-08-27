@@ -154,7 +154,7 @@ extension UIViewController {
 
   func setTitle(title: String) {
     
-    self.navigationController?.setTitle(title: title)
+//    self.navigationController?.setTitle(title: title)
     self.title = title
   }
 
@@ -173,8 +173,8 @@ extension UITextField {
     setRightIcon(imageName: "register_validate_correct")
   }
 
-  func showErrorIcon(){
-    setRightIcon(imageName: "register_validate_error")
+  func showErrorIcon(viewMode: UITextField.ViewMode = .always){
+    setRightIcon(imageName: "register_validate_error", viewMode: viewMode)
   }
 
   func removeValidateIcon() {
@@ -246,6 +246,29 @@ extension Int {
     let digits = string.compactMap{ $0.wholeNumberValue }
     return digits.count
   }
+
+  func numberOfDigits() -> Int {
+    if abs(self) < 10 {
+      return 1
+    } else {
+      return 1 + (self/10).numberOfDigits()
+    }
+  }
+
+  func getDigits() -> [Int] {
+    let num = self.numberOfDigits()
+    var tempNumber = self
+    var digitList = [Int]()
+
+    for i in (0..<num).reversed() {
+      let divider = Int(pow(CGFloat(10), CGFloat(i)))
+      let digit = tempNumber/divider
+      digitList.append(digit)
+      tempNumber -= digit*divider
+    }
+    return digitList
+  }
+  
 }
 
 

@@ -165,11 +165,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
       let item = menuItems[indexPath.row]
       cell.updateContent(data: item, qrcode: self.userInfo?.refercode)
       return cell
-
     }
 
     return UITableViewCell()
-
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
