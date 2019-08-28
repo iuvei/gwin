@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RedEnvelopeViewController: UIViewController {
+class RedEnvelopeViewController: BaseViewController {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var rollMsgLabel: UILabel!
@@ -23,6 +23,11 @@ class RedEnvelopeViewController: UIViewController {
     fetchRoomList()
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    hideBackButton()
+  }
+  
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
   }
@@ -67,6 +72,10 @@ extension RedEnvelopeViewController: UITableViewDelegate, UITableViewDataSource 
     return 0.1
   }
 
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 100
+  }
+
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return rooms.count
   }
@@ -103,6 +112,10 @@ extension RedEnvelopeViewController: UITableViewDelegate, UITableViewDataSource 
         let vc = RoomDetailViewController(userno: userno , room: room)
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
+      } else {
+        if let errorMsg = message {
+          self.showAlertMessage(message: errorMsg)
+        }
       }
     }
   }

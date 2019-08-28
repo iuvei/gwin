@@ -22,7 +22,7 @@ class GrabUserViewCell: UITableViewCell {
   @IBOutlet weak var status2ImageView: UIImageView!
   @IBOutlet weak var status3ImageView: UIImageView!
   
-  @IBOutlet weak var extraLabel: UILabel!
+  @IBOutlet weak var kingImageView: UIImageView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -36,14 +36,16 @@ class GrabUserViewCell: UITableViewCell {
     // Configure the view for the selected state
   }
 
-  func updateViews(model: GrabUserModel) {
+  func updateViews(model: GrabUserModel, packageid: Int64 = 0) {
     wagerTimeLabel.text = model.wagertime
     usernoLabel.text = model.userno
     amountLabel.text = "\(model.packetamount)"
 
     if model.userno == Constant.systemUserno {
       amountLabel.text = "\(Int(model.packetamount)).**"
-      extraLabel.isHidden = true
+      kingImageView.isHidden = !LocalDataManager.shared.isKing(userno: model.userno, packageid: packageid)
+    }else {
+      kingImageView.isHidden = true
     }
 
     if let imgString = ImageManager.shared.getImage(userno: model.userno) {

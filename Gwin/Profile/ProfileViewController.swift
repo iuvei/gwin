@@ -30,8 +30,7 @@ class ProfileViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.edgesForExtendedLayout = []
-
-    // Do any additional setup after loading the view.
+    setTitle(title: "我的")
     initData()
     setupViews()
     fetchUserInfo()

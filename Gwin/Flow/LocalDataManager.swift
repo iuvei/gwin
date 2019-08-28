@@ -112,6 +112,28 @@ class LocalDataManager {
     }
   }
 
+  func isKing(userno: String, packageid: Int64) -> Bool {
+    if let context = getContext() {
+      var packages: [NSManagedObject] = []
+      let fetchRequest =
+        NSFetchRequest<NSManagedObject>(entityName: "PackageInfo")
+
+        fetchRequest.predicate = NSPredicate(format: "userno == %@ AND packageid == %d", userno, packageid)
+
+      //3
+      do {
+        packages = try context.fetch(fetchRequest)
+      } catch let error as NSError {
+        print("Could not fetch. \(error), \(error.userInfo)")
+      }
+      if let first = packages.first {
+        return first.value(forKey: "isbiggest") as? Bool ?? false
+      }
+    }
+
+    return false
+  }
+
   func getContext() -> NSManagedObjectContext? {
     guard let appDelegate =
       UIApplication.shared.delegate as? AppDelegate else {
@@ -128,6 +150,7 @@ class LocalDataManager {
 
     return managedContext
   }
+
 }
 
 

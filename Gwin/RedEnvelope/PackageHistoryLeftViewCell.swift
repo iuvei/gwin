@@ -15,26 +15,33 @@ class PackageHistoryLeftViewCell: UITableViewCell {
   @IBOutlet weak var backgroundImageView: UIImageView!
   @IBOutlet weak var amountLabel: UILabel!
   @IBOutlet weak var wagerTimeLabel: UILabel!
-  
+
   @IBOutlet weak var statusImageView: UIImageView!
+
+  @IBOutlet weak var expiredLabel: UILabel!
+  @IBOutlet weak var evelopNameLabel: UILabel!
+
   override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    super.awakeFromNib()
+    // Initialization code
+    avatarImageView.rounded()
+  }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
+    // Configure the view for the selected state
+  }
 
-  func updateViews(model: PackageHistoryModel, isOpen: Bool){
+  func updateViews(model: PackageHistoryModel, isOpen: Bool, isKing: Bool = false, isBoomed: Bool = false, expired: Bool = false){
     usernameLabel.text = model.userno
-    
+
     if model.packettag.count > 0 {
       amountLabel.text = "\(model.packetamount)-\(model.packettag)"
+      evelopNameLabel.text = "扫雷红包"
     }else {
       amountLabel.text = "\(model.packetamount)"
+      evelopNameLabel.text = "福利红包"
     }
 
     wagerTimeLabel.text = "\(model.packetid) \(model.wagertime)"
@@ -44,10 +51,27 @@ class PackageHistoryLeftViewCell: UITableViewCell {
         avatarImageView.image = image
       }
     }
-      if isOpen {
-        backgroundImageView.image = UIImage(named: "package_left_bg_read")
+    if isOpen {
+      backgroundImageView.image = UIImage(named: "package_left_bg_read")
+    } else {
+      backgroundImageView.image = UIImage(named: "package_left_bg")
+    }
+    if isBoomed {
+      statusImageView.isHidden = false
+      statusImageView.image = UIImage(named: "grabuser_boom")
+    } else {
+      if isKing {
+        statusImageView.isHidden = false
+        statusImageView.image = UIImage(named: "grabuser_king")
       } else {
-        backgroundImageView.image = UIImage(named: "package_left_bg")
+        statusImageView.isHidden = true
       }
+    }
+    if expired{
+      expiredLabel.text = "红包已过期"
+    }else{
+      expiredLabel.text = "红包炸雷"
+    }
   }
 }
+

@@ -18,12 +18,13 @@ class GrabUserModel {
   var status: String?
 
   init(json: JSON) {
-     userno = json["userno"].stringValue                  // string,
-     username = json["username"].stringValue                  // string,
-     packetamount = json["packetamount"].floatValue                  // Number,
-     packettag = json["packettag"].stringValue             // string, 玩法名称
-     winnings = json["winnings"].floatValue                  // Number, 盈亏
-     wagertime = json["wagertime"].stringValue
+    userno = json["userno"].stringValue                  // string,
+    username = json["username"].stringValue                  // string,
+    packetamount = json["packetamount"].floatValue                  // Number,
+    packettag = json["packettag"].stringValue             // string, 玩法名称
+    winnings = json["winnings"].floatValue                  // Number, 盈亏
+    wagertime = json["wagertime"].stringValue
     status = json["status"].string
   }
 }
+

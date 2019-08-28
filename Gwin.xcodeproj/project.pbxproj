@@ -98,6 +98,8 @@
 		D1E00DBA2313881000554CA4 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00DB92313881000554CA4 /* LocalDataManager.swift */; };
 		D1E00DBD2313B77F00554CA4 /* GameRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00DBC2313B77F00554CA4 /* GameRoomViewController.swift */; };
 		D1E00DBF23140E4300554CA4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E00DBE23140E3200554CA4 /* QuartzCore.framework */; };
+		D1EA0E6A2316355F0096B7D1 /* BullListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0E692316355F0096B7D1 /* BullListViewController.swift */; };
+		D1EA0E6C23163B340096B7D1 /* LotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0E6B23163B340096B7D1 /* LotteryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -196,6 +198,8 @@
 		D1E00DB92313881000554CA4 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
 		D1E00DBC2313B77F00554CA4 /* GameRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoomViewController.swift; sourceTree = "<group>"; };
 		D1E00DBE23140E3200554CA4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D1EA0E692316355F0096B7D1 /* BullListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullListViewController.swift; sourceTree = "<group>"; };
+		D1EA0E6B23163B340096B7D1 /* LotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryViewController.swift; sourceTree = "<group>"; };
 		F8455A52255EC42C57478B9D /* Pods-Gwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gwin.release.xcconfig"; path = "Target Support Files/Pods-Gwin/Pods-Gwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -311,6 +315,7 @@
 		D10067B52309AC9700114F6E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D1EA0E6B23163B340096B7D1 /* LotteryViewController.swift */,
 				D10067B82309AFAF00114F6E /* Carousel */,
 				D10067B62309ACB800114F6E /* HomeViewController.swift */,
 				D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */,
@@ -596,6 +601,7 @@
 			isa = PBXGroup;
 			children = (
 				D1E00DBC2313B77F00554CA4 /* GameRoomViewController.swift */,
+				D1EA0E692316355F0096B7D1 /* BullListViewController.swift */,
 			);
 			path = BullGame;
 			sourceTree = "<group>";
@@ -770,6 +776,7 @@
 				D1E00DA62311302E00554CA4 /* CreateEnvelopType2ViewController.swift in Sources */,
 				D1E00D9623110A7100554CA4 /* PackageHistoryLeftViewCell.swift in Sources */,
 				D1E00DBA2313881000554CA4 /* LocalDataManager.swift in Sources */,
+				D1EA0E6C23163B340096B7D1 /* LotteryViewController.swift in Sources */,
 				D175C4D4230BD5A1001B8DC6 /* LoginInteractor.swift in Sources */,
 				D1E00D7D230FEAFB00554CA4 /* BullPackageHistoryModel.swift in Sources */,
 				D1E00D9E2311115200554CA4 /* CreateEnvelopViewController.swift in Sources */,
@@ -835,6 +842,7 @@
 				D175C4EE230C35CE001B8DC6 /* RegisterViewController.swift in Sources */,
 				D175C4E7230C2177001B8DC6 /* WellcomeViewController.swift in Sources */,
 				D175C527230D0E46001B8DC6 /* HomeBuilder.swift in Sources */,
+				D1EA0E6A2316355F0096B7D1 /* BullListViewController.swift in Sources */,
 				D1E00DA2231119AC00554CA4 /* PackageInfoViewController.swift in Sources */,
 				D175C4D0230BD4B2001B8DC6 /* LoginBuilder.swift in Sources */,
 				D1E00D01230E9CFC00554CA4 /* RoomModel.swift in Sources */,

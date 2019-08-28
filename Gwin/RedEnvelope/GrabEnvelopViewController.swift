@@ -20,6 +20,8 @@ class GrabEnvelopViewController: UIViewController {
 
   @IBOutlet weak var usernoLabel: UILabel!
   @IBOutlet weak var amountLabel: UILabel!
+
+  @IBOutlet weak var continueButton: UIButton!
   var package: PackageHistoryModel
   var delegate: GrabEnvelopPopupDelegate?
   init(package: PackageHistoryModel, delegate: GrabEnvelopPopupDelegate? = nil) {
@@ -67,6 +69,7 @@ class GrabEnvelopViewController: UIViewController {
 
       if hour > Double(RedEnvelopComponent.limitTime) {
         grabButton.isHidden = true
+        continueButton.isHidden = false
       }
     }
   }
@@ -82,8 +85,12 @@ class GrabEnvelopViewController: UIViewController {
     RedEnvelopAPIClient.statusPackage(ticket: user.ticket, roomid: package.roomid, packageid: package.packetid) {[weak self] (status, errorMessage) in
       if let `status` = status, status == .canGrab {
         self?.grabButton.isHidden = false
+        self?.continueButton.isHidden = true
+
       }else {
         self?.grabButton.isHidden = true
+        self?.continueButton.isHidden = false
+
       }
     }
   }

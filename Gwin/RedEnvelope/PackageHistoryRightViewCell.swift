@@ -16,25 +16,31 @@ class PackageHistoryRightViewCell: UITableViewCell {
   @IBOutlet weak var amountLabel: UILabel!
   @IBOutlet weak var wagerTimeLabel: UILabel!
   @IBOutlet weak var statusImageView: UIImageView!
-  
+
+  @IBOutlet weak var envelopNameLabel: UILabel!
+  @IBOutlet weak var expiredLabel: UILabel!
   override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-      usernameLabel.textAlignment = .right
-    }
+    super.awakeFromNib()
+    // Initialization code
+    usernameLabel.textAlignment = .right
+    avatarImageView.rounded()
+  }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
-  func updateViews(model: PackageHistoryModel, isOpen: Bool, isKing: Bool = false, isBoomed: Bool = false){
+    // Configure the view for the selected state
+  }
+  
+  func updateViews(model: PackageHistoryModel, isOpen: Bool, isKing: Bool = false, isBoomed: Bool = false, expired: Bool = false){
     usernameLabel.text = model.userno
-    
+
     if model.packettag.count > 0 {
       amountLabel.text = "\(model.packetamount)-\(model.packettag)"
+      envelopNameLabel.text = "扫雷红包"
     }else {
       amountLabel.text = "\(model.packetamount)"
+      envelopNameLabel.text = "福利红包"
     }
 
     wagerTimeLabel.text = "\(model.packetid) \(model.wagertime)"
@@ -64,5 +70,12 @@ class PackageHistoryRightViewCell: UITableViewCell {
         statusImageView.isHidden = true
       }
     }
+
+    if expired{
+      expiredLabel.text = "红包已过期"
+    }else{
+      expiredLabel.text = "红包炸雷"
+    }
   }
 }
+

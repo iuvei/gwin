@@ -59,10 +59,10 @@
             </objects>
             <point key="canvasLocation" x="-670" y="143"/>
         </scene>
-        <!--View Controller-->
+        <!--Lottery View Controller-->
         <scene sceneID="ZId-xk-tgY">
             <objects>
-                <viewController id="lhH-os-8GX" sceneMemberID="viewController">
+                <viewController id="lhH-os-8GX" customClass="LotteryViewController" customModule="Gwin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="79t-wu-gS5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

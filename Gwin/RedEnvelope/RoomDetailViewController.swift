@@ -394,6 +394,20 @@ extension RoomDetailViewController {
     return false
   }
 
+  func isPackageExpeire(wagertime: String) -> Bool{
+
+    let packageDate = wagertime.toDate()
+    if let systemtime = RedEnvelopComponent.shared.systemtime {
+      let timeinterval = systemtime - packageDate
+      let mins = timeinterval / (60)
+
+      return mins > Double(RedEnvelopComponent.limitTime)
+    }
+
+    return false
+  }
+
+
   private func updateCellAsOpened(packageid: Int64){
     var rowIndex: Int = -1
     for i in 0 ..< histories.count {
@@ -431,18 +445,19 @@ extension RoomDetailViewController: UITableViewDelegate, UITableViewDataSource {
     let isOpen = isOpenPackage(packageid: model.packetid)
     let isBoom = isBoomed(packageid: model.packetid)
     let isKing = isBiggest(packageid: model.packetid)
-    
+    let isExpired = isPackageExpeire(wagertime: model.wagertime)
+
     print("isopen : \(isOpen)")
     if userno != model.userno {
       if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
         cell.selectionStyle = .none
-        cell.updateViews(model: model, isOpen:isOpen)
+        cell.updateViews(model: model, isOpen:isOpen, isKing: isKing, isBoomed: isBoom, expired: isExpired)
         return cell
       }
     } else {
       if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryRightViewCell", for: indexPath) as? PackageHistoryRightViewCell {
         cell.selectionStyle = .none
-        cell.updateViews(model: model, isOpen: isOpen)
+        cell.updateViews(model: model, isOpen: isOpen, isKing: isKing, isBoomed:isBoom, expired: isExpired)
         return cell
       }
     }
@@ -526,9 +541,7 @@ extension RoomDetailViewController: GrabEnvelopPopupDelegate {
     if let saved = LocalDataManager.shared.savePackage(userno: userno, packageid: packageid, status: isBoomed, isbiggest: isbiggest) {
       openPackages.append(saved)
       updateCellAsOpened(packageid: packageid)
-      //        DispatchQueue.main.async { [weak self] in
-      //          self?.tableView.reloadData()
-      //        }
+      updateNotifyView()
     }
     //    }
 
@@ -543,13 +556,13 @@ extension RoomDetailViewController: GrabEnvelopPopupDelegate {
 
 extension RoomDetailViewController {
   fileprivate func updateNotifyView() {
-    if let lastVisibleIndexPath = tableView.indexPathsForVisibleRows?.last {
-      let lastRow = lastVisibleIndexPath.row
-      let unshowRow = histories.count - (lastRow + 1)
+//    if let lastVisibleIndexPath = tableView.indexPathsForVisibleRows?.last {
+//      let lastRow = lastVisibleIndexPath.row
+      let notOpenPackage = histories.count - openPackages.count
 
-      notifyLabel.text = "\(unshowRow)"
-      notifyView.isHidden = unshowRow <= 0
-    }
+      notifyLabel.text = "\(notOpenPackage)"
+      notifyView.isHidden = notOpenPackage <= 0
+//    }
   }
 }
 

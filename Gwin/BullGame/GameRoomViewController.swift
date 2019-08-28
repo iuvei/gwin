@@ -88,11 +88,11 @@ extension GameRoomViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let model  = rooms[indexPath.row]
 
-//    if model.roomPwd.count > 0 {
-//      showInputPassword(room: model)
-//    } else {
-//      doLogin(room: model)
-//    }
+    if model.roomPwd.count > 0 {
+      showInputPassword(room: model)
+    } else {
+      doLogin(room: model)
+    }
   }
 }
 

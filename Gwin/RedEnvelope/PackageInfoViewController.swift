@@ -60,7 +60,7 @@ class PackageInfoViewController: BaseViewController {
       if let `info` = info {
         this.amounLabel.text = "\(info.packetamount)-\(info.packettag)"
         this.usernoLabel.text = info.userno
-        this.wagerTimeLabel.text = "已领取\(info.packettype)／\(info.packetsize)个／共**／\(info.packetamount)元"
+        this.wagerTimeLabel.text = "已领取\(info.packettype)／\(info.packetsize)个／共*.**／\(info.packetamount)元"
         this.model = info
         this.tableView.reloadData()
         this.fetchAvatarImage()
@@ -107,6 +107,7 @@ class PackageInfoViewController: BaseViewController {
   override func backPressed(_ sender: UIButton) {
     dismiss(animated: true, completion: nil)
   }
+
 }
 
 
@@ -127,10 +128,12 @@ extension PackageInfoViewController: UITableViewDelegate, UITableViewDataSource 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "GrabUserViewCell", for: indexPath) as? GrabUserViewCell {
       if let model = self.model?.grabuser[indexPath.row] {
-        cell.updateViews(model: model)
+        cell.updateViews(model: model, packageid: packageid)
       }
+
       return cell
     }
+    
     return UITableViewCell()
   }
 }
