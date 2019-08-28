@@ -20,7 +20,7 @@ class MessagePopupController: UIViewController {
 
   private lazy var headerView: UIView = {
     let view = UIView().forAutolayout()
-    view.backgroundColor = UIColor(hexString: "D66850")
+    view.backgroundColor = UIColor(hexString: "e75f48")
     return view
   }()
 

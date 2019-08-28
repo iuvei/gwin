@@ -42,7 +42,7 @@
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" textContentType="password"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHY-ax-RQG">
                     <rect key="frame" x="16" y="204" width="25" height="25"/>
@@ -51,7 +51,8 @@
                         <constraint firstAttribute="width" secondItem="oHY-ax-RQG" secondAttribute="height" multiplier="1:1" id="mCf-o5-aIH"/>
                         <constraint firstAttribute="height" constant="30" id="rmj-q0-e1t"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" image="login_box_uncheck"/>
+                    <state key="selected" image="login_box_check"/>
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="rmj-q0-e1t"/>
@@ -69,7 +70,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKZ-m3-0Ya">
                     <rect key="frame" x="16" y="269" width="382" height="40"/>
-                    <color key="backgroundColor" red="0.84313725490196079" green="0.40392156862745099" blue="0.32156862745098036" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" red="0.90588235294117647" green="0.37254901960784315" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Z9L-pn-qFH"/>
                     </constraints>
@@ -99,4 +100,8 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
+    <resources>
+        <image name="login_box_check" width="24" height="24"/>
+        <image name="login_box_uncheck" width="13" height="13"/>
+    </resources>
 </document>

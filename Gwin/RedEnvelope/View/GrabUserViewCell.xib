@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="127.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_item_1" translatesAutoresizingMaskIntoConstraints="NO" id="elD-PR-pku">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grabuser_system" translatesAutoresizingMaskIntoConstraints="NO" id="elD-PR-pku">
                         <rect key="frame" x="10" y="10" width="107.5" height="107.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="elD-PR-pku" secondAttribute="height" id="ZGY-ea-07m"/>
@@ -38,37 +38,71 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiy-oJ-1Va">
-                        <rect key="frame" x="268" y="10" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="272.5" y="10" width="37.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBJ-IM-6Ym">
-                        <rect key="frame" x="268" y="41" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GsU-t8-cET">
+                        <rect key="frame" x="222" y="15" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="5RB-Ue-RNe"/>
+                            <constraint firstAttribute="height" constant="35" id="mzR-q3-0pw"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eiu-gw-geO">
+                        <rect key="frame" x="185" y="15" width="35" height="35"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vdo-f6-MaK">
+                        <rect key="frame" x="148" y="15" width="35" height="35"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grabuser_status_4" translatesAutoresizingMaskIntoConstraints="NO" id="1sB-UR-ZxI">
+                        <rect key="frame" x="260" y="31" width="50" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="MZ2-gP-8eQ"/>
+                            <constraint firstAttribute="height" constant="15" id="zvc-et-O1n"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="elD-PR-pku" secondAttribute="bottom" constant="10" id="0JN-7K-zb5"/>
                     <constraint firstItem="yM5-qo-N3h" firstAttribute="top" secondItem="hKF-nC-47A" secondAttribute="bottom" constant="10" id="0Sr-Qn-hrG"/>
-                    <constraint firstAttribute="trailing" secondItem="eBJ-IM-6Ym" secondAttribute="trailing" constant="10" id="2EH-fN-0Qp"/>
+                    <constraint firstAttribute="trailing" secondItem="1sB-UR-ZxI" secondAttribute="trailing" constant="10" id="0fq-dl-6bn"/>
+                    <constraint firstItem="GsU-t8-cET" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="4HJ-ho-Ijb"/>
+                    <constraint firstItem="GsU-t8-cET" firstAttribute="trailing" secondItem="1sB-UR-ZxI" secondAttribute="leading" constant="-3" id="4Ht-hI-A21"/>
+                    <constraint firstItem="eiu-gw-geO" firstAttribute="width" secondItem="GsU-t8-cET" secondAttribute="width" id="ApQ-Vl-wrQ"/>
+                    <constraint firstItem="Vdo-f6-MaK" firstAttribute="width" secondItem="eiu-gw-geO" secondAttribute="width" id="Bbj-5c-vq7"/>
+                    <constraint firstItem="Vdo-f6-MaK" firstAttribute="height" secondItem="eiu-gw-geO" secondAttribute="height" id="ENJ-bb-6IC"/>
                     <constraint firstItem="hKF-nC-47A" firstAttribute="leading" secondItem="elD-PR-pku" secondAttribute="trailing" constant="5" id="GTK-LA-I8I"/>
+                    <constraint firstItem="1sB-UR-ZxI" firstAttribute="top" secondItem="tiy-oJ-1Va" secondAttribute="bottom" constant="3" id="JR4-8H-vje"/>
+                    <constraint firstItem="eiu-gw-geO" firstAttribute="height" secondItem="GsU-t8-cET" secondAttribute="height" id="JZC-8c-cKC"/>
                     <constraint firstItem="tiy-oJ-1Va" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="SZF-IR-Rau"/>
-                    <constraint firstItem="eBJ-IM-6Ym" firstAttribute="top" secondItem="tiy-oJ-1Va" secondAttribute="bottom" constant="10" id="ZIn-FA-iPY"/>
+                    <constraint firstItem="eiu-gw-geO" firstAttribute="centerY" secondItem="GsU-t8-cET" secondAttribute="centerY" id="X70-ta-eYb"/>
                     <constraint firstAttribute="trailing" secondItem="tiy-oJ-1Va" secondAttribute="trailing" constant="10" id="bkT-XD-kWG"/>
+                    <constraint firstItem="GsU-t8-cET" firstAttribute="leading" secondItem="eiu-gw-geO" secondAttribute="trailing" constant="2" id="dwu-yG-ZrF"/>
                     <constraint firstItem="hKF-nC-47A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="jP5-dg-ahu"/>
                     <constraint firstItem="elD-PR-pku" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="klE-o3-pgr"/>
                     <constraint firstItem="yM5-qo-N3h" firstAttribute="leading" secondItem="elD-PR-pku" secondAttribute="trailing" constant="5" id="kqD-4r-xkO"/>
+                    <constraint firstItem="eiu-gw-geO" firstAttribute="leading" secondItem="Vdo-f6-MaK" secondAttribute="trailing" constant="2" id="nze-Ne-OXW"/>
+                    <constraint firstItem="GsU-t8-cET" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pqX-A0-hEg"/>
                     <constraint firstItem="elD-PR-pku" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sjb-5A-pQT"/>
                     <constraint firstItem="elD-PR-pku" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="tJp-m2-FPl"/>
+                    <constraint firstItem="Vdo-f6-MaK" firstAttribute="centerY" secondItem="eiu-gw-geO" secondAttribute="centerY" id="xbe-00-HNO"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="pqX-A0-hEg"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="amountLabel" destination="tiy-oJ-1Va" id="hgq-oc-3Y6"/>
                 <outlet property="avatarImageView" destination="elD-PR-pku" id="vEc-bG-216"/>
+                <outlet property="kingImageView" destination="1sB-UR-ZxI" id="3aX-Bj-mD2"/>
+                <outlet property="status2ImageView" destination="eiu-gw-geO" id="wFz-mg-92P"/>
+                <outlet property="status3ImageView" destination="Vdo-f6-MaK" id="iaK-cP-9GU"/>
+                <outlet property="statusImageView" destination="GsU-t8-cET" id="KOj-7l-kF3"/>
                 <outlet property="usernoLabel" destination="hKF-nC-47A" id="Fox-X8-LGh"/>
                 <outlet property="wagerTimeLabel" destination="yM5-qo-N3h" id="qLa-Pi-yVU"/>
             </connections>
@@ -76,6 +110,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="profile_item_1" width="90" height="90"/>
+        <image name="grabuser_status_4" width="86" height="20"/>
+        <image name="grabuser_system" width="70" height="70"/>
     </resources>
 </document>

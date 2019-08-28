@@ -9,6 +9,36 @@
 import Foundation
 import UIKit
 
+typealias GradientPoints = (startPoint: CGPoint, endPoint: CGPoint)
+
+enum GradientOrientation {
+  case topRightBottomLeft
+  case topLeftBottomRight
+  case horizontal
+  case vertical
+
+  var startPoint: CGPoint {
+    return points.startPoint
+  }
+
+  var endPoint: CGPoint {
+    return points.endPoint
+  }
+
+  var points: GradientPoints {
+    switch self {
+    case .topRightBottomLeft:
+      return (CGPoint.init(x: 0.0, y: 1.0), CGPoint.init(x: 1.0, y: 0.0))
+    case .topLeftBottomRight:
+      return (CGPoint.init(x: 0.0, y: 0.0), CGPoint.init(x: 1, y: 1))
+    case .horizontal:
+      return (CGPoint.init(x: 0.0, y: 0.5), CGPoint.init(x: 1.0, y: 0.5))
+    case .vertical:
+      return (CGPoint.init(x: 0.0, y: 0.0), CGPoint.init(x: 0.0, y: 1.0))
+    }
+  }
+}
+
 extension UIStackView {
 
   func removeAllArrangedSubviews() {
@@ -59,6 +89,27 @@ extension UIView {
 
       ])
   }
+  
+  func applyGradient(colours: [UIColor]) -> Void {
+    self.applyGradient(colours: colours, locations: nil)
+  }
+
+  func applyGradient(colours: [UIColor], locations: [NSNumber]?) -> Void {
+    let gradient: CAGradientLayer = CAGradientLayer()
+    gradient.frame = self.bounds
+    gradient.colors = colours.map { $0.cgColor }
+    gradient.locations = locations
+    self.layer.insertSublayer(gradient, at: 0)
+  }
+
+  func applyGradient(withColours colours: [UIColor], gradientOrientation orientation: GradientOrientation = .horizontal) {
+    let gradient: CAGradientLayer = CAGradientLayer()
+    gradient.frame = self.bounds
+    gradient.colors = colours.map { $0.cgColor }
+    gradient.startPoint = orientation.startPoint
+    gradient.endPoint = orientation.endPoint
+    self.layer.insertSublayer(gradient, at: 0)
+  }
 
   @discardableResult
   public func forAutolayout() -> Self {
@@ -103,18 +154,54 @@ extension UIViewController {
 
   func setTitle(title: String) {
     
-    self.navigationController?.setTitle(title: title)
+//    self.navigationController?.setTitle(title: title)
+    self.title = title
   }
 
 }
 
 extension UITextField {
   func setLeftIcon(imageName: String, viewMode: UITextField.ViewMode = .always) {
-    let leftIcon = UIImageView(frame: CGRect(x: 5, y: 5, width: 30, height: 30))
-    leftIcon.image = UIImage(named: imageName)
-    leftIcon.contentMode = .scaleAspectFit
-    leftView = leftIcon
+    let icon = UIImageView(frame: CGRect(x: 5, y: 5, width: 30, height: 30))
+    icon.image = UIImage(named: imageName)
+    icon.contentMode = .scaleAspectFit
+    leftView = icon
     leftViewMode = viewMode
+  }
+
+  func showCorrectIcon(){
+    setRightIcon(imageName: "register_validate_correct")
+  }
+
+  func showErrorIcon(viewMode: UITextField.ViewMode = .always){
+    setRightIcon(imageName: "register_validate_error", viewMode: viewMode)
+  }
+
+  func removeValidateIcon() {
+    setRightIcon(imageName: nil)
+  }
+
+  func setRightIcon(imageName: String? = nil, viewMode: UITextField.ViewMode = .always) {
+    let icon = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+    var image: UIImage? = nil
+
+    if imageName == nil {
+      image = nil
+    }else {
+      image = UIImage(named: imageName!)
+    }
+
+    icon.setImage(image, for: .normal)
+    icon.imageView?.contentMode = .scaleAspectFit
+    icon.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    rightView = icon
+    rightViewMode = viewMode
+  }
+
+  func addPaddingLeft() {
+    let icon = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 30))
+    leftView = icon
+    leftViewMode = .always
   }
 }
 
@@ -159,6 +246,29 @@ extension Int {
     let digits = string.compactMap{ $0.wholeNumberValue }
     return digits.count
   }
+
+  func numberOfDigits() -> Int {
+    if abs(self) < 10 {
+      return 1
+    } else {
+      return 1 + (self/10).numberOfDigits()
+    }
+  }
+
+  func getDigits() -> [Int] {
+    let num = self.numberOfDigits()
+    var tempNumber = self
+    var digitList = [Int]()
+
+    for i in (0..<num).reversed() {
+      let divider = Int(pow(CGFloat(10), CGFloat(i)))
+      let digit = tempNumber/divider
+      digitList.append(digit)
+      tempNumber -= digit*divider
+    }
+    return digitList
+  }
+  
 }
 
 

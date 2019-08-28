@@ -12,15 +12,16 @@ import UIKit
 class TitleStackView: UIView {
   private lazy var prefixLabel: UILabel = {
     let label = UILabel().forAutolayout()
-
+    label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
     return label
   }()
 
   private lazy var titleLabel: UILabel = {
-    let title = UILabel().forAutolayout()
-    title.textColor = .gray
-    title.textAlignment = .left
-    return title
+    let label = UILabel().forAutolayout()
+    label.font = UIFont.systemFont(ofSize: 15)
+    label.textColor = .gray
+    label.textAlignment = .left
+    return label
   }()
 
   private lazy var stackView: UIStackView = {

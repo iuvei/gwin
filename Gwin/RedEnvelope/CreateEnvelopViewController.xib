@@ -31,7 +31,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xzC-QJ-XHy">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$$$" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUE-gb-xlQ">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¥ 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUE-gb-xlQ">
                                     <rect key="frame" x="20" y="20" width="374" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="qPp-Sj-GUE"/>
@@ -102,8 +102,8 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 </textField>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8A-NP-poF">
-                                    <rect key="frame" x="16" y="284" width="42" height="21"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="雷数  范围 0-9 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8A-NP-poF">
+                                    <rect key="frame" x="16" y="284" width="115.5" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -183,7 +183,7 @@
                         <constraint firstItem="xzC-QJ-XHy" firstAttribute="leading" secondItem="Wwj-cj-dbY" secondAttribute="leading" id="RAL-ra-QeB"/>
                         <constraint firstAttribute="trailing" secondItem="xzC-QJ-XHy" secondAttribute="trailing" id="XLy-sK-ane"/>
                         <constraint firstItem="xzC-QJ-XHy" firstAttribute="top" secondItem="Wwj-cj-dbY" secondAttribute="top" id="es6-l9-n9X"/>
-                        <constraint firstAttribute="bottom" secondItem="xzC-QJ-XHy" secondAttribute="bottom" id="f7h-N1-lcn"/>
+                        <constraint firstAttribute="bottom" secondItem="xzC-QJ-XHy" secondAttribute="bottom" id="f7h-N1-lcn" customClass="KeyboardLayoutConstraint" customModule="Gwin" customModuleProvider="target"/>
                         <constraint firstItem="xzC-QJ-XHy" firstAttribute="width" secondItem="Wwj-cj-dbY" secondAttribute="width" id="kJy-At-Dig"/>
                     </constraints>
                 </scrollView>
@@ -193,7 +193,7 @@
                 <constraint firstItem="Wwj-cj-dbY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="61Q-Wq-wvx"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wwj-cj-dbY" secondAttribute="trailing" id="ITX-oG-mFx"/>
                 <constraint firstItem="Wwj-cj-dbY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="cBQ-hZ-6I3"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Wwj-cj-dbY" secondAttribute="bottom" id="oqn-Of-wg2" customClass="KeyboardLayoutConstraint" customModule="Gwin" customModuleProvider="target"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Wwj-cj-dbY" secondAttribute="bottom" id="oqn-Of-wg2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

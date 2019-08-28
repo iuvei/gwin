@@ -81,8 +81,14 @@ class UserAPIClient {
     Alamofire.request(UserAPIRouter.register(accountNo, password, code, cellphone)).responseJSON { (responseData) in
       if((responseData.result.value) != nil) {
         let jsonResponse = JSON(responseData.result.value!)
-        let user = User(dictionary: jsonResponse)
-        completion(user,nil)
+        let code = jsonResponse["code"].intValue
+        let msg = jsonResponse["msg"].string
+        if code == 1{
+          let user = User(dictionary: jsonResponse)
+          completion(user,nil)
+        }else {
+          completion(nil,msg)
+        }
       } else {
         completion(nil,responseData.error?.localizedDescription)
       }
@@ -134,6 +140,7 @@ class UserAPIClient {
         let code = jsonResponse["code"].boolValue
         let msg = jsonResponse["msg"].stringValue
         if code, let delegate = UIApplication.shared.delegate as? AppDelegate {
+            UserDefaultManager.sharedInstance().removeAutoLogin()
             delegate.stopFetchUserStatus()
         }
         
@@ -159,15 +166,22 @@ class UserAPIClient {
     }
   }
 
-  static func accountPrefix( prefix: String, completion: @escaping (Bool, String?) -> Void) {
+  static func accountPrefix( prefix: String, completion: @escaping (String?, String?) -> Void) {
     Alamofire.request(UserAPIRouter.accountPrefix(prefix)).responseJSON { (responseData) in
       if((responseData.result.value) != nil) {
         let jsonResponse = JSON(responseData.result.value!)
-        let code = jsonResponse["code"].boolValue
+        let code = jsonResponse["code"].intValue
         let msg = jsonResponse["msg"].stringValue
-        completion(code, msg)
+        var prefix: String? = nil
+
+        if code == 1 {
+          prefix = jsonResponse["data"].stringValue
+        }
+        
+        completion(prefix,responseData.error?.localizedDescription)
+
       } else {
-        completion(false,responseData.error?.localizedDescription)
+        completion(nil,responseData.error?.localizedDescription)
       }
     }
   }

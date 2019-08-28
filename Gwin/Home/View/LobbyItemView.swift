@@ -32,35 +32,43 @@ protocol LobbyItemViewOuput: AnyObject {
 class LobbyItemView: UIView {
 
   private lazy var stackView: UIStackView = {
-    let view = UIStackView()
-    view.translatesAutoresizingMaskIntoConstraints = false
+    let view = UIStackView().forAutolayout()
     view.axis = self.axis
     view.distribution = .fill
     return view
   }()
 
+  private lazy var textStackView: UIView = {
+    let view = UIView().forAutolayout()
+    return view
+  }()
+
   private lazy var coverButton: UIButton = {
-    let view = UIButton()
-    view.translatesAutoresizingMaskIntoConstraints = false
+    let view = UIButton().forAutolayout()
     view.isUserInteractionEnabled = true
     view.addTarget(self, action: #selector(lobbyItemPressed(_:)), for: .touchUpInside)
     return view
   }()
 
   private var imageView: UIImageView = {
-    let view = UIImageView()
-    view.translatesAutoresizingMaskIntoConstraints = false
+    let view = UIImageView().forAutolayout()
     view.contentMode = .scaleAspectFit
     return view
   }()
 
   private var titleLabel: UILabel = {
-    let view = UILabel()
-    view.translatesAutoresizingMaskIntoConstraints = false
+    let view = UILabel().forAutolayout()
     view.textAlignment = .center
     view.numberOfLines = 0
     view.font = UIFont.systemFont(ofSize: 14)
     return view
+  }()
+
+  private var subtitleLAbel: UILabel = {
+    let label = UILabel().forAutolayout()
+    label.textColor = .gray
+    label.font = UIFont.systemFont(ofSize: 14)
+    return label
   }()
 
   private let model: LobbyItemModel!
@@ -95,8 +103,8 @@ class LobbyItemView: UIView {
       ])
 
     stackView.addArrangedSubview(imageView)
-    stackView.addArrangedSubview(titleLabel)
     if axis == .vertical {
+      stackView.addArrangedSubview(titleLabel)
       NSLayoutConstraint.activate([
         imageView.topAnchor.constraint(equalTo: stackView.topAnchor),
         imageView.leftAnchor.constraint(equalTo: stackView.leftAnchor),
@@ -110,15 +118,28 @@ class LobbyItemView: UIView {
         imageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor)
         ])
     } else if axis == .horizontal {
+      stackView.addArrangedSubview(textStackView)
+      textStackView.addSubview(titleLabel)
+      textStackView.addSubview(subtitleLAbel)
+
       NSLayoutConstraint.activate([
         imageView.topAnchor.constraint(equalTo: stackView.topAnchor),
         imageView.leftAnchor.constraint(equalTo: stackView.leftAnchor),
         imageView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
         imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
 
-        titleLabel.leftAnchor.constraint(equalTo: imageView.rightAnchor),
-        titleLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor),
-        titleLabel.centerYAnchor.constraint(equalTo: stackView.centerYAnchor)
+        textStackView.leftAnchor.constraint(equalTo: imageView.rightAnchor),
+        textStackView.rightAnchor.constraint(equalTo: stackView.rightAnchor),
+        textStackView.centerYAnchor.constraint(equalTo: stackView.centerYAnchor),
+        
+        titleLabel.heightAnchor.constraint(equalToConstant: 25),
+        titleLabel.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor, constant: -12),
+        titleLabel.leftAnchor.constraint(equalTo: textStackView.leftAnchor),
+
+        subtitleLAbel.heightAnchor.constraint(equalToConstant: 25),
+        subtitleLAbel.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor, constant: 12),
+        subtitleLAbel.leftAnchor.constraint(equalTo: textStackView.leftAnchor),
+
         ])
     }
   }
@@ -126,6 +147,9 @@ class LobbyItemView: UIView {
   func updateView() {
     imageView.image = UIImage(named: model.icon)
     titleLabel.text = model.name
+    if axis == .horizontal {
+      subtitleLAbel.text = "开放中"
+    }
   }
 
   @objc func lobbyItemPressed(_ sender: UIButton) {

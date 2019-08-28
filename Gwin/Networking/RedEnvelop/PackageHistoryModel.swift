@@ -16,6 +16,7 @@ class PackageHistoryModel {
   var packetamount: Int                   // Int,
   var packettag: String                 // string, 雷数[0-9] ""为福利包
   var wagertime: String                   // string,
+  var status: String?
 
   init(json: JSON) {
      roomid = json["roomid"].intValue                   // int,
@@ -25,5 +26,14 @@ class PackageHistoryModel {
      packetamount = json["packetamount"].intValue                 // Int,
      packettag = json["packettag"].stringValue                 // string, 雷数[0-9] ""为福利包
      wagertime = json["wagertime"].stringValue                   // string,
+  }
+
+  func isBoomStatus() -> Bool {
+    if let `status` = status, let statusValue = Int(status) {
+      let digits = statusValue.getDigits()
+      return digits.filter{ return $0 == 1 }.count > 0
+    }
+
+    return false
   }
 }

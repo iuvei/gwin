@@ -92,7 +92,7 @@ public enum UserAPIRouter: URLRequestConvertible {
     case .otherH5(let ticket, let optype):
       return ["ticket" : ticket , "data" : ["optype" : optype]]
     case .accountPrefix(let prefix):
-      return ["data" : ["prefix" : prefix]]
+      return ["data" : ["code" : prefix]]
     case .uploadImg(let ticket, let userno, let imageData):
       return ["ticket" : ticket , "data" : ["userno" : userno, "img": imageData]]
     case .listImage(let ticket, let usernos):

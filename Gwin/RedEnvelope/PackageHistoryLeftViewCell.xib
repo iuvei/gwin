@@ -47,16 +47,31 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7A-fG-8Sa">
-                                <rect key="frame" x="80" y="44" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扫雷红包" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7A-fG-8Sa">
+                                <rect key="frame" x="80" y="44" width="69.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tJ2-ZO-lS3">
+                                <rect key="frame" x="180" y="0.0" width="60" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tJ2-ZO-lS3" secondAttribute="height" multiplier="1:1" constant="1" id="IJu-QR-3Z8"/>
+                                    <constraint firstAttribute="height" constant="50" id="P6K-U0-MoK"/>
+                                    <constraint firstAttribute="width" constant="60" id="y2z-Mv-bo4"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="P6K-U0-MoK"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="80" id="18t-s0-FM9"/>
+                            <constraint firstItem="tJ2-ZO-lS3" firstAttribute="centerY" secondItem="8b3-9f-7m3" secondAttribute="centerY" id="43d-Tf-7AF"/>
+                            <constraint firstItem="tJ2-ZO-lS3" firstAttribute="trailing" secondItem="NrB-VO-2Ce" secondAttribute="trailing" id="Ev4-1q-Qrn"/>
                             <constraint firstAttribute="bottom" secondItem="NrB-VO-2Ce" secondAttribute="bottom" id="FT6-JY-Bz0"/>
                             <constraint firstItem="NrB-VO-2Ce" firstAttribute="top" secondItem="8b3-9f-7m3" secondAttribute="top" id="NPI-fa-n2A"/>
                             <constraint firstItem="b7A-fG-8Sa" firstAttribute="top" secondItem="oRE-Et-hyb" secondAttribute="bottom" constant="8" id="Q2p-fR-wXI"/>
@@ -64,17 +79,23 @@
                             <constraint firstItem="b7A-fG-8Sa" firstAttribute="leading" secondItem="oRE-Et-hyb" secondAttribute="leading" id="d81-fj-K72"/>
                             <constraint firstItem="oRE-Et-hyb" firstAttribute="leading" secondItem="8b3-9f-7m3" secondAttribute="leading" constant="80" id="pYd-k3-hWG"/>
                             <constraint firstItem="oRE-Et-hyb" firstAttribute="top" secondItem="8b3-9f-7m3" secondAttribute="top" constant="15" id="wTu-TD-Hes"/>
+                            <constraint firstItem="tJ2-ZO-lS3" firstAttribute="top" secondItem="8b3-9f-7m3" secondAttribute="top" id="wfD-gf-4v9"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="43d-Tf-7AF"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obw-63-bWE">
-                        <rect key="frame" x="88" y="125" width="31" height="14.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="红包炸雷" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="obw-63-bWE">
+                        <rect key="frame" x="88" y="125" width="41" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKz-fg-qEL">
-                        <rect key="frame" x="287" y="125" width="31" height="14.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <rect key="frame" x="291.5" y="125" width="26.5" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -106,6 +127,9 @@
                 <outlet property="amountLabel" destination="oRE-Et-hyb" id="lIB-tZ-yqe"/>
                 <outlet property="avatarImageView" destination="G9f-6g-aAF" id="Fdf-92-cIB"/>
                 <outlet property="backgroundImageView" destination="NrB-VO-2Ce" id="had-SL-AvZ"/>
+                <outlet property="evelopNameLabel" destination="b7A-fG-8Sa" id="Sir-ug-zQd"/>
+                <outlet property="expiredLabel" destination="obw-63-bWE" id="bBN-Ab-zCZ"/>
+                <outlet property="statusImageView" destination="tJ2-ZO-lS3" id="CLe-Im-YuR"/>
                 <outlet property="usernameLabel" destination="0FQ-XB-9Qb" id="co9-h1-uBc"/>
                 <outlet property="wagerTimeLabel" destination="kKz-fg-qEL" id="xH0-MG-foy"/>
             </connections>

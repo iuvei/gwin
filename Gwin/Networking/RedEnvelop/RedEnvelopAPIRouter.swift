@@ -17,6 +17,10 @@ enum LotteryHameNo: Int {
   case abc = 6
 }
 
+enum PackageStatus: Int {
+  case canGrab = 0, grabed, expired
+}
+
 public enum RedEnvelopAPIRouter: URLRequestConvertible {
   // 1
   enum Constants {
@@ -31,17 +35,16 @@ public enum RedEnvelopAPIRouter: URLRequestConvertible {
   case sendPackage(String, Int, Int, Int, String)
   case grabPackage(String, Int, Int64)
   case infoPackage(String, Int, Int64)
-  case historyPackage(String, Int, Int, Int)
-  case statusPackage(String, Int, Int)
+  case historyPackage(String, Int, Int64, Int)
+  case statusPackage(String, Int, Int64)
   case lottery(String, String)
   // 3
   var method: HTTPMethod {
-    switch self {
-    case .roomList, .loginin, .loginout, .sendPackage, .historyPackage, .infoPackage, .statusPackage , .lottery:
-      return .post
-    default:
-      return  .get
-    }
+//    switch self {
+//    case .roomList, .loginin, .loginout, .sendPackage, .grabPackage, .historyPackage, .infoPackage, .statusPackage , .lottery:
+//      return .post
+//    }
+    return .post
   }
 
   // 4

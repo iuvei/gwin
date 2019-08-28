@@ -15,11 +15,13 @@ class BaseViewController: UIViewController {
   }
 
   private lazy var backButton: UIButton = {
-    let button = UIButton().forAutolayout()
+    let button = UIButton()
     button.setImage(UIImage(named: "back_button"), for: .normal)
     button.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
     button.backgroundColor = .clear
     button.semanticContentAttribute = .forceLeftToRight
+    button.contentEdgeInsets = UIEdgeInsets(top: 5, left: -10, bottom: 5, right: 10)
+    button.imageView?.contentMode = .scaleAspectFit
     return button
   }()
 
@@ -98,6 +100,14 @@ class BaseViewController: UIViewController {
 
   @objc func backPressed(_ sender: UIButton) {
     self.navigationController?.popViewController(animated: true)
+  }
+
+  func showAlertMessage(title: String? = nil, message: String) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+    alert.addAction(okAction)
+    present(alert, animated: true, completion: nil)
   }
 }
 

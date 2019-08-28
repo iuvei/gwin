@@ -12,24 +12,22 @@ import WebKit
 class WebContainerController: BaseViewController {
 
   private lazy var webView: WKWebView = {
-    let web = WKWebView()
-    web.translatesAutoresizingMaskIntoConstraints = false
+    let web = WKWebView().forAutolayout()
     web.navigationDelegate = self
     return web
   }()
 
   private lazy var headerView: UIView = {
-    let view = UIView()
-    view.translatesAutoresizingMaskIntoConstraints = false
-    view.backgroundColor = UIColor(hexString:"D66850")
+    let view = UIView().forAutolayout()
+    view.backgroundColor = UIColor(hexString:"e75f48")
     return view
   }()
 
   private lazy var backButton: UIButton = {
-    let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
+    let button = UIButton().forAutolayout()
     button.setImage(UIImage(named: "back_button"), for: .normal)
     button.addTarget(self, action: #selector(backButtonPressed(_:)), for: .touchUpInside)
+    button.imageView?.contentMode = .scaleAspectFit
     return button
   }()
 
@@ -46,7 +44,7 @@ class WebContainerController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .white
+    view.backgroundColor = UIColor(hexString: "e75f48")
     setupHeaderView()
     setupWebview()
     showLoadingView()
@@ -87,7 +85,7 @@ class WebContainerController: BaseViewController {
       webView.rightAnchor.constraint(equalTo: view.rightAnchor),
 
       backButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
-      backButton.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 10),
+      backButton.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 5),
       backButton.heightAnchor.constraint(equalToConstant: 30)
       ])
     // Do any additional setup after loading the view.

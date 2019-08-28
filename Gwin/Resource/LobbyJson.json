@@ -1,37 +1,37 @@
 [
     {
       "icon": "game_1",
-      "name":"TEXT",
+      "name":"充值",
       "key":"deposits",
       "action": "user"
     },
     {
       "icon": "game_2",
-      "name":"TEXT",
+      "name":"提现",
       "key":"withdrawals",
       "action": "user"
     },
     {
       "icon": "game_3",
-      "name":"TEXT",
+      "name":"规则",
       "key":"common_problem",
       "action": "user"
     },
     {
       "icon": "game_4",
-      "name":"TEXT",
+      "name":"客服",
       "key":"customer_service",
       "action": "user"
     },
     {
       "icon": "game_5",
-      "name":"game 1",
+      "name":"红包炸弹",
       "key":"1",
       "action": "envelop"
     },
     {
       "icon": "game_6",
-      "name":"game 1",
+      "name":"红包牛牛",
       "key":"2",
       "action": "envelop"
 
