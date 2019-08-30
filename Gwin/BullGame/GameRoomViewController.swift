@@ -69,6 +69,10 @@ extension GameRoomViewController: UITableViewDelegate, UITableViewDataSource {
     return 0.1
   }
 
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 90
+  }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return rooms.count
   }
@@ -125,8 +129,7 @@ extension GameRoomViewController {
     RedEnvelopAPIClient.roomLogin(ticket: user.ticket, roomId: room.roomId, roomPwd: room.roomPwd) { (success, message) in
 
       if success {
-        let vc = RoomDetailViewController(userno: userno , room: room)
-        vc.hidesBottomBarWhenPushed = true
+        let vc = BullDetailViewController(userno: userno , room: room)
         self.navigationController?.pushViewController(vc, animated: true)
       }
     }

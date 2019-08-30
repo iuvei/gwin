@@ -21,6 +21,8 @@ class BaseViewController: UIViewController {
     button.backgroundColor = .clear
     button.semanticContentAttribute = .forceLeftToRight
     button.contentEdgeInsets = UIEdgeInsets(top: 5, left: -10, bottom: 5, right: 10)
+    button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+    button.setTitleColor(UIColor(hexString: "FBEAAC"), for: .normal)
     button.imageView?.contentMode = .scaleAspectFit
     return button
   }()
@@ -81,6 +83,9 @@ class BaseViewController: UIViewController {
     self.navigationItem.setHidesBackButton(true, animated:true);
   }
 
+  func setBackTitle(title: String) {
+    backButton.setTitle(title, for: .normal)
+  }
   func hideLoadingView() {
     guard let alert = loadingView else { return }
 

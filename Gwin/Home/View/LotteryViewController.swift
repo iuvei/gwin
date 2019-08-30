@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class LotteryViewController: UIViewController {
+class LotteryViewController: BaseViewController {
 
   private lazy var webView: WKWebView = {
     let webview = WKWebView().forAutolayout()
