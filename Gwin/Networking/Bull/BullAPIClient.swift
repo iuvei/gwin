@@ -223,14 +223,23 @@ class BullAPIClient {
         let code = jsonResponse["code"].intValue
         msg = jsonResponse["msg"].string
 
+        if idno == 0 {
+          print("result 3 data code \(code)")
+        }
+
         if code == 1 {
           let data = jsonResponse["data"].arrayValue
+          if idno == 0 {
+            print("result 3 data \(data)")
+          }
           for json in data {
             let wagerInfo = BullWagerInfoModel(json: json)
             wagerInfos.append(wagerInfo)
           }
 
         }
+      }else {
+        print("result error \(roundid) - \(roundid) - \(idno)")
       }
       completion(wagerInfos, msg ?? responseData.error?.localizedDescription)
     }

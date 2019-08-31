@@ -51,6 +51,10 @@
 		D175C529230D1036001B8DC6 /* RedEnvelopTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */; };
 		D194BD85231A4D2D00AB59C3 /* GrabBullPackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD83231A4D2D00AB59C3 /* GrabBullPackageViewController.swift */; };
 		D194BD86231A4D2D00AB59C3 /* GrabBullPackageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D194BD84231A4D2D00AB59C3 /* GrabBullPackageViewController.xib */; };
+		D194BD8B231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD89231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift */; };
+		D194BD8C231AB9BD00AB59C3 /* BulllPackageInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D194BD8A231AB9BD00AB59C3 /* BulllPackageInfoViewController.xib */; };
+		D194BD8F231ABE5A00AB59C3 /* BetDetailiewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD8D231ABE5A00AB59C3 /* BetDetailiewCell.swift */; };
+		D194BD90231ABE5A00AB59C3 /* BetDetailiewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D194BD8E231ABE5A00AB59C3 /* BetDetailiewCell.xib */; };
 		D1E00B72230D8F0E00554CA4 /* LobbyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */; };
 		D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */ = {isa = PBXBuildFile; fileRef = D1E00B74230D950E00554CA4 /* LobbyJson.json */; };
 		D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B78230DA05200554CA4 /* WebContainerController.swift */; };
@@ -171,6 +175,10 @@
 		D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedEnvelopTabbarController.swift; sourceTree = "<group>"; };
 		D194BD83231A4D2D00AB59C3 /* GrabBullPackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabBullPackageViewController.swift; sourceTree = "<group>"; };
 		D194BD84231A4D2D00AB59C3 /* GrabBullPackageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrabBullPackageViewController.xib; sourceTree = "<group>"; };
+		D194BD89231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulllPackageInfoViewController.swift; sourceTree = "<group>"; };
+		D194BD8A231AB9BD00AB59C3 /* BulllPackageInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BulllPackageInfoViewController.xib; sourceTree = "<group>"; };
+		D194BD8D231ABE5A00AB59C3 /* BetDetailiewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetDetailiewCell.swift; sourceTree = "<group>"; };
+		D194BD8E231ABE5A00AB59C3 /* BetDetailiewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BetDetailiewCell.xib; sourceTree = "<group>"; };
 		D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyItemView.swift; sourceTree = "<group>"; };
 		D1E00B74230D950E00554CA4 /* LobbyJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LobbyJson.json; sourceTree = "<group>"; };
 		D1E00B78230DA05200554CA4 /* WebContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContainerController.swift; sourceTree = "<group>"; };
@@ -662,6 +670,10 @@
 				D1EA0FA22319375E0096B7D1 /* BetOtherViewCell.xib */,
 				D194BD83231A4D2D00AB59C3 /* GrabBullPackageViewController.swift */,
 				D194BD84231A4D2D00AB59C3 /* GrabBullPackageViewController.xib */,
+				D194BD89231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift */,
+				D194BD8A231AB9BD00AB59C3 /* BulllPackageInfoViewController.xib */,
+				D194BD8D231ABE5A00AB59C3 /* BetDetailiewCell.swift */,
+				D194BD8E231ABE5A00AB59C3 /* BetDetailiewCell.xib */,
 			);
 			path = BullGame;
 			sourceTree = "<group>";
@@ -770,12 +782,14 @@
 				D1E00D8923102A6700554CA4 /* LaunchViewController.xib in Resources */,
 				D1EA0F0A2318373F0096B7D1 /* WagerOddViewCell.xib in Resources */,
 				D1E00D9B23110A8C00554CA4 /* PackageHistoryRightViewCell.xib in Resources */,
+				D194BD8C231AB9BD00AB59C3 /* BulllPackageInfoViewController.xib in Resources */,
 				D10067AA2309AA2500114F6E /* LaunchScreen.storyboard in Resources */,
 				D1EA0FA42319375E0096B7D1 /* BetOtherViewCell.xib in Resources */,
 				D175C4E8230C2177001B8DC6 /* WellcomeViewController.xib in Resources */,
 				D1EA0F7423190AB90096B7D1 /* WagerOdds.json in Resources */,
 				D10067A72309AA2500114F6E /* Assets.xcassets in Resources */,
 				D1E00DB82312DC8600554CA4 /* GrabUserViewCell.xib in Resources */,
+				D194BD90231ABE5A00AB59C3 /* BetDetailiewCell.xib in Resources */,
 				D1EA0F06231827090096B7D1 /* BetBullViewController.xib in Resources */,
 				D1EA0F7823190D860096B7D1 /* BetCasinoViewController.xib in Resources */,
 				D1E00D9723110A7100554CA4 /* PackageHistoryLeftViewCell.xib in Resources */,
@@ -850,6 +864,7 @@
 				D1EA0E6C23163B340096B7D1 /* LotteryViewController.swift in Sources */,
 				D175C4D4230BD5A1001B8DC6 /* LoginInteractor.swift in Sources */,
 				D1E00D7D230FEAFB00554CA4 /* BullPackageHistoryModel.swift in Sources */,
+				D194BD8B231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift in Sources */,
 				D1E00D9E2311115200554CA4 /* CreateEnvelopViewController.swift in Sources */,
 				D1E00DB12312CEA600554CA4 /* TitleStackView.swift in Sources */,
 				D175C4BC230BCD97001B8DC6 /* Router.swift in Sources */,
@@ -908,6 +923,7 @@
 				D1E00D8B23102D7300554CA4 /* PackageInfoModel.swift in Sources */,
 				D100679D2309AA1F00114F6E /* AppDelegate.swift in Sources */,
 				D175C4CD230BD324001B8DC6 /* LoginViewController.swift in Sources */,
+				D194BD8F231ABE5A00AB59C3 /* BetDetailiewCell.swift in Sources */,
 				D1E00DAF231279B000554CA4 /* MessagePopupController.swift in Sources */,
 				D1E00DBD2313B77F00554CA4 /* GameRoomViewController.swift in Sources */,
 				D1EA0F7723190D860096B7D1 /* BetCasinoViewController.swift in Sources */,

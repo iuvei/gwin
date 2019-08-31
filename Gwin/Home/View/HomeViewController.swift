@@ -23,6 +23,11 @@ public protocol HomeViewControllerInput: AnyObject {
 }
 
 class HomeViewController: BaseViewController {
+
+  enum Constants {
+    static let seperateHeight: CGFloat = 1
+  }
+
   weak var output: HomeViewOutput?
 
   private var carouselView: CarouselView!
@@ -71,6 +76,7 @@ class HomeViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    setTitle(title: "百果缘")
     self.edgesForExtendedLayout = []
     // Do any additional setup after loading the view.
     loadLobbyData()
@@ -225,10 +231,10 @@ class HomeViewController: BaseViewController {
     NSLayoutConstraint.activate([
       firstSeperateView.leftAnchor.constraint(equalTo: containerStackView.leftAnchor),
       firstSeperateView.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
-      firstSeperateView.heightAnchor.constraint(equalToConstant: 8),
+      firstSeperateView.heightAnchor.constraint(equalToConstant: Constants.seperateHeight),
       secondSeperateView.leftAnchor.constraint(equalTo: containerStackView.leftAnchor),
       secondSeperateView.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
-      secondSeperateView.heightAnchor.constraint(equalToConstant: 8),
+      secondSeperateView.heightAnchor.constraint(equalToConstant: Constants.seperateHeight),
 
       firstGametitleLabel.leftAnchor.constraint(equalTo: containerStackView.leftAnchor, constant: 10),
       firstGametitleLabel.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
@@ -264,7 +270,7 @@ class HomeViewController: BaseViewController {
     NSLayoutConstraint.activate([
       lastSeperateView.leftAnchor.constraint(equalTo: containerStackView.leftAnchor),
       lastSeperateView.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
-      lastSeperateView.heightAnchor.constraint(equalToConstant: 8),
+      lastSeperateView.heightAnchor.constraint(equalToConstant: Constants.seperateHeight),
 
       lasttitleLabel.leftAnchor.constraint(equalTo: containerStackView.leftAnchor, constant: 10),
       lasttitleLabel.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),

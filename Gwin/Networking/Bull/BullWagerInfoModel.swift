@@ -8,7 +8,11 @@
 
 import SwiftyJSON
 
-class  BullWagerInfoModel {
+class BullWagerInfoModel: Equatable {
+  static func == (lhs: BullWagerInfoModel, rhs: BullWagerInfoModel) -> Bool {
+    return lhs.idno == rhs.idno && lhs.userno == rhs.userno && lhs.stake == rhs.stake && lhs.winning == rhs.winning && lhs.packetamount == rhs.packetamount && lhs.packettag == rhs.packettag
+  }
+
   var idno: Int            // Int,
   var userno: String                 // string,
   var username: String                  // string,
@@ -27,3 +31,4 @@ class  BullWagerInfoModel {
      packettag = json["packettag"].stringValue
   }
 }
+

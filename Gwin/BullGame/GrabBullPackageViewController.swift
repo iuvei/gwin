@@ -9,7 +9,7 @@
 import UIKit
 
 
-class GrabBullPackageViewController: UIViewController {
+class GrabBullPackageViewController: BaseViewController {
 
   enum Constants {
 
@@ -31,6 +31,11 @@ class GrabBullPackageViewController: UIViewController {
   @IBOutlet weak var grabButton: UIButton!
   private var history: BullPackageHistoryModel
   private var room: RoomModel
+  private var status: Int?
+  private var screenIndex: Int?
+
+  var didGrabPackage: (BullPackageModel)->Void = {_ in}
+
   init(history: BullPackageHistoryModel, room: RoomModel) {
     self.history = history
     self.room = room
@@ -62,6 +67,7 @@ class GrabBullPackageViewController: UIViewController {
     BullAPIClient.packetstatus(ticket: user.ticket, roomid: room.roomId , roundid: history.roundid) {[weak self](status, error) in
       guard let this = self else {return}
       if let `status` = status{
+        this.status = status
         if status == Constants.Packetstatus.status0 {
           this.grabButton.isHidden = true
           this.nextButton.isHidden = true
@@ -90,6 +96,24 @@ class GrabBullPackageViewController: UIViewController {
    // Pass the selected object to the new view controller.
    }
    */
+  @IBAction func grabBullPressed(_ sender: Any) {
+
+    guard let user = RedEnvelopComponent.shared.user else {return}
+
+    BullAPIClient.grab(ticket: user.ticket, roomid: room.roomId, roundid: history.roundid) { (pullPackage, error) in
+      if let model = pullPackage {
+        self.dismiss(animated: true, completion: {
+
+          self.didGrabPackage(model)
+        })
+
+      }else{
+        if let message = error {
+          self.showAlertMessage(message: message)
+        }
+      }
+    }
+  }
 
   @IBAction func packageDetailPressed(_ sender: Any) {
 

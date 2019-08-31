@@ -122,7 +122,8 @@ class PackageHistoryLeftViewCell: UITableViewCell {
       label.text = "\(info.userno) XX \(info.stake)"
       wagerStackView.addArrangedSubview(label)
     }
-
+    
+    resultWagerInfoStackView.removeAllArrangedSubviews()
     for info in model.resultWagerInfo {
       let label = UILabel().forAutolayout()
       label.font = UIFont.systemFont(ofSize: 12)

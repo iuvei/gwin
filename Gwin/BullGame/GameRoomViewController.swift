@@ -19,6 +19,7 @@ class GameRoomViewController: UIViewController {
     super.viewDidLoad()
 
     // Do any additional setup after loading the view.
+    setTitle(title: "牛牛")
     setupViews()
     fetchBullRoom()
 

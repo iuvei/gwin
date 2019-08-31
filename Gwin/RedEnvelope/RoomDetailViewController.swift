@@ -156,6 +156,10 @@ class RoomDetailViewController: BaseViewController {
   }
 
   func setupNavigatorViews() {
+
+    profileButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
+    newPackageButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
+
     let rightItem1 = UIBarButtonItem(customView: profileButton)
     let rightItem2 = UIBarButtonItem(customView: newPackageButton)
 

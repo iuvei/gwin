@@ -334,4 +334,19 @@ extension Date {
   static func - (lhs: Date, rhs: Date) -> TimeInterval {
     return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
   }
+
+  func toString( dateFormat format  : String = "yyyy-MM-dd HH:mm:ss" ) -> String
+  {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = format
+    return dateFormatter.string(from: self)
+  }
+}
+
+extension Array where Element: Hashable {
+  func difference(from other: [Element]) -> [Element] {
+    let thisSet = Set(self)
+    let otherSet = Set(other)
+    return Array(thisSet.symmetricDifference(otherSet))
+  }
 }

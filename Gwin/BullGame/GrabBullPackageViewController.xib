@@ -49,6 +49,9 @@
                                 <constraint firstAttribute="height" constant="80" id="Q5m-aX-StO"/>
                             </constraints>
                             <state key="normal" image="popup_envelop_open"/>
+                            <connections>
+                                <action selector="grabBullPressed:" destination="-1" eventType="touchUpInside" id="JZT-6h-cTV"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Y8-Sh-HgL">
                             <rect key="frame" x="144.5" y="140" width="42" height="21"/>

@@ -21,6 +21,11 @@ class PackageInfoViewController: BaseViewController {
   @IBOutlet weak var wagerTimeLabel: UILabel!
 
   @IBOutlet weak var tableView: UITableView!
+  private lazy var refreshControl:UIRefreshControl = {
+    let view = UIRefreshControl()
+    return view
+  }()
+
   private var model: PackageInfoModel?
   //  private var infoPackage: PackageInfoModel?
   private let roomid: Int
@@ -47,6 +52,15 @@ class PackageInfoViewController: BaseViewController {
   }
 
   func setupViews() {
+    // Add Refresh Control to Table View
+    if #available(iOS 10.0, *) {
+      tableView.refreshControl = refreshControl
+    } else {
+      tableView.addSubview(refreshControl)
+    }
+
+    refreshControl.addTarget(self, action: #selector(refreshWeatherData(_:)), for: .valueChanged)
+
     tableView.register(UINib(nibName: "GrabUserViewCell", bundle: nil), forCellReuseIdentifier: "GrabUserViewCell")
     tableView.delegate = self
     tableView.dataSource = self
@@ -57,8 +71,15 @@ class PackageInfoViewController: BaseViewController {
     guard let user = RedEnvelopComponent.shared.user  else { return }
     RedEnvelopAPIClient.infoPackage(ticket: user.ticket, roomid: roomid, packageid: packageid) { [weak self] (info, message) in
       guard let this = self else { return }
+      this.refreshControl.endRefreshing()
+      
       if let `info` = info {
-        this.amounLabel.text = "\(info.packetamount)-\(info.packettag)"
+        if info.packettag.count > 0{
+          this.amounLabel.text = "\(info.packetamount)-\(info.packettag)"
+        }else {
+          this.amounLabel.text = "\(info.packetamount)"
+        }
+        
         this.usernoLabel.text = info.userno
         this.wagerTimeLabel.text = "已领取\(info.packettype)／\(info.packetsize)个／共*.**／\(info.packetamount)元"
         this.model = info
@@ -78,6 +99,7 @@ class PackageInfoViewController: BaseViewController {
     } else {
       guard let user = RedEnvelopComponent.shared.user else { return }
       UserAPIClient.getUserImages(ticket: user.ticket, usernos: [model.userno]) {[weak self] (data, _) in
+        guard let this = self else { return }
         guard let _data = data else { return }
         for json in _data {
           let userno = json["userno"].stringValue
@@ -85,7 +107,7 @@ class PackageInfoViewController: BaseViewController {
           ImageManager.shared.saveImage(userno: userno, image: imgString)
           if userno == model.userno {
             if let data = Data(base64Encoded: imgString, options: []) {
-              self?.avatarImageView.image = UIImage(data: data)
+              this.avatarImageView.image = UIImage(data: data)
             }
           }
         }
@@ -108,6 +130,10 @@ class PackageInfoViewController: BaseViewController {
     dismiss(animated: true, completion: nil)
   }
 
+  @objc private func refreshWeatherData(_ sender: Any) {
+    // Fetch Weather Data
+    fetchPackageInfo()
+  }
 }
 
 
