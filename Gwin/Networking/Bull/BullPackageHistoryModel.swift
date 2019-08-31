@@ -15,6 +15,8 @@ class BullPackageHistoryModel {
   var packetamount: Int                   // Number,
   var packettag: String                  // string, 开奖结果
   var wagertime: String                  // string,
+  var wagerInfo: [BullWagerInfoModel] = []
+  var resultWagerInfo: [BullWagerInfoModel] = []
 
   init(json: JSON) {
     roundid = json["roundid"].int64Value                  // int64,

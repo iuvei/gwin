@@ -43,7 +43,7 @@ class BullRoundModel {
     banker = json["banker"].stringValue                  //string,--当前庄家
     lockquota = json["lockquota"].stringValue                  //string,--当前庄家金额
     stake1 = json["stake1"].intValue                  //Int,--当前下注区间
-    state2 = json["stake2"].intValue                  //Int,--当前下注区间
+    state2 = json["state2"].intValue                  //Int,--当前下注区间
     bankqty = json["bankqty"].intValue                   //Int,--连庄期数
     nextroundid = json["nextroundid"].int64Value               //Bigint,--下局期号
     nextopentime = json["nextopentime"].stringValue.toDate()                  //Datetime,--下局开始时间

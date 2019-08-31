@@ -99,13 +99,31 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="H3m-0X-3VV">
+                        <rect key="frame" x="133.5" y="0.0" width="120" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="IZ0-t9-hdP"/>
+                            <constraint firstAttribute="width" constant="120" id="yAw-hG-dfQ"/>
+                        </constraints>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZfK-Q0-Vdf">
+                        <rect key="frame" x="133.5" y="124.5" width="120" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="rdr-pr-ERs"/>
+                            <constraint firstAttribute="width" constant="120" id="xcU-P5-F3s"/>
+                        </constraints>
+                    </stackView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="obw-63-bWE" firstAttribute="top" secondItem="8b3-9f-7m3" secondAttribute="bottom" id="AfL-6x-zuB"/>
+                    <constraint firstItem="H3m-0X-3VV" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="DYT-fz-cFh"/>
                     <constraint firstItem="0FQ-XB-9Qb" firstAttribute="top" secondItem="G9f-6g-aAF" secondAttribute="top" constant="10" id="Jdc-Pw-TTl"/>
                     <constraint firstItem="G9f-6g-aAF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="O2G-Nc-WYI"/>
                     <constraint firstItem="kKz-fg-qEL" firstAttribute="top" secondItem="8b3-9f-7m3" secondAttribute="bottom" id="OFf-4a-MAl"/>
+                    <constraint firstAttribute="bottom" secondItem="ZfK-Q0-Vdf" secondAttribute="bottom" id="Opy-VG-gJL"/>
+                    <constraint firstItem="ZfK-Q0-Vdf" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Peo-m1-n40"/>
                     <constraint firstItem="kKz-fg-qEL" firstAttribute="trailing" secondItem="NrB-VO-2Ce" secondAttribute="trailing" id="RrO-JV-VI6"/>
+                    <constraint firstItem="H3m-0X-3VV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="TSs-Gx-KNn"/>
                     <constraint firstItem="8b3-9f-7m3" firstAttribute="top" secondItem="0FQ-XB-9Qb" secondAttribute="bottom" constant="10" id="U2K-R9-WL9"/>
                     <constraint firstItem="G9f-6g-aAF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="XJB-6h-R80"/>
                     <constraint firstItem="kKz-fg-qEL" firstAttribute="trailing" secondItem="8b3-9f-7m3" secondAttribute="trailing" id="ehT-Uv-9Ce"/>
@@ -129,8 +147,10 @@
                 <outlet property="backgroundImageView" destination="NrB-VO-2Ce" id="had-SL-AvZ"/>
                 <outlet property="evelopNameLabel" destination="b7A-fG-8Sa" id="Sir-ug-zQd"/>
                 <outlet property="expiredLabel" destination="obw-63-bWE" id="bBN-Ab-zCZ"/>
+                <outlet property="resultWagerInfoStackView" destination="ZfK-Q0-Vdf" id="lWj-WH-4VK"/>
                 <outlet property="statusImageView" destination="tJ2-ZO-lS3" id="CLe-Im-YuR"/>
                 <outlet property="usernameLabel" destination="0FQ-XB-9Qb" id="co9-h1-uBc"/>
+                <outlet property="wagerStackView" destination="H3m-0X-3VV" id="j1P-I2-lsH"/>
                 <outlet property="wagerTimeLabel" destination="kKz-fg-qEL" id="xH0-MG-foy"/>
             </connections>
             <point key="canvasLocation" x="-0.7246376811594204" y="76.004464285714278"/>

@@ -150,10 +150,10 @@ class BullAPIClient {
     }
   }
 
-  static func packethistory(ticket:String, roomid: Int, roundid: Int64, topnum: Int, completion:@escaping ([BullHistoryModel], String?)->Void){
+  static func packethistory(ticket:String, roomid: Int, roundid: Int64, topnum: Int, completion:@escaping ([BullPackageHistoryModel], String?)->Void){
     Alamofire.request(BullAPIRouter.packethistory(ticket, roomid, roundid, topnum)).responseJSON { (responseData) in
       var msg: String? = nil
-      var histories:[BullHistoryModel] = []
+      var histories:[BullPackageHistoryModel] = []
 
       if responseData.result.value != nil {
         let jsonResponse = JSON(responseData.result.value!)
@@ -162,7 +162,7 @@ class BullAPIClient {
         if code == 1 {
           let data = jsonResponse["data"].arrayValue
           for json in data {
-            let history = BullHistoryModel(json: json)
+            let history = BullPackageHistoryModel(json: json)
             histories.append(history)
           }
         }
@@ -194,8 +194,23 @@ class BullAPIClient {
     }
   }
 
-  static func packetstatus(ticket:String, roomid: Int, roundid: Int64){
+  static func packetstatus(ticket:String, roomid: Int, roundid: Int64, completion: @escaping(Int?,String?)->Void){
 
+    Alamofire.request(BullAPIRouter.packetstatus(ticket, roomid, roundid)).responseJSON{ (responseData) in
+      var msg: String? = nil
+      var status: Int? = nil
+      if responseData.result.value != nil {
+        let jsonResponse = JSON(responseData.result.value!)
+        let code = jsonResponse["code"].intValue
+        msg = jsonResponse["msg"].string
+
+        if code == 1 {
+          let data = jsonResponse["data"]
+          status = data["status"].int
+        }
+      }
+      completion(status, msg ?? responseData.error?.localizedDescription)
+    }
 
   }
 

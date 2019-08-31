@@ -83,7 +83,9 @@ class LoginViewController: BaseViewController {
           appDelegate.setHomeAsRootViewControlelr()
         }
       } else {
-
+        if let error = message {
+          this.showAlertMessage(message: error)
+        }
       }
     }
   }

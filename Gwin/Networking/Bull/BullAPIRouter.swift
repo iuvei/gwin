@@ -27,7 +27,7 @@ public enum BullAPIRouter: URLRequestConvertible {
   case info(String, Int, Int64, Int)
   case packethistory(String, Int, Int64, Int)
   case history(String, Int, Int64, Int)
-  case packetstatus(String, Int, Int)
+  case packetstatus(String, Int, Int64)
   case wagerinfo(String, Int, Int64, Int)
   case betdetail(String, Int, Int64, String)
   case wagerodds(String, Int)

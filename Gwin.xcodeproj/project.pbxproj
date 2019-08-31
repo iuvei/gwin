@@ -49,6 +49,8 @@
 		D175C525230D0DCA001B8DC6 /* HomeViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C524230D0DCA001B8DC6 /* HomeViewComponent.swift */; };
 		D175C527230D0E46001B8DC6 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C526230D0E46001B8DC6 /* HomeBuilder.swift */; };
 		D175C529230D1036001B8DC6 /* RedEnvelopTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */; };
+		D194BD85231A4D2D00AB59C3 /* GrabBullPackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD83231A4D2D00AB59C3 /* GrabBullPackageViewController.swift */; };
+		D194BD86231A4D2D00AB59C3 /* GrabBullPackageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D194BD84231A4D2D00AB59C3 /* GrabBullPackageViewController.xib */; };
 		D1E00B72230D8F0E00554CA4 /* LobbyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */; };
 		D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */ = {isa = PBXBuildFile; fileRef = D1E00B74230D950E00554CA4 /* LobbyJson.json */; };
 		D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B78230DA05200554CA4 /* WebContainerController.swift */; };
@@ -167,6 +169,8 @@
 		D175C524230D0DCA001B8DC6 /* HomeViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewComponent.swift; sourceTree = "<group>"; };
 		D175C526230D0E46001B8DC6 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedEnvelopTabbarController.swift; sourceTree = "<group>"; };
+		D194BD83231A4D2D00AB59C3 /* GrabBullPackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabBullPackageViewController.swift; sourceTree = "<group>"; };
+		D194BD84231A4D2D00AB59C3 /* GrabBullPackageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrabBullPackageViewController.xib; sourceTree = "<group>"; };
 		D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyItemView.swift; sourceTree = "<group>"; };
 		D1E00B74230D950E00554CA4 /* LobbyJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LobbyJson.json; sourceTree = "<group>"; };
 		D1E00B78230DA05200554CA4 /* WebContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContainerController.swift; sourceTree = "<group>"; };
@@ -656,6 +660,8 @@
 				D1EA0F7623190D860096B7D1 /* BetCasinoViewController.xib */,
 				D1EA0FA12319375E0096B7D1 /* BetOtherViewCell.swift */,
 				D1EA0FA22319375E0096B7D1 /* BetOtherViewCell.xib */,
+				D194BD83231A4D2D00AB59C3 /* GrabBullPackageViewController.swift */,
+				D194BD84231A4D2D00AB59C3 /* GrabBullPackageViewController.xib */,
 			);
 			path = BullGame;
 			sourceTree = "<group>";
@@ -757,6 +763,7 @@
 				D1E00DA72311302E00554CA4 /* CreateEnvelopType2ViewController.xib in Resources */,
 				D1E00DA3231119AC00554CA4 /* PackageInfoViewController.xib in Resources */,
 				D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */,
+				D194BD86231A4D2D00AB59C3 /* GrabBullPackageViewController.xib in Resources */,
 				D175C4CE230BD324001B8DC6 /* LoginViewController.xib in Resources */,
 				D1E00D0B230EEE4F00554CA4 /* ProfileItems.json in Resources */,
 				D1EA0EB823177F4F0096B7D1 /* BullDetailViewController.xib in Resources */,
@@ -870,6 +877,7 @@
 				D1E00D85230FEE0800554CA4 /* BullWagerOddModel.swift in Sources */,
 				D175C4F3230C552F001B8DC6 /* UserDefaultManager.swift in Sources */,
 				D1EA0EBE2317B4980096B7D1 /* BankGetModel.swift in Sources */,
+				D194BD85231A4D2D00AB59C3 /* GrabBullPackageViewController.swift in Sources */,
 				D1E00D73230FDCB800554CA4 /* BullAPIClient.swift in Sources */,
 				D175C4F6230CF60F001B8DC6 /* NoticeAPIRouter.swift in Sources */,
 				D1E00B72230D8F0E00554CA4 /* LobbyItemView.swift in Sources */,

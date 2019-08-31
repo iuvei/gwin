@@ -21,6 +21,9 @@ class PackageHistoryLeftViewCell: UITableViewCell {
   @IBOutlet weak var expiredLabel: UILabel!
   @IBOutlet weak var evelopNameLabel: UILabel!
 
+  @IBOutlet weak var wagerStackView: UIStackView!
+  @IBOutlet weak var resultWagerInfoStackView: UIStackView!
+
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
@@ -71,6 +74,60 @@ class PackageHistoryLeftViewCell: UITableViewCell {
       expiredLabel.text = "红包已过期"
     }else{
       expiredLabel.text = "红包炸雷"
+    }
+  }
+
+
+  func updateBullViews(model: BullPackageHistoryModel, isOpen: Bool = false, isKing: Bool = false, isBoomed: Bool = false, expired: Bool = false){
+    usernameLabel.text = model.userno
+
+    if model.packettag.count > 0 {
+      amountLabel.text = "\(model.packetamount)-\(model.packettag)"
+      evelopNameLabel.text = "扫雷红包"
+    }else {
+      amountLabel.text = "\(model.packetamount)"
+      evelopNameLabel.text = "福利红包"
+    }
+
+    wagerTimeLabel.text = "\(model.wagertime)"
+    if let imagebase64 = ImageManager.shared.getImage(userno: model.userno) {
+      if let imageData = Data(base64Encoded: imagebase64, options: []) {
+        let image  = UIImage(data: imageData)
+        avatarImageView.image = image
+      }
+    }
+    if isOpen {
+      backgroundImageView.image = UIImage(named: "package_left_bg_read")
+    } else {
+      backgroundImageView.image = UIImage(named: "package_left_bg")
+    }
+    if isBoomed {
+      statusImageView.isHidden = false
+      statusImageView.image = UIImage(named: "grabuser_boom")
+    } else {
+      if isKing {
+        statusImageView.isHidden = false
+        statusImageView.image = UIImage(named: "grabuser_king")
+      } else {
+        statusImageView.isHidden = true
+      }
+    }
+    
+    expiredLabel.text = "\(model.roundid)"
+
+    wagerStackView.removeAllArrangedSubviews()
+    for info in model.wagerInfo {
+      let label = UILabel().forAutolayout()
+      label.font = UIFont.systemFont(ofSize: 12)
+      label.text = "\(info.userno) XX \(info.stake)"
+      wagerStackView.addArrangedSubview(label)
+    }
+
+    for info in model.resultWagerInfo {
+      let label = UILabel().forAutolayout()
+      label.font = UIFont.systemFont(ofSize: 12)
+      label.text = "\(info.userno) YY \(info.stake)"
+      resultWagerInfoStackView.addArrangedSubview(label)
     }
   }
 }

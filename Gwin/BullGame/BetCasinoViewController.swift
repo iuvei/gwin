@@ -230,6 +230,7 @@ extension BetCasinoViewController: UITableViewDelegate, UITableViewDataSource {
       cell.completionHandler = {[weak self] in
         self?.selecteRowAtIndexPath(indexPath: indexPath)
       }
+
       cell.didMoneyChanged = {[weak self ]money in
         model.money = money
         self?.updateInputValue()

@@ -20,6 +20,8 @@ class WagerOddViewCell: UITableViewCell {
   var didMoneyInput: (Float)->Void = {_ in }
 
   var model: BullWagerOddModel?
+  var minValue:Int = 0
+  var maxValue:Int = 0
 
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -36,12 +38,16 @@ class WagerOddViewCell: UITableViewCell {
   }
 
 
-  func updateView(model: BullWagerOddModel,input: Bool = false, selected: Bool = false) {
+  func updateView(model: BullWagerOddModel,input: Bool = false, selected: Bool = false, min: Int = 0, max: Int = 0) {
     self.model = model
+    self.minValue = min
+    self.maxValue = max
+
     nameLabel.text = model.name
-    oddLabel.text = "\(model.odds)"
+    oddLabel.text = String(format:"%.2f",model.odds)
+    
     if model.money > 0.0 {
-      oddTextfield.text = "\(model.money)"
+      oddTextfield.text = "\(Int(model.money))"
     }
 
     if selected {
@@ -55,6 +61,8 @@ class WagerOddViewCell: UITableViewCell {
   @objc func textFieldDidChange(_ textfield: UITextField) {
     if let money = textfield.text, let moneyValue = Float(money) {
       didMoneyChanged(moneyValue)
+    }else {
+      didMoneyChanged(0)
     }
   }
 }
@@ -82,8 +90,8 @@ extension WagerOddViewCell: UITextFieldDelegate {
     let finalString = "\(textField.text ?? "")\(string)"
     print("sub : \(substringToReplace) string:\(string)  abc: \(finalString)")
     if let `model` =  model {
-      if let moneyValue  = Float(finalString) {
-          return moneyValue <= model.odds
+      if let moneyValue  = Int(finalString) {
+          return moneyValue <= maxValue
       }
     }
 
