@@ -48,12 +48,11 @@ class BullDetailViewController: BaseViewController {
   private var room: RoomModel
   private var round: BullRoundModel?
   private var datas: [BullModel] = []
-  //  private var histories: [BullPackageHistoryModel] = []
   private var openPackages: [NSManagedObject] = []
   var coundownBet: Int = 0
   var countDownGrab: Int = 0
   var countDownRound: Int = 0
-
+  var firsttime: Bool = true
   private var timer: Timer?
   private var roundTimmer: Timer?
 
@@ -235,9 +234,10 @@ class BullDetailViewController: BaseViewController {
   func fetchBullRound(){
     guard let user = RedEnvelopComponent.shared.user else { return }
 
-    BullAPIClient.round(ticket: user.ticket, roomid: room.roomId) { [weak self] (round, error) in
+    BullAPIClient.round(firsttime: firsttime, ticket: user.ticket, roomid: room.roomId) { [weak self] (round, error) in
 
       guard let this = self else {return}
+      this.firsttime = false
       this.round = round
 
       if let `round` = round {
@@ -335,9 +335,10 @@ class BullDetailViewController: BaseViewController {
     BullAPIClient.packethistory(ticket: user.ticket, roomid: room.roomId, roundid: round.roundid, topnum: 50) {[weak self] (histoires, error) in
       guard let this = self else { return }
 
-      round.roundid = Int64.max
-      this.datas = histoires.reversed().map{BullModel(expire: true, round: round, historyPackage: $0, roomid: this.room.roomId)}
-
+      if let copyRound = round.copy() as? BullRoundModel{
+        copyRound.roundid = Int64.max
+        this.datas = histoires.reversed().map{BullModel(expire: true, round: round, historyPackage: $0, roomid: this.room.roomId)}
+      }
       this.tableView.reloadData()
       this.tableView.scrollToBottom()
     }
@@ -487,8 +488,9 @@ extension BullDetailViewController{
     countDownGrab -= 1
     countDownRound -= 1
 
-    let marquee = String(format: "期数%d", round?.roundid ?? 0)
-    marqueView.text = marquee
+    if let `round` = round{
+      marqueView.text = "期数\(round.roundid)"
+    }
     countdountBetLabel.text = String(format: "下注时间%2d秒", coundownBet >= 0 ? coundownBet : 0)
 
     countdountGrabLabel.text = String(format: "抢包时间%2d秒", countDownGrab >= 0 ? countDownGrab : 0)

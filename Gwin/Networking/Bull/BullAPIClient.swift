@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class BullAPIClient {
-  static func round(ticket: String, roomid: Int, completion:@escaping (BullRoundModel?, String?)->Void){
+  static func round(firsttime: Bool = false, ticket: String, roomid: Int, completion:@escaping (BullRoundModel?, String?)->Void){
 
     Alamofire.request(BullAPIRouter.round(ticket, roomid)).responseJSON { (responseData) in
       var msg: String? = nil
@@ -25,6 +25,9 @@ class BullAPIClient {
         if code == 1 {
           let data = jsonResponse["data"]
           round = BullRoundModel(json: data)
+          if firsttime{
+            round?.setJSOn(json: data)
+          }
         }
       }
 

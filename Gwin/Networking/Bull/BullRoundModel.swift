@@ -8,7 +8,9 @@
 
 import SwiftyJSON
 
-class BullRoundModel {
+class BullRoundModel: NSCopying {
+
+
   var currtime : Date //string, 系统时间
   var transdate: String                    // string, 交易日
   var remainround: Int                   //Int,--剩余期数
@@ -29,7 +31,8 @@ class BullRoundModel {
   var nextlockquota: String                  //string, --下任庄家金额
   var nextstake1: Int?                  //Int,--下任下注区间
   var nextstake2: Int?                         //Int,--下任下注区间
-  
+  var json: JSON?
+
   init(json: JSON) {
     currtime = json["currtime"].stringValue.toDate()
     transdate = json["transdate"].stringValue                   // string, 交易日
@@ -51,6 +54,20 @@ class BullRoundModel {
     nextlockquota = json["nextlockquota"].stringValue                 //string, --下任庄家金额
     nextstake1 = json["nextstake1"].int                  //Int,--下任下注区间
     nextstake2 = json["nextstake2"].int
+  }
+
+  func setJSOn(json: JSON) {
+    self.json = json
+  }
+
+  func copy(with zone: NSZone? = nil) -> Any {
+    if let `json` = json{
+      let copy = BullRoundModel(json: json)
+
+      return copy
+    }
+
+    return self
   }
 }
 

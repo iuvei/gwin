@@ -109,19 +109,19 @@
                             <rect key="frame" x="0.0" y="60.5" width="414" height="16"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjO-Re-o56">
-                                    <rect key="frame" x="0.0" y="8" width="103.5" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="8" width="124" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wb0-5y-s5J">
-                                    <rect key="frame" x="103.5" y="8" width="103.5" height="0.0"/>
+                                    <rect key="frame" x="124" y="8" width="103.5" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USF-TO-M8t">
-                                    <rect key="frame" x="207" y="8" width="103.5" height="0.0"/>
+                                    <rect key="frame" x="227.5" y="8" width="83" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -135,20 +135,28 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="Wb0-5y-s5J" firstAttribute="width" secondItem="kUj-kr-yaw" secondAttribute="width" multiplier="5:20" id="043-xf-lZI"/>
                                 <constraint firstItem="Wb0-5y-s5J" firstAttribute="leading" secondItem="pjO-Re-o56" secondAttribute="trailing" id="Asz-vs-hMb"/>
                                 <constraint firstItem="aeh-vY-eTJ" firstAttribute="centerY" secondItem="kUj-kr-yaw" secondAttribute="centerY" id="BCF-7P-ASv"/>
                                 <constraint firstAttribute="trailing" secondItem="aeh-vY-eTJ" secondAttribute="trailing" id="DwX-To-hCR"/>
                                 <constraint firstItem="Wb0-5y-s5J" firstAttribute="centerY" secondItem="kUj-kr-yaw" secondAttribute="centerY" id="PRV-Jr-Ze9"/>
                                 <constraint firstItem="USF-TO-M8t" firstAttribute="width" secondItem="pjO-Re-o56" secondAttribute="width" id="XF4-xA-SCJ"/>
+                                <constraint firstItem="USF-TO-M8t" firstAttribute="width" secondItem="kUj-kr-yaw" secondAttribute="width" multiplier="4:20" id="bov-G4-9NE"/>
                                 <constraint firstItem="Wb0-5y-s5J" firstAttribute="width" secondItem="pjO-Re-o56" secondAttribute="width" id="fZS-oo-36k"/>
                                 <constraint firstAttribute="height" constant="16" id="gjh-5z-N0g"/>
                                 <constraint firstItem="pjO-Re-o56" firstAttribute="centerY" secondItem="kUj-kr-yaw" secondAttribute="centerY" id="i6A-cU-pX7"/>
                                 <constraint firstItem="aeh-vY-eTJ" firstAttribute="leading" secondItem="USF-TO-M8t" secondAttribute="trailing" id="pO1-Qn-5TW"/>
-                                <constraint firstItem="pjO-Re-o56" firstAttribute="width" secondItem="kUj-kr-yaw" secondAttribute="width" multiplier="1:4" id="shD-Oh-FpN"/>
+                                <constraint firstItem="pjO-Re-o56" firstAttribute="width" secondItem="kUj-kr-yaw" secondAttribute="width" multiplier="6:20" id="shD-Oh-FpN"/>
                                 <constraint firstItem="USF-TO-M8t" firstAttribute="centerY" secondItem="kUj-kr-yaw" secondAttribute="centerY" id="slp-qJ-PTH"/>
                                 <constraint firstItem="USF-TO-M8t" firstAttribute="leading" secondItem="Wb0-5y-s5J" secondAttribute="trailing" id="u9T-vU-Lhp"/>
                                 <constraint firstItem="pjO-Re-o56" firstAttribute="leading" secondItem="kUj-kr-yaw" secondAttribute="leading" id="uW8-Ok-tKP"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="fZS-oo-36k"/>
+                                    <exclude reference="XF4-xA-SCJ"/>
+                                </mask>
+                            </variation>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
