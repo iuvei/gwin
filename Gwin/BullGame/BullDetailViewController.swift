@@ -42,17 +42,15 @@ class BullDetailViewController: BaseViewController {
   private var userno: String
   private var room: RoomModel
   private var round: BullRoundModel?
-
-  private var histories: [BullPackageHistoryModel] = []
+  private var datas: [BullModel] = []
+  //  private var histories: [BullPackageHistoryModel] = []
   private var openPackages: [NSManagedObject] = []
   var coundownBet: TimeInterval = 0
   private var timer: Timer?
   private var roundTimmer: Timer?
-  private var wagerTimer: Timer?
-  private var resultWagerTimer: Timer?
-  private var idno: Int = 0
+
   private var lastRound: BullRoundModel?
-//  private var systemTime: TimeInterval?
+  //  private var systemTime: TimeInterval?
   private var wagerInfo: [Int64: [BullWagerInfoModel]] = [:]
   init(userno: String, room: RoomModel) {
     self.room = room
@@ -77,16 +75,11 @@ class BullDetailViewController: BaseViewController {
   }
 
   deinit {
-   timer?.invalidate()
+    timer?.invalidate()
     timer = nil
-   roundTimmer?.invalidate()
+    roundTimmer?.invalidate()
     roundTimmer = nil
 
-    wagerTimer?.invalidate()
-    wagerTimer = nil
-
-    resultWagerTimer?.invalidate()
-    resultWagerTimer = nil
   }
 
   func setupViews() {
@@ -102,6 +95,8 @@ class BullDetailViewController: BaseViewController {
     tableView.separatorStyle = .none
     tableView.delegate = self
     tableView.dataSource = self
+    tableView.rowHeight = UITableView.automaticDimension
+    tableView.estimatedRowHeight = 400
   }
 
   func setupBottomView() {
@@ -134,7 +129,7 @@ class BullDetailViewController: BaseViewController {
         if rowIndex % 2 == 0 {
           label.text = Constants.bakerGetText[i + rowIndex * colCount]
         }else{
-         label.text = "\(i)"
+          label.text = "\(i)"
         }
 
         label.textAlignment = .center
@@ -162,7 +157,7 @@ class BullDetailViewController: BaseViewController {
 
 
   func bindRoundDataViews(round: BullRoundModel) {
-//
+    //
     bankerCountLabel.text = "庄家点数走势图 第\(round.nextroundid)期"
     purchaseDetailLabel.text = "账单日期\(round.nextopentime.toString())"
     //
@@ -217,9 +212,9 @@ class BullDetailViewController: BaseViewController {
     UserAPIClient.systemtime(ticket: user.ticket) { (systemtime) in
       if let timer = systemtime {
         RedEnvelopComponent.shared.systemtime = timer.toDate()
-         RedEnvelopComponent.shared.doTick()
-//        self.systemTime = timer.toDate().timeIntervalSinceNow
-//        self.tickTimer()
+        RedEnvelopComponent.shared.doTick()
+        //        self.systemTime = timer.toDate().timeIntervalSinceNow
+        //        self.tickTimer()
       }
     }
   }
@@ -253,30 +248,47 @@ class BullDetailViewController: BaseViewController {
         //
         if round.status == 2 {
           //add your package
-          this.cancelWagerTimer()
-//          if let new = this.createDumpPackage(round: round), let last = this.histories.last, last.roundid != round.roundid{
-//            this.histories.append(new)
-//            this.tableView.beginUpdates()
-//            this.tableView.insertRows(at: [IndexPath(row: this.histories.count - 1, section: 0)], with: .none)
-//            this.tableView.endUpdates()
-//
-//          }
+//          this.cancelWagerTimer()
+
+          if let index = this.getBullModel(roundid: round.roundid){
+            let bull = this.datas[index]
+            bull.cancelWagerTimer()
+//            bull.fetchResultWagerInfo()
+          }else {
+            this.addNewBull(round: round)
+          }
+
         }else if round.status == 1 {
           //get wagerinfo
           print("result 1 ------")
-          this.wagerInfoTimer()
+          //          this.wagerInfoTimer(roundid: round.roundid)
+          if let index = this.getBullModel(roundid: round.roundid) {
+            let bull = this.datas[index]
+            bull.wagerInfoTimer()
+          }else{
+            this.addNewBull(round: round)
+          }
 
 
         } else if round.status == 0 {
           //remove your package
-          this.cancelWagerTimer()
-          this.removeLastPackage()
+//          this.cancelWagerTimer()
+          if let index = this.getBullModel(roundid: round.roundid) {
+            let bull = this.datas[index]
+            bull.updateRoundStatus(status: .betRemove)
+            this.removePackage(at: index)
+          }
 
         } else if round.status == 3 {
           //get wagerInfo
           print("result 3 ------")
-          this.resultWagerInfoTimer()
-
+          //          this.resultWagerInfoTimer()
+          if let index = this.getBullModel(roundid: round.roundid) {
+            let bull = this.datas[index]
+            bull.resultWagerInfoTimer()
+          }else {
+            this.addNewBull(round: round)
+          }
         }
       }
     }
@@ -305,17 +317,17 @@ class BullDetailViewController: BaseViewController {
   }
 
   func fetchPackageHistory() {
-    if histories.count > 0 { return }
+    if datas.count > 0 { return }
     guard let user = RedEnvelopComponent.shared.user else { return }
     guard let `round` = round else { return }
 
     BullAPIClient.packethistory(ticket: user.ticket, roomid: room.roomId, roundid: round.roundid, topnum: 50) {[weak self] (histoires, error) in
       guard let this = self else { return }
-      this.histories = histoires.reversed()
-//      if let new  = this.createDumpPackage(round: round){
-//        this.histories.append(new)
-//      }
+
+      this.datas = histoires.reversed().map{BullModel(expire: true, round: round, historyPackage: $0, roomid: this.room.roomId)}
+
       this.tableView.reloadData()
+      this.tableView.scrollToBottom()
     }
   }
 
@@ -335,106 +347,14 @@ class BullDetailViewController: BaseViewController {
   }
 
 
-  func wagerInfoTimer() {
-    if wagerTimer == nil{
-      wagerTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(fetchWagerInfo(_:)), userInfo: ["idno": idno, "status": 1], repeats: true)
-    }
-  }
 
-  func resultWagerInfoTimer() {
-    if resultWagerTimer == nil{
-      resultWagerTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(fetchResultWagerInfo(_:)), userInfo: ["idno": 0, "status": 3], repeats: true)
-    }
-  }
-
-  func cancelWagerTimer() {
-    wagerTimer?.invalidate()
-    wagerTimer = nil
-    resultWagerTimer?.invalidate()
-    resultWagerTimer = nil
-  }
-
-  @objc func fetchResultWagerInfo(_ timer: Timer) {
-    guard let user = RedEnvelopComponent.shared.user else { return }
-//    guard let `round` = round else { return }
-
-//    guard let userInfo = timer.userInfo as? [String: Any] else { return }
-    guard let lastround = lastRound else { return }
-
-    BullAPIClient.wagerinfo(ticket: user.ticket, roomid: room.roomId, roundid: lastround.roundid, idno: 0) { [weak self](infos, error) in
-      guard let this = self else {return}
-      print("result result 3 --- \(infos.count)")
-      if let info = infos.last {
-        this.idno = info.idno
-      }
-
-      if let last = this.histories.last, last.roundid != lastround.roundid ,let new = this.createDumpPackage(round: lastround) {
-        new.resultWagerInfo = infos
-
-        this.histories.append(new)
-        this.tableView.beginUpdates()
-        this.tableView.insertRows(at: [IndexPath(row: this.histories.count - 1, section: 0)], with: .none)
-        this.tableView.endUpdates()
-        print("result 3 add \(last.resultWagerInfo.count)")
-
-      }else if let last = this.histories.last, last.roundid == lastround.roundid {
-
-        last.addResultWager(wagers: infos)
-        let lastIndex =  this.histories.count - 1
-        let lastIndexPath = IndexPath(row: lastIndex, section: 0)
-        this.tableView.beginUpdates()
-        this.tableView.reloadRows(at: [lastIndexPath], with: .none)
-        this.tableView.endUpdates()
-        print("result 3 update \(last.resultWagerInfo.count)")
-      }else {
-        print("result 3 wtf")
-      }
-    }
-
-  }
-  @objc func fetchWagerInfo(_ timer: Timer) {
-    guard let user = RedEnvelopComponent.shared.user else { return }
-    guard let `round` = round else { return }
-
-    guard let userInfo = timer.userInfo as? [String: Any] else { return }
-    guard let _idno = userInfo["idno"] as? Int else  { return }
-    guard let _status = userInfo["status"]  as? Int else { return }
-
-    BullAPIClient.wagerinfo(ticket: user.ticket, roomid: room.roomId, roundid: round.roundid, idno: _idno) { [weak self](infos, error) in
-      guard let this = self else {return}
-      print("result result \(_status) --- \(infos.count)")
-      if let info = infos.last {
-        this.idno = info.idno
-      }
-      if let new = this.createDumpPackage(round: round), let last = this.histories.last, last.roundid != round.roundid{
-        new.wagerInfo = infos
-        this.lastRound = round
-        this.histories.append(new)
-        this.tableView.beginUpdates()
-        this.tableView.insertRows(at: [IndexPath(row: this.histories.count - 1, section: 0)], with: .none)
-        this.tableView.endUpdates()
-        print("result 1 add \(last.resultWagerInfo.count)")
-
-      }else if let last = this.histories.last, last.roundid == round.roundid {
-
-        last.addNewWager(wagers: infos)
-        let lastIndex =  this.histories.count - 1
-        let lastIndexPath = IndexPath(row: lastIndex, section: 0)
-        this.tableView.beginUpdates()
-        this.tableView.reloadRows(at: [lastIndexPath], with: .none)
-        this.tableView.endUpdates()
-        print("result 1 update \(last.wagerInfo.count)")
-
-      }
-    }
-  }
 
   func getHistoryItemView(model: BullHistoryModel?) -> UIView{
     let view = UIView().forAutolayout()
 
     let button = UIButton().forAutolayout()
     let imageWidth = (UIScreen.main.bounds.width / 12) - 8
-//    button.rounded(radius: imageWidth/2)
+    //    button.rounded(radius: imageWidth/2)
     button.setBackgroundImage(UIImage(named: "history_circle_bg"), for: .normal)
     button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
     button.setTitleColor(UIColor(hexString: "333333"), for: .normal)
@@ -464,15 +384,16 @@ class BullDetailViewController: BaseViewController {
     }
     return view
   }
-  /*
-   // MARK: - Navigation
 
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destination.
-   // Pass the selected object to the new view controller.
-   }
-   */
+  func getBullModel(roundid: Int64) -> Int? {
+    for i in 0 ..< datas.count {
+      let bull = datas[i]
+      if bull.expire == false, bull.round.roundid == roundid {
+        return i
+      }
+    }
+    return nil
+  }
 
   @IBAction func plusPressed(_ sender: Any) {
     plusButton.isSelected = !plusButton.isSelected
@@ -525,13 +446,13 @@ extension BullDetailViewController{
   }
 
   @objc fileprivate func doTick() {
-//    guard let _ = systemTime else { return }
-//      let old = systemTime!
-//      systemTime = systemTime! + 1
-//      let new = systemTime!
-//      let systemDate = Date(timeIntervalSinceNow: systemTime!)
-//      print("do tick \(systemDate.toString()) -> \(new - old)")
-//      print("do tick local \(Date().toString())")
+    //    guard let _ = systemTime else { return }
+    //      let old = systemTime!
+    //      systemTime = systemTime! + 1
+    //      let new = systemTime!
+    //      let systemDate = Date(timeIntervalSinceNow: systemTime!)
+    //      print("do tick \(systemDate.toString()) -> \(new - old)")
+    //      print("do tick local \(Date().toString())")
 
   }
 
@@ -549,9 +470,25 @@ extension BullDetailViewController{
 }
 extension BullDetailViewController {
 
-  fileprivate func createDumpPackage(round: BullRoundModel)  -> BullPackageHistoryModel?{
+  fileprivate func addNewBull(round: BullRoundModel){
 
+    let newBull = BullModel(round: round, historyPackage: nil, roomid: room.roomId, delegate: self)
+    if newBull.round.status == BullRoundStatus.betStart.rawValue {
+      newBull.wagerInfoTimer()
+    }else if newBull.round.status == BullRoundStatus.betResult.rawValue {
+      newBull.resultWagerInfoTimer()
+    }
 
+    datas.append(newBull)
+    tableView.beginUpdates()
+    tableView.insertRows(at: [IndexPath(row: datas.count - 1, section: 0)], with: .none)
+    tableView.endUpdates()
+    tableView.scrollToBottom()
+  }
+
+  fileprivate func createDumpPackage(round: BullRoundModel)  -> BullModel{
+
+    var package:BullPackageHistoryModel? = nil
     var dict:[String: Any] = [:]
     dict["roundid"] = round.roundid
     dict["userno"] = Constants.bullUserno
@@ -559,18 +496,19 @@ extension BullDetailViewController {
     dict["wagertime"] = round.winningtime.toString()//"\(Date().toString())"
 
     if let json = JSON(rawValue: dict) {
-      return BullPackageHistoryModel(json: json)
+      package =  BullPackageHistoryModel(json: json)
     }
 
-    return nil
+    return  BullModel(round: round, historyPackage: package, roomid: room.roomId, delegate: self)
+
   }
 
 
 
   fileprivate func fetchOpenPackages() {
-      if let userno = RedEnvelopComponent.shared.userno {
-        openPackages = LocalDataManager.shared.fetchPackages(userno: userno)
-      }
+    if let userno = RedEnvelopComponent.shared.userno {
+      openPackages = LocalDataManager.shared.fetchPackages(userno: userno)
+    }
   }
 
   private func isOpenPackage(packageid: Int64) -> Bool {
@@ -602,51 +540,41 @@ extension BullDetailViewController {
 
   func isPackageExpeire(wagertime: String) -> Bool{
 
-//    let packageDate = wagertime.toDate()
-//    if let `systemtime` = systemTime {
-//      let timeinterval = systemtime - packageDate.timeIntervalSinceNow
-//      let mins = timeinterval / (60)
-//
-//      return mins > Double(RedEnvelopComponent.limitTime)
-//    }
+    //    let packageDate = wagertime.toDate()
+    //    if let `systemtime` = systemTime {
+    //      let timeinterval = systemtime - packageDate.timeIntervalSinceNow
+    //      let mins = timeinterval / (60)
+    //
+    //      return mins > Double(RedEnvelopComponent.limitTime)
+    //    }
     return false
   }
 
-  private func updateCellAsOpened(rounid: Int64){
-    var rowIndex: Int = -1
-    for i in 0 ..< histories.count {
-      let package = histories[i]
-      if package.roundid == rounid {
-        rowIndex = i
-        break
-      }
-    }
 
-    if rowIndex >= 0 {
-      let indexPath = IndexPath(row: rowIndex, section: 0)
-      tableView.beginUpdates()
-      tableView.reloadRows(at: [indexPath], with: .none)
-      tableView.endUpdates()
-    }
-
-  }
 }
 
 extension BullDetailViewController{
 
-  fileprivate func removeLastPackage() {
-    guard let `round` =  round else { return }
-    if let last = histories.last, last.roundid == round.roundid {
-      let lastIndex = histories.count - 1
-      histories.remove(at: lastIndex)
+  fileprivate func removePackage(at index: Int) {
 
-      let lastIndexPath = IndexPath(row: lastIndex, section: 0)
+      datas.remove(at: index)
+
+      let lastIndexPath = IndexPath(row: index, section: 0)
       tableView.beginUpdates()
       tableView.deleteRows(at: [lastIndexPath], with: .none)
       tableView.endUpdates()
-    }
+
   }
 
+  private func updateCellAsOpened(rounid: Int64){
+    if let index = getBullModel(roundid: rounid) {
+      let indexPath = IndexPath(row: index, section: 0)
+      tableView.beginUpdates()
+      tableView.reloadRows(at: [indexPath], with: .none)
+      tableView.endUpdates()
+    }
+  }
+  
   fileprivate func isOnlySelf(model: BullPackageHistoryModel) -> Bool {
     if (!model.isExpire()) {
       return true
@@ -657,46 +585,41 @@ extension BullDetailViewController{
 extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 165
+    let bull = datas[indexPath.row]
+    return CGFloat(150 + bull.countWagerInfo() * 20) 
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    print("table count \(histories.count)")
-    return histories.count
+    print("table count \(datas.count)")
+    return datas.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-    let model = histories[indexPath.row]
-    let isGrab = isOpenPackage(packageid: model.roundid)
+    let bull = datas[indexPath.row]
+    let isGrab = bull.isGrabed(openPackages)
     //    let isBoom = false//isBoomed(packageid: model.packetid)
     //    let isKing = false//isBiggest(packageid: model.packetid)
     //    let isExpired = false//isPackageExpeire(wagertime: model.wagertime)
     //
-    print("model : \(model.packetamount)")
-    if userno != model.userno {
-      if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
-        cell.selectionStyle = .none
-        cell.updateBullViews(model: model, isOpen: isGrab)
-        return cell
-      }
-    } else {
-      if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryRightViewCell", for: indexPath) as? PackageHistoryRightViewCell {
-        cell.selectionStyle = .none
-        cell.updateBullViews(model: model, isOpen: isGrab)
-        return cell
-      }
+
+    if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
+      cell.selectionStyle = .none
+      cell.updateBullViews(bull: bull, isOpen: isGrab)
+      return cell
     }
+
 
     return UITableViewCell()
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let model = histories[indexPath.row]
-    let isGrab = isOpenPackage(packageid: model.roundid)
+    let bull = datas[indexPath.row]
+    guard let model = bull.historyPackage else { return }
+    let isGrab = bull.isGrabed(openPackages)
 
     if isGrab{
-      let infoVC = BulllPackageInfoViewController(roomid: room.roomId, roundid: model.roundid, userno: model.userno, onlyself: isOnlySelf(model: model) ? 1 : 0)
+      let infoVC = BulllPackageInfoViewController(roomid: room.roomId, roundid: model.roundid, userno: model.userno, onlyself: bull.expire ? 1 : 0)
       present(infoVC, animated: true, completion: nil)
     }else{
       let vc = GrabBullPackageViewController(history: model, room: room)
@@ -713,24 +636,22 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
           }
         }
         //
-        let wagertime = model.wagertime.toDate().timeIntervalSinceNow
-        let expire = RedEnvelopComponent.shared.systemTimeInterval > wagertime ||  model.resultWagerInfo.count > 0
 
-        let infoVC = BulllPackageInfoViewController(roomid: this.room.roomId, roundid: model.roundid, grabedModel: grabbed, userno: model.userno, onlyself: this.isOnlySelf(model: model) ? 1 : 0)
+
+        let infoVC = BulllPackageInfoViewController(roomid: this.room.roomId, roundid: model.roundid, grabedModel: grabbed, userno: model.userno, onlyself: bull.expire ? 1 : 0)
         this.present(infoVC, animated: true, completion: nil)
       }
 
       vc.didViewPackageInfo = { [weak self] in
         guard let this = self else { return }
         let wagertime = model.wagertime.toDate().timeIntervalSinceNow
-        let expire = RedEnvelopComponent.shared.systemTimeInterval > wagertime ||  model.resultWagerInfo.count > 0
+
 
         let currentDate = Date(timeIntervalSinceNow: RedEnvelopComponent.shared.systemTimeInterval)
         let wagerDate = Date(timeIntervalSinceNow: wagertime)
         print("systimeTime : \(currentDate.toString()) -- wager: \(wagerDate.toString())")
-        print("delta \(expire)")
 
-        let infoVC = BulllPackageInfoViewController(roomid: this.room.roomId, roundid: model.roundid, userno: model.userno, onlyself: this.isOnlySelf(model: model) ? 1 : 0)
+        let infoVC = BulllPackageInfoViewController(roomid: this.room.roomId, roundid: model.roundid, userno: model.userno, onlyself: bull.expire ? 1 : 0)
         this.present(infoVC, animated: true, completion: nil)
       }
 
@@ -739,6 +660,30 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
   }
 }
 
+extension BullDetailViewController: BullModelDelegate {
+  func didGetWagerInfo(roundid: Int64, wagerInfos: [BullWagerInfoModel]) {
+    if let index = getBullModel(roundid: roundid) {
+      let bull = datas[index]
+      bull.betWagerInfo = wagerInfos
+      let indexPath = IndexPath(row: index, section: 0)
+      tableView.beginUpdates()
+      tableView.reloadRows(at: [indexPath], with: .none)
+      tableView.endUpdates()
+    }
+  }
+  
+  func didGetResultWagerInfo(roundid: Int64, wagerInfos: [BullWagerInfoModel]) {
+    if let index = getBullModel(roundid: roundid) {
+      let bull = datas[index]
+      bull.resultWagerInfo = wagerInfos
+      bull.expire = true
+      let indexPath = IndexPath(row: index, section: 0)
+      tableView.beginUpdates()
+      tableView.reloadRows(at: [indexPath], with: .none)
+      tableView.endUpdates()
+    }
+  }
+}
 
 extension BullDetailViewController: BetBullDelegate {
   func betSuccessFull() {
@@ -746,5 +691,6 @@ extension BullDetailViewController: BetBullDelegate {
     subgameStackView.isHidden = true
   }
 }
+
 
 

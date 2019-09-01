@@ -15,8 +15,8 @@ class BullPackageHistoryModel {
   var packetamount: Int                   // Number,
   var packettag: String                  // string, 开奖结果
   var wagertime: String                  // string,
-  var wagerInfo: [BullWagerInfoModel] = []
-  var resultWagerInfo: [BullWagerInfoModel] = []
+//  var wagerInfo: [BullWagerInfoModel] = []
+//  var resultWagerInfo: [BullWagerInfoModel] = []
 
   init(json: JSON) {
     roundid = json["roundid"].int64Value                  // int64,
@@ -27,35 +27,35 @@ class BullPackageHistoryModel {
     wagertime = json["wagertime"].stringValue
   }
 
-  func addNewWager(wagers: [BullWagerInfoModel]){
-    for info in wagers {
-      var has: Bool = false
-      for existInfo in wagerInfo {
-        if info == existInfo{
-          has = true
-          break
-        }
-      }
-      if !has {
-        wagerInfo.append(info)
-      }
-    }
-  }
-
-  func addResultWager(wagers: [BullWagerInfoModel]){
-    for info in wagers {
-      var has: Bool = false
-      for existInfo in resultWagerInfo {
-        if info == existInfo{
-          has = true
-          break
-        }
-      }
-      if !has {
-        resultWagerInfo.append(info)
-      }
-    }
-  }
+//  func addNewWager(wagers: [BullWagerInfoModel]){
+//    for info in wagers {
+//      var has: Bool = false
+//      for existInfo in wagerInfo {
+//        if info == existInfo{
+//          has = true
+//          break
+//        }
+//      }
+//      if !has {
+//        wagerInfo.append(info)
+//      }
+//    }
+//  }
+//
+//  func addResultWager(wagers: [BullWagerInfoModel]){
+//    for info in wagers {
+//      var has: Bool = false
+//      for existInfo in resultWagerInfo {
+//        if info == existInfo{
+//          has = true
+//          break
+//        }
+//      }
+//      if !has {
+//        resultWagerInfo.append(info)
+//      }
+//    }
+//  }
 
   func isExpire() -> Bool {
     let wagerTimeInterval = wagertime.toDate().timeIntervalSinceNow

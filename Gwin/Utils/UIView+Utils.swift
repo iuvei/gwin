@@ -387,3 +387,23 @@ extension Array where Element: Hashable {
   }
 }
 
+extension UITableView {
+
+  func scrollToBottom(animated: Bool = false){
+
+    DispatchQueue.main.async {
+      let indexPath = IndexPath(
+        row: self.numberOfRows(inSection:  self.numberOfSections - 1) - 1,
+        section: self.numberOfSections - 1)
+      self.scrollToRow(at: indexPath, at: .bottom, animated: animated)
+    }
+  }
+
+  func scrollToTop() {
+
+    DispatchQueue.main.async {
+      let indexPath = IndexPath(row: 0, section: 0)
+      self.scrollToRow(at: indexPath, at: .top, animated: false)
+    }
+  }
+}

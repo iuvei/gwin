@@ -21,9 +21,12 @@ class PackageHistoryLeftViewCell: UITableViewCell {
   @IBOutlet weak var expiredLabel: UILabel!
   @IBOutlet weak var evelopNameLabel: UILabel!
 
-  @IBOutlet weak var wagerStackView: UIStackView!
-  @IBOutlet weak var resultWagerInfoStackView: UIStackView!
+  @IBOutlet weak var wagerStackView: UIView!
+  @IBOutlet weak var resultWagerInfoStackView: UIView!
 
+  @IBOutlet weak var topStackHeightConstraint: NSLayoutConstraint!
+
+  @IBOutlet weak var bottomStackHeightConstraint: NSLayoutConstraint!
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
@@ -75,28 +78,24 @@ class PackageHistoryLeftViewCell: UITableViewCell {
     }else{
       expiredLabel.text = "红包炸雷"
     }
+    topStackHeightConstraint.constant = 0
+    bottomStackHeightConstraint.constant = 0
   }
 
 
-  func updateBullViews(model: BullPackageHistoryModel, isOpen: Bool = false, isKing: Bool = false, isBoomed: Bool = false, expired: Bool = false){
-    usernameLabel.text = model.userno
+  func updateBullViews(bull: BullModel, isOpen: Bool = false, isKing: Bool = false, isBoomed: Bool = false, expired: Bool = false){
+    amountLabel.text = "牛牛红包"
+    evelopNameLabel.text = "领取红包"
 
-    if model.packettag.count > 0 {
-      amountLabel.text = "\(model.packetamount)-\(model.packettag)"
-      evelopNameLabel.text = "扫雷红包"
-    }else {
-      amountLabel.text = "\(model.packetamount)"
-      evelopNameLabel.text = "福利红包"
-    }
-
-    wagerTimeLabel.text = "\(model.wagertime)"
-    avatarImageView.image = UIImage(named: "bull_avatar")
-    
     if isOpen {
       backgroundImageView.image = UIImage(named: "package_left_bg_read")
     } else {
       backgroundImageView.image = UIImage(named: "package_left_bg")
     }
+
+
+
+
     if isBoomed {
       statusImageView.isHidden = false
       statusImageView.image = UIImage(named: "grabuser_boom")
@@ -108,24 +107,67 @@ class PackageHistoryLeftViewCell: UITableViewCell {
         statusImageView.isHidden = true
       }
     }
-    
-    expiredLabel.text = "\(model.roundid)"
 
-    wagerStackView.removeAllArrangedSubviews()
-    for info in model.wagerInfo {
+    avatarImageView.image = UIImage(named: "bull_avatar")
+    if  let model = bull.historyPackage {
+      usernameLabel.text = model.userno
+      wagerTimeLabel.text = "\(model.wagertime)"
+      expiredLabel.text = "\(model.roundid)"
+    }else {
+      expiredLabel.text = "\(bull.round.roundid)"
+      usernameLabel.text = "平台"
+      wagerTimeLabel.text = "\(bull.round.winningtime.toString())"
+    }
+
+    for subview in wagerStackView.subviews {
+      subview.removeFromSuperview()
+    }
+    for i in 0 ..< bull.betWagerInfo.count {
+      let info = bull.betWagerInfo[i]
       let label = UILabel().forAutolayout()
       label.font = UIFont.systemFont(ofSize: 12)
-      label.text = "\(info.userno) XX \(info.stake)"
-      wagerStackView.addArrangedSubview(label)
+      label.text = String(format: "%@%@%.2f", info.userno,AppText.betSuccess,info.stake)
+      label.backgroundColor = AppColors.betBgColor
+      label.textColor = .white
+      label.rounded(radius: 2, borderColor: .clear, borderwidth: 0)
+      wagerStackView.addSubview(label)
+      NSLayoutConstraint.activate([
+        label.heightAnchor.constraint(equalToConstant: 18),
+        label.centerXAnchor.constraint(equalTo: wagerStackView.centerXAnchor),
+        label.topAnchor.constraint(equalTo: wagerStackView.topAnchor, constant: CGFloat(20 * i))
+        ])
     }
-    
-    resultWagerInfoStackView.removeAllArrangedSubviews()
-    for info in model.resultWagerInfo {
+
+    for subview in resultWagerInfoStackView.subviews {
+      subview.removeFromSuperview()
+    }
+    for i in 0 ..< bull.resultWagerInfo.count {
+      let info = bull.resultWagerInfo[i]
       let label = UILabel().forAutolayout()
       label.font = UIFont.systemFont(ofSize: 12)
-      label.text = "\(info.userno) YY \(info.stake)"
-      resultWagerInfoStackView.addArrangedSubview(label)
+      label.text = String(format: "%@%@%@%@%.2f", AppText.thisRound, info.userno, AppText.betPlace,info.winning < 0 ? AppText.betTotalLose : AppText.betTotalWin,info.stake)
+      label.backgroundColor = AppColors.betResultBgColor
+      label.textColor = .white
+      label.rounded(radius: 2, borderColor: .clear, borderwidth: 0)
+      resultWagerInfoStackView.addSubview(label)
+      NSLayoutConstraint.activate([
+        label.heightAnchor.constraint(equalToConstant: 18),
+        label.centerXAnchor.constraint(equalTo: resultWagerInfoStackView.centerXAnchor),
+        label.topAnchor.constraint(equalTo: resultWagerInfoStackView.topAnchor, constant: CGFloat(20 * i))
+        ])
     }
+
+    let height1 =  bull.betWagerInfo.count * 20
+    let height2 =  bull.resultWagerInfo.count * 20
+
+    topStackHeightConstraint.constant = CGFloat(height1)
+    bottomStackHeightConstraint.constant = CGFloat(height2)
+    updateConstraintsIfNeeded()
+    contentView.updateConstraints()
+    print("result ccc \(bull.round.roundid) \(height1) - \(height2)")
   }
 }
+
+
+
 

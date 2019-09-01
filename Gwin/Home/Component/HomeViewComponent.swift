@@ -10,13 +10,22 @@ import Foundation
 import UIKit
 
 public enum AppColors{
-    static let tabbarColor: UIColor = UIColor(hexString:"e75f48")
-    static let titleColor: UIColor = UIColor(hexString: "FBEAAC")
+  static let tabbarColor: UIColor = UIColor(hexString:"e75f48")
+  static let titleColor: UIColor = UIColor(hexString: "FBEAAC")
+  static let betBgColor: UIColor = UIColor(hexString: "66c05a")
+  static let betResultBgColor: UIColor = UIColor(hexString: "e2a55e")
 
 }
 
 public enum AppText{
   static let currency: String = "元"
+  static let betSuccess: String = "成功下注"
+  static let thisRound: String = "本论"
+  static let betPlace: String =  "获得"
+  static let betTotalLose: String =  "共赔付"
+  static let betTotalWin: String = "获利"
+
+
 }
 
 public enum TabIndex: Int {
@@ -31,7 +40,7 @@ public protocol RedEnvelopDependency {
 }
 
 class RedEnvelopComponent: RedEnvelopDependency  {
-  static let limitTime: Int  = 6 
+  static let limitTime: Int  = 6
   static let shared = RedEnvelopComponent()
 
   var user: User?
@@ -40,7 +49,7 @@ class RedEnvelopComponent: RedEnvelopDependency  {
 
   var userno: String?
   var rollMsg: String?
-  
+
   init(user: User? = nil) {
     self.user = user
     self.systemTimeInterval = Date().timeIntervalSinceNow
@@ -53,7 +62,7 @@ class RedEnvelopComponent: RedEnvelopDependency  {
   }
 
   func doTick(){
-    
+
     systemTimeInterval = systemtime?.timeIntervalSinceNow ?? Date().timeIntervalSinceNow
     Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(increaseSystemTime), userInfo: nil, repeats: true)
   }
@@ -63,3 +72,4 @@ class RedEnvelopComponent: RedEnvelopDependency  {
     print("increaseSystemTime \(systemTimeInterval)")
   }
 }
+
