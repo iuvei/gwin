@@ -27,6 +27,7 @@ class GameItemCell: UITableViewCell {
 
   private lazy var subTitleLabel: UILabel = {
     let label = UILabel().forAutolayout()
+    label.textColor = UIColor.lightGray
     return label
   }()
 

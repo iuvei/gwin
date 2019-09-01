@@ -11,7 +11,12 @@ import UIKit
 class GameRoomViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var rollMsgLabel: UILabel!
+  @IBOutlet weak var rollMsgView: UIView!
+
+  private lazy var marqueView:ScrollLabel = {
+    let view = ScrollLabel().forAutolayout()
+    return view
+  }()
 
   var rooms: [RoomModel] = []
 
@@ -31,9 +36,18 @@ class GameRoomViewController: UIViewController {
 
   func setupViews() {
 
-    rollMsgLabel.text = RedEnvelopComponent.shared.rollMsg
 
     tableView.register(GameItemCell.self, forCellReuseIdentifier: "envelopRoomCell")
+
+    rollMsgView.addSubview(marqueView)
+    marqueView.updateContent(message: RedEnvelopComponent.shared.rollMsg)
+    NSLayoutConstraint.activate([
+      marqueView.leftAnchor.constraint(equalTo: rollMsgView.leftAnchor, constant: 40),
+      marqueView.topAnchor.constraint(equalTo: rollMsgView.topAnchor),
+      marqueView.rightAnchor.constraint(equalTo: rollMsgView.rightAnchor),
+      marqueView.bottomAnchor.constraint(equalTo: rollMsgView.bottomAnchor),
+
+      ])
   }
 
   /*
@@ -71,7 +85,7 @@ extension GameRoomViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 90
+    return 80
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -103,19 +117,19 @@ extension GameRoomViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension GameRoomViewController {
   fileprivate func showInputPassword(room: RoomModel) {
-    let alertVC = UIAlertController(title: nil, message: "room password", preferredStyle: .alert)
+    let alertVC = UIAlertController(title: nil, message: "请输入房间密码", preferredStyle: .alert)
     alertVC.addTextField(configurationHandler: { (textField) in
       textField.isSecureTextEntry = true
-      textField.placeholder = "Enter password"
+      textField.placeholder = "请输入房间密码"
     })
 
-    let saveAction = UIAlertAction(title: "Save", style: .default, handler: { [weak self] alert -> Void in
+    let saveAction = UIAlertAction(title: "确认", style: .default, handler: { [weak self] alert -> Void in
       if let firstTextField = alertVC.textFields?[0], let roompwd = firstTextField.text, roompwd == room.roomPwd {
         self?.doLogin(room: room)
       }
     })
 
-    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+    let cancelAction = UIAlertAction(title: "取消", style: .default, handler: nil)
 
     alertVC.addAction(cancelAction)
     alertVC.addAction(saveAction)

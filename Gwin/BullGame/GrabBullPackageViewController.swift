@@ -35,6 +35,7 @@ class GrabBullPackageViewController: BaseViewController {
   private var screenIndex: Int?
 
   var didGrabPackage: (BullPackageModel)->Void = {_ in}
+  var didViewPackageInfo:()-> Void = {}
 
   init(history: BullPackageHistoryModel, room: RoomModel) {
     self.history = history
@@ -87,6 +88,23 @@ class GrabBullPackageViewController: BaseViewController {
       
     }
   }
+
+  func fetchPackageInfo() {
+//    guard let user = RedEnvelopComponent.shared.user else { return }
+    //let roundStatus
+    // <3 -> onlyself = 1
+    //else ->onlyself = 0
+//    showLoadingView()
+//    BullAPIClient.info(ticket: user.ticket, roomid: room.roomId, roundid: history.roundid, onlyself: 0) { [weak self](model, error) in
+//      guard let this = self else { return }
+//      this.hideLoadingView()
+//
+//      print("info \(model?.packettag)")
+//
+//    }
+    didViewPackageInfo()
+    dismiss(animated: true, completion: nil)
+  }
   /*
    // MARK: - Navigation
 
@@ -116,7 +134,7 @@ class GrabBullPackageViewController: BaseViewController {
   }
 
   @IBAction func packageDetailPressed(_ sender: Any) {
-
+    fetchPackageInfo()
   }
 
   @IBAction func closePressed(_ sender: Any) {

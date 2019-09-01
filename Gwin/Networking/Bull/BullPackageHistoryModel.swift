@@ -56,6 +56,11 @@ class BullPackageHistoryModel {
       }
     }
   }
+
+  func isExpire() -> Bool {
+    let wagerTimeInterval = wagertime.toDate().timeIntervalSinceNow
+    return wagerTimeInterval < RedEnvelopComponent.shared.systemTimeInterval
+  }
 }
 
 

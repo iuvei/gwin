@@ -91,7 +91,7 @@ extension UIView {
 
       ])
   }
-  
+
   func applyGradient(colours: [UIColor]) -> Void {
     self.applyGradient(colours: colours, locations: nil)
   }
@@ -118,6 +118,42 @@ extension UIView {
     translatesAutoresizingMaskIntoConstraints = false
     return self
   }
+
+  func addTopBorderWithColor(color: UIColor, width: CGFloat) {
+    let border = CALayer()
+    border.backgroundColor = color.cgColor
+    border.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: width)
+    self.layer.addSublayer(border)
+  }
+
+  func addRightBorderWithColor(color: UIColor, width: CGFloat) {
+    let border = CALayer()
+    border.backgroundColor = color.cgColor
+    border.frame = CGRect(x: self.frame.size.width - width, y: 0, width: width, height: self.frame.size.height)
+    self.layer.addSublayer(border)
+  }
+
+  func addBottomBorderWithColor(color: UIColor, width: CGFloat) {
+    let border = CALayer()
+    border.name = "bottomLine"
+    border.backgroundColor = color.cgColor
+    border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
+    let sublayers =  self.layer.sublayers?.filter{$0.name == "bottomLine"}
+    
+    if let first = sublayers?.first {
+      first.removeFromSuperlayer()
+    }
+
+    self.layer.addSublayer(border)
+  }
+
+  func addLeftBorderWithColor(color: UIColor, width: CGFloat) {
+    let border = CALayer()
+    border.backgroundColor = color.cgColor
+    border.frame = CGRect(x: 0, y: 0, width: width, height: self.frame.size.height)
+    self.layer.addSublayer(border)
+  }
+
 }
 
 extension UINavigationController {
@@ -155,9 +191,9 @@ extension UIViewController {
   }
 
   func setTitle(title: String) {
-    
-//    self.navigationController?.setTitle(title: title)
-//    self.title = title
+
+    //    self.navigationController?.setTitle(title: title)
+    //    self.title = title
     navigationItem.title = title
 
   }
@@ -230,7 +266,7 @@ extension UIColor {
 }
 
 extension UIButton {
-   func adjustImageAndTitleOffsetsForButton(spacing: CGFloat = 6.0) {
+  func adjustImageAndTitleOffsetsForButton(spacing: CGFloat = 6.0) {
 
     if let image = self.imageView?.image {
       let imageSize: CGSize = image.size
@@ -315,7 +351,7 @@ extension Int {
     }
     return digitList
   }
-  
+
 }
 
 
@@ -350,3 +386,4 @@ extension Array where Element: Hashable {
     return Array(thisSet.symmetricDifference(otherSet))
   }
 }
+

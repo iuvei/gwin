@@ -31,12 +31,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7b2-xj-QhQ">
                                 <rect key="frame" x="160" y="0.0" width="160" height="43.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                 <constraints>
                     <constraint firstItem="8ee-ma-mJW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jKp-kP-NJU"/>
                     <constraint firstAttribute="trailing" secondItem="8ee-ma-mJW" secondAttribute="trailing" id="m3Y-sx-roB"/>

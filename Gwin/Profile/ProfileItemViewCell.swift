@@ -66,6 +66,8 @@ class ProfileItemViewCell: UITableViewCell {
     button.addBorder(color:UIColor(hexString: "e75f48"), width: 1)
     button.setTitle("复制", for: .normal)
     button.setTitleColor(UIColor(hexString: "e75f48"), for: .normal)
+    button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+    button.addTarget(self, action: #selector(copyPressed(_:)), for: .touchUpInside)
     return button
   }()
 
@@ -84,6 +86,7 @@ class ProfileItemViewCell: UITableViewCell {
   }
 
   private var model: ProfileItemModel?
+  var didCopyQRCode: ()->Void = {}
 
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
@@ -118,7 +121,7 @@ class ProfileItemViewCell: UITableViewCell {
       copyButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -Constants.buttonRightMargin),
       copyButton.centerYAnchor.constraint(equalTo: centerYAnchor),
       copyButton.heightAnchor.constraint(equalToConstant: 30),
-      copyButton.widthAnchor.constraint(equalToConstant: 50),
+      copyButton.widthAnchor.constraint(equalToConstant: 60),
 
       qrcodeLabel.rightAnchor.constraint(equalTo: copyButton.leftAnchor, constant: -Constants.buttonRightMargin),
       qrcodeLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -159,7 +162,17 @@ class ProfileItemViewCell: UITableViewCell {
       let sound = actionButton.isSelected
       UserDefaultManager.sharedInstance().setSettingSound(on: sound)
     }
+
   }
+
+  @objc func copyPressed(_ sender: UIButton) {
+
+    if let `model` = model, model.action == ProfileItemAction.qrcode.rawValue {
+      didCopyQRCode()
+    }
+  }
+
+
 }
 
 

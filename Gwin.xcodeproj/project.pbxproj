@@ -55,6 +55,9 @@
 		D194BD8C231AB9BD00AB59C3 /* BulllPackageInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D194BD8A231AB9BD00AB59C3 /* BulllPackageInfoViewController.xib */; };
 		D194BD8F231ABE5A00AB59C3 /* BetDetailiewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD8D231ABE5A00AB59C3 /* BetDetailiewCell.swift */; };
 		D194BD90231ABE5A00AB59C3 /* BetDetailiewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D194BD8E231ABE5A00AB59C3 /* BetDetailiewCell.xib */; };
+		D194BD92231BB85300AB59C3 /* BullModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD91231BB85300AB59C3 /* BullModel.swift */; };
+		D194BD95231BC18700AB59C3 /* UploadImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD93231BC18700AB59C3 /* UploadImageViewController.swift */; };
+		D194BD96231BC18700AB59C3 /* UploadImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D194BD94231BC18700AB59C3 /* UploadImageViewController.xib */; };
 		D1E00B72230D8F0E00554CA4 /* LobbyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */; };
 		D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */ = {isa = PBXBuildFile; fileRef = D1E00B74230D950E00554CA4 /* LobbyJson.json */; };
 		D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B78230DA05200554CA4 /* WebContainerController.swift */; };
@@ -179,6 +182,9 @@
 		D194BD8A231AB9BD00AB59C3 /* BulllPackageInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BulllPackageInfoViewController.xib; sourceTree = "<group>"; };
 		D194BD8D231ABE5A00AB59C3 /* BetDetailiewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetDetailiewCell.swift; sourceTree = "<group>"; };
 		D194BD8E231ABE5A00AB59C3 /* BetDetailiewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BetDetailiewCell.xib; sourceTree = "<group>"; };
+		D194BD91231BB85300AB59C3 /* BullModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullModel.swift; sourceTree = "<group>"; };
+		D194BD93231BC18700AB59C3 /* UploadImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageViewController.swift; sourceTree = "<group>"; };
+		D194BD94231BC18700AB59C3 /* UploadImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageViewController.xib; sourceTree = "<group>"; };
 		D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyItemView.swift; sourceTree = "<group>"; };
 		D1E00B74230D950E00554CA4 /* LobbyJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LobbyJson.json; sourceTree = "<group>"; };
 		D1E00B78230DA05200554CA4 /* WebContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContainerController.swift; sourceTree = "<group>"; };
@@ -576,8 +582,10 @@
 		D1E00CFA230E92D400554CA4 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				D1E00D03230EC0A000554CA4 /* ProfileViewController.swift */,
 				D1E00D05230EDF1D00554CA4 /* ProfileItemViewCell.swift */,
+				D1E00D03230EC0A000554CA4 /* ProfileViewController.swift */,
+				D194BD93231BC18700AB59C3 /* UploadImageViewController.swift */,
+				D194BD94231BC18700AB59C3 /* UploadImageViewController.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -674,6 +682,7 @@
 				D194BD8A231AB9BD00AB59C3 /* BulllPackageInfoViewController.xib */,
 				D194BD8D231ABE5A00AB59C3 /* BetDetailiewCell.swift */,
 				D194BD8E231ABE5A00AB59C3 /* BetDetailiewCell.xib */,
+				D194BD91231BB85300AB59C3 /* BullModel.swift */,
 			);
 			path = BullGame;
 			sourceTree = "<group>";
@@ -774,6 +783,7 @@
 				D1EA0EBC2317B0E70096B7D1 /* GrabBankerViewController.xib in Resources */,
 				D1E00DA72311302E00554CA4 /* CreateEnvelopType2ViewController.xib in Resources */,
 				D1E00DA3231119AC00554CA4 /* PackageInfoViewController.xib in Resources */,
+				D194BD96231BC18700AB59C3 /* UploadImageViewController.xib in Resources */,
 				D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */,
 				D194BD86231A4D2D00AB59C3 /* GrabBullPackageViewController.xib in Resources */,
 				D175C4CE230BD324001B8DC6 /* LoginViewController.xib in Resources */,
@@ -867,6 +877,7 @@
 				D194BD8B231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift in Sources */,
 				D1E00D9E2311115200554CA4 /* CreateEnvelopViewController.swift in Sources */,
 				D1E00DB12312CEA600554CA4 /* TitleStackView.swift in Sources */,
+				D194BD92231BB85300AB59C3 /* BullModel.swift in Sources */,
 				D175C4BC230BCD97001B8DC6 /* Router.swift in Sources */,
 				D175C4C0230BCE31001B8DC6 /* ExampleViewController.swift in Sources */,
 				D170F385231440B700468D64 /* ScrollLabel.swift in Sources */,
@@ -931,6 +942,7 @@
 				D175C4B9230BCD97001B8DC6 /* Component.swift in Sources */,
 				D1E00D912310EBC100554CA4 /* RoomDetailViewController.swift in Sources */,
 				D1E00DAA23116F4700554CA4 /* GrabEnvelopViewController.swift in Sources */,
+				D194BD95231BC18700AB59C3 /* UploadImageViewController.swift in Sources */,
 				D175C4F8230CF823001B8DC6 /* NoticeAPIClient.swift in Sources */,
 				D1E00DB72312DC8600554CA4 /* GrabUserViewCell.swift in Sources */,
 				D175C4D2230BD570001B8DC6 /* LoginRouter.swift in Sources */,

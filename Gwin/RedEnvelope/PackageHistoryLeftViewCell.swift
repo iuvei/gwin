@@ -90,12 +90,8 @@ class PackageHistoryLeftViewCell: UITableViewCell {
     }
 
     wagerTimeLabel.text = "\(model.wagertime)"
-    if let imagebase64 = ImageManager.shared.getImage(userno: model.userno) {
-      if let imageData = Data(base64Encoded: imagebase64, options: []) {
-        let image  = UIImage(data: imageData)
-        avatarImageView.image = image
-      }
-    }
+    avatarImageView.image = UIImage(named: "bull_avatar")
+    
     if isOpen {
       backgroundImageView.image = UIImage(named: "package_left_bg_read")
     } else {

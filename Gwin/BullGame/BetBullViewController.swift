@@ -25,6 +25,8 @@ class BetBullViewController: BaseViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var rightTableView: UITableView!
   @IBOutlet weak var okButton: UIButton!
+  @IBOutlet weak var topBetButton: UIButton!
+  
   @IBOutlet weak var stakeLabel: UILabel!
 
   @IBOutlet weak var moneyTextfield: UITextField!
@@ -62,6 +64,7 @@ class BetBullViewController: BaseViewController {
     setupViews()
     loadWaggerOddNames()
     fetchwagerodds()
+    didSelectTab(at: 1)
         // Do any additional setup after loading the view.
     }
 
@@ -82,6 +85,9 @@ class BetBullViewController: BaseViewController {
 
     //
     tableScrollView.isPagingEnabled = true
+    tableScrollView.delegate = self
+    //
+
     moneyTextfield.delegate = self
     moneyTextfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     //
@@ -97,7 +103,8 @@ class BetBullViewController: BaseViewController {
     inputLabel.rounded()
     moneyTextfield.rounded()
     okButton.rounded()
-    
+    topBetButton.rounded(radius: 4, borderColor: AppColors.titleColor, borderwidth: 1)
+    topBetButton.setTitleColor(AppColors.titleColor, for: .normal)
   }
 
 
@@ -222,6 +229,22 @@ class BetBullViewController: BaseViewController {
     inputLabel.text = String(format:"¥ %.2f",total)
   }
 
+  func  didSelectTab(at index: Int) {
+    if index == 1 {
+      currentTab = .left
+      tableScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+      leftTabButton.addBottomBorderWithColor(color: AppColors.tabbarColor, width: 2)
+      rightTabButton.addBottomBorderWithColor(color: .clear, width: 0)
+      rightTableView.reloadData()
+    }else if (index == 2) {
+      currentTab = .right
+      tableScrollView.setContentOffset(CGPoint(x: UIScreen.main.bounds.width, y: 0), animated: true)
+      leftTabButton.addBottomBorderWithColor(color: .clear, width: 0)
+      rightTabButton.addBottomBorderWithColor(color: AppColors.tabbarColor, width: 2)
+      tableView.reloadData()
+
+    }
+  }
   @objc func textFieldDidChange(_ textfield: UITextField) {
     inputLabel.text = "¥ \(textfield.text ?? "0.0")"
   }
@@ -235,13 +258,7 @@ class BetBullViewController: BaseViewController {
   }
 
   @IBAction func tabButtonPressed(_ sender: UIButton) {
-    if sender.tag == 1 {
-      currentTab = .left
-      tableScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-    }else if (sender.tag == 2) {
-      currentTab = .right
-      tableScrollView.setContentOffset(CGPoint(x: UIScreen.main.bounds.width, y: 0), animated: true)
-    }
+    didSelectTab(at: sender.tag)
   }
 
   override func backPressed(_ button: UIButton){
@@ -342,6 +359,18 @@ extension BetBullViewController {
     tableView.reloadData()
     rightTableView.reloadData()
   }
+
+  fileprivate func didStopScroll(){
+    let width = UIScreen.main.bounds.width
+    if width > 0 {
+      let pageIndex = round(tableScrollView.contentOffset.x/width)
+      if pageIndex == 0 {
+        didSelectTab(at: 1)
+      }else if pageIndex == 1 {
+        didSelectTab(at: 2)
+      }
+    }
+  }
 }
 
 extension BetBullViewController: UITextFieldDelegate {
@@ -354,21 +383,14 @@ extension BetBullViewController: UITextFieldDelegate {
 }
 
 extension BetBullViewController: UIScrollViewDelegate {
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    let width = UIScreen.main.bounds.width
-    if width > 0 {
-      let pageIndex = round(tableScrollView.contentOffset.x/width)
-      if pageIndex == 0 {
-        currentTab = .left
-        rightTableView.reloadData()
-      }else if pageIndex == 1 {
-        currentTab = .right
-        tableView.reloadData()
-      }
-    }
 
-    if tableScrollView.contentOffset.y > 0 || tableScrollView.contentOffset.y < 0 {
-      tableScrollView.contentOffset.y = 0
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+   didStopScroll()
+  }
+
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    if !decelerate{
+      didStopScroll()
     }
   }
 }

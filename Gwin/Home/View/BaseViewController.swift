@@ -12,6 +12,7 @@ class BaseViewController: UIViewController {
 
   enum Constants {
     static let loadingSize: CGFloat = 100
+    static let actionButtonSize: CGFloat = 35
   }
 
   private lazy var backButton: UIButton = {
@@ -74,6 +75,7 @@ class BaseViewController: UIViewController {
   }
 
   func addBackButton() {
+    backButton.frame = CGRect(x: 0, y: 0, width: Constants.actionButtonSize, height: Constants.actionButtonSize)
     let leftItem = UIBarButtonItem(customView: backButton)
     self.navigationItem.leftBarButtonItem = leftItem
   }

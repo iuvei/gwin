@@ -21,8 +21,9 @@
                 <outlet property="rightTabButton" destination="gnQ-Wi-bAb" id="fPl-li-EP0"/>
                 <outlet property="rightTableView" destination="Pcq-oB-SGu" id="bhI-Lb-dih"/>
                 <outlet property="stakeLabel" destination="VSl-CF-mvk" id="q7M-zu-v4U"/>
-                <outlet property="tableScrollView" destination="6Is-W1-m8V" id="Yfr-Ga-k00"/>
+                <outlet property="tableScrollView" destination="ycL-Qc-KxZ" id="lEL-M2-9Cx"/>
                 <outlet property="tableView" destination="lmK-Pg-del" id="A8m-Mw-p3E"/>
+                <outlet property="topBetButton" destination="abX-BS-WEK" id="svV-HD-edx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -45,16 +46,30 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="牛牛红包下注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQa-fL-Dm0">
                             <rect key="frame" x="155" y="11.5" width="104" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" red="0.98431372549019602" green="0.91764705882352937" blue="0.67450980392156867" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abX-BS-WEK">
+                            <rect key="frame" x="354" y="7" width="50" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="kDv-Ol-F7b"/>
+                                <constraint firstAttribute="height" constant="30" id="mjE-LA-Mem"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="下注"/>
+                            <connections>
+                                <action selector="bettingPressed:" destination="-1" eventType="touchUpInside" id="Weu-DA-LNu"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.84422427420000001" green="0.40203452109999999" blue="0.3215354681" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstItem="CQa-fL-Dm0" firstAttribute="centerY" secondItem="SLL-HH-Hi3" secondAttribute="centerY" id="KCt-YC-392"/>
                         <constraint firstItem="DP2-eR-lc2" firstAttribute="centerY" secondItem="SLL-HH-Hi3" secondAttribute="centerY" id="Qlx-JE-p7B"/>
                         <constraint firstItem="CQa-fL-Dm0" firstAttribute="centerX" secondItem="SLL-HH-Hi3" secondAttribute="centerX" id="c9l-k4-KaD"/>
+                        <constraint firstAttribute="trailing" secondItem="abX-BS-WEK" secondAttribute="trailing" constant="10" id="gJ0-9O-5vh"/>
                         <constraint firstAttribute="height" constant="44" id="lYI-hm-Cne"/>
+                        <constraint firstItem="abX-BS-WEK" firstAttribute="centerY" secondItem="SLL-HH-Hi3" secondAttribute="centerY" id="nRm-NP-HIH"/>
                         <constraint firstItem="DP2-eR-lc2" firstAttribute="leading" secondItem="SLL-HH-Hi3" secondAttribute="leading" constant="10" id="tIh-NE-pD5"/>
                     </constraints>
                 </view>

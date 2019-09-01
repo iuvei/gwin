@@ -17,6 +17,7 @@ class LotteryViewController: BaseViewController {
     return webview
   }()
 
+
   override func viewDidLoad() {
     super.viewDidLoad()
     setTitle(title: "快乐彩票")
@@ -55,6 +56,12 @@ class LotteryViewController: BaseViewController {
           self?.webView.load(URLRequest(url: url))
         }
       }
+    }
+  }
+
+  override func backPressed(_ sender: UIButton) {
+    if let delegate = UIApplication.shared.delegate as? AppDelegate {
+      delegate.tabbarController?.backToLastView()
     }
   }
   /*

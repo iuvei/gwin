@@ -34,7 +34,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="牛牛百家乐下注" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggs-ER-D2W">
                             <rect key="frame" x="146.5" y="11.5" width="121.5" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" red="0.98431372549999996" green="0.91764705879999997" blue="0.67450980390000004" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSn-qL-i7T">
@@ -52,7 +52,9 @@
                                 <constraint firstAttribute="height" constant="30" id="dLH-jI-PzV"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="下注"/>
+                            <state key="normal" title="下注">
+                                <color key="titleColor" red="0.98431372549999996" green="0.91764705879999997" blue="0.67450980390000004" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.84422427420000001" green="0.40203452109999999" blue="0.3215354681" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
