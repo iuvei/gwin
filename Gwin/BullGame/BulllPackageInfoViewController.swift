@@ -24,19 +24,17 @@ class BulllPackageInfoViewController: BaseViewController {
 
   @IBOutlet weak var rounidLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
-  private let roomid: Int
-  private let roundid: Int64
+//  private let roomid: Int
+//  private let roundid: Int64
   private var grabedModel: BullPackageModel?
-  private let userno: String
-  private let onlyself: Int
+//  private let userno: String
+  private let bull: BullModel
   private var betdetails:[IndexPath:[BullBetDetailModel]] = [:]
 
-  init(roomid: Int, roundid: Int64, grabedModel: BullPackageModel? = nil, userno: String, onlyself: Int){
-    self.roomid = roomid
-    self.roundid = roundid
+  init(bull: BullModel, grabedModel: BullPackageModel? = nil){
+    self.bull =  bull
     self.grabedModel = grabedModel
-    self.userno = userno
-    self.onlyself = onlyself
+//    self.userno = userno
     super.init(nibName: "BulllPackageInfoViewController", bundle: nil)
   }
 
@@ -73,7 +71,7 @@ class BulllPackageInfoViewController: BaseViewController {
 
 
     wagerTimeLabel.text = " 已领取\(package.packetsize - package.remainsize)/\(package.packetsize)个,共\(packageAmountText)/\(betAmountText)元"
-    rounidLabel.text = "\(roundid) 期"
+    rounidLabel.text = "\(bull.getRoundId()) 期"
     usernoLabel.text = userno
     amounLabel.text = String(format: "%@", amount)
   }
@@ -81,7 +79,7 @@ class BulllPackageInfoViewController: BaseViewController {
   func fetchBetDetail(userno: String, indexPath: IndexPath) {
     guard let user = RedEnvelopComponent.shared.user else {return}
 
-    BullAPIClient.betdetail(ticket: user.ticket, roomid: roomid, roundid: roundid, userno: userno) { (details, error) in
+    BullAPIClient.betdetail(ticket: user.ticket, roomid: bull.roomid, roundid: bull.getRoundId(), userno: userno) { (details, error) in
       self.betdetails[indexPath] = details
       self.tableView.reloadData()
     }
@@ -92,13 +90,14 @@ class BulllPackageInfoViewController: BaseViewController {
     //let roundStatus
     // <3 -> onlyself = 1
     //else ->onlyself = 0
+    let onlyself = bull.isOnleyself() ? 1 : 0
     showLoadingView()
-    BullAPIClient.info(ticket: user.ticket, roomid: roomid, roundid: roundid, onlyself: onlyself) { [weak self](model, error) in
+    BullAPIClient.info(ticket: user.ticket, roomid: bull.roomid, roundid: bull.getRoundId(), onlyself: onlyself) { [weak self](model, error) in
       guard let this = self else { return }
       this.hideLoadingView()
       guard let `model` = model else {return}
       this.grabedModel = model
-      if this.onlyself  == 1 {
+      if onlyself  == 1 {
         if model.grabuser.count == 0 {
           this.updateViews(userno: model.userno, amount:String(format: "%.2f-%@",  model.stake,model.packettag))
         }else {

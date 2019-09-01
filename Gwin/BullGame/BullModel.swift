@@ -13,7 +13,7 @@ public enum BullRoundStatus: Int {
   case addNew = 2
   case betStart = 1
   case betResult = 3
-  case betRemove = 0
+  case betClose = 0
 }
 
 protocol BullModelDelegate: AnyObject {
@@ -46,10 +46,14 @@ class BullModel {
     cancelWagerTimer()
   }
   func updateRoundStatus(status: BullRoundStatus) {
-    round.status = status.rawValue
-    if status == .betRemove {
+    if status == .betClose {
       cancelWagerTimer()
+//      expire = true
+    }else if status == .addNew && round.status != BullRoundStatus.addNew.rawValue{
+      fetchResultWagerInfo()
     }
+    round.status = status.rawValue
+
   }
   func wagerInfoTimer() {
     if wagerTimer == nil{
@@ -155,6 +159,28 @@ class BullModel {
 
   func countWagerInfo() -> Int {
     return resultWagerInfo.count + betWagerInfo.count
+  }
+
+  func isOnleyself() -> Bool {
+//    if !expire {
+//      return round.status == BullRoundStatus.betClose.rawValue
+//    }
+//
+//    return false
+    return !expire
+  }
+
+  func getRoundId() -> Int64 {
+    if let package = historyPackage {
+      return package.roundid
+    }
+    return round.roundid
+  }
+  func getUserno() -> String?{
+    if let package = historyPackage {
+      return package.userno
+    }
+    return nil
   }
 }
 

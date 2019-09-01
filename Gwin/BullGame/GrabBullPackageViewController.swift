@@ -29,17 +29,18 @@ class GrabBullPackageViewController: BaseViewController {
 
   @IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var grabButton: UIButton!
-  private var history: BullPackageHistoryModel
-  private var room: RoomModel
+//  private var roundid: Int64
+//  private var room: RoomModel
   private var status: Int?
-  private var screenIndex: Int?
-
+//  private var screenIndex: Int?
+//  private var history: BullPackageHistoryModel?
+  private var bull: BullModel
   var didGrabPackage: (BullPackageModel)->Void = {_ in}
   var didViewPackageInfo:()-> Void = {}
 
-  init(history: BullPackageHistoryModel, room: RoomModel) {
-    self.history = history
-    self.room = room
+  init(bull: BullModel, status: Int? = nil) {
+    self.bull = bull
+    self.status = status
     super.init(nibName: "GrabBullPackageViewController", bundle: nil)
   }
 
@@ -49,23 +50,23 @@ class GrabBullPackageViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
     updateViews()
     fetchPackageStatus()
     // Do any additional setup after loading the view.
   }
 
   func updateViews() {
-    usernameLabel.text = history.userno
-    packageTagLabel.text = history.packettag
+    if let `package` = bull.historyPackage {
+      usernameLabel.text = package.userno
+      packageTagLabel.text = package.packettag
+    }
 
   }
-
 
   func fetchPackageStatus() {
     guard let user = RedEnvelopComponent.shared.user else { return }
 
-    BullAPIClient.packetstatus(ticket: user.ticket, roomid: room.roomId , roundid: history.roundid) {[weak self](status, error) in
+    BullAPIClient.packetstatus(ticket: user.ticket, roomid: bull.roomid , roundid: bull.getRoundId()) {[weak self](status, error) in
       guard let this = self else {return}
       if let `status` = status{
         this.status = status
@@ -118,7 +119,7 @@ class GrabBullPackageViewController: BaseViewController {
 
     guard let user = RedEnvelopComponent.shared.user else {return}
 
-    BullAPIClient.grab(ticket: user.ticket, roomid: room.roomId, roundid: history.roundid) { (pullPackage, error) in
+    BullAPIClient.grab(ticket: user.ticket, roomid: bull.roomid, roundid: bull.getRoundId()) { (pullPackage, error) in
       if let model = pullPackage {
         self.dismiss(animated: true, completion: {
 
