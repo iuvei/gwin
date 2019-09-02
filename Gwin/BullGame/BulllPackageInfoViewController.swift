@@ -86,6 +86,9 @@ class BulllPackageInfoViewController: BaseViewController {
     rounidLabel.text = "\(bull.getRoundId()) 期"
     usernoLabel.text = userno
     amounLabel.text = String(format: "%@", amount)
+
+    wagerTimeLabel.isHidden = bull.isOnleyself()
+    rounidLabel.isHidden = bull.isOnleyself()
   }
 
   func fetchBetDetail(userno: String, indexPath: IndexPath) {
@@ -173,13 +176,21 @@ class BulllPackageInfoViewController: BaseViewController {
     }
   }
 
+  func reloadCell(at indexPath: IndexPath) {
+    guard let  user = grabedModel?.grabuser[indexPath.row] else { return }
+
+    if let cell = tableView.cellForRow(at: indexPath) as? BetDetailiewCell {
+      let details = betdetails[indexPath] ?? []
+      cell.updateViews(grabUser: user, details: details)
+    }
+  }
 }
 
 extension BulllPackageInfoViewController: UITableViewDelegate, UITableViewDataSource {
 
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 70
-  }
+//  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//    return 70
+//  }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if let abc = grabedModel{
@@ -194,6 +205,10 @@ extension BulllPackageInfoViewController: UITableViewDelegate, UITableViewDataSo
     if let cell = tableView.dequeueReusableCell(withIdentifier: "BetDetailiewCell", for: indexPath) as? BetDetailiewCell {
       let details = betdetails[indexPath] ?? []
       cell.updateViews(grabUser: user, details: details)
+      cell.didExpandDetail = { [weak self] expand in
+        user.expand = expand
+        self?.reloadCell(at: indexPath)
+      }
       return cell
     }
 
@@ -202,6 +217,7 @@ extension BulllPackageInfoViewController: UITableViewDelegate, UITableViewDataSo
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if let user = grabedModel?.grabuser[indexPath.row] {
+      user.expand = !user.expand
       fetchBetDetail(userno: user.userno, indexPath: indexPath)
     }
   }

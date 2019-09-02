@@ -31,16 +31,16 @@ class BetCasinoViewController: BaseViewController {
 
   @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
   private var  room: RoomModel
-  private var roundid: Int64
+  private var round: BullRoundModel
   var wagerOdds: [BullWagerOddModel] = []
   var oddNames: [String] = []
   var wagertypeno: Int
-  var selectedIndex: [Int] = []
+//  var selectedIndex: [Int] = []
   var currentMoney: Float = 0.0
 
-  init(room: RoomModel, roundid: Int64, wagertypeno: Int) {
+  init(room: RoomModel, round: BullRoundModel, wagertypeno: Int) {
     self.room = room
-    self.roundid = roundid
+    self.round = round
     self.wagertypeno = wagertypeno
     super.init(nibName: "BetCasinoViewController", bundle: nil)
   }
@@ -56,6 +56,7 @@ class BetCasinoViewController: BaseViewController {
     // Do any additional setup after loading the view.
 
     setupViews()
+    updateViews()
     loadWaggerOddNames()
     fetchwagerodds()
   }
@@ -69,14 +70,19 @@ class BetCasinoViewController: BaseViewController {
 
     tableView.delegate = self
     tableView.dataSource = self
+    tableView.alwaysBounceVertical = false
 
     //
     inputLabel.rounded()
     betButton.rounded()
-    topBetButton.rounded(borderColor: .red, borderwidth: 1)
+    topBetButton.rounded(borderColor: AppColors.titleColor, borderwidth: 1)
 
     //
     backButton.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
+  }
+
+  func updateViews() {
+    rightTabButton.setTitle("\(round.stake1)-\(round.state2) \(AppText.currency)", for: .normal)
   }
   /*
    // MARK: - Navigation
@@ -133,15 +139,17 @@ class BetCasinoViewController: BaseViewController {
 
     var waggers = ""
 
-    for index in selectedIndex {
-      let model = wagerOdds[index]
-      let x = "\(model.wagertypeno):\(model.objectid):\(model.money)"
-      waggers = "\(waggers) \(x);"
+    for model in wagerOdds {
+      if model.selected{
+        let x = "\(model.wagertypeno):\(model.objectid):\(Int(model.money))"
+        waggers = "\(waggers) \(x);"
+      }
     }
 
-    BullAPIClient.betting(ticket: user.ticket, roomid: room.roomId, roundid: roundid, wagers: waggers){ [weak self](success, error) in
+    showLoadingView()
+    BullAPIClient.betting(ticket: user.ticket, roomid: room.roomId, roundid: round.roundid, wagers: waggers){ [weak self](success, error) in
       guard let this = self else { return }
-
+      this.hideLoadingView()
       if success {
         this.dismiss(animated: true, completion: nil)
       } else {
@@ -155,22 +163,12 @@ class BetCasinoViewController: BaseViewController {
   }
 
 
-  func selecteRowAtIndexPath(indexPath: IndexPath) {
-    var index:Int?
-    for row in selectedIndex {
-      if row == indexPath.row {
-        index = row
-        break
-      }
-    }
+  func reloadCell(at indexPath: IndexPath) {
+    let model = wagerOdds[indexPath.row]
 
-    if index == nil {
-      selectedIndex.append(indexPath.row)
-      tableView.beginUpdates()
-      tableView.reloadRows(at: [indexPath], with: .none)
-      tableView.endUpdates()
+    if let cell = tableView.cellForRow(at: indexPath) as? WagerOddViewCell{
+      cell.updateView(model: model, selected: model.selected, max: round.state2)
     }
-
   }
 
   @IBAction func betPressed(_ sender: Any) {
@@ -218,24 +216,24 @@ extension BetCasinoViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let model = wagerOdds[indexPath.row]
 
-    var index:Int?
-    for row in selectedIndex {
-      if row == indexPath.row {
-        index = row
-        break
-      }
-    }
     if wagertypeno == Wagertypeno.casino.rawValue {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "WagerOddViewCell", for: indexPath) as? WagerOddViewCell {
 
-      cell.updateView(model: model, selected: indexPath.row == index)
-      cell.completionHandler = {[weak self] in
-        self?.selecteRowAtIndexPath(indexPath: indexPath)
-      }
+      cell.updateView(model: model, selected: model.selected, max: round.state2)
+//      cell.completionHandler = {[weak self] in
+//      }
 
       cell.didMoneyChanged = {[weak self ]money in
         model.money = money
         self?.updateInputValue()
+        if money > 0 {
+          model.selected = true
+          self?.reloadCell(at: indexPath)
+        }else if money == 0{
+          model.selected = false
+          self?.reloadCell(at: indexPath)
+        }
+
       }
 
       //      cell.didMoneyInput = {[weak self ] money in
@@ -253,21 +251,10 @@ extension BetCasinoViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    var index:Int?
-    for row in selectedIndex {
-      if row == indexPath.row {
-        index = row
-        break
-      }
-    }
-
-    if let `index` = index {
-      selectedIndex.remove(at: index)
-    }else {
-      selectedIndex.append(indexPath.row)
-    }
-
-    tableView.reloadData()
+//   let model = wagerOdds[indexPath.row]
+//
+//    model.selected = !model.selected
+//    reloadCell(at: indexPath)
   }
 }
 

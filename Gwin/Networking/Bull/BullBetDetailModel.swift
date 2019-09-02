@@ -15,11 +15,11 @@ class BullBetDetailModel {
   var stake: Float                 // number, 注金
   var winnings: Float                  // number, 盈亏
   init(json: JSON) {
-    idno = json[""].intValue          // Int,
-    wagertypename = json[""].stringValue                // string,
-    wagerobject = json[""].stringValue                 // string,
-    stake = json[""].floatValue              // number, 注金
-    winnings = json[""].floatValue                  // number, 盈亏
+    idno = json["idno"].intValue          // Int,
+    wagertypename = json["wagertypename"].stringValue                // string,
+    wagerobject = json["wagerobject"].stringValue                 // string,
+    stake = json["stake"].floatValue              // number, 注金
+    winnings = json["winnings"].floatValue                  // number, 盈亏
   }
 }
 

@@ -442,12 +442,12 @@ class BullDetailViewController: BaseViewController {
       }
     } else  if tag == 2 {
       if let round = round{
-        let vc = BetCasinoViewController(room: room, roundid: round.roundid, wagertypeno: Wagertypeno.casino.rawValue)
+        let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.casino.rawValue)
         present(vc, animated: true, completion: nil)
       }
     } else  if tag == 3 {
       if let round = self.round {
-        let vc = BetCasinoViewController(room: room, roundid: round.roundid, wagertypeno: Wagertypeno.other.rawValue)
+        let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.other.rawValue)
         present(vc, animated: true, completion: nil)
       }
     } else  if tag == 4 {
