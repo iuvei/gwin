@@ -47,6 +47,19 @@ class BullDetailViewController: BaseViewController {
   @IBOutlet weak var bottomBottomConstraint: NSLayoutConstraint!
 
   @IBOutlet weak var bottomHeightConstraint: NSLayoutConstraint!
+  private lazy var bankerGetButton: UIButton = {
+    let button = UIButton().forAutolayout()
+    button.backgroundColor = UIColor.gray.withAlphaComponent(0.3)
+    button.addTarget(self, action: #selector(bankgetGetPressed(_:)), for: .touchUpInside)
+    return button
+  }()
+
+  private lazy var refreshControl:UIRefreshControl = {
+    let view = UIRefreshControl()
+    return view
+  }()
+
+  
   private var userno: String
   private var room: RoomModel
   private var round: BullRoundModel?
@@ -63,12 +76,6 @@ class BullDetailViewController: BaseViewController {
   //  private var systemTime: TimeInterval?
   private var wagerInfo: [Int64: [BullWagerInfoModel]] = [:]
   private var wagerOdds: [BullWagerOddModel] = []
-  private lazy var bankerGetButton: UIButton = {
-    let button = UIButton().forAutolayout()
-    button.backgroundColor = UIColor.gray.withAlphaComponent(0.3)
-    button.addTarget(self, action: #selector(bankgetGetPressed(_:)), for: .touchUpInside)
-    return button
-  }()
 
   init(userno: String, room: RoomModel) {
     self.room = room
@@ -121,6 +128,13 @@ class BullDetailViewController: BaseViewController {
     tableView.dataSource = self
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 400
+    if #available(iOS 10.0, *) {
+      tableView.refreshControl = refreshControl
+    } else {
+      tableView.addSubview(refreshControl)
+    }
+
+    refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
   }
 
   func setupBottomView() {
@@ -273,7 +287,7 @@ class BullDetailViewController: BaseViewController {
 
         this.fetchBullHistory(roundid: round.roundid)
         this.fetchBanker(ticket: user.ticket,roomid: this.room.roomId, roundid: round.roundid)
-        this.fetchPackageHistory()
+        this.fetchPackageHistory(roundid: round.roundid)
         this.doCounDown()
         //
         if round.status == 2 {
@@ -348,20 +362,29 @@ class BullDetailViewController: BaseViewController {
     }
   }
 
-  func fetchPackageHistory() {
-    if datas.count > 0 { return }
+  func fetchPackageHistory(loadmore: Bool = false, roundid: Int64) {
+    if datas.count > 0 && !loadmore { return }
     guard let user = RedEnvelopComponent.shared.user else { return }
     guard let `round` = round else { return }
 
-    BullAPIClient.packethistory(ticket: user.ticket, roomid: room.roomId, roundid: round.roundid, topnum: 50) {[weak self] (histoires, error) in
+    BullAPIClient.packethistory(ticket: user.ticket, roomid: room.roomId, roundid: roundid, topnum: 50) {[weak self] (histoires, error) in
       guard let this = self else { return }
-
+      this.refreshControl.endRefreshing()
       if let copyRound = round.copy() as? BullRoundModel{
         copyRound.roundid = Int64.max
-        this.datas = histoires.reversed().map{BullModel(expire: true, round: copyRound, historyPackage: $0, roomid: this.room.roomId)}
+        let reverHistory = histoires.reversed().map{BullModel(expire: true, round: copyRound, historyPackage: $0, roomid: this.room.roomId)}
+        if loadmore{
+          if reverHistory.count > 0 {
+            this.datas.insert(contentsOf: reverHistory, at: 0)
+            this.tableView.reloadData()
+          }
+        }else {
+          this.datas = reverHistory
+          this.tableView.reloadData()
+          this.tableView.scrollToBottom()
+        }
       }
-      this.tableView.reloadData()
-      this.tableView.scrollToBottom()
+
     }
   }
 
@@ -457,6 +480,16 @@ class BullDetailViewController: BaseViewController {
     bottomBottomConstraint.constant = bottomHeightConstraint.constant - 30
 
   }
+
+  @objc private func refreshData(_ sender: Any) {
+    // Fetch Weather Data
+    if let first = datas.first{
+      fetchPackageHistory(loadmore: true, roundid: first.getRoundId())
+    }else{
+      refreshControl.endRefreshing()
+    }
+  }
+
 
   @objc func bankgetGetPressed(_ button: UIButton){
     guard let `round` = round else {return}
@@ -698,6 +731,11 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let bull = datas[indexPath.row]
+
+    if bull.getRoundId() == round?.roundid  && coundownBet > 0{
+      return
+    }
+    
     let isGrab = bull.isGrabed(openPackages)
 
     if isGrab{

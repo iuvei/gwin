@@ -30,7 +30,7 @@ class BankSettingViewCell: UITableViewCell {
     stakeLabel.text = "\(model.stake1)-\(model.stake2)"
 
     if selected {
-      contentView.backgroundColor = .red
+      contentView.backgroundColor = AppColors.tabbarColor.withAlphaComponent(0.8)
     } else {
       contentView.backgroundColor = .white
 
