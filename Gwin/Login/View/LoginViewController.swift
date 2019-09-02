@@ -29,6 +29,7 @@ class LoginViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setTitle(title:"登录注册")
+    addBackButton(title: "红包炸雷")
     setupViews()
     updateData()
   }

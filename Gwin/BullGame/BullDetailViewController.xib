@@ -44,7 +44,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="76.5"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="history_background_image" translatesAutoresizingMaskIntoConstraints="NO" id="811-Nb-DPA">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zMh-cZ-YEW">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="16"/>
@@ -134,7 +134,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstItem="Wb0-5y-s5J" firstAttribute="width" secondItem="kUj-kr-yaw" secondAttribute="width" multiplier="5:20" id="043-xf-lZI"/>
                                 <constraint firstItem="Wb0-5y-s5J" firstAttribute="leading" secondItem="pjO-Re-o56" secondAttribute="trailing" id="Asz-vs-hMb"/>
@@ -176,6 +176,7 @@
                         <constraint firstAttribute="trailing" secondItem="811-Nb-DPA" secondAttribute="trailing" id="d6x-D8-sf2"/>
                         <constraint firstItem="kUj-kr-yaw" firstAttribute="leading" secondItem="VSu-H1-6kP" secondAttribute="leading" id="eQj-p2-6bs"/>
                         <constraint firstItem="zMh-cZ-YEW" firstAttribute="top" secondItem="VSu-H1-6kP" secondAttribute="top" id="oYS-Mz-J10"/>
+                        <constraint firstItem="811-Nb-DPA" firstAttribute="bottom" secondItem="kUj-kr-yaw" secondAttribute="top" id="yHn-p7-sc5"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">

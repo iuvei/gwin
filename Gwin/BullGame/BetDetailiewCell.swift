@@ -80,7 +80,7 @@ class BetDetailiewCell: UITableViewCell {
 
         detailStackView.addSubview(label)
         NSLayoutConstraint.activate([
-          label.heightAnchor.constraint(equalToConstant: 18),
+          label.heightAnchor.constraint(equalToConstant: 17),
           label.centerXAnchor.constraint(equalTo: detailStackView.centerXAnchor),
           label.leftAnchor.constraint(equalTo: detailStackView.leftAnchor),
           label.rightAnchor.constraint(equalTo: detailStackView.rightAnchor),
@@ -105,7 +105,7 @@ class BetDetailiewCell: UITableViewCell {
 
   func getDetailView(detail: BullBetDetailModel) -> UIView {
     let view = UIView().forAutolayout()
-
+    view.backgroundColor = .groupTableViewBackground
     let normalFont = UIFont.systemFont(ofSize: 11)
     let boldFont = UIFont.systemFont(ofSize: 11, weight: .medium)
 

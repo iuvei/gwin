@@ -23,6 +23,10 @@ class BankGetModel {
      userno = json["userno"].stringValue               //Datetime, --会员帐号
      lockquota = json["lockquota"].stringValue                  //string,--庄家金额
      stake1 = json["stake1"].intValue              //Int,--下注区间
-     state2 = json["state2"].intValue                 //Int,--下注区间
+    if let stake2 = json["stake2"].int {
+      state2 = stake2               //Int,--下注区间
+    }else {
+      state2 = json["state2"].intValue                 //Int,--下注区间
+    }
   }
 }

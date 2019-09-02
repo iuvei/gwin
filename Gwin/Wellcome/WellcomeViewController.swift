@@ -17,6 +17,7 @@ class WellcomeViewController: BaseViewController {
     super.viewDidLoad()
 
     // Do any additional setup after loading the view.
+    setTitle(title: AppText.Titles.wellcome)
     hideBackButton()
     setupViews()
 

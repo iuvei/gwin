@@ -26,6 +26,10 @@ public enum AppText{
   static let betTotalWin: String = "获利"
   static let bullName: String = "牛九"
 
+  enum Titles{
+    static let wellcome: String = "登录注册"
+    static let home: String = "百果缘"
+  }
 }
 
 public enum TabIndex: Int {
