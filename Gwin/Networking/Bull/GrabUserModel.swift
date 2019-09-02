@@ -16,7 +16,8 @@ class GrabUserModel {
   var winnings: Float                  // Number, 盈亏
   var wagertime: String
   var status: String?
-
+  var expand: Bool = false
+  
   init(json: JSON) {
     userno = json["userno"].stringValue                  // string,
     username = json["username"].stringValue                  // string,

@@ -392,10 +392,11 @@ extension UITableView {
   func scrollToBottom(animated: Bool = false){
 
     DispatchQueue.main.async {
-      let indexPath = IndexPath(
-        row: self.numberOfRows(inSection:  self.numberOfSections - 1) - 1,
-        section: self.numberOfSections - 1)
-      self.scrollToRow(at: indexPath, at: .bottom, animated: animated)
+      let rowcount = self.numberOfRows(inSection: 0)
+      if rowcount > 0 {
+        let indexPath = IndexPath(row: self.numberOfRows(inSection: 0) - 1, section: 0)
+        self.scrollToRow(at: indexPath, at: .bottom, animated: animated)
+      }
     }
   }
 

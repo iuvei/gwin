@@ -19,6 +19,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHk-2V-ql3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tdo-HM-GFu">
                         <rect key="frame" x="0.0" y="0.0" width="160" height="43.5"/>
                         <subviews>
@@ -38,7 +42,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ttd-Aq-Smg" firstAttribute="leading" secondItem="uL4-Qb-VG0" secondAttribute="trailing" id="1o5-gc-zYL"/>
                             <constraint firstItem="ttd-Aq-Smg" firstAttribute="centerY" secondItem="Tdo-HM-GFu" secondAttribute="centerY" id="4Wg-xu-1IF"/>
@@ -57,7 +61,7 @@
                                     <constraint firstAttribute="width" constant="45" id="Djc-1x-aTx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.84422427420000001" green="0.40203452109999999" blue="0.3215354681" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -71,12 +75,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="b0s-dq-B8l"/>
                                 </constraints>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="V6Z-ed-cPE" secondAttribute="trailing" id="5O5-Qg-JbV"/>
                             <constraint firstItem="V6Z-ed-cPE" firstAttribute="leading" secondItem="Zfa-hg-3eo" secondAttribute="trailing" id="E1q-Fy-ZCA"/>
@@ -87,17 +91,28 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="aHk-2V-ql3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5sa-kw-aGZ"/>
                     <constraint firstItem="Tdo-HM-GFu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="7Na-Ao-aAV"/>
                     <constraint firstItem="aQZ-ns-46c" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="FQV-Qd-MhO"/>
+                    <constraint firstItem="aHk-2V-ql3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="HW4-Nc-2kt"/>
                     <constraint firstAttribute="bottom" secondItem="aQZ-ns-46c" secondAttribute="bottom" id="MDy-mR-grU"/>
                     <constraint firstItem="aQZ-ns-46c" firstAttribute="leading" secondItem="Tdo-HM-GFu" secondAttribute="trailing" id="NGb-go-bOC"/>
+                    <constraint firstAttribute="bottom" secondItem="aHk-2V-ql3" secondAttribute="bottom" id="Nby-46-3V3"/>
                     <constraint firstItem="Tdo-HM-GFu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QPx-Bd-NJP"/>
+                    <constraint firstAttribute="trailing" secondItem="aHk-2V-ql3" secondAttribute="trailing" id="YjF-t9-d5d"/>
                     <constraint firstAttribute="trailing" secondItem="aQZ-ns-46c" secondAttribute="trailing" id="gWO-42-pAB"/>
                     <constraint firstAttribute="bottom" secondItem="Tdo-HM-GFu" secondAttribute="bottom" id="hrS-kw-Zf8"/>
                     <constraint firstItem="Tdo-HM-GFu" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:2" id="ide-J2-GXY"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="colorView" destination="aHk-2V-ql3" id="i2Q-l0-edi"/>
+                <outlet property="inputTextfield" destination="V6Z-ed-cPE" id="3O2-G3-ezf"/>
+                <outlet property="nameLabel" destination="uL4-Qb-VG0" id="fxk-L4-Ja9"/>
+                <outlet property="oddLabel" destination="Zfa-hg-3eo" id="P0n-Mr-LkX"/>
+                <outlet property="typeLabel" destination="ttd-Aq-Smg" id="Wp3-Ry-eVA"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
         </tableViewCell>
     </objects>

@@ -113,7 +113,9 @@ class UploadImageViewController: BaseViewController {
     guard let userno = RedEnvelopComponent.shared.userno else { return }
     guard let image = uploadImage else { return }
     let imageBase64 = ImageManager.convertImageToBase64(image: image)
+    showLoadingView()
     UserAPIClient.uploadImage(ticket: user.ticket, userno: userno, img: imageBase64) { [weak self] (success, error) in
+      self?.hideLoadingView()
       if success {
         self?.didUploadImage(image)
         self?.dismiss(animated: true, completion: nil)
@@ -136,8 +138,12 @@ class UploadImageViewController: BaseViewController {
 extension UploadImageViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     imagePicker.dismiss(animated: true, completion: nil)
-    uploadImage = info[.originalImage] as? UIImage
-    avatarImageView.image = info[.originalImage] as? UIImage
+    if let editImage = info[.editedImage] as? UIImage{
+      uploadImage = editImage
+    }else {
+      uploadImage = info[.originalImage] as? UIImage
+    }
+    avatarImageView.image = uploadImage
   }
 }
 

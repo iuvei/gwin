@@ -21,7 +21,7 @@ class RoomDetailViewController: BaseViewController {
   }
 
   private lazy var profileButton: UIButton = {
-    let button = UIButton().forAutolayout()
+    let button = UIButton(frame: CGRect(x: 0,y: 0,width: 35,height: 35))
     button.imageEdgeInsets  = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     button.imageView?.contentMode = .scaleAspectFit
     button.setImage(UIImage(named: "boom_header_profile"), for: .normal)
@@ -30,7 +30,7 @@ class RoomDetailViewController: BaseViewController {
   }()
 
   private lazy var newPackageButton: UIButton = {
-    let button = UIButton().forAutolayout()
+    let button = UIButton(frame: CGRect(x: 0,y: 0,width: 35,height: 35))
     button.imageEdgeInsets  = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     button.imageView?.contentMode = .scaleAspectFit
     button.setImage(UIImage(named: "boom_header_envelop"), for: .normal)

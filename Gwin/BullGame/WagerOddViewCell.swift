@@ -51,7 +51,7 @@ class WagerOddViewCell: UITableViewCell {
     }
 
     if selected {
-      contentView.backgroundColor = .red
+      contentView.backgroundColor = AppColors.tabbarColor.withAlphaComponent(0.8)
     }else {
       contentView.backgroundColor = .white
     }

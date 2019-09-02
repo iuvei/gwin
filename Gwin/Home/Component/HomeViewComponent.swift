@@ -24,7 +24,7 @@ public enum AppText{
   static let betPlace: String =  "获得"
   static let betTotalLose: String =  "共赔付"
   static let betTotalWin: String = "获利"
-
+  static let bullName: String = "牛九"
 
 }
 
