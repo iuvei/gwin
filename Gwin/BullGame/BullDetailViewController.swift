@@ -639,7 +639,7 @@ extension BullDetailViewController {
 
   fileprivate func fetchOpenPackages() {
     if let userno = RedEnvelopComponent.shared.userno {
-      openPackages = LocalDataManager.shared.fetchPackages(userno: userno)
+      openPackages = LocalDataManager.shared.fetchPackages(userno: userno, game: RoomType.bull)
     }
   }
 
@@ -701,9 +701,14 @@ extension BullDetailViewController{
   private func updateCellAsOpened(rounid: Int64){
     if let index = getBullModel(roundid: rounid) {
       let indexPath = IndexPath(row: index, section: 0)
-      tableView.beginUpdates()
-      tableView.reloadRows(at: [indexPath], with: .none)
-      tableView.endUpdates()
+      let bull = datas[indexPath.row]
+      let isGrab = bull.isGrabed(openPackages)
+      if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
+        cell.selectionStyle = .none
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak cell] in
+          cell?.updateBullViews(bull: bull, isOpen: isGrab)
+        }
+      }
     }
   }
 }
@@ -757,7 +762,7 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
         guard let this = self else { return }
         if let userno = RedEnvelopComponent.shared.userno {
 
-          if let saved = LocalDataManager.shared.savePackage(userno: userno, packageid: bull.getRoundId()) {
+          if let saved = LocalDataManager.shared.savePackage(userno: userno, packageid: bull.getRoundId(), game: RoomType.bull) {
             this.openPackages.append(saved)
             this.updateCellAsOpened(rounid: bull.getRoundId())
             //          updateNotifyView()
@@ -766,7 +771,7 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
         //
 
 
-        let infoVC = BulllPackageInfoViewController(bull: bull, grabedModel: grabbed)
+        let infoVC = BulllPackageInfoViewController(bull: bull, grabedModel: grabbed, delegate: this)
         this.present(infoVC, animated: true, completion: nil)
       }
 
@@ -779,7 +784,7 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
         //        let wagerDate = Date(timeIntervalSinceNow: wagertime)
         //        print("systimeTime : \(currentDate.toString()) -- wager: \(wagerDate.toString())")
 
-        let infoVC = BulllPackageInfoViewController(bull: bull)
+        let infoVC = BulllPackageInfoViewController(bull: bull, delegate: this)
         this.present(infoVC, animated: true, completion: nil)
       }
 
@@ -813,14 +818,28 @@ extension BullDetailViewController: BullModelDelegate {
 }
 
 extension BullDetailViewController: BetBullDelegate {
-  func betSuccessFull() {
-
-    if let `round` = round, getBullModel(roundid: round.roundid) == nil {
-      addNewBull(round: round)
-    }
+  func didGrabBullPackage() {
 
     subgameStackView.isHidden = true
     hideBottomView()
+    guard let `round` = round else { return}
+
+    if getBullModel(roundid: round.roundid) == nil {
+      addNewBull(round: round)
+    }else{
+
+    }
+
+  }
+}
+
+extension BullDetailViewController: BulllPackageInfoDelegate {
+  func didFetchPackageInfo(package: BullPackageHistoryModel?) {
+    if let `package` = package {
+      if let index = getBullModel(roundid: package.roundid) {
+        datas[index].historyPackage = package
+      }
+    }
   }
 }
 

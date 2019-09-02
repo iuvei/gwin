@@ -17,7 +17,7 @@ class LocalDataManager {
 
   }
 
-  func fetchPackages(userno: String, packageid: Int64? = nil) -> [NSManagedObject] {
+  func fetchPackages(userno: String, packageid: Int64? = nil, game:Int = 1) -> [NSManagedObject] {
 
     var packages: [NSManagedObject] = []
     //1
@@ -40,9 +40,9 @@ class LocalDataManager {
       NSFetchRequest<NSManagedObject>(entityName: "PackageInfo")
 
     if let `packageid` = packageid {
-      fetchRequest.predicate = NSPredicate(format: "userno == %@ AND packageid == %d", userno, packageid)
+      fetchRequest.predicate = NSPredicate(format: "userno == %@ AND packageid == %d AND game == %d", userno, packageid, game)
     } else {
-      fetchRequest.predicate = NSPredicate(format: "userno == %@", userno)
+      fetchRequest.predicate = NSPredicate(format: "userno == %@ AND game == %d", userno, game)
     }
 
     //3
@@ -55,7 +55,7 @@ class LocalDataManager {
     return packages
   }
 
-  func savePackage(userno: String, packageid: Int64, status: Bool = false, isbiggest: Bool = false) -> NSManagedObject? {
+  func savePackage(userno: String, packageid: Int64, status: Bool = false, isbiggest: Bool = false, game:Int = 1) -> NSManagedObject? {
 
     guard let appDelegate =
       UIApplication.shared.delegate as? AppDelegate else {
@@ -85,6 +85,7 @@ class LocalDataManager {
     package.setValue(true, forKeyPath: "isread")
     package.setValue(status, forKey: "isBoom")
     package.setValue(isbiggest, forKey: "isbiggest")
+    package.setValue(game, forKey: "game")
     // 4
     do {
       try _context.save()

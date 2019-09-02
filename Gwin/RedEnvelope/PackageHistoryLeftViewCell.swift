@@ -145,7 +145,7 @@ class PackageHistoryLeftViewCell: UITableViewCell {
       let info = bull.resultWagerInfo[i]
       let label = UILabel().forAutolayout()
       label.font = UIFont.systemFont(ofSize: 12)
-      label.text = String(format: "  %@ %@ %@ %@ %.2f  ", AppText.thisRound, info.userno, AppText.betPlace,info.winning < 0 ? AppText.betTotalLose : AppText.betTotalWin,info.stake)
+      label.text = String(format: "  %@ %@ %@ %@ %.2f  ", AppText.thisRound, info.userno, AppText.betPlace,info.winning < 0 ? AppText.betTotalLose : AppText.betTotalWin,info.winning)
       label.backgroundColor = AppColors.betResultBgColor
       label.textColor = .white
       label.rounded(radius: 2, borderColor: .clear, borderwidth: 0)

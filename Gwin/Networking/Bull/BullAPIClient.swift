@@ -134,10 +134,11 @@ class BullAPIClient {
     }
   }
 
-  static func info(ticket:String, roomid: Int, roundid: Int64, onlyself: Int, completion:@escaping (BullPackageModel?, String?)->Void){
+  static func info(ticket:String, roomid: Int, roundid: Int64, onlyself: Int, completion:@escaping (BullPackageHistoryModel?,BullPackageModel?, String?)->Void){
     Alamofire.request(BullAPIRouter.info(ticket, roomid, roundid, onlyself)).responseJSON{ (responseData) in
       var msg: String? = nil
       var bullInfo: BullPackageModel? = nil
+      var package: BullPackageHistoryModel?
 
       if responseData.result.value != nil {
         let jsonResponse = JSON(responseData.result.value!)
@@ -147,9 +148,10 @@ class BullAPIClient {
         if code == 1 {
           let data = jsonResponse["data"]
           bullInfo = BullPackageModel(json: data)
+          package = BullPackageHistoryModel(json: data)
         }
       }
-      completion(bullInfo, msg ?? responseData.error?.localizedDescription)
+      completion(package, bullInfo, msg ?? responseData.error?.localizedDescription)
     }
   }
 

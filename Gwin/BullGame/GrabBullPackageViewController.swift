@@ -59,6 +59,10 @@ class GrabBullPackageViewController: BaseViewController {
     if let `package` = bull.historyPackage {
       usernameLabel.text = package.userno
       packageTagLabel.text = package.packettag
+      packageTagLabel.isHidden = false
+    }else {
+      usernameLabel.text = RedEnvelopComponent.shared.userno
+      packageTagLabel.isHidden = true
     }
 
   }

@@ -16,7 +16,7 @@ enum CurrentTab {
 }
 
 protocol BetBullDelegate: AnyObject {
-  func betSuccessFull()
+  func didGrabBullPackage()
 }
 
 class BetBullViewController: BaseViewController {
@@ -187,7 +187,7 @@ class BetBullViewController: BaseViewController {
       guard let this = self else { return }
       this.hideLoadingView()
       if success {
-        this.delegate?.betSuccessFull()
+        this.delegate?.didGrabBullPackage()
         this.dismiss(animated: true, completion: nil)
       } else {
         if let message = error {

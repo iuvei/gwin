@@ -110,14 +110,15 @@ class BullModel {
   }
 
   func isGrabed(_ grabeds: [NSManagedObject] = []) -> Bool {
-    guard let package = historyPackage else {return false}
+    let rounid = getRoundId()
+
     for obj in grabeds {
-      if package.roundid == obj.value(forKey: "packageid") as? Int64 {
+      if rounid == obj.value(forKey: "packageid") as? Int64 {
         return true
       }
     }
-    return false
 
+    return false
   }
 
   func addNewWager(wagers: [BullWagerInfoModel]){
