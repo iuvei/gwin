@@ -30,6 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       window.rootViewController = navigationController
       window.makeKeyAndVisible()
     }
+
+    if let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView {
+      statusBarView.backgroundColor = AppColors.tabbarColor
+    }
     return true
   }
 

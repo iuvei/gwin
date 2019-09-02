@@ -33,6 +33,9 @@ class BullDetailViewController: BaseViewController {
   @IBOutlet weak var purchaseDetailLabel: UILabel!
 
   @IBOutlet weak var historyViewWidthConstraint: NSLayoutConstraint!
+
+  @IBOutlet weak var bottomView: UIView!
+
   @IBOutlet weak var plusButton: UIButton!
   @IBOutlet weak var action1Button: UIButton!
   @IBOutlet weak var action2Button: UIButton!
@@ -60,6 +63,13 @@ class BullDetailViewController: BaseViewController {
   //  private var systemTime: TimeInterval?
   private var wagerInfo: [Int64: [BullWagerInfoModel]] = [:]
   private var wagerOdds: [BullWagerOddModel] = []
+  private lazy var bankerGetButton: UIButton = {
+    let button = UIButton().forAutolayout()
+    button.backgroundColor = UIColor.gray.withAlphaComponent(0.3)
+    button.addTarget(self, action: #selector(bankgetGetPressed(_:)), for: .touchUpInside)
+    return button
+  }()
+
   init(userno: String, room: RoomModel) {
     self.room = room
     self.userno = userno
@@ -167,6 +177,15 @@ class BullDetailViewController: BaseViewController {
           ])
       }
     }
+
+    bottomView.addSubview(bankerGetButton)
+
+    NSLayoutConstraint.activate([
+      bankerGetButton.rightAnchor.constraint(equalTo: bottomView.rightAnchor),
+      bankerGetButton.bottomAnchor.constraint(equalTo: bankerStackView.bottomAnchor),
+      bankerGetButton.heightAnchor.constraint(equalToConstant: labelHeight * 2),
+      bankerGetButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 4)
+      ])
   }
 
 
@@ -437,6 +456,13 @@ class BullDetailViewController: BaseViewController {
     plusButton.isSelected = true
     bottomBottomConstraint.constant = bottomHeightConstraint.constant - 30
 
+  }
+
+  @objc func bankgetGetPressed(_ button: UIButton){
+    guard let `round` = round else {return}
+    let vc = BankerViewController(roomid: room.roomId, roundid: round.roundid)
+
+    present(vc, animated: true, completion: nil)
   }
 
   @IBAction func plusPressed(_ sender: Any) {

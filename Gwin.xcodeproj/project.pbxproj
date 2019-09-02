@@ -58,6 +58,10 @@
 		D194BD92231BB85300AB59C3 /* BullModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD91231BB85300AB59C3 /* BullModel.swift */; };
 		D194BD95231BC18700AB59C3 /* UploadImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD93231BC18700AB59C3 /* UploadImageViewController.swift */; };
 		D194BD96231BC18700AB59C3 /* UploadImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D194BD94231BC18700AB59C3 /* UploadImageViewController.xib */; };
+		D1D06F1E231D1FCA00BBEDAE /* BankerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D06F1C231D1FCA00BBEDAE /* BankerViewController.swift */; };
+		D1D06F1F231D1FCA00BBEDAE /* BankerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D06F1D231D1FCA00BBEDAE /* BankerViewController.xib */; };
+		D1D06F22231D247500BBEDAE /* BankerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D06F20231D247500BBEDAE /* BankerViewCell.swift */; };
+		D1D06F23231D247500BBEDAE /* BankerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D06F21231D247500BBEDAE /* BankerViewCell.xib */; };
 		D1E00B72230D8F0E00554CA4 /* LobbyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */; };
 		D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */ = {isa = PBXBuildFile; fileRef = D1E00B74230D950E00554CA4 /* LobbyJson.json */; };
 		D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B78230DA05200554CA4 /* WebContainerController.swift */; };
@@ -185,6 +189,10 @@
 		D194BD91231BB85300AB59C3 /* BullModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullModel.swift; sourceTree = "<group>"; };
 		D194BD93231BC18700AB59C3 /* UploadImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageViewController.swift; sourceTree = "<group>"; };
 		D194BD94231BC18700AB59C3 /* UploadImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageViewController.xib; sourceTree = "<group>"; };
+		D1D06F1C231D1FCA00BBEDAE /* BankerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankerViewController.swift; sourceTree = "<group>"; };
+		D1D06F1D231D1FCA00BBEDAE /* BankerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankerViewController.xib; sourceTree = "<group>"; };
+		D1D06F20231D247500BBEDAE /* BankerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankerViewCell.swift; sourceTree = "<group>"; };
+		D1D06F21231D247500BBEDAE /* BankerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankerViewCell.xib; sourceTree = "<group>"; };
 		D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyItemView.swift; sourceTree = "<group>"; };
 		D1E00B74230D950E00554CA4 /* LobbyJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LobbyJson.json; sourceTree = "<group>"; };
 		D1E00B78230DA05200554CA4 /* WebContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContainerController.swift; sourceTree = "<group>"; };
@@ -683,6 +691,10 @@
 				D194BD8D231ABE5A00AB59C3 /* BetDetailiewCell.swift */,
 				D194BD8E231ABE5A00AB59C3 /* BetDetailiewCell.xib */,
 				D194BD91231BB85300AB59C3 /* BullModel.swift */,
+				D1D06F1C231D1FCA00BBEDAE /* BankerViewController.swift */,
+				D1D06F1D231D1FCA00BBEDAE /* BankerViewController.xib */,
+				D1D06F20231D247500BBEDAE /* BankerViewCell.swift */,
+				D1D06F21231D247500BBEDAE /* BankerViewCell.xib */,
 			);
 			path = BullGame;
 			sourceTree = "<group>";
@@ -783,7 +795,9 @@
 				D1EA0EBC2317B0E70096B7D1 /* GrabBankerViewController.xib in Resources */,
 				D1E00DA72311302E00554CA4 /* CreateEnvelopType2ViewController.xib in Resources */,
 				D1E00DA3231119AC00554CA4 /* PackageInfoViewController.xib in Resources */,
+				D1D06F1F231D1FCA00BBEDAE /* BankerViewController.xib in Resources */,
 				D194BD96231BC18700AB59C3 /* UploadImageViewController.xib in Resources */,
+				D1D06F23231D247500BBEDAE /* BankerViewCell.xib in Resources */,
 				D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */,
 				D194BD86231A4D2D00AB59C3 /* GrabBullPackageViewController.xib in Resources */,
 				D175C4CE230BD324001B8DC6 /* LoginViewController.xib in Resources */,
@@ -910,6 +924,7 @@
 				D1EA0EB723177F4F0096B7D1 /* BullDetailViewController.swift in Sources */,
 				D1E00D77230FE11900554CA4 /* BankSettingModel.swift in Sources */,
 				D1E00D83230FED7B00554CA4 /* BullBetDetailModel.swift in Sources */,
+				D1D06F1E231D1FCA00BBEDAE /* BankerViewController.swift in Sources */,
 				D175C4BA230BCD97001B8DC6 /* EmptyProtocol.swift in Sources */,
 				D1EA0F092318373F0096B7D1 /* WagerOddViewCell.swift in Sources */,
 				D175C4DC230C0487001B8DC6 /* User.swift in Sources */,
@@ -929,6 +944,7 @@
 				D175C4FC230CFB7F001B8DC6 /* HomeRouter.swift in Sources */,
 				D1E00CFD230E931D00554CA4 /* RedEnvelopAPIRouter.swift in Sources */,
 				D1EA0F0C231838620096B7D1 /* WagerOddUtils.swift in Sources */,
+				D1D06F22231D247500BBEDAE /* BankerViewCell.swift in Sources */,
 				D1E00DB32312D26400554CA4 /* UITextFieldPadding.swift in Sources */,
 				D1E00D8823102A6700554CA4 /* LaunchViewController.swift in Sources */,
 				D1E00D8B23102D7300554CA4 /* PackageInfoModel.swift in Sources */,
