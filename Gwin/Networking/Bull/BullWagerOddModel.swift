@@ -15,7 +15,9 @@ class BullWagerOddModel {
   var name: String?
   var money: Float = 0.0
   var selected: Bool = false
-
+  var objectName: String?
+  var testId: Int?
+  
   init(json: JSON) {
     wagertypeno = json["wagertypeno"].intValue
     objectid = json["objectid"].intValue
