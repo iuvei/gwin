@@ -59,6 +59,7 @@ class BullDetailViewController: BaseViewController {
   private var lastRound: BullRoundModel?
   //  private var systemTime: TimeInterval?
   private var wagerInfo: [Int64: [BullWagerInfoModel]] = [:]
+  private var wagerOdds: [BullWagerOddModel] = []
   init(userno: String, room: RoomModel) {
     self.room = room
     self.userno = userno
@@ -79,6 +80,7 @@ class BullDetailViewController: BaseViewController {
     fetchBullRound()
     getBullRollMessage()
     fetchSystemTime()
+    fetchwagerodds()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -360,7 +362,15 @@ class BullDetailViewController: BaseViewController {
   }
 
 
+  func fetchwagerodds() {
+    guard let user = RedEnvelopComponent.shared.user else { return }
 
+    BullAPIClient.wagerodds(ticket: user.ticket, roomtype: 2) { [weak self](wagerodds, error) in
+      guard let this = self else { return }
+      this.wagerOdds = wagerodds
+    }
+
+  }
 
   func getHistoryItemView(model: BullHistoryModel?) -> UIView{
     let view = UIView().forAutolayout()

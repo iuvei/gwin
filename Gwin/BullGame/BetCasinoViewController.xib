@@ -112,7 +112,7 @@
                             </connections>
                         </button>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MIQ-p5-fdq">
-                            <rect key="frame" x="0.0" y="127" width="414" height="200"/>
+                            <rect key="frame" x="0.0" y="126" width="414" height="200"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52o-AQ-1IJ">
                                     <rect key="frame" x="0.0" y="0.0" width="828" height="200"/>
@@ -160,7 +160,7 @@
                             </constraints>
                         </scrollView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Mr-L8-K1V">
-                            <rect key="frame" x="16" y="357" width="382" height="40"/>
+                            <rect key="frame" x="16" y="356" width="382" height="40"/>
                             <color key="backgroundColor" red="0.84422427420000001" green="0.40203452109999999" blue="0.3215354681" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="v6a-V7-R5h"/>
@@ -187,7 +187,7 @@
                         <constraint firstItem="C82-2o-JYd" firstAttribute="leading" secondItem="Jw3-X7-phH" secondAttribute="leading" id="iNo-LZ-wyD"/>
                         <constraint firstItem="C82-2o-JYd" firstAttribute="top" secondItem="B65-Ld-o5e" secondAttribute="bottom" constant="40" id="nIc-XV-WPW"/>
                         <constraint firstItem="3Mr-L8-K1V" firstAttribute="leading" secondItem="Jw3-X7-phH" secondAttribute="leading" constant="16" id="oJy-nD-R2q"/>
-                        <constraint firstItem="MIQ-p5-fdq" firstAttribute="top" secondItem="C82-2o-JYd" secondAttribute="bottom" constant="2" id="pPp-fa-MWP"/>
+                        <constraint firstItem="MIQ-p5-fdq" firstAttribute="top" secondItem="C82-2o-JYd" secondAttribute="bottom" constant="1" id="pPp-fa-MWP"/>
                         <constraint firstItem="B65-Ld-o5e" firstAttribute="leading" secondItem="Jw3-X7-phH" secondAttribute="leading" constant="16" id="zai-NR-hXi"/>
                     </constraints>
                 </view>

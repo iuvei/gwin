@@ -18,24 +18,23 @@ class BetCasinoViewController: BaseViewController {
   enum Constants {
     static let otherBetMaxItem: Int = 9
     static let cellHeight: CGFloat = 30
-    static let otherBetName: [String] =  ["牛1- 牛5",
-    "牛6-牛牛",
-   " 牛1/3/5/7/9",
-    "牛2/4/6/8/牛牛",
-    "牛1/3/5",
-    "牛7/9",
-    "牛2/4",
-    "牛6/8/牛牛",
-    "金牛- 豹子"]
+    static let otherBetName: [String] =  ["牛1- 牛5","牛6-牛牛",
+                                          "牛1/3/5/7/9",
+                                          "牛2/4/6/8/牛牛",
+                                          "牛1/3/5",
+                                          "牛7/9",
+                                          "牛2/4",
+                                          "牛6/8/牛牛",
+                                          "金牛- 豹子"]
     static let otherBetObjectName:[String] = ["小",
-      "大",
-      "单",
-      "双",
-      "小单",
-      "大单",
-      "小双",
-      "大双",
-      "合"]
+                                              "大",
+                                              "单",
+                                              "双",
+                                              "小单",
+                                              "大单",
+                                              "小双",
+                                              "大双",
+                                              "合"]
 
   }
   @IBOutlet weak var backButton: UIButton!
@@ -65,10 +64,12 @@ class BetCasinoViewController: BaseViewController {
   var currentMoney: Float = 0.0
   var midleIndex: Int = Constants.otherBetMaxItem
 
-  init(room: RoomModel, round: BullRoundModel, wagertypeno: Int) {
+  init(room: RoomModel, round: BullRoundModel, wagertypeno: Int, wagerOdds: [BullWagerOddModel] = []) {
     self.room = room
     self.bullround = round
     self.wagertypeno = wagertypeno
+    self.wagerOdds = wagerOdds
+
     super.init(nibName: "BetCasinoViewController", bundle: nil)
   }
 
@@ -160,38 +161,47 @@ class BetCasinoViewController: BaseViewController {
   }
 
   func fetchwagerodds() {
+
+    if wagerOdds.count > 0 {
+      parseWagerOdds(odds: wagerOdds)
+      return
+    }
+
     guard let user = RedEnvelopComponent.shared.user else { return }
 
     BullAPIClient.wagerodds(ticket: user.ticket, roomtype: 2) { [weak self](wagerodds, error) in
       guard let this = self else { return }
-      if this.wagertypeno == Wagertypeno.casino.rawValue {
-        this.wagerOdds = wagerodds.filter{$0.wagertypeno == this.wagertypeno}
-        for odd in this.wagerOdds {
-          odd.name = this.getOddNames(model: odd)
-        }
-        this.tableView.reloadData()
-        this.tableHeightConstraint.constant = Constants.cellHeight * CGFloat(min(this.wagerOdds.count,10))
-      }else if this.wagertypeno == Wagertypeno.other.rawValue {
-        let total = wagerodds.filter{$0.wagertypeno == this.wagertypeno}
-        var midelIndex =  total.count / 2
-        midelIndex =  midelIndex > Constants.otherBetMaxItem ? Constants.otherBetMaxItem : midelIndex
+      this.parseWagerOdds(odds: wagerodds)
+    }
+  }
+
+  func parseWagerOdds(odds: [BullWagerOddModel]) {
+    if wagertypeno == Wagertypeno.casino.rawValue {
+      wagerOdds = odds.filter{$0.wagertypeno == wagertypeno}
+      for odd in wagerOdds {
+        odd.name = getOddNames(model: odd)
+      }
+      tableView.reloadData()
+      tableHeightConstraint.constant = Constants.cellHeight * CGFloat(min(wagerOdds.count,10))
+    }else if wagertypeno == Wagertypeno.other.rawValue {
+      let total = odds.filter{$0.wagertypeno == wagertypeno}
+      var midelIndex =  total.count / 2
+      midelIndex =  midelIndex > Constants.otherBetMaxItem ? Constants.otherBetMaxItem : midelIndex
 
 
-        this.wagerOdds = Array(total[0..<midelIndex*2])
+      wagerOdds = Array(total[0..<midelIndex*2])
 
-        //map 
-        for  i in 0 ..< this.wagerOdds.count {
-          let odd = this.wagerOdds[i]
-          odd.name =  Constants.otherBetName[i % midelIndex]
-          odd.objectName = Constants.otherBetObjectName[i % midelIndex]
-          odd.testId = i
-        }
-
-        this.tableView.reloadData()
-        this.rightTableView.reloadData()
-        this.tableHeightConstraint.constant = Constants.cellHeight * CGFloat(this.midleIndex)
+      //map
+      for  i in 0 ..< wagerOdds.count {
+        let odd = wagerOdds[i]
+        odd.name =  Constants.otherBetName[i % midelIndex]
+        odd.objectName = Constants.otherBetObjectName[i % midelIndex]
+        odd.testId = i
       }
 
+      tableView.reloadData()
+      rightTableView.reloadData()
+      tableHeightConstraint.constant = Constants.cellHeight * CGFloat(midleIndex)
     }
   }
 
@@ -363,13 +373,13 @@ extension BetCasinoViewController {
       tableScrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
       leftTabButton.addBottomBorderWithColor(color: AppColors.tabbarColor, width: 2)
       rightTabButton.addBottomBorderWithColor(color: .clear, width: 0)
-//      rightTableView.reloadData()
+      //      rightTableView.reloadData()
     }else if (index == 2) {
       currentTab = .right
       tableScrollView.setContentOffset(CGPoint(x: UIScreen.main.bounds.width, y: 0), animated: true)
       leftTabButton.addBottomBorderWithColor(color: .clear, width: 0)
       rightTabButton.addBottomBorderWithColor(color: AppColors.tabbarColor, width: 2)
-//      tableView.reloadData()
+      //      tableView.reloadData()
 
     }
   }
@@ -408,4 +418,5 @@ extension BetCasinoViewController: UIScrollViewDelegate {
     }
   }
 }
+
 

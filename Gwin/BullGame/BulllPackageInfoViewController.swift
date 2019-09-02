@@ -19,6 +19,8 @@ class BulllPackageInfoViewController: BaseViewController {
   @IBOutlet weak var amounLabel: UILabel!
 
   @IBOutlet weak var usernoLabel: UILabel!
+  @IBOutlet weak var onlySelfLabel: UILabel!
+
   @IBOutlet weak var avatarImageView: UIImageView!
   @IBOutlet weak var wagerTimeLabel: UILabel!
 
@@ -89,6 +91,7 @@ class BulllPackageInfoViewController: BaseViewController {
 
     wagerTimeLabel.isHidden = bull.isOnleyself()
     rounidLabel.isHidden = bull.isOnleyself()
+    onlySelfLabel.text =  bull.isOnleyself() ? "发了一个牛牛红包，金额随机 \n 牛九" : nil
   }
 
   func fetchBetDetail(userno: String, indexPath: IndexPath) {
