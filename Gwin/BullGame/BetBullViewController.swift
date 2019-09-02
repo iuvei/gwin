@@ -46,10 +46,11 @@ class BetBullViewController: BaseViewController {
   var currentTab: CurrentTab = .left
   private var delegate: BetBullDelegate?
 
-  init(room: RoomModel, round: BullRoundModel, delegate: BetBullDelegate? = nil){
+  init(room: RoomModel, round: BullRoundModel, delegate: BetBullDelegate? = nil, wagerOdds: [BullWagerOddModel] = []){
     self.room = room
     self.bullround = round
     self.delegate = delegate
+    self.wagerOdds = wagerOdds
     super.init(nibName: "BetBullViewController", bundle: nil)
   }
 
@@ -135,20 +136,30 @@ class BetBullViewController: BaseViewController {
   }
   
   func fetchwagerodds() {
-    guard let user = RedEnvelopComponent.shared.user else { return }
+    if wagerOdds.count > 0 {
+      parseWagerOdds(odds:wagerOdds)
+    }else{
 
-    BullAPIClient.wagerodds(ticket: user.ticket, roomtype: 2) { [weak self](wagerodds, error) in
-      guard let this = self else { return }
-      this.wagerOdds = wagerodds.filter{$0.wagertypeno == 4}
-//      this.rightWagerOdds = wagerodds.filter{$0.wagertypeno == 4 && $0.objectid > 10}
-      for odd in this.wagerOdds {
-        odd.name = this.getOddNames(model: odd)
+      guard let user = RedEnvelopComponent.shared.user else { return }
+
+      BullAPIClient.wagerodds(ticket: user.ticket, roomtype: 2) { [weak self](wagerodds, error) in
+        guard let this = self else { return }
+        this.parseWagerOdds(odds: wagerodds)
       }
-      this.tableView.reloadData()
-      this.rightTableView.reloadData()
     }
   }
 
+  func parseWagerOdds(odds: [BullWagerOddModel]) {
+
+    wagerOdds = odds.filter{$0.wagertypeno == 4}
+    //      this.rightWagerOdds = wagerodds.filter{$0.wagertypeno == 4 && $0.objectid > 10}
+    for odd in wagerOdds {
+      odd.name = getOddNames(model: odd)
+    }
+
+    tableView.reloadData()
+    rightTableView.reloadData()
+  }
   func betBull(){
     guard let user = RedEnvelopComponent.shared.user else { return }
 

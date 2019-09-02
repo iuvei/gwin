@@ -20,6 +20,7 @@
                 <outlet property="bankerStackView" destination="vhi-OS-Lx5" id="2Xn-vm-DeM"/>
                 <outlet property="bottomBottomConstraint" destination="WbH-bf-Dyu" id="PyN-v7-r0y"/>
                 <outlet property="bottomHeightConstraint" destination="ILA-M0-PkM" id="hkL-bW-4mv"/>
+                <outlet property="bottomView" destination="ewj-71-c2t" id="F18-AK-ha1"/>
                 <outlet property="countdountBetLabel" destination="Wb0-5y-s5J" id="sC6-3r-dtk"/>
                 <outlet property="countdountGrabLabel" destination="USF-TO-M8t" id="CDG-wc-ome"/>
                 <outlet property="countdownRoundLabel" destination="aeh-vY-eTJ" id="8yV-Ka-FMP"/>

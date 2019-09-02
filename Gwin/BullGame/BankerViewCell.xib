@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BankerViewCell" id="KGk-i7-Jjw" customClass="BankerViewCell" customModule="Gwin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="期数" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRV-pA-gsN">
+                        <rect key="frame" x="112" y="14.5" width="48" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 账号  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJU-d5-31k">
+                        <rect key="frame" x="48" y="14.5" width="64" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下注区间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoK-de-qk4">
+                        <rect key="frame" x="208" y="14.5" width="48" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="庄家金额" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRB-Ny-Cx2">
+                        <rect key="frame" x="160" y="14.5" width="48" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="顺序" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lbe-5Y-753">
+                        <rect key="frame" x="0.0" y="14.5" width="48" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAW-a0-4KY">
+                        <rect key="frame" x="256" y="14.5" width="64" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="cJU-d5-31k" firstAttribute="leading" secondItem="Lbe-5Y-753" secondAttribute="trailing" id="48Q-2O-YZO"/>
+                    <constraint firstItem="JoK-de-qk4" firstAttribute="centerY" secondItem="sRB-Ny-Cx2" secondAttribute="centerY" id="Dtm-NX-RT4"/>
+                    <constraint firstItem="RAW-a0-4KY" firstAttribute="centerY" secondItem="JoK-de-qk4" secondAttribute="centerY" id="JYY-J8-64M"/>
+                    <constraint firstItem="cJU-d5-31k" firstAttribute="centerY" secondItem="Lbe-5Y-753" secondAttribute="centerY" id="MEJ-eK-7kq"/>
+                    <constraint firstItem="sRB-Ny-Cx2" firstAttribute="leading" secondItem="PRV-pA-gsN" secondAttribute="trailing" id="Pnz-8l-X3L"/>
+                    <constraint firstItem="cJU-d5-31k" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="4:20" id="TI7-lN-uEz"/>
+                    <constraint firstItem="PRV-pA-gsN" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="3:20" id="WYH-hz-eLz"/>
+                    <constraint firstItem="sRB-Ny-Cx2" firstAttribute="centerY" secondItem="PRV-pA-gsN" secondAttribute="centerY" id="ZCN-WP-UZX"/>
+                    <constraint firstItem="Lbe-5Y-753" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="c1j-RZ-yIw"/>
+                    <constraint firstItem="JoK-de-qk4" firstAttribute="leading" secondItem="sRB-Ny-Cx2" secondAttribute="trailing" id="eoa-1x-UlM"/>
+                    <constraint firstItem="RAW-a0-4KY" firstAttribute="leading" secondItem="JoK-de-qk4" secondAttribute="trailing" id="eyx-hI-doT"/>
+                    <constraint firstItem="Lbe-5Y-753" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="3:20" id="kg2-gW-A1v"/>
+                    <constraint firstItem="PRV-pA-gsN" firstAttribute="centerY" secondItem="Lbe-5Y-753" secondAttribute="centerY" id="o5i-sk-oSe"/>
+                    <constraint firstItem="PRV-pA-gsN" firstAttribute="leading" secondItem="cJU-d5-31k" secondAttribute="trailing" id="srE-Te-fGN"/>
+                    <constraint firstAttribute="trailing" secondItem="RAW-a0-4KY" secondAttribute="trailing" id="uvE-Sm-9Py"/>
+                    <constraint firstItem="sRB-Ny-Cx2" firstAttribute="width" secondItem="PRV-pA-gsN" secondAttribute="width" id="vD4-An-bXh"/>
+                    <constraint firstItem="Lbe-5Y-753" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="vDS-1V-rUV"/>
+                    <constraint firstItem="JoK-de-qk4" firstAttribute="width" secondItem="sRB-Ny-Cx2" secondAttribute="width" id="vNW-H6-c16"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="amountLabel" destination="sRB-Ny-Cx2" id="EOB-56-TJj"/>
+                <outlet property="indexLabel" destination="Lbe-5Y-753" id="dzO-l2-sbJ"/>
+                <outlet property="stakeLabel" destination="JoK-de-qk4" id="B0h-hn-NMg"/>
+                <outlet property="timeLabel" destination="RAW-a0-4KY" id="6g9-tG-9Pi"/>
+                <outlet property="unknowLabel" destination="PRV-pA-gsN" id="8aO-BB-00A"/>
+                <outlet property="usernoLabel" destination="cJU-d5-31k" id="tiW-Qt-dxr"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
