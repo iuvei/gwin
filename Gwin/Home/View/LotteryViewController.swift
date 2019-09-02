@@ -49,8 +49,9 @@ class LotteryViewController: BaseViewController {
 
   func fetchLoteryURL() {
     guard let user = RedEnvelopComponent.shared.user else { return }
-
+    showLoadingView()
     RedEnvelopAPIClient.lottery(ticket: user.ticket, gameno: "6") {[weak self] (gameurl, def) in
+      self?.hideLoadingView()
       if let path = gameurl {
         if let url = URL(string: path) {
           self?.webView.load(URLRequest(url: url))

@@ -32,6 +32,10 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhD-Or-CXa">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <color key="backgroundColor" red="0.84422427420000001" green="0.40203452109999999" blue="0.3215354681" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SLL-HH-Hi3">
                     <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                     <subviews>
@@ -247,8 +251,12 @@
                 <constraint firstItem="6Is-W1-m8V" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="6xz-8n-0mU"/>
                 <constraint firstItem="6Is-W1-m8V" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="7Wg-2B-0VX"/>
                 <constraint firstItem="SLL-HH-Hi3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="GcG-Dq-11N"/>
+                <constraint firstItem="hhD-Or-CXa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SPf-Fb-g4d"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hhD-Or-CXa" secondAttribute="bottom" id="WXv-jt-Tzk"/>
                 <constraint firstItem="SLL-HH-Hi3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="alm-Px-eqm"/>
+                <constraint firstItem="hhD-Or-CXa" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="eNA-hs-6ip"/>
                 <constraint firstItem="6Is-W1-m8V" firstAttribute="top" secondItem="SLL-HH-Hi3" secondAttribute="bottom" id="sWt-98-Hfa"/>
+                <constraint firstItem="hhD-Or-CXa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xla-0l-xzw"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>

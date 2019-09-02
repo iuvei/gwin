@@ -287,7 +287,7 @@ class BullDetailViewController: BaseViewController {
           if let index = this.getBullModel(roundid: round.roundid) {
             let bull = this.datas[index]
             bull.updateRoundStatus(status: .betClose)
-            this.removePackage(at: index)
+            //this.removePackage(at: index)
           }
 
         } else if round.status == 3 {
@@ -337,7 +337,7 @@ class BullDetailViewController: BaseViewController {
 
       if let copyRound = round.copy() as? BullRoundModel{
         copyRound.roundid = Int64.max
-        this.datas = histoires.reversed().map{BullModel(expire: true, round: round, historyPackage: $0, roomid: this.room.roomId)}
+        this.datas = histoires.reversed().map{BullModel(expire: true, round: copyRound, historyPackage: $0, roomid: this.room.roomId)}
       }
       this.tableView.reloadData()
       this.tableView.scrollToBottom()

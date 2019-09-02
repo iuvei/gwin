@@ -24,6 +24,11 @@ class BulllPackageInfoViewController: BaseViewController {
 
   @IBOutlet weak var rounidLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
+  private lazy var refreshControl:UIRefreshControl = {
+    let view = UIRefreshControl()
+    return view
+  }()
+  
 //  private let roomid: Int
 //  private let roundid: Int64
   private var grabedModel: BullPackageModel?
@@ -56,7 +61,14 @@ class BulllPackageInfoViewController: BaseViewController {
     tableView.dataSource = self
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 200
+    if #available(iOS 10.0, *) {
+      tableView.refreshControl = refreshControl
+    } else {
+      tableView.addSubview(refreshControl)
+    }
 
+    refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+    //
     avatarImageView.rounded()
 
     //
@@ -91,10 +103,10 @@ class BulllPackageInfoViewController: BaseViewController {
     // <3 -> onlyself = 1
     //else ->onlyself = 0
     let onlyself = bull.isOnleyself() ? 1 : 0
-    showLoadingView()
     BullAPIClient.info(ticket: user.ticket, roomid: bull.roomid, roundid: bull.getRoundId(), onlyself: onlyself) { [weak self](model, error) in
       guard let this = self else { return }
-      this.hideLoadingView()
+      this.refreshControl.endRefreshing()
+
       guard let `model` = model else {return}
       this.grabedModel = model
       if onlyself  == 1 {
@@ -143,6 +155,11 @@ class BulllPackageInfoViewController: BaseViewController {
         }
       }
     }
+  }
+
+  @objc private func refreshData(_ sender: Any) {
+    // Fetch Weather Data
+    fetchInfo()
   }
 
   override func backPressed(_ sender: UIButton) {
