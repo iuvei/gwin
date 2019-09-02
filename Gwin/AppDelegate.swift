@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
   var navigationController: UINavigationController?
+  var tabbarController: RedEnvelopTabbarController?
   var timer: Timer?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -173,7 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   public func setHomeAsRootViewControlelr() {
     if let window = self.window {
       let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-      let tabbarController = storyboard.instantiateViewController(withIdentifier: "tabbarController")
+      tabbarController = storyboard.instantiateViewController(withIdentifier: "tabbarController") as? RedEnvelopTabbarController
 
       window.rootViewController = tabbarController
       window.makeKeyAndVisible()

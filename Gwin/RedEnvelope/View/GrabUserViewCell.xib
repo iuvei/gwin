@@ -44,23 +44,23 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GsU-t8-cET">
-                        <rect key="frame" x="222" y="15" width="35" height="35"/>
+                        <rect key="frame" x="227" y="15" width="30" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="35" id="5RB-Ue-RNe"/>
-                            <constraint firstAttribute="height" constant="35" id="mzR-q3-0pw"/>
+                            <constraint firstAttribute="width" constant="30" id="5RB-Ue-RNe"/>
+                            <constraint firstAttribute="height" constant="30" id="mzR-q3-0pw"/>
                         </constraints>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eiu-gw-geO">
-                        <rect key="frame" x="185" y="15" width="35" height="35"/>
+                        <rect key="frame" x="195" y="15" width="30" height="30"/>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vdo-f6-MaK">
-                        <rect key="frame" x="148" y="15" width="35" height="35"/>
+                        <rect key="frame" x="163" y="15" width="30" height="30"/>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grabuser_status_4" translatesAutoresizingMaskIntoConstraints="NO" id="1sB-UR-ZxI">
-                        <rect key="frame" x="260" y="31" width="50" height="15"/>
+                        <rect key="frame" x="260" y="31" width="50" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="MZ2-gP-8eQ"/>
-                            <constraint firstAttribute="height" constant="15" id="zvc-et-O1n"/>
+                            <constraint firstAttribute="height" constant="25" id="zvc-et-O1n"/>
                         </constraints>
                     </imageView>
                 </subviews>

@@ -31,10 +31,19 @@ class WebContainerController: BaseViewController {
     return button
   }()
 
+  private lazy var titleLabel: UILabel = {
+    let label = UILabel().forAutolayout()
+    label.textColor = AppColors.titleColor
+    return label
+  }()
+
   private var urlPath: String
-  
-  init(url: String) {
+  private var lastIndex: Int? = nil
+  private var viewTitle: String?
+  init(url: String, lastIndex: Int? = nil, title: String? = nil) {
     self.urlPath = url
+    self.lastIndex = lastIndex
+    self.viewTitle = title
     super.init(nibName: nil, bundle: nil)
   }
 
@@ -69,12 +78,23 @@ class WebContainerController: BaseViewController {
         headerView.heightAnchor.constraint(equalToConstant: 44),
         ])
     }
+
+    headerView.addSubview(backButton)
+    headerView.addSubview(titleLabel)
+    titleLabel.text = viewTitle
+    NSLayoutConstraint.activate([
+
+      backButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+      backButton.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 5),
+      backButton.heightAnchor.constraint(equalToConstant: 30),
+
+      titleLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
+      titleLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+      ])
   }
 
   func setupWebview() {
     view.addSubview(webView)
-
-    headerView.addSubview(backButton)
 
     NSLayoutConstraint.activate([
 
@@ -84,9 +104,6 @@ class WebContainerController: BaseViewController {
       webView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       webView.rightAnchor.constraint(equalTo: view.rightAnchor),
 
-      backButton.centerYAnchor.constraint(equalTo: headerView.centerYAnchor),
-      backButton.leftAnchor.constraint(equalTo: headerView.leftAnchor, constant: 5),
-      backButton.heightAnchor.constraint(equalToConstant: 30)
       ])
     // Do any additional setup after loading the view.
     if let url = URL(string: urlPath) {
@@ -104,6 +121,11 @@ class WebContainerController: BaseViewController {
    */
 
   @objc func backButtonPressed(_ sender: UIButton) {
+    if let index = lastIndex {
+      if let delegate = UIApplication.shared.delegate as? AppDelegate {
+        delegate.tabbarController?.selectItem(withIndex: index)
+      }
+    }
     dismiss(animated: true, completion: nil)
   }
 }

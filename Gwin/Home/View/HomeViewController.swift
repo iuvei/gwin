@@ -23,6 +23,11 @@ public protocol HomeViewControllerInput: AnyObject {
 }
 
 class HomeViewController: BaseViewController {
+
+  enum Constants {
+    static let seperateHeight: CGFloat = 1
+  }
+
   weak var output: HomeViewOutput?
 
   private var carouselView: CarouselView!
@@ -66,11 +71,13 @@ class HomeViewController: BaseViewController {
     view.distribution = .fill
     return view
   }()
+  private var popupVc: MessagePopupController?
 
   private var lobbies: [LobbyItemModel] = []
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    setTitle(title: "百果缘")
     self.edgesForExtendedLayout = []
     // Do any additional setup after loading the view.
     loadLobbyData()
@@ -87,8 +94,9 @@ class HomeViewController: BaseViewController {
     hideBackButton()
   }
 
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    popupVc?.dismiss(animated: true, completion: nil)
   }
   /*
    // MARK: - Navigation
@@ -225,10 +233,10 @@ class HomeViewController: BaseViewController {
     NSLayoutConstraint.activate([
       firstSeperateView.leftAnchor.constraint(equalTo: containerStackView.leftAnchor),
       firstSeperateView.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
-      firstSeperateView.heightAnchor.constraint(equalToConstant: 8),
+      firstSeperateView.heightAnchor.constraint(equalToConstant: Constants.seperateHeight),
       secondSeperateView.leftAnchor.constraint(equalTo: containerStackView.leftAnchor),
       secondSeperateView.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
-      secondSeperateView.heightAnchor.constraint(equalToConstant: 8),
+      secondSeperateView.heightAnchor.constraint(equalToConstant: Constants.seperateHeight),
 
       firstGametitleLabel.leftAnchor.constraint(equalTo: containerStackView.leftAnchor, constant: 10),
       firstGametitleLabel.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
@@ -264,7 +272,7 @@ class HomeViewController: BaseViewController {
     NSLayoutConstraint.activate([
       lastSeperateView.leftAnchor.constraint(equalTo: containerStackView.leftAnchor),
       lastSeperateView.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
-      lastSeperateView.heightAnchor.constraint(equalToConstant: 8),
+      lastSeperateView.heightAnchor.constraint(equalToConstant: Constants.seperateHeight),
 
       lasttitleLabel.leftAnchor.constraint(equalTo: containerStackView.leftAnchor, constant: 10),
       lasttitleLabel.rightAnchor.constraint(equalTo: containerStackView.rightAnchor),
@@ -353,12 +361,21 @@ class HomeViewController: BaseViewController {
   }
 
   func fetchPopupMessage() {
+    if  UserDefaultManager.sharedInstance().isShowPoupMessage() != nil { return }
+
     guard let user = RedEnvelopComponent.shared.user else { return }
+    guard let userno = RedEnvelopComponent.shared.userno else { return }
 
     NoticeAPIClient.getPopupMsg(ticket: user.ticket) { [weak self] (message, errormessage) in
-      let popupVc = MessagePopupController(message: message)
-      popupVc.modalPresentationStyle = .overCurrentContext
-      self?.present(popupVc, animated: true, completion: nil)
+      guard let this = self else {return}
+      if message.count > 0 {
+        UserDefaultManager.sharedInstance().didShowPopupMessage(userno: userno)
+        let vc = MessagePopupController(message: message)
+          this.popupVc = vc
+          vc.modalPresentationStyle = .overCurrentContext
+          this.present(vc, animated: true, completion: nil)
+
+      }
     }
   }
 

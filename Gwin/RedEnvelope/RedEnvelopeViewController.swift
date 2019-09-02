@@ -11,7 +11,11 @@ import UIKit
 class RedEnvelopeViewController: BaseViewController {
 
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var rollMsgLabel: UILabel!
+  @IBOutlet weak var rollMsgView: UIView!
+  private lazy var marqueView:ScrollLabel = {
+    let view = ScrollLabel().forAutolayout()
+    return view
+  }()
 
   var rooms: [RoomModel] = []
   override func viewDidLoad() {
@@ -27,14 +31,24 @@ class RedEnvelopeViewController: BaseViewController {
     super.viewWillAppear(animated)
     hideBackButton()
   }
-  
+
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
   }
 
   func setupViews() {
-    rollMsgLabel.text = RedEnvelopComponent.shared.rollMsg
     tableView.register(GameItemCell.self, forCellReuseIdentifier: "envelopRoomCell")
+
+
+    rollMsgView.addSubview(marqueView)
+    marqueView.updateContent(message: RedEnvelopComponent.shared.rollMsg)
+    NSLayoutConstraint.activate([
+      marqueView.leftAnchor.constraint(equalTo: rollMsgView.leftAnchor, constant: 40),
+      marqueView.topAnchor.constraint(equalTo: rollMsgView.topAnchor),
+      marqueView.rightAnchor.constraint(equalTo: rollMsgView.rightAnchor),
+      marqueView.bottomAnchor.constraint(equalTo: rollMsgView.bottomAnchor),
+
+      ])
   }
 
   func fetchRoomList() {
@@ -73,7 +87,7 @@ extension RedEnvelopeViewController: UITableViewDelegate, UITableViewDataSource 
   }
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 100
+    return 80
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -142,4 +156,5 @@ extension RedEnvelopeViewController {
     present(alertVC, animated: true, completion: nil)
   }
 }
+
 

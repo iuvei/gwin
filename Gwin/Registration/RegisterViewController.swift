@@ -30,6 +30,8 @@ class RegisterViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    setTitle(title: "注册")
+    setBackTitle(title:"红包炸雷")
     setupViews()
   }
 
@@ -97,6 +99,10 @@ class RegisterViewController: BaseViewController {
     return phoneNumberTextfield.text
   }
 
+  private func validateRefCode() -> String? {
+    return linkCodeTextfield.text
+  }
+
   @objc func tappedView(_ sende: UIGestureRecognizer) {
     view.endEditing(true)
   }
@@ -117,7 +123,7 @@ class RegisterViewController: BaseViewController {
 
     let accountNo = validateAccountNo()
     let password =  validatePassword()
-    let code =  validateCode()
+    let code =  validateRefCode()
     let cellphone =  validatePhonenumber()
     guard let `prefix` = prefix else { return }
     showLoadingView()

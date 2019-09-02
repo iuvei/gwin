@@ -9,28 +9,17 @@
 import UIKit
 
 class RedEnvelopTabbarController: UITabBarController {
-  var homeViewController: (UIViewController & HomeViewControllerInput)!
-  var secondViewController: UIViewController!
-  var actionViewController: UIViewController!
-  var thirdViewController: UIViewController!
-  var fourthViewController: UIViewController!
+
+  private var lastIndex: Int = 0
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    initViewConstroller()
-    viewControllers = [homeViewController, secondViewController, actionViewController, thirdViewController, fourthViewController]
 
     // Do any additional setup after loading the view.
   }
 
 
   func initViewConstroller() {
-    let router = HomeBuilder().build()
-    homeViewController = router.viewController
-    secondViewController = UIViewController()
-    thirdViewController = UIViewController()
-    actionViewController = UIViewController()
-    fourthViewController = UIViewController()
 
   }
   /*
@@ -42,6 +31,50 @@ class RedEnvelopTabbarController: UITabBarController {
    // Pass the selected object to the new view controller.
    }
    */
+
+    func selectItem(withIndex index: Int) {
+      selectedIndex = index
+    }
+
+  func backToLastView (){
+    selectItem(withIndex: lastIndex)
+  }
+
+  func selectProfileTab(){
+    selectItem(withIndex: 4)
+
+  }
+
+  override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+    if item == self.tabBar.items?[0]{
+      //Do something if index is 0
+      lastIndex = 0
+    }
+    else if item == self.tabBar.items?[1]{
+      //Do something if index is 1
+      lastIndex = 1
+
+    } else if item == self.tabBar.items?[2]{
+      //Do something if index is 1
+      lastIndex = 2
+
+    }
+    else if item == self.tabBar.items?[3]{
+      //Do something if index is 1
+//      guard let user = RedEnvelopComponent.shared.user else { return }
+//      RedEnvelopAPIClient.lottery(ticket: user.ticket, gameno: "6") { (gameurl, def) in
+//        if let url = gameurl {
+//          let webController = WebContainerController(url: url, lastIndex: self.lastIndex)
+//          self.present(webController, animated:true, completion:nil)
+//        }
+//      }
+//      selectedIndex = lastIndex
+    } else if item == self.tabBar.items?[4]{
+      //Do something if index is 1
+      lastIndex = 4
+
+    }
+  }
 
 }
 

@@ -49,6 +49,15 @@
 		D175C525230D0DCA001B8DC6 /* HomeViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C524230D0DCA001B8DC6 /* HomeViewComponent.swift */; };
 		D175C527230D0E46001B8DC6 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C526230D0E46001B8DC6 /* HomeBuilder.swift */; };
 		D175C529230D1036001B8DC6 /* RedEnvelopTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */; };
+		D194BD85231A4D2D00AB59C3 /* GrabBullPackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD83231A4D2D00AB59C3 /* GrabBullPackageViewController.swift */; };
+		D194BD86231A4D2D00AB59C3 /* GrabBullPackageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D194BD84231A4D2D00AB59C3 /* GrabBullPackageViewController.xib */; };
+		D194BD8B231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD89231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift */; };
+		D194BD8C231AB9BD00AB59C3 /* BulllPackageInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D194BD8A231AB9BD00AB59C3 /* BulllPackageInfoViewController.xib */; };
+		D194BD8F231ABE5A00AB59C3 /* BetDetailiewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD8D231ABE5A00AB59C3 /* BetDetailiewCell.swift */; };
+		D194BD90231ABE5A00AB59C3 /* BetDetailiewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D194BD8E231ABE5A00AB59C3 /* BetDetailiewCell.xib */; };
+		D194BD92231BB85300AB59C3 /* BullModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD91231BB85300AB59C3 /* BullModel.swift */; };
+		D194BD95231BC18700AB59C3 /* UploadImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD93231BC18700AB59C3 /* UploadImageViewController.swift */; };
+		D194BD96231BC18700AB59C3 /* UploadImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D194BD94231BC18700AB59C3 /* UploadImageViewController.xib */; };
 		D1E00B72230D8F0E00554CA4 /* LobbyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */; };
 		D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */ = {isa = PBXBuildFile; fileRef = D1E00B74230D950E00554CA4 /* LobbyJson.json */; };
 		D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B78230DA05200554CA4 /* WebContainerController.swift */; };
@@ -98,8 +107,26 @@
 		D1E00DBA2313881000554CA4 /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00DB92313881000554CA4 /* LocalDataManager.swift */; };
 		D1E00DBD2313B77F00554CA4 /* GameRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00DBC2313B77F00554CA4 /* GameRoomViewController.swift */; };
 		D1E00DBF23140E4300554CA4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1E00DBE23140E3200554CA4 /* QuartzCore.framework */; };
-		D1EA0E6A2316355F0096B7D1 /* BullListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0E692316355F0096B7D1 /* BullListViewController.swift */; };
 		D1EA0E6C23163B340096B7D1 /* LotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0E6B23163B340096B7D1 /* LotteryViewController.swift */; };
+		D1EA0E6E231659290096B7D1 /* BullBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0E6D231659290096B7D1 /* BullBottomView.swift */; };
+		D1EA0EB723177F4F0096B7D1 /* BullDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0EB523177F4F0096B7D1 /* BullDetailViewController.swift */; };
+		D1EA0EB823177F4F0096B7D1 /* BullDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1EA0EB623177F4F0096B7D1 /* BullDetailViewController.xib */; };
+		D1EA0EBB2317B0E70096B7D1 /* GrabBankerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0EB92317B0E70096B7D1 /* GrabBankerViewController.swift */; };
+		D1EA0EBC2317B0E70096B7D1 /* GrabBankerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1EA0EBA2317B0E70096B7D1 /* GrabBankerViewController.xib */; };
+		D1EA0EBE2317B4980096B7D1 /* BankGetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0EBD2317B4980096B7D1 /* BankGetModel.swift */; };
+		D1EA0F01231815770096B7D1 /* BankSettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0EFF231815770096B7D1 /* BankSettingViewCell.swift */; };
+		D1EA0F02231815770096B7D1 /* BankSettingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1EA0F00231815770096B7D1 /* BankSettingViewCell.xib */; };
+		D1EA0F05231827090096B7D1 /* BetBullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0F03231827090096B7D1 /* BetBullViewController.swift */; };
+		D1EA0F06231827090096B7D1 /* BetBullViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1EA0F04231827090096B7D1 /* BetBullViewController.xib */; };
+		D1EA0F092318373F0096B7D1 /* WagerOddViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0F072318373F0096B7D1 /* WagerOddViewCell.swift */; };
+		D1EA0F0A2318373F0096B7D1 /* WagerOddViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1EA0F082318373F0096B7D1 /* WagerOddViewCell.xib */; };
+		D1EA0F0C231838620096B7D1 /* WagerOddUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0F0B231838620096B7D1 /* WagerOddUtils.swift */; };
+		D1EA0F7423190AB90096B7D1 /* WagerOdds.json in Resources */ = {isa = PBXBuildFile; fileRef = D1EA0F0D23183AE40096B7D1 /* WagerOdds.json */; };
+		D1EA0F7723190D860096B7D1 /* BetCasinoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0F7523190D860096B7D1 /* BetCasinoViewController.swift */; };
+		D1EA0F7823190D860096B7D1 /* BetCasinoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1EA0F7623190D860096B7D1 /* BetCasinoViewController.xib */; };
+		D1EA0FA32319375E0096B7D1 /* BetOtherViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0FA12319375E0096B7D1 /* BetOtherViewCell.swift */; };
+		D1EA0FA42319375E0096B7D1 /* BetOtherViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1EA0FA22319375E0096B7D1 /* BetOtherViewCell.xib */; };
+		D1EA0FA72319525C0096B7D1 /* BullInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0FA62319525C0096B7D1 /* BullInfoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,6 +176,15 @@
 		D175C524230D0DCA001B8DC6 /* HomeViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewComponent.swift; sourceTree = "<group>"; };
 		D175C526230D0E46001B8DC6 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedEnvelopTabbarController.swift; sourceTree = "<group>"; };
+		D194BD83231A4D2D00AB59C3 /* GrabBullPackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabBullPackageViewController.swift; sourceTree = "<group>"; };
+		D194BD84231A4D2D00AB59C3 /* GrabBullPackageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrabBullPackageViewController.xib; sourceTree = "<group>"; };
+		D194BD89231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulllPackageInfoViewController.swift; sourceTree = "<group>"; };
+		D194BD8A231AB9BD00AB59C3 /* BulllPackageInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BulllPackageInfoViewController.xib; sourceTree = "<group>"; };
+		D194BD8D231ABE5A00AB59C3 /* BetDetailiewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetDetailiewCell.swift; sourceTree = "<group>"; };
+		D194BD8E231ABE5A00AB59C3 /* BetDetailiewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BetDetailiewCell.xib; sourceTree = "<group>"; };
+		D194BD91231BB85300AB59C3 /* BullModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullModel.swift; sourceTree = "<group>"; };
+		D194BD93231BC18700AB59C3 /* UploadImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageViewController.swift; sourceTree = "<group>"; };
+		D194BD94231BC18700AB59C3 /* UploadImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageViewController.xib; sourceTree = "<group>"; };
 		D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyItemView.swift; sourceTree = "<group>"; };
 		D1E00B74230D950E00554CA4 /* LobbyJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LobbyJson.json; sourceTree = "<group>"; };
 		D1E00B78230DA05200554CA4 /* WebContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContainerController.swift; sourceTree = "<group>"; };
@@ -198,8 +234,26 @@
 		D1E00DB92313881000554CA4 /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
 		D1E00DBC2313B77F00554CA4 /* GameRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoomViewController.swift; sourceTree = "<group>"; };
 		D1E00DBE23140E3200554CA4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		D1EA0E692316355F0096B7D1 /* BullListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullListViewController.swift; sourceTree = "<group>"; };
 		D1EA0E6B23163B340096B7D1 /* LotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryViewController.swift; sourceTree = "<group>"; };
+		D1EA0E6D231659290096B7D1 /* BullBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullBottomView.swift; sourceTree = "<group>"; };
+		D1EA0EB523177F4F0096B7D1 /* BullDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullDetailViewController.swift; sourceTree = "<group>"; };
+		D1EA0EB623177F4F0096B7D1 /* BullDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BullDetailViewController.xib; sourceTree = "<group>"; };
+		D1EA0EB92317B0E70096B7D1 /* GrabBankerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabBankerViewController.swift; sourceTree = "<group>"; };
+		D1EA0EBA2317B0E70096B7D1 /* GrabBankerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrabBankerViewController.xib; sourceTree = "<group>"; };
+		D1EA0EBD2317B4980096B7D1 /* BankGetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankGetModel.swift; sourceTree = "<group>"; };
+		D1EA0EFF231815770096B7D1 /* BankSettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankSettingViewCell.swift; sourceTree = "<group>"; };
+		D1EA0F00231815770096B7D1 /* BankSettingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankSettingViewCell.xib; sourceTree = "<group>"; };
+		D1EA0F03231827090096B7D1 /* BetBullViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetBullViewController.swift; sourceTree = "<group>"; };
+		D1EA0F04231827090096B7D1 /* BetBullViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BetBullViewController.xib; sourceTree = "<group>"; };
+		D1EA0F072318373F0096B7D1 /* WagerOddViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerOddViewCell.swift; sourceTree = "<group>"; };
+		D1EA0F082318373F0096B7D1 /* WagerOddViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WagerOddViewCell.xib; sourceTree = "<group>"; };
+		D1EA0F0B231838620096B7D1 /* WagerOddUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WagerOddUtils.swift; sourceTree = "<group>"; };
+		D1EA0F0D23183AE40096B7D1 /* WagerOdds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WagerOdds.json; sourceTree = "<group>"; };
+		D1EA0F7523190D860096B7D1 /* BetCasinoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetCasinoViewController.swift; sourceTree = "<group>"; };
+		D1EA0F7623190D860096B7D1 /* BetCasinoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BetCasinoViewController.xib; sourceTree = "<group>"; };
+		D1EA0FA12319375E0096B7D1 /* BetOtherViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetOtherViewCell.swift; sourceTree = "<group>"; };
+		D1EA0FA22319375E0096B7D1 /* BetOtherViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BetOtherViewCell.xib; sourceTree = "<group>"; };
+		D1EA0FA62319525C0096B7D1 /* BullInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullInfoModel.swift; sourceTree = "<group>"; };
 		F8455A52255EC42C57478B9D /* Pods-Gwin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gwin.release.xcconfig"; path = "Target Support Files/Pods-Gwin/Pods-Gwin.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -528,8 +582,10 @@
 		D1E00CFA230E92D400554CA4 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				D1E00D03230EC0A000554CA4 /* ProfileViewController.swift */,
 				D1E00D05230EDF1D00554CA4 /* ProfileItemViewCell.swift */,
+				D1E00D03230EC0A000554CA4 /* ProfileViewController.swift */,
+				D194BD93231BC18700AB59C3 /* UploadImageViewController.swift */,
+				D194BD94231BC18700AB59C3 /* UploadImageViewController.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -584,6 +640,8 @@
 				D1E00D80230FEC1C00554CA4 /* BullWagerInfoModel.swift */,
 				D1E00D82230FED7B00554CA4 /* BullBetDetailModel.swift */,
 				D1E00D84230FEE0800554CA4 /* BullWagerOddModel.swift */,
+				D1EA0EBD2317B4980096B7D1 /* BankGetModel.swift */,
+				D1EA0FA62319525C0096B7D1 /* BullInfoModel.swift */,
 			);
 			path = Bull;
 			sourceTree = "<group>";
@@ -601,7 +659,30 @@
 			isa = PBXGroup;
 			children = (
 				D1E00DBC2313B77F00554CA4 /* GameRoomViewController.swift */,
-				D1EA0E692316355F0096B7D1 /* BullListViewController.swift */,
+				D1EA0E6D231659290096B7D1 /* BullBottomView.swift */,
+				D1EA0EB523177F4F0096B7D1 /* BullDetailViewController.swift */,
+				D1EA0EB623177F4F0096B7D1 /* BullDetailViewController.xib */,
+				D1EA0EB92317B0E70096B7D1 /* GrabBankerViewController.swift */,
+				D1EA0EBA2317B0E70096B7D1 /* GrabBankerViewController.xib */,
+				D1EA0EFF231815770096B7D1 /* BankSettingViewCell.swift */,
+				D1EA0F00231815770096B7D1 /* BankSettingViewCell.xib */,
+				D1EA0F03231827090096B7D1 /* BetBullViewController.swift */,
+				D1EA0F04231827090096B7D1 /* BetBullViewController.xib */,
+				D1EA0F072318373F0096B7D1 /* WagerOddViewCell.swift */,
+				D1EA0F082318373F0096B7D1 /* WagerOddViewCell.xib */,
+				D1EA0F0B231838620096B7D1 /* WagerOddUtils.swift */,
+				D1EA0F0D23183AE40096B7D1 /* WagerOdds.json */,
+				D1EA0F7523190D860096B7D1 /* BetCasinoViewController.swift */,
+				D1EA0F7623190D860096B7D1 /* BetCasinoViewController.xib */,
+				D1EA0FA12319375E0096B7D1 /* BetOtherViewCell.swift */,
+				D1EA0FA22319375E0096B7D1 /* BetOtherViewCell.xib */,
+				D194BD83231A4D2D00AB59C3 /* GrabBullPackageViewController.swift */,
+				D194BD84231A4D2D00AB59C3 /* GrabBullPackageViewController.xib */,
+				D194BD89231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift */,
+				D194BD8A231AB9BD00AB59C3 /* BulllPackageInfoViewController.xib */,
+				D194BD8D231ABE5A00AB59C3 /* BetDetailiewCell.swift */,
+				D194BD8E231ABE5A00AB59C3 /* BetDetailiewCell.xib */,
+				D194BD91231BB85300AB59C3 /* BullModel.swift */,
 			);
 			path = BullGame;
 			sourceTree = "<group>";
@@ -697,18 +778,30 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1EA0F02231815770096B7D1 /* BankSettingViewCell.xib in Resources */,
 				D1E00D9F2311115200554CA4 /* CreateEnvelopViewController.xib in Resources */,
+				D1EA0EBC2317B0E70096B7D1 /* GrabBankerViewController.xib in Resources */,
 				D1E00DA72311302E00554CA4 /* CreateEnvelopType2ViewController.xib in Resources */,
 				D1E00DA3231119AC00554CA4 /* PackageInfoViewController.xib in Resources */,
+				D194BD96231BC18700AB59C3 /* UploadImageViewController.xib in Resources */,
 				D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */,
+				D194BD86231A4D2D00AB59C3 /* GrabBullPackageViewController.xib in Resources */,
 				D175C4CE230BD324001B8DC6 /* LoginViewController.xib in Resources */,
 				D1E00D0B230EEE4F00554CA4 /* ProfileItems.json in Resources */,
+				D1EA0EB823177F4F0096B7D1 /* BullDetailViewController.xib in Resources */,
 				D1E00D8923102A6700554CA4 /* LaunchViewController.xib in Resources */,
+				D1EA0F0A2318373F0096B7D1 /* WagerOddViewCell.xib in Resources */,
 				D1E00D9B23110A8C00554CA4 /* PackageHistoryRightViewCell.xib in Resources */,
+				D194BD8C231AB9BD00AB59C3 /* BulllPackageInfoViewController.xib in Resources */,
 				D10067AA2309AA2500114F6E /* LaunchScreen.storyboard in Resources */,
+				D1EA0FA42319375E0096B7D1 /* BetOtherViewCell.xib in Resources */,
 				D175C4E8230C2177001B8DC6 /* WellcomeViewController.xib in Resources */,
+				D1EA0F7423190AB90096B7D1 /* WagerOdds.json in Resources */,
 				D10067A72309AA2500114F6E /* Assets.xcassets in Resources */,
 				D1E00DB82312DC8600554CA4 /* GrabUserViewCell.xib in Resources */,
+				D194BD90231ABE5A00AB59C3 /* BetDetailiewCell.xib in Resources */,
+				D1EA0F06231827090096B7D1 /* BetBullViewController.xib in Resources */,
+				D1EA0F7823190D860096B7D1 /* BetCasinoViewController.xib in Resources */,
 				D1E00D9723110A7100554CA4 /* PackageHistoryLeftViewCell.xib in Resources */,
 				D10067A22309AA1F00114F6E /* Main.storyboard in Resources */,
 				D175C4EF230C35CE001B8DC6 /* RegisterViewController.xib in Resources */,
@@ -774,20 +867,26 @@
 			files = (
 				D175C4BD230BCD97001B8DC6 /* Workflow.swift in Sources */,
 				D1E00DA62311302E00554CA4 /* CreateEnvelopType2ViewController.swift in Sources */,
+				D1EA0F01231815770096B7D1 /* BankSettingViewCell.swift in Sources */,
 				D1E00D9623110A7100554CA4 /* PackageHistoryLeftViewCell.swift in Sources */,
 				D1E00DBA2313881000554CA4 /* LocalDataManager.swift in Sources */,
+				D1EA0EBB2317B0E70096B7D1 /* GrabBankerViewController.swift in Sources */,
 				D1EA0E6C23163B340096B7D1 /* LotteryViewController.swift in Sources */,
 				D175C4D4230BD5A1001B8DC6 /* LoginInteractor.swift in Sources */,
 				D1E00D7D230FEAFB00554CA4 /* BullPackageHistoryModel.swift in Sources */,
+				D194BD8B231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift in Sources */,
 				D1E00D9E2311115200554CA4 /* CreateEnvelopViewController.swift in Sources */,
 				D1E00DB12312CEA600554CA4 /* TitleStackView.swift in Sources */,
+				D194BD92231BB85300AB59C3 /* BullModel.swift in Sources */,
 				D175C4BC230BCD97001B8DC6 /* Router.swift in Sources */,
 				D175C4C0230BCE31001B8DC6 /* ExampleViewController.swift in Sources */,
 				D170F385231440B700468D64 /* ScrollLabel.swift in Sources */,
 				D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */,
+				D1EA0F05231827090096B7D1 /* BetBullViewController.swift in Sources */,
 				D1E00DAD23118C7100554CA4 /* ImageManager.swift in Sources */,
 				D175C529230D1036001B8DC6 /* RedEnvelopTabbarController.swift in Sources */,
 				D175C4DA230C03E8001B8DC6 /* UserAPIClient.swift in Sources */,
+				D1EA0FA72319525C0096B7D1 /* BullInfoModel.swift in Sources */,
 				D1E00D79230FE5F600554CA4 /* BullPackageModel.swift in Sources */,
 				D1E00D7B230FE89700554CA4 /* GrabUserModel.swift in Sources */,
 				D1E00D8D23102F2B00554CA4 /* PackageHistoryModel.swift in Sources */,
@@ -803,17 +902,23 @@
 				D175C4FA230CFA9D001B8DC6 /* HomeInteractor.swift in Sources */,
 				D1E00D85230FEE0800554CA4 /* BullWagerOddModel.swift in Sources */,
 				D175C4F3230C552F001B8DC6 /* UserDefaultManager.swift in Sources */,
+				D1EA0EBE2317B4980096B7D1 /* BankGetModel.swift in Sources */,
+				D194BD85231A4D2D00AB59C3 /* GrabBullPackageViewController.swift in Sources */,
 				D1E00D73230FDCB800554CA4 /* BullAPIClient.swift in Sources */,
 				D175C4F6230CF60F001B8DC6 /* NoticeAPIRouter.swift in Sources */,
 				D1E00B72230D8F0E00554CA4 /* LobbyItemView.swift in Sources */,
+				D1EA0EB723177F4F0096B7D1 /* BullDetailViewController.swift in Sources */,
 				D1E00D77230FE11900554CA4 /* BankSettingModel.swift in Sources */,
 				D1E00D83230FED7B00554CA4 /* BullBetDetailModel.swift in Sources */,
 				D175C4BA230BCD97001B8DC6 /* EmptyProtocol.swift in Sources */,
+				D1EA0F092318373F0096B7D1 /* WagerOddViewCell.swift in Sources */,
 				D175C4DC230C0487001B8DC6 /* User.swift in Sources */,
 				D175C4C6230BD0C4001B8DC6 /* ExampleBuilder.swift in Sources */,
 				D10067A52309AA1F00114F6E /* Gwin.xcdatamodeld in Sources */,
 				D175C4F1230C36B3001B8DC6 /* KeyboardLayoutConstraint.swift in Sources */,
 				D175C4EB230C29A3001B8DC6 /* ScreenManager.swift in Sources */,
+				D1EA0E6E231659290096B7D1 /* BullBottomView.swift in Sources */,
+				D1EA0FA32319375E0096B7D1 /* BetOtherViewCell.swift in Sources */,
 				D1E00D04230EC0A000554CA4 /* ProfileViewController.swift in Sources */,
 				D175C525230D0DCA001B8DC6 /* HomeViewComponent.swift in Sources */,
 				D175C47F230BCA42001B8DC6 /* ExampleRouter.swift in Sources */,
@@ -823,17 +928,21 @@
 				D1E00D75230FDEEC00554CA4 /* BullRoundModel.swift in Sources */,
 				D175C4FC230CFB7F001B8DC6 /* HomeRouter.swift in Sources */,
 				D1E00CFD230E931D00554CA4 /* RedEnvelopAPIRouter.swift in Sources */,
+				D1EA0F0C231838620096B7D1 /* WagerOddUtils.swift in Sources */,
 				D1E00DB32312D26400554CA4 /* UITextFieldPadding.swift in Sources */,
 				D1E00D8823102A6700554CA4 /* LaunchViewController.swift in Sources */,
 				D1E00D8B23102D7300554CA4 /* PackageInfoModel.swift in Sources */,
 				D100679D2309AA1F00114F6E /* AppDelegate.swift in Sources */,
 				D175C4CD230BD324001B8DC6 /* LoginViewController.swift in Sources */,
+				D194BD8F231ABE5A00AB59C3 /* BetDetailiewCell.swift in Sources */,
 				D1E00DAF231279B000554CA4 /* MessagePopupController.swift in Sources */,
 				D1E00DBD2313B77F00554CA4 /* GameRoomViewController.swift in Sources */,
+				D1EA0F7723190D860096B7D1 /* BetCasinoViewController.swift in Sources */,
 				D1E00D81230FEC1C00554CA4 /* BullWagerInfoModel.swift in Sources */,
 				D175C4B9230BCD97001B8DC6 /* Component.swift in Sources */,
 				D1E00D912310EBC100554CA4 /* RoomDetailViewController.swift in Sources */,
 				D1E00DAA23116F4700554CA4 /* GrabEnvelopViewController.swift in Sources */,
+				D194BD95231BC18700AB59C3 /* UploadImageViewController.swift in Sources */,
 				D175C4F8230CF823001B8DC6 /* NoticeAPIClient.swift in Sources */,
 				D1E00DB72312DC8600554CA4 /* GrabUserViewCell.swift in Sources */,
 				D175C4D2230BD570001B8DC6 /* LoginRouter.swift in Sources */,
@@ -842,7 +951,6 @@
 				D175C4EE230C35CE001B8DC6 /* RegisterViewController.swift in Sources */,
 				D175C4E7230C2177001B8DC6 /* WellcomeViewController.swift in Sources */,
 				D175C527230D0E46001B8DC6 /* HomeBuilder.swift in Sources */,
-				D1EA0E6A2316355F0096B7D1 /* BullListViewController.swift in Sources */,
 				D1E00DA2231119AC00554CA4 /* PackageInfoViewController.swift in Sources */,
 				D175C4D0230BD4B2001B8DC6 /* LoginBuilder.swift in Sources */,
 				D1E00D01230E9CFC00554CA4 /* RoomModel.swift in Sources */,

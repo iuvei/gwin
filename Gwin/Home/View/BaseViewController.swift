@@ -12,6 +12,7 @@ class BaseViewController: UIViewController {
 
   enum Constants {
     static let loadingSize: CGFloat = 100
+    static let actionButtonSize: CGFloat = 35
   }
 
   private lazy var backButton: UIButton = {
@@ -21,6 +22,8 @@ class BaseViewController: UIViewController {
     button.backgroundColor = .clear
     button.semanticContentAttribute = .forceLeftToRight
     button.contentEdgeInsets = UIEdgeInsets(top: 5, left: -10, bottom: 5, right: 10)
+    button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+    button.setTitleColor(UIColor(hexString: "FBEAAC"), for: .normal)
     button.imageView?.contentMode = .scaleAspectFit
     return button
   }()
@@ -72,6 +75,7 @@ class BaseViewController: UIViewController {
   }
 
   func addBackButton() {
+    backButton.frame = CGRect(x: 0, y: 0, width: Constants.actionButtonSize, height: Constants.actionButtonSize)
     let leftItem = UIBarButtonItem(customView: backButton)
     self.navigationItem.leftBarButtonItem = leftItem
   }
@@ -81,6 +85,9 @@ class BaseViewController: UIViewController {
     self.navigationItem.setHidesBackButton(true, animated:true);
   }
 
+  func setBackTitle(title: String) {
+    backButton.setTitle(title, for: .normal)
+  }
   func hideLoadingView() {
     guard let alert = loadingView else { return }
 

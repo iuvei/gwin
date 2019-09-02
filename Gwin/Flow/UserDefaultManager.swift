@@ -13,6 +13,8 @@ enum SaveManagerKeys: String {
   case loginInfoPassword = "loginInfoPassword"
   case autologin = "autologin"
   case settingSound = "settingSound"
+  case pupupMessage = "pupupMessage"
+
 }
 
 class UserDefaultManager {
@@ -108,6 +110,17 @@ class UserDefaultManager {
     return false
   }
 
+  func isShowPoupMessage() -> String? {
+    if let userno =  get(key: .pupupMessage) as? String {
+      return userno
+    }
+
+    return nil
+  }
+
+  func didShowPopupMessage(userno: String) {
+    save(object: userno, key: .pupupMessage)
+  }
   // MARK: Helpers
 
   func standard () -> UserDefaults {

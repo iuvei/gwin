@@ -62,6 +62,7 @@ class RoomDetailViewController: BaseViewController {
     let label = UILabel().forAutolayout()
     label.textAlignment = .center
     label.textColor = .white
+    label.font = UIFont.systemFont(ofSize: 14)
     return label
   }()
 
@@ -155,6 +156,10 @@ class RoomDetailViewController: BaseViewController {
   }
 
   func setupNavigatorViews() {
+
+    profileButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
+    newPackageButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
+
     let rightItem1 = UIBarButtonItem(customView: profileButton)
     let rightItem2 = UIBarButtonItem(customView: newPackageButton)
 
@@ -198,10 +203,11 @@ class RoomDetailViewController: BaseViewController {
     view.addSubview(notifyView)
     notifyView.addSubview(notifyBackground)
     notifyView.addSubview(notifyLabel)
+    notifyLabel.rounded(radius: 12, borderColor: .white, borderwidth: 1.5)
 
     NSLayoutConstraint.activate([
-      notifyView.widthAnchor.constraint(equalToConstant: 35),
-      notifyView.heightAnchor.constraint(equalToConstant: 35),
+      notifyView.widthAnchor.constraint(equalToConstant: 40),
+      notifyView.heightAnchor.constraint(equalToConstant: 40),
       notifyView.rightAnchor.constraint(equalTo: tableView.rightAnchor, constant: -10),
       notifyView.bottomAnchor.constraint(equalTo: tableView.bottomAnchor),
 
@@ -211,7 +217,9 @@ class RoomDetailViewController: BaseViewController {
       notifyBackground.bottomAnchor.constraint(equalTo: notifyView.bottomAnchor),
 
       notifyLabel.centerXAnchor.constraint(equalTo: notifyView.centerXAnchor),
-      notifyLabel.centerYAnchor.constraint(equalTo: notifyView.centerYAnchor),
+      notifyLabel.centerYAnchor.constraint(equalTo: notifyView.centerYAnchor, constant: -2),
+      notifyLabel.widthAnchor.constraint(equalToConstant: 24),
+      notifyLabel.heightAnchor.constraint(equalToConstant: 23),
 
       ])
   }
@@ -305,9 +313,9 @@ class RoomDetailViewController: BaseViewController {
     } else if tag == 1 {
       showCreatePackageType2()
     } else if tag == 2 {
-      openWebview(optType: "withdrawals")
-    } else if tag == 3 {
       openWebview(optType: "deposits")
+    } else if tag == 3 {
+      openWebview(optType: "withdrawals")
     }
   }
 }
@@ -516,7 +524,7 @@ extension RoomDetailViewController: WebSocketDelegate {
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
       self?.updateNotifyView()
     }
-    
+
     tableView.reloadData()
     //    [{"roomid":5,"packetid":158983,"userno":"steven2","username":"","packetamount":200.00,"packettag":"5","wagertime":"2019-08-24 12:03:31"},{"roomid":5,"packetid":158984,"userno":"steven2","username":"","packetamount":2006.00,"packettag":"2","wagertime":"2019-08-24 12:03:48"}]
 
@@ -535,15 +543,15 @@ extension RoomDetailViewController: GrabEnvelopPopupDelegate {
 
   func openPackageInfo(package: PackageInfoModel?, roomid: Int, packageid: Int64) {
 
-    //    if let _ = package, let userno = RedEnvelopComponent.shared.userno {
-    let isbiggest = package?.isGrabBiggest(userno: userno) ?? false
-    let isBoomed = package?.getStatus(userno: userno) ?? false
-    if let saved = LocalDataManager.shared.savePackage(userno: userno, packageid: packageid, status: isBoomed, isbiggest: isbiggest) {
-      openPackages.append(saved)
-      updateCellAsOpened(packageid: packageid)
-      updateNotifyView()
+    if let `package` = package, let userno = RedEnvelopComponent.shared.userno {
+      let isbiggest = package.isGrabBiggest(userno: userno)
+      let isBoomed = package.getStatus(userno: userno)
+      if let saved = LocalDataManager.shared.savePackage(userno: userno, packageid: packageid, status: isBoomed, isbiggest: isbiggest) {
+        openPackages.append(saved)
+        updateCellAsOpened(packageid: packageid)
+        updateNotifyView()
+      }
     }
-    //    }
 
     //    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
     let infoVc = PackageInfoViewController(model: package, roomid: roomid, packageid: packageid)
@@ -556,13 +564,18 @@ extension RoomDetailViewController: GrabEnvelopPopupDelegate {
 
 extension RoomDetailViewController {
   fileprivate func updateNotifyView() {
-//    if let lastVisibleIndexPath = tableView.indexPathsForVisibleRows?.last {
-//      let lastRow = lastVisibleIndexPath.row
-      let notOpenPackage = histories.count - openPackages.count
+    var availableGrab = 0
+    for model in histories{
+      if !isPackageExpeire(wagertime: model.wagertime){
+        availableGrab += 1
+      }
 
-      notifyLabel.text = "\(notOpenPackage)"
-      notifyView.isHidden = notOpenPackage <= 0
-//    }
+    }
+    let notOpenPackage = availableGrab - openPackages.count
+
+    notifyLabel.text = "\(notOpenPackage)"
+    notifyView.isHidden = notOpenPackage <= 0
+    //    }
   }
 }
 
@@ -579,6 +592,7 @@ extension RoomDetailViewController: UIScrollViewDelegate {
     }
   }
 }
+
 
 
 

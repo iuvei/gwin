@@ -17,6 +17,7 @@ class WellcomeViewController: BaseViewController {
     super.viewDidLoad()
 
     // Do any additional setup after loading the view.
+    hideBackButton()
     setupViews()
 
     if UserDefaultManager.sharedInstance().autoLogin() {

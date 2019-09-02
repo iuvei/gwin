@@ -19,7 +19,7 @@ class ProfileViewController: BaseViewController {
   @IBOutlet weak var infoView: UIView!
   @IBOutlet weak var tableview: UITableView!
   
-  @IBOutlet weak var avatarImageView: UIImageView!
+  @IBOutlet weak var avatarImageView: UIButton!
   @IBOutlet weak var allowCreditLabel: UILabel!
   @IBOutlet weak var creditLabel: UILabel!
   @IBOutlet weak var accountnoLabel: UILabel!
@@ -91,13 +91,15 @@ class ProfileViewController: BaseViewController {
       if let imagebase64 = ImageManager.shared.getImage(userno: userno) {
         if let imageData = Data(base64Encoded: imagebase64, options: []) {
           let image  = UIImage(data: imageData)
-          this.avatarImageView.image = image
+          this.avatarImageView.setBackgroundImage(image, for: .normal)
         }
       }
     }
   }
 
   func setupViews() {
+    avatarImageView.imageView?.contentMode = .scaleAspectFill
+    avatarImageView.addTarget(self, action: #selector(avatarPressed(_:)), for: .touchUpInside)
     setupTableView()
   }
 
@@ -128,14 +130,14 @@ class ProfileViewController: BaseViewController {
     }
   }
 
-  func jumpURL(optType: String) {
+  func jumpURL(optType: String, title: String? = nil) {
     guard let `user` = RedEnvelopComponent.shared.user else { return }
     showLoadingView()
     UserAPIClient.otherH5(ticket: user.ticket, optype: optType) {[weak self] (url, message) in
       guard let `this` = self else { return }
       this.hideLoadingView()
       if let jumpurl = url {
-        let webview = WebContainerController(url: jumpurl)
+        let webview = WebContainerController(url: jumpurl, title: title)
         this.present(webview, animated: true, completion: nil)
       }
     }
@@ -146,6 +148,14 @@ class ProfileViewController: BaseViewController {
     tableview.beginUpdates()
     tableview.reloadRows(at: [indexPath], with: .none)
     tableview.endUpdates()
+  }
+
+  @objc func avatarPressed(_ sender: UIButton) {
+    let vc = UploadImageViewController()
+    vc.didUploadImage = { [weak self] image in
+      self?.avatarImageView.setBackgroundImage(image, for: .normal)
+    }
+    present(vc, animated: true, completion: nil)
   }
 }
 
@@ -163,6 +173,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "profileItemCell", for: indexPath) as? ProfileItemViewCell {
       let item = menuItems[indexPath.row]
       cell.updateContent(data: item, qrcode: self.userInfo?.refercode)
+      if item.action ==  ProfileItemAction.qrcode.rawValue {
+        cell.didCopyQRCode = { [weak self] in
+          UIPasteboard.general.string = self?.userInfo?.refercode
+          self?.jumpURL(optType: "recommended_app", title: "快乐彩票")
+        }
+      }
       return cell
     }
 
@@ -173,7 +189,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
      let item = menuItems[indexPath.row]
     if item.action == "webview" {
       jumpURL(optType: item.key)
-    }else{
+    } else{
       if item.key == "logout" {
         logout()
       }

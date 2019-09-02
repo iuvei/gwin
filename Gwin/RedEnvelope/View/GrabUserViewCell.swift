@@ -43,6 +43,9 @@ class GrabUserViewCell: UITableViewCell {
 
     if model.userno == Constant.systemUserno {
       amountLabel.text = "\(Int(model.packetamount)).**"
+    }
+
+    if let userno = RedEnvelopComponent.shared.userno, userno == model.userno || Constant.systemUserno == model.userno {
       kingImageView.isHidden = !LocalDataManager.shared.isKing(userno: model.userno, packageid: packageid)
     }else {
       kingImageView.isHidden = true

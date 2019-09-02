@@ -21,15 +21,16 @@ public enum BullAPIRouter: URLRequestConvertible {
   case round(String, Int)
   case banksetting(String)
   case banker_get(String, Int , Int64, Int)
-  case setbanker(String,  Int, Int, Int, String, String)
+  case setbanker(String,  Int, Int, Int64, Int, Int)
   case betting(String,  Int, Int64, String)
-  case grab(String, Int, Int)
-  case info(String, Int, Int, Int)
-  case packethistory(String, Int, Int, Int)
-  case history(String, Int, Int, Int)
-  case packetstatus(String, Int, Int)
-  case wagerinfo(String, Int, Int, Int)
-  case betdetail(String, Int, Int, String)
+  case grab(String, Int, Int64)
+  case info(String, Int, Int64, Int)
+  case packethistory(String, Int, Int64, Int)
+  case history(String, Int, Int64, Int)
+  case packetstatus(String, Int, Int64)
+  case wagerinfo(String, Int, Int64, Int)
+  case betdetail(String, Int, Int64, String)
+  case wagerodds(String, Int)
   // 3
   var method: HTTPMethod {
 //    switch self {
@@ -68,6 +69,8 @@ public enum BullAPIRouter: URLRequestConvertible {
       return "/wagerinfo"
     case .betdetail:
       return "/betdetail"
+    case .wagerodds:
+      return "/wagerodds"
     }
   }
 
@@ -98,6 +101,8 @@ public enum BullAPIRouter: URLRequestConvertible {
       return [ "ticket" : ticket,  "data" : ["roomid": roomid, "roundid": roundid, "idno": idno]]
     case .betdetail(let ticket,let roomid, let roundid, let userno):
       return [ "ticket" : ticket,  "data" : ["roomid": roomid, "roundid": roundid, "userno": userno]]
+    case .wagerodds(let ticket, let roomtype):
+      return [ "ticket" : ticket,  "data" : ["roomtype": roomtype]]
 
     }
   }

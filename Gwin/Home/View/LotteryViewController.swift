@@ -9,13 +9,14 @@
 import UIKit
 import WebKit
 
-class LotteryViewController: UIViewController {
+class LotteryViewController: BaseViewController {
 
   private lazy var webView: WKWebView = {
     let webview = WKWebView().forAutolayout()
 
     return webview
   }()
+
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -48,13 +49,20 @@ class LotteryViewController: UIViewController {
 
   func fetchLoteryURL() {
     guard let user = RedEnvelopComponent.shared.user else { return }
-
+    showLoadingView()
     RedEnvelopAPIClient.lottery(ticket: user.ticket, gameno: "6") {[weak self] (gameurl, def) in
+      self?.hideLoadingView()
       if let path = gameurl {
         if let url = URL(string: path) {
           self?.webView.load(URLRequest(url: url))
         }
       }
+    }
+  }
+
+  override func backPressed(_ sender: UIButton) {
+    if let delegate = UIApplication.shared.delegate as? AppDelegate {
+      delegate.tabbarController?.backToLastView()
     }
   }
   /*

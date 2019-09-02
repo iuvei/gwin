@@ -20,7 +20,7 @@
   {
     "icon":"profile_item_4",
     "title":"存取款",
-    "key":"deposits_withdrawals",
+    "key":"deposits",
     "action": "webview"
   },
   {
