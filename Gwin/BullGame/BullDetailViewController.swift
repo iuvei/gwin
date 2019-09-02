@@ -49,7 +49,7 @@ class BullDetailViewController: BaseViewController {
   @IBOutlet weak var bottomHeightConstraint: NSLayoutConstraint!
   private lazy var bankerGetButton: UIButton = {
     let button = UIButton().forAutolayout()
-    button.backgroundColor = UIColor.gray.withAlphaComponent(0.3)
+    button.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
     button.addTarget(self, action: #selector(bankgetGetPressed(_:)), for: .touchUpInside)
     return button
   }()
@@ -198,7 +198,7 @@ class BullDetailViewController: BaseViewController {
       bankerGetButton.rightAnchor.constraint(equalTo: bottomView.rightAnchor),
       bankerGetButton.bottomAnchor.constraint(equalTo: bankerStackView.bottomAnchor),
       bankerGetButton.heightAnchor.constraint(equalToConstant: labelHeight * 2),
-      bankerGetButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 4)
+      bankerGetButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 4 - 1)
       ])
   }
 
@@ -225,6 +225,10 @@ class BullDetailViewController: BaseViewController {
                 label.text = round.nextbanker
               }else if tag == 7 {
                 label.text = "\(round.stake1)-\(round.state2)"
+              }else if tag == 14{
+                label.text = "\(round.nextlockquota)"
+              }else if tag == 15{
+                label.text = "\(round.nextstake1 ?? 0)-\(round.nextstake2 ?? 0)"
               }else if tag == 16{
                 label.text = "\(round.bankround)/\(round.remainround)"
               }
@@ -396,6 +400,8 @@ class BullDetailViewController: BaseViewController {
 
   func getBullRollMessage() {
     guard let user = RedEnvelopComponent.shared.user else { return }
+    rollMsgMarqueeView.scrollView.bounces = false
+    rollMsgMarqueeView.scrollView.isScrollEnabled = false
     BullAPIClient.getbullRollMessage(ticket: user.ticket) {[weak self] (rollmsg) in
       let marquee = "<html><body><font size=\"2\" face=\"sans-serif\"> <marquee>\(rollmsg ?? "")</marquee></font></body></html>"
       self?.rollMsgMarqueeView.loadHTMLString(marquee, baseURL: nil)
@@ -417,16 +423,19 @@ class BullDetailViewController: BaseViewController {
   func getHistoryItemView(model: BullHistoryModel?) -> UIView{
     let view = UIView().forAutolayout()
 
+    let padding = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 4 : 8
+    let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 9 : 10
+
     let button = UIButton().forAutolayout()
-    let imageWidth = (UIScreen.main.bounds.width / 12) - 8
+    let imageWidth = (UIScreen.main.bounds.width / 12) - CGFloat(padding)
     //    button.rounded(radius: imageWidth/2)
     button.setBackgroundImage(UIImage(named: "history_circle_bg"), for: .normal)
-    button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+    button.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
     button.setTitleColor(UIColor(hexString: "333333"), for: .normal)
 
     let label = UILabel().forAutolayout()
     label.textAlignment = .center
-    label.font = UIFont.systemFont(ofSize: 9)
+    label.font = UIFont.systemFont(ofSize: fontSize - 1)
     label.textColor = AppColors.titleColor
     view.addSubview(button)
     view.addSubview(label)
@@ -735,7 +744,7 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
     if bull.getRoundId() == round?.roundid  && coundownBet > 0{
       return
     }
-    
+
     let isGrab = bull.isGrabed(openPackages)
 
     if isGrab{

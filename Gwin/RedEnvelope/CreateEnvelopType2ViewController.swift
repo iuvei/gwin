@@ -108,15 +108,15 @@ extension CreateEnvelopType2ViewController : UITextFieldDelegate {
   }
 
   func textFieldDidEndEditing(_ textField: UITextField) {
-    if textField == ammountTextfield {
-      let amount = Int(textField.text ?? "0") ?? 0
-      let inrange = amount >= room.stake1 && amount <= room.stake2
-      if inrange {
-        ammountTextfield.showCorrectIcon()
-      } else {
-        ammountTextfield.showErrorIcon()
-      }
-    }
+//    if textField == ammountTextfield {
+//      let amount = Int(textField.text ?? "0") ?? 0
+//      let inrange = amount >= room.stake1 && amount <= room.stake2
+//      if inrange {
+//        ammountTextfield.showCorrectIcon()
+//      } else {
+//        ammountTextfield.showErrorIcon()
+//      }
+//    }
   }
 }
 

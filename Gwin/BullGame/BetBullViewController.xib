@@ -225,6 +225,7 @@
                                 <constraint firstItem="1RU-Mz-2rK" firstAttribute="leading" secondItem="erD-b9-y4H" secondAttribute="leading" constant="16" id="rhg-cp-dHP"/>
                                 <constraint firstAttribute="trailing" secondItem="ycL-Qc-KxZ" secondAttribute="trailing" id="sHB-0z-4Dj"/>
                                 <constraint firstAttribute="trailing" secondItem="gnQ-Wi-bAb" secondAttribute="trailing" id="uk8-Bx-DwR"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="6ax-KQ-07j" secondAttribute="bottom" constant="40" id="w5b-qA-F6m"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">

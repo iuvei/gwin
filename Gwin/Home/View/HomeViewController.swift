@@ -77,7 +77,7 @@ class HomeViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    setTitle(title: "百果缘")
+    setTitle(title: AppText.Titles.home)
     self.edgesForExtendedLayout = []
     // Do any additional setup after loading the view.
     loadLobbyData()

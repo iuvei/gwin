@@ -12,7 +12,9 @@ class ScrollLabel: UIView {
 
   private lazy var webview: UIWebView = {
     let webview = UIWebView().forAutolayout()
-    webview.backgroundColor = .blue
+    webview.backgroundColor = .white
+    webview.scrollView.isScrollEnabled = false
+    webview.scrollView.bounces = false
     return webview
   }()
 
@@ -27,6 +29,7 @@ class ScrollLabel: UIView {
 
   func setupViews() {
     addSubview(webview)
+
 
     NSLayoutConstraint.activate([
       webview.heightAnchor.constraint(equalToConstant: 25),
