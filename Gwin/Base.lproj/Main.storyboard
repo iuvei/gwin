@@ -446,8 +446,12 @@
                                             <constraint firstItem="R43-rq-ech" firstAttribute="height" secondItem="vsb-iX-sLT" secondAttribute="height" multiplier="1:2" id="JA4-F2-3P0"/>
                                         </constraints>
                                     </stackView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YHl-fT-F5X">
+                                        <rect key="frame" x="5" y="5" width="80" height="80"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4I-oM-df9">
                                         <rect key="frame" x="5" y="5" width="80" height="80"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="g4I-oM-df9" secondAttribute="height" multiplier="1:1" id="O4U-F6-AsC"/>
                                         </constraints>
@@ -455,12 +459,16 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="YHl-fT-F5X" firstAttribute="centerX" secondItem="g4I-oM-df9" secondAttribute="centerX" id="06L-PQ-uGL"/>
+                                    <constraint firstItem="YHl-fT-F5X" firstAttribute="centerY" secondItem="g4I-oM-df9" secondAttribute="centerY" id="Abx-MI-zQk"/>
                                     <constraint firstItem="g4I-oM-df9" firstAttribute="leading" secondItem="m5T-VM-zag" secondAttribute="leading" constant="5" id="Ar8-Xs-sxk"/>
                                     <constraint firstAttribute="trailing" secondItem="vsb-iX-sLT" secondAttribute="trailing" id="Co6-4B-hu4"/>
+                                    <constraint firstItem="YHl-fT-F5X" firstAttribute="width" secondItem="g4I-oM-df9" secondAttribute="width" id="Nss-y1-mFL"/>
                                     <constraint firstItem="g4I-oM-df9" firstAttribute="top" secondItem="m5T-VM-zag" secondAttribute="top" constant="5" id="OD0-Sq-4rb"/>
                                     <constraint firstItem="vsb-iX-sLT" firstAttribute="leading" secondItem="g4I-oM-df9" secondAttribute="trailing" constant="5" id="U0F-cB-4j0"/>
                                     <constraint firstItem="vsb-iX-sLT" firstAttribute="top" secondItem="m5T-VM-zag" secondAttribute="top" constant="5" id="YGM-lQ-oIl"/>
                                     <constraint firstAttribute="bottom" secondItem="g4I-oM-df9" secondAttribute="bottom" constant="5" id="hc2-Nh-G2U"/>
+                                    <constraint firstItem="YHl-fT-F5X" firstAttribute="height" secondItem="g4I-oM-df9" secondAttribute="height" id="k5w-KW-mPw"/>
                                     <constraint firstAttribute="height" constant="90" id="qqK-2l-ICj"/>
                                     <constraint firstAttribute="bottom" secondItem="vsb-iX-sLT" secondAttribute="bottom" constant="5" id="sYF-O2-QAR"/>
                                 </constraints>
@@ -491,10 +499,11 @@
                         <outlet property="accountNameLabel" destination="6kM-T5-zen" id="6qr-0G-jvJ"/>
                         <outlet property="accountnoLabel" destination="8Wq-ZN-NLA" id="UC1-Zv-Pm7"/>
                         <outlet property="allowCreditLabel" destination="r7a-uV-HjT" id="h6I-tK-3xH"/>
-                        <outlet property="avatarImageView" destination="g4I-oM-df9" id="C5E-e2-VPX"/>
+                        <outlet property="avatarImageView" destination="YHl-fT-F5X" id="PoN-3n-xdL"/>
                         <outlet property="creditLabel" destination="Oxe-Kj-3Pd" id="VOJ-72-Pht"/>
                         <outlet property="infoView" destination="m5T-VM-zag" id="bq2-6z-cKj"/>
                         <outlet property="tableview" destination="ED5-ZC-GSr" id="o4Z-jO-o1y"/>
+                        <outlet property="uploadAvatarButton" destination="g4I-oM-df9" id="aIA-YC-ehF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AS6-WC-UNp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -504,7 +513,6 @@
         <!--彩票-->
         <scene sceneID="gBl-TN-3Ts">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jnH-Px-2Yz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3uq-eL-w4f" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="彩票" image="tabbar_4" id="Ixb-NS-fbq"/>
                     <toolbarItems/>
@@ -517,6 +525,7 @@
                         <segue destination="lhH-os-8GX" kind="relationship" relationship="rootViewController" id="psR-lP-IyB"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jnH-Px-2Yz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="196" y="966"/>
         </scene>

@@ -294,7 +294,7 @@ class BullDetailViewController: BaseViewController {
         this.fetchPackageHistory(roundid: round.roundid)
         this.doCounDown()
         //
-        if round.status == 2 {
+        if round.status == BullRoundStatus.addNew.rawValue {
           //add your package
           //          this.cancelWagerTimer()
 
@@ -302,8 +302,10 @@ class BullDetailViewController: BaseViewController {
             let bull = this.datas[index]
             bull.cancelWagerTimer()
             bull.updateRoundStatus(status: .addNew)
-
-            //            bull.fetchResultWagerInfo()
+            if bull.canbet {
+              bull.canbet = false
+              this.reloadCell(at: index)
+            }
           }else {
             this.addNewBull(round: round)
           }
@@ -326,7 +328,7 @@ class BullDetailViewController: BaseViewController {
           if let index = this.getBullModel(roundid: round.roundid) {
             let bull = this.datas[index]
             bull.updateRoundStatus(status: .betClose)
-            //this.removePackage(at: index)
+
           }
 
         } else if round.status == 3 {
@@ -515,29 +517,28 @@ class BullDetailViewController: BaseViewController {
     let tag = sender.tag
     if tag == 1{
       if let round = self.round {
-        let vc = BetBullViewController(room: room, round: round, delegate: self, wagerOdds: wagerOdds)
+        let _wagerOdds = wagerOdds.clone()
+        
+        let vc = BetBullViewController(room: room, round: round, delegate: self, wagerOdds: _wagerOdds)
         present(vc, animated: true, completion: nil)
       }
     } else  if tag == 2 {
       if let round = round{
-        let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.casino.rawValue, wagerOdds: wagerOdds)
+        let _wagerOdds = wagerOdds.clone()
+        let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.casino.rawValue, wagerOdds: _wagerOdds)
         present(vc, animated: true, completion: nil)
       }
     } else  if tag == 3 {
       if let round = self.round {
-        let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.other.rawValue, wagerOdds: wagerOdds)
+        let _wagerOdds = wagerOdds.clone()
+        let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.other.rawValue, wagerOdds: _wagerOdds)
         present(vc, animated: true, completion: nil)
       }
     } else  if tag == 4 {
-
       let vc = GrabBankerViewController(room: room)
       present(vc, animated: true, completion: nil)
     }
-
-
   }
-
-
 }
 
 extension BullDetailViewController{
@@ -577,6 +578,12 @@ extension BullDetailViewController{
 
     subgameStackView.isHidden = coundownBet <= 0
     if coundownBet <= 0 {
+//      if let `round` = round, let index = getBullModel(roundid: round.roundid) {
+//        if datas[index].canbet == true {
+//          datas[index].canbet = false
+//          reloadCell(at: index)
+//        }
+//      }
 
       fetchBullRound()
       timer?.invalidate()
@@ -591,20 +598,14 @@ extension BullDetailViewController{
     }
   }
 
-  //  fileprivate func setBullExpire() {
-  //    for bull in datas{
-  //      if bull.round.roundid != round?.roundid {
-  //          bull.expire = true
-  //      }
-  //    }
-  //  }
 
 }
 extension BullDetailViewController {
 
   fileprivate func addNewBull(round: BullRoundModel){
 
-    let newBull = BullModel(round: round, historyPackage: nil, roomid: room.roomId, delegate: self)
+    let canbet = coundownBet > 0
+    let newBull = BullModel(canbet: canbet, round: round, historyPackage: nil, roomid: room.roomId, delegate: self)
     if newBull.round.status == BullRoundStatus.betStart.rawValue {
       newBull.wagerInfoTimer()
     }else if newBull.round.status == BullRoundStatus.betResult.rawValue {
@@ -711,17 +712,36 @@ extension BullDetailViewController{
       }
     }
   }
+
+  private func reloadCell(at index: Int) {
+
+    let indexPath = IndexPath(row: index, section: 0)
+    let bull = datas[indexPath.row]
+    let isGrab = bull.isGrabed(openPackages)
+    if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
+      cell.updateBullViews(bull: bull, isOpen: isGrab)
+    }
+  }
+
 }
 extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    let bull = datas[indexPath.row]
-    return CGFloat(150 + bull.countWagerInfo() * 20)
+//  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//    let bull = datas[indexPath.row]
+//    return CGFloat(150 + bull.countWagerInfo() * 20)
+//  }
+
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 20
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     print("table count \(datas.count)")
     return datas.count
+  }
+
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    return UIView()
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -798,9 +818,11 @@ extension BullDetailViewController: BullModelDelegate {
     if let index = getBullModel(roundid: roundid) {
       let bull = datas[index]
       bull.betWagerInfo = wagerInfos
+      bull.canbet = coundownBet > 0
       let indexPath = IndexPath(row: index, section: 0)
       tableView.beginUpdates()
       tableView.reloadRows(at: [indexPath], with: .none)
+      tableView.scrollToBottom()
       tableView.endUpdates()
     }
   }
@@ -809,9 +831,12 @@ extension BullDetailViewController: BullModelDelegate {
     if let index = getBullModel(roundid: roundid) {
       let bull = datas[index]
       bull.resultWagerInfo = wagerInfos
+      bull.canbet = coundownBet > 0
+
       let indexPath = IndexPath(row: index, section: 0)
       tableView.beginUpdates()
       tableView.reloadRows(at: [indexPath], with: .none)
+      tableView.scrollToBottom()
       tableView.endUpdates()
     }
   }

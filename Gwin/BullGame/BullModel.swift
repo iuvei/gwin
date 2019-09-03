@@ -30,11 +30,13 @@ class BullModel {
   var resultWagerInfo: [BullWagerInfoModel] = []
   var expire: Bool
   var roomid: Int
+  var canbet: Bool
   private var wagerTimer: Timer?
   private var resultWagerTimer: Timer?
   var delegate: BullModelDelegate?
 
-  init(expire: Bool = false, round: BullRoundModel, historyPackage: BullPackageHistoryModel?, roomid: Int, delegate: BullModelDelegate? = nil){
+  init(canbet: Bool = false, expire: Bool = false, round: BullRoundModel, historyPackage: BullPackageHistoryModel?, roomid: Int, delegate: BullModelDelegate? = nil){
+    self.canbet = canbet
     self.expire = expire
     self.round = round
     self.historyPackage = historyPackage
@@ -52,6 +54,7 @@ class BullModel {
     }else if status == .addNew && round.status != BullRoundStatus.addNew.rawValue{
       fetchResultWagerInfo()
     }
+
     round.status = status.rawValue
 
   }
@@ -88,8 +91,9 @@ class BullModel {
 
       if infos.count == 0 { return }
 
-      this.addNewWager(wagers: infos)
-      this.delegate?.didGetWagerInfo(roundid:this.round.roundid, wagerInfos: this.betWagerInfo)
+      if this.addNewWager(wagers: infos) {
+        this.delegate?.didGetWagerInfo(roundid:this.round.roundid, wagerInfos: this.betWagerInfo)
+      }
     }
   }
 
@@ -103,9 +107,9 @@ class BullModel {
 
       if infos.count == 0 { return }
 
-      this.addResultWager(wagers: infos)
-      this.delegate?.didGetResultWagerInfo(roundid:this.round.roundid,wagerInfos: this.betWagerInfo)
-
+      if this.addResultWager(wagers: infos) {
+        this.delegate?.didGetResultWagerInfo(roundid:this.round.roundid,wagerInfos: this.betWagerInfo)
+      }
     }
   }
 
@@ -121,34 +125,40 @@ class BullModel {
     return false
   }
 
-  func addNewWager(wagers: [BullWagerInfoModel]){
+  func addNewWager(wagers: [BullWagerInfoModel]) -> Bool{
+    var hasNew = false
     for info in wagers {
       var has: Bool = false
       for existInfo in betWagerInfo {
-        if info.userno == existInfo.userno{
+        if info.userno == existInfo.userno && info.idno == existInfo.idno {
           has = true
           break
         }
       }
       if !has {
+        hasNew = true
         betWagerInfo.append(info)
       }
     }
+    return hasNew
   }
 
-  func addResultWager(wagers: [BullWagerInfoModel]){
+  func addResultWager(wagers: [BullWagerInfoModel]) -> Bool{
+    var hasNew = false
     for info in wagers {
       var has: Bool = false
       for existInfo in resultWagerInfo {
-        if info.userno == existInfo.userno{
+        if info.userno == existInfo.userno && info.idno == existInfo.idno{
           has = true
           break
         }
       }
       if !has {
+        hasNew = true
         resultWagerInfo.append(info)
       }
     }
+    return hasNew
   }
 
   func getLastIdno() -> Int{

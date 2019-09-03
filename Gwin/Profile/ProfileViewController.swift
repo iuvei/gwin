@@ -19,7 +19,9 @@ class ProfileViewController: BaseViewController {
   @IBOutlet weak var infoView: UIView!
   @IBOutlet weak var tableview: UITableView!
   
-  @IBOutlet weak var avatarImageView: UIButton!
+  @IBOutlet weak var avatarImageView: UIImageView!
+  @IBOutlet weak var uploadAvatarButton: UIButton!
+
   @IBOutlet weak var allowCreditLabel: UILabel!
   @IBOutlet weak var creditLabel: UILabel!
   @IBOutlet weak var accountnoLabel: UILabel!
@@ -91,15 +93,17 @@ class ProfileViewController: BaseViewController {
       if let imagebase64 = ImageManager.shared.getImage(userno: userno) {
         if let imageData = Data(base64Encoded: imagebase64, options: []) {
           let image  = UIImage(data: imageData)
-          this.avatarImageView.setBackgroundImage(image, for: .normal)
+          this.avatarImageView.image = image
         }
       }
     }
   }
 
   func setupViews() {
-    avatarImageView.imageView?.contentMode = .scaleAspectFill
-    avatarImageView.addTarget(self, action: #selector(avatarPressed(_:)), for: .touchUpInside)
+
+    
+    avatarImageView.contentMode = .scaleAspectFit
+    uploadAvatarButton.addTarget(self, action: #selector(avatarPressed(_:)), for: .touchUpInside)
     setupTableView()
   }
 
@@ -153,7 +157,7 @@ class ProfileViewController: BaseViewController {
   @objc func avatarPressed(_ sender: UIButton) {
     let vc = UploadImageViewController()
     vc.didUploadImage = { [weak self] image in
-      self?.avatarImageView.setBackgroundImage(image, for: .normal)
+      self?.avatarImageView.image = image
     }
     present(vc, animated: true, completion: nil)
   }

@@ -8,7 +8,8 @@
 
 import SwiftyJSON
 
-class BullWagerOddModel {
+class BullWagerOddModel: Copying {
+
   var wagertypeno: Int
   var objectid: Int
   var odds: Float
@@ -23,4 +24,16 @@ class BullWagerOddModel {
     objectid = json["objectid"].intValue
     odds = json["odds"].floatValue
   }
+
+  required init(original: BullWagerOddModel) {
+    wagertypeno = original.wagertypeno
+    objectid = original.objectid
+    odds = original.odds
+    name = original.name
+    money = original.money
+    selected = original.selected
+    objectName = original.objectName
+    testId = original.testId
+  }
+
 }

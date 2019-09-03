@@ -18,6 +18,8 @@ class RoomDetailViewController: BaseViewController {
     static let bottomImages: [String] = ["boom_bottom_image_1","boom_bottom_image_2","boom_bottom_image_3","boom_bottom_image_4"]
     static let bottomTitles: [String] = ["发扫雷包","发福利包","充值","提现"]
     static let notifySize: CGFloat = 35
+    static let defaultInfoHeight: CGFloat = 150
+
   }
 
   private lazy var profileButton: UIButton = {
@@ -439,7 +441,7 @@ extension RoomDetailViewController {
 extension RoomDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 165
+    return Constants.defaultInfoHeight
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -447,6 +449,13 @@ extension RoomDetailViewController: UITableViewDelegate, UITableViewDataSource {
     return histories.count
   }
 
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    let model = histories[indexPath.row]
+    let isOpen = isOpenPackage(packageid: model.packetid)
+
+    print("willDisplay : \(isOpen)")
+
+  }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
     let model = histories[indexPath.row]
@@ -454,8 +463,8 @@ extension RoomDetailViewController: UITableViewDelegate, UITableViewDataSource {
     let isBoom = isBoomed(packageid: model.packetid)
     let isKing = isBiggest(packageid: model.packetid)
     let isExpired = isPackageExpeire(wagertime: model.wagertime)
+    model.viewed = true
 
-    print("isopen : \(isOpen)")
     if userno != model.userno {
       if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
         cell.selectionStyle = .none
@@ -515,11 +524,11 @@ extension RoomDetailViewController: WebSocketDelegate {
       }
     }
 
-    ImageManager.shared.downloadImage(usernos: usernos) { [weak self ] in
-      DispatchQueue.main.async {
-        self?.tableView.reloadData()
-      }
-    }
+//    ImageManager.shared.downloadImage(usernos: usernos) { [weak self ] in
+//      DispatchQueue.main.async {
+//        self?.tableView.reloadData()
+//      }
+//    }
     //
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
       self?.updateNotifyView()
