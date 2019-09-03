@@ -40,6 +40,10 @@ class GrabEnvelopViewController: UIViewController {
     getPackageStatus()
     setupViews()
   }
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    SoundManager.shared.playBetSound()
+  }
 
   func setupViews() {
     ImageManager.shared.downloadImage(usernos: [package.userno]) {

@@ -184,7 +184,7 @@ class RoomDetailViewController: BaseViewController {
         tableView.topAnchor.constraint(equalTo: guide.topAnchor),
         tableView.leftAnchor.constraint(equalTo: guide.leftAnchor),
         tableView.rightAnchor.constraint(equalTo: guide.rightAnchor),
-        tableView.bottomAnchor.constraint(equalTo: bottomView.topAnchor),
+        tableView.bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: -5),
 
         ])
     }else{
@@ -196,7 +196,7 @@ class RoomDetailViewController: BaseViewController {
         tableView.topAnchor.constraint(equalTo: view.topAnchor),
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
-        tableView.bottomAnchor.constraint(equalTo: bottomView.topAnchor),
+        tableView.bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: -5),
         ])
     }
   }
@@ -274,6 +274,8 @@ class RoomDetailViewController: BaseViewController {
     tableView.separatorStyle = .none
     tableView.delegate = self
     tableView.dataSource = self
+    tableView.rowHeight = UITableView.automaticDimension
+    tableView.estimatedRowHeight = Constants.defaultInfoHeight
   }
 
   func initWebsocket() {
@@ -450,10 +452,15 @@ extension RoomDetailViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    let model = histories[indexPath.row]
-    let isOpen = isOpenPackage(packageid: model.packetid)
 
-    print("willDisplay : \(isOpen)")
+    let preIndex = indexPath.row - 1
+    let preIndexPath = IndexPath(row: preIndex, section: indexPath.section)
+    if let preCell = tableView.cellForRow(at: preIndexPath) {
+      if tableView.visibleCells.contains(preCell){
+        let model = histories[preIndex]
+        model.viewed = true
+      }
+    }
 
   }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -463,12 +470,13 @@ extension RoomDetailViewController: UITableViewDelegate, UITableViewDataSource {
     let isBoom = isBoomed(packageid: model.packetid)
     let isKing = isBiggest(packageid: model.packetid)
     let isExpired = isPackageExpeire(wagertime: model.wagertime)
-    model.viewed = true
+
 
     if userno != model.userno {
       if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
         cell.selectionStyle = .none
         cell.updateViews(model: model, isOpen:isOpen, isKing: isKing, isBoomed: isBoom, expired: isExpired)
+
         return cell
       }
     } else {
@@ -575,7 +583,7 @@ extension RoomDetailViewController {
   fileprivate func updateNotifyView() {
     var availableGrab = 0
     for model in histories{
-      if !isPackageExpeire(wagertime: model.wagertime){
+      if !isPackageExpeire(wagertime: model.wagertime) && model.viewed == false {
         availableGrab += 1
       }
 

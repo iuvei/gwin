@@ -26,9 +26,10 @@ class BullWagerInfoModel: Equatable {
      userno = json["userno"].stringValue                // string,
      username = json["username"].stringValue                  // string,
      stake = json["stake"].floatValue                // number, 注金
-     winning = json["winning"].floatValue                  // number, 盈亏
+     winning = json["winnings"].floatValue                  // number, 盈亏
      packetamount = json["packetamount"].floatValue                  // number,
      packettag = json["packettag"].stringValue
+    print("BullWagerInfoModel \(json.stringValue)")
   }
 }
 

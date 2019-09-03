@@ -62,6 +62,9 @@
 		D1D06F1F231D1FCA00BBEDAE /* BankerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D06F1D231D1FCA00BBEDAE /* BankerViewController.xib */; };
 		D1D06F22231D247500BBEDAE /* BankerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D06F20231D247500BBEDAE /* BankerViewCell.swift */; };
 		D1D06F23231D247500BBEDAE /* BankerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D06F21231D247500BBEDAE /* BankerViewCell.xib */; };
+		D1D06F9F231E67FC00BBEDAE /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D06F9E231E67FC00BBEDAE /* SoundManager.swift */; };
+		D1D06FA2231E779B00BBEDAE /* bip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D06FA0231E779B00BBEDAE /* bip.mp3 */; };
+		D1D06FA3231E779B00BBEDAE /* betchip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D1D06FA1231E779B00BBEDAE /* betchip.mp3 */; };
 		D1E00B72230D8F0E00554CA4 /* LobbyItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */; };
 		D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */ = {isa = PBXBuildFile; fileRef = D1E00B74230D950E00554CA4 /* LobbyJson.json */; };
 		D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E00B78230DA05200554CA4 /* WebContainerController.swift */; };
@@ -193,6 +196,9 @@
 		D1D06F1D231D1FCA00BBEDAE /* BankerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankerViewController.xib; sourceTree = "<group>"; };
 		D1D06F20231D247500BBEDAE /* BankerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankerViewCell.swift; sourceTree = "<group>"; };
 		D1D06F21231D247500BBEDAE /* BankerViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankerViewCell.xib; sourceTree = "<group>"; };
+		D1D06F9E231E67FC00BBEDAE /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		D1D06FA0231E779B00BBEDAE /* bip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bip.mp3; sourceTree = "<group>"; };
+		D1D06FA1231E779B00BBEDAE /* betchip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = betchip.mp3; sourceTree = "<group>"; };
 		D1E00B71230D8F0E00554CA4 /* LobbyItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyItemView.swift; sourceTree = "<group>"; };
 		D1E00B74230D950E00554CA4 /* LobbyJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LobbyJson.json; sourceTree = "<group>"; };
 		D1E00B78230DA05200554CA4 /* WebContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebContainerController.swift; sourceTree = "<group>"; };
@@ -556,6 +562,7 @@
 				D175C4EA230C29A3001B8DC6 /* ScreenManager.swift */,
 				D1E00DAC23118C7100554CA4 /* ImageManager.swift */,
 				D1E00DB92313881000554CA4 /* LocalDataManager.swift */,
+				D1D06F9E231E67FC00BBEDAE /* SoundManager.swift */,
 			);
 			path = Flow;
 			sourceTree = "<group>";
@@ -581,6 +588,8 @@
 			isa = PBXGroup;
 			children = (
 				D10067A62309AA2500114F6E /* Assets.xcassets */,
+				D1D06FA1231E779B00BBEDAE /* betchip.mp3 */,
+				D1D06FA0231E779B00BBEDAE /* bip.mp3 */,
 				D1E00B74230D950E00554CA4 /* LobbyJson.json */,
 				D1E00D0A230EEE4F00554CA4 /* ProfileItems.json */,
 			);
@@ -798,6 +807,7 @@
 				D1D06F1F231D1FCA00BBEDAE /* BankerViewController.xib in Resources */,
 				D194BD96231BC18700AB59C3 /* UploadImageViewController.xib in Resources */,
 				D1D06F23231D247500BBEDAE /* BankerViewCell.xib in Resources */,
+				D1D06FA3231E779B00BBEDAE /* betchip.mp3 in Resources */,
 				D1E00B75230D990E00554CA4 /* LobbyJson.json in Resources */,
 				D194BD86231A4D2D00AB59C3 /* GrabBullPackageViewController.xib in Resources */,
 				D175C4CE230BD324001B8DC6 /* LoginViewController.xib in Resources */,
@@ -812,6 +822,7 @@
 				D175C4E8230C2177001B8DC6 /* WellcomeViewController.xib in Resources */,
 				D1EA0F7423190AB90096B7D1 /* WagerOdds.json in Resources */,
 				D10067A72309AA2500114F6E /* Assets.xcassets in Resources */,
+				D1D06FA2231E779B00BBEDAE /* bip.mp3 in Resources */,
 				D1E00DB82312DC8600554CA4 /* GrabUserViewCell.xib in Resources */,
 				D194BD90231ABE5A00AB59C3 /* BetDetailiewCell.xib in Resources */,
 				D1EA0F06231827090096B7D1 /* BetBullViewController.xib in Resources */,
@@ -929,6 +940,7 @@
 				D1EA0F092318373F0096B7D1 /* WagerOddViewCell.swift in Sources */,
 				D175C4DC230C0487001B8DC6 /* User.swift in Sources */,
 				D175C4C6230BD0C4001B8DC6 /* ExampleBuilder.swift in Sources */,
+				D1D06F9F231E67FC00BBEDAE /* SoundManager.swift in Sources */,
 				D10067A52309AA1F00114F6E /* Gwin.xcdatamodeld in Sources */,
 				D175C4F1230C36B3001B8DC6 /* KeyboardLayoutConstraint.swift in Sources */,
 				D175C4EB230C29A3001B8DC6 /* ScreenManager.swift in Sources */,

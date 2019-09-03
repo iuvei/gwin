@@ -161,6 +161,7 @@ class PackageHistoryLeftViewCell: UITableViewCell {
     for subview in resultWagerInfoStackView.subviews {
       subview.removeFromSuperview()
     }
+    
     for i in 0 ..< bull.resultWagerInfo.count {
       let info = bull.resultWagerInfo[i]
       let label = UILabel().forAutolayout()

@@ -44,6 +44,11 @@ class BaseViewController: UIViewController {
     // Do any additional setup after loading the view.
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    SoundManager.shared.playBipSound()
+  }
+
   func showLoadingView(background color: UIColor = .white) {
     loadingView = UIViewController()
     guard let alert = loadingView else { return }
@@ -81,7 +86,7 @@ class BaseViewController: UIViewController {
     if title == nil{
       backButton.frame = CGRect(x: 0, y: 0, width: Constants.actionButtonSize, height: Constants.actionButtonSize)
     }else {
-      backButton.frame = CGRect(x: 0, y: 0, width: Constants.actionButtonSize, height: Constants.actionButtonTextWidth)
+      backButton.frame = CGRect(x: 0, y: 0, width: Constants.actionButtonTextWidth, height: Constants.actionButtonSize)
     }
     backButton.setTitle(title, for: .normal)
     let leftItem = UIBarButtonItem(customView: backButton)
@@ -96,6 +101,7 @@ class BaseViewController: UIViewController {
   func setBackTitle(title: String) {
     backButton.setTitle(title, for: .normal)
   }
+  
   func hideLoadingView() {
     guard let alert = loadingView else { return }
 

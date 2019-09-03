@@ -103,12 +103,14 @@ class BullModel {
 
     BullAPIClient.wagerinfo(ticket: user.ticket, roomid: roomid, roundid: round.roundid, idno: 0) { [weak self](infos, error) in
       guard let this = self else {return}
-      print("result result 3 --- \(infos.count)")
+      print("result result 3 ---1 \(infos.map{$0.winning})")
+      let winingWagers = infos.filter{$0.winning != 0}
+      print("result result 3 ---2 \(winingWagers.count)")
 
-      if infos.count == 0 { return }
+      if winingWagers.count == 0 { return }
 
-      if this.addResultWager(wagers: infos) {
-        this.delegate?.didGetResultWagerInfo(roundid:this.round.roundid,wagerInfos: this.betWagerInfo)
+      if this.addResultWager(wagers: winingWagers) {
+        this.delegate?.didGetResultWagerInfo(roundid:this.round.roundid,wagerInfos: this.resultWagerInfo)
       }
     }
   }
@@ -145,10 +147,11 @@ class BullModel {
 
   func addResultWager(wagers: [BullWagerInfoModel]) -> Bool{
     var hasNew = false
+
     for info in wagers {
       var has: Bool = false
       for existInfo in resultWagerInfo {
-        if info.userno == existInfo.userno && info.idno == existInfo.idno{
+        if info.userno == existInfo.userno && info.idno == existInfo.idno {
           has = true
           break
         }

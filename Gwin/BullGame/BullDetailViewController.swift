@@ -305,6 +305,7 @@ class BullDetailViewController: BaseViewController {
             if bull.canbet {
               bull.canbet = false
               this.reloadCell(at: index)
+              this.tableView.scrollToBottom()
             }
           }else {
             this.addNewBull(round: round)
@@ -829,9 +830,9 @@ extension BullDetailViewController: BullModelDelegate {
 
   func didGetResultWagerInfo(roundid: Int64, wagerInfos: [BullWagerInfoModel]) {
     if let index = getBullModel(roundid: roundid) {
-      let bull = datas[index]
-      bull.resultWagerInfo = wagerInfos
-      bull.canbet = coundownBet > 0
+      datas[index].resultWagerInfo = wagerInfos
+      datas[index].canbet = false
+
 
       let indexPath = IndexPath(row: index, section: 0)
       tableView.beginUpdates()

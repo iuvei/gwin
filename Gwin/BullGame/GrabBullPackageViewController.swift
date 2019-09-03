@@ -55,6 +55,11 @@ class GrabBullPackageViewController: BaseViewController {
     // Do any additional setup after loading the view.
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    SoundManager.shared.playBetSound()
+  }
+
   func updateViews() {
     if let `package` = bull.historyPackage {
       usernameLabel.text = package.userno
