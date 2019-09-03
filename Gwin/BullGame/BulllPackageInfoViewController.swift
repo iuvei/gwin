@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol BulllPackageInfoDelegate: AnyObject {
+  func didFetchPackageInfo(package: BullPackageHistoryModel?)
+}
+
 class BulllPackageInfoViewController: BaseViewController {
 
 
@@ -37,10 +41,12 @@ class BulllPackageInfoViewController: BaseViewController {
 //  private let userno: String
   private let bull: BullModel
   private var betdetails:[IndexPath:[BullBetDetailModel]] = [:]
+  private var delegate: BulllPackageInfoDelegate?
 
-  init(bull: BullModel, grabedModel: BullPackageModel? = nil){
+  init(bull: BullModel, grabedModel: BullPackageModel? = nil, delegate: BulllPackageInfoDelegate? = nil){
     self.bull =  bull
     self.grabedModel = grabedModel
+    self.delegate = delegate
 //    self.userno = userno
     super.init(nibName: "BulllPackageInfoViewController", bundle: nil)
   }
@@ -109,10 +115,10 @@ class BulllPackageInfoViewController: BaseViewController {
     // <3 -> onlyself = 1
     //else ->onlyself = 0
     let onlyself = bull.isOnleyself() ? 1 : 0
-    BullAPIClient.info(ticket: user.ticket, roomid: bull.roomid, roundid: bull.getRoundId(), onlyself: onlyself) { [weak self](model, error) in
+    BullAPIClient.info(ticket: user.ticket, roomid: bull.roomid, roundid: bull.getRoundId(), onlyself: onlyself) { [weak self](package,model, error) in
       guard let this = self else { return }
       this.refreshControl.endRefreshing()
-
+      this.delegate?.didFetchPackageInfo(package: package)
       guard let `model` = model else {return}
       this.grabedModel = model
       if onlyself  == 1 {

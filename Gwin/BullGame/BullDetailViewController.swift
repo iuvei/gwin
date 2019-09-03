@@ -294,7 +294,7 @@ class BullDetailViewController: BaseViewController {
         this.fetchPackageHistory(roundid: round.roundid)
         this.doCounDown()
         //
-        if round.status == 2 {
+        if round.status == BullRoundStatus.addNew.rawValue {
           //add your package
           //          this.cancelWagerTimer()
 
@@ -302,8 +302,10 @@ class BullDetailViewController: BaseViewController {
             let bull = this.datas[index]
             bull.cancelWagerTimer()
             bull.updateRoundStatus(status: .addNew)
-
-            //            bull.fetchResultWagerInfo()
+            if bull.canbet {
+              bull.canbet = false
+              this.reloadCell(at: index)
+            }
           }else {
             this.addNewBull(round: round)
           }
@@ -326,7 +328,7 @@ class BullDetailViewController: BaseViewController {
           if let index = this.getBullModel(roundid: round.roundid) {
             let bull = this.datas[index]
             bull.updateRoundStatus(status: .betClose)
-            //this.removePackage(at: index)
+
           }
 
         } else if round.status == 3 {
@@ -515,29 +517,28 @@ class BullDetailViewController: BaseViewController {
     let tag = sender.tag
     if tag == 1{
       if let round = self.round {
-        let vc = BetBullViewController(room: room, round: round, delegate: self, wagerOdds: wagerOdds)
+        let _wagerOdds = wagerOdds.clone()
+        
+        let vc = BetBullViewController(room: room, round: round, delegate: self, wagerOdds: _wagerOdds)
         present(vc, animated: true, completion: nil)
       }
     } else  if tag == 2 {
       if let round = round{
-        let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.casino.rawValue, wagerOdds: wagerOdds)
+        let _wagerOdds = wagerOdds.clone()
+        let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.casino.rawValue, wagerOdds: _wagerOdds)
         present(vc, animated: true, completion: nil)
       }
     } else  if tag == 3 {
       if let round = self.round {
-        let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.other.rawValue, wagerOdds: wagerOdds)
+        let _wagerOdds = wagerOdds.clone()
+        let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.other.rawValue, wagerOdds: _wagerOdds)
         present(vc, animated: true, completion: nil)
       }
     } else  if tag == 4 {
-
       let vc = GrabBankerViewController(room: room)
       present(vc, animated: true, completion: nil)
     }
-
-
   }
-
-
 }
 
 extension BullDetailViewController{
@@ -577,6 +578,12 @@ extension BullDetailViewController{
 
     subgameStackView.isHidden = coundownBet <= 0
     if coundownBet <= 0 {
+//      if let `round` = round, let index = getBullModel(roundid: round.roundid) {
+//        if datas[index].canbet == true {
+//          datas[index].canbet = false
+//          reloadCell(at: index)
+//        }
+//      }
 
       fetchBullRound()
       timer?.invalidate()
@@ -591,20 +598,14 @@ extension BullDetailViewController{
     }
   }
 
-  //  fileprivate func setBullExpire() {
-  //    for bull in datas{
-  //      if bull.round.roundid != round?.roundid {
-  //          bull.expire = true
-  //      }
-  //    }
-  //  }
 
 }
 extension BullDetailViewController {
 
   fileprivate func addNewBull(round: BullRoundModel){
 
-    let newBull = BullModel(round: round, historyPackage: nil, roomid: room.roomId, delegate: self)
+    let canbet = coundownBet > 0
+    let newBull = BullModel(canbet: canbet, round: round, historyPackage: nil, roomid: room.roomId, delegate: self)
     if newBull.round.status == BullRoundStatus.betStart.rawValue {
       newBull.wagerInfoTimer()
     }else if newBull.round.status == BullRoundStatus.betResult.rawValue {
@@ -639,7 +640,7 @@ extension BullDetailViewController {
 
   fileprivate func fetchOpenPackages() {
     if let userno = RedEnvelopComponent.shared.userno {
-      openPackages = LocalDataManager.shared.fetchPackages(userno: userno)
+      openPackages = LocalDataManager.shared.fetchPackages(userno: userno, game: RoomType.bull)
     }
   }
 
@@ -701,22 +702,46 @@ extension BullDetailViewController{
   private func updateCellAsOpened(rounid: Int64){
     if let index = getBullModel(roundid: rounid) {
       let indexPath = IndexPath(row: index, section: 0)
-      tableView.beginUpdates()
-      tableView.reloadRows(at: [indexPath], with: .none)
-      tableView.endUpdates()
+      let bull = datas[indexPath.row]
+      let isGrab = bull.isGrabed(openPackages)
+      if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
+        cell.selectionStyle = .none
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak cell] in
+          cell?.updateBullViews(bull: bull, isOpen: isGrab)
+        }
+      }
     }
   }
+
+  private func reloadCell(at index: Int) {
+
+    let indexPath = IndexPath(row: index, section: 0)
+    let bull = datas[indexPath.row]
+    let isGrab = bull.isGrabed(openPackages)
+    if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
+      cell.updateBullViews(bull: bull, isOpen: isGrab)
+    }
+  }
+
 }
 extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    let bull = datas[indexPath.row]
-    return CGFloat(150 + bull.countWagerInfo() * 20)
+//  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//    let bull = datas[indexPath.row]
+//    return CGFloat(150 + bull.countWagerInfo() * 20)
+//  }
+
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 20
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     print("table count \(datas.count)")
     return datas.count
+  }
+
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    return UIView()
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -757,7 +782,7 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
         guard let this = self else { return }
         if let userno = RedEnvelopComponent.shared.userno {
 
-          if let saved = LocalDataManager.shared.savePackage(userno: userno, packageid: bull.getRoundId()) {
+          if let saved = LocalDataManager.shared.savePackage(userno: userno, packageid: bull.getRoundId(), game: RoomType.bull) {
             this.openPackages.append(saved)
             this.updateCellAsOpened(rounid: bull.getRoundId())
             //          updateNotifyView()
@@ -766,7 +791,7 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
         //
 
 
-        let infoVC = BulllPackageInfoViewController(bull: bull, grabedModel: grabbed)
+        let infoVC = BulllPackageInfoViewController(bull: bull, grabedModel: grabbed, delegate: this)
         this.present(infoVC, animated: true, completion: nil)
       }
 
@@ -779,7 +804,7 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
         //        let wagerDate = Date(timeIntervalSinceNow: wagertime)
         //        print("systimeTime : \(currentDate.toString()) -- wager: \(wagerDate.toString())")
 
-        let infoVC = BulllPackageInfoViewController(bull: bull)
+        let infoVC = BulllPackageInfoViewController(bull: bull, delegate: this)
         this.present(infoVC, animated: true, completion: nil)
       }
 
@@ -793,9 +818,11 @@ extension BullDetailViewController: BullModelDelegate {
     if let index = getBullModel(roundid: roundid) {
       let bull = datas[index]
       bull.betWagerInfo = wagerInfos
+      bull.canbet = coundownBet > 0
       let indexPath = IndexPath(row: index, section: 0)
       tableView.beginUpdates()
       tableView.reloadRows(at: [indexPath], with: .none)
+      tableView.scrollToBottom()
       tableView.endUpdates()
     }
   }
@@ -804,23 +831,40 @@ extension BullDetailViewController: BullModelDelegate {
     if let index = getBullModel(roundid: roundid) {
       let bull = datas[index]
       bull.resultWagerInfo = wagerInfos
+      bull.canbet = coundownBet > 0
+
       let indexPath = IndexPath(row: index, section: 0)
       tableView.beginUpdates()
       tableView.reloadRows(at: [indexPath], with: .none)
+      tableView.scrollToBottom()
       tableView.endUpdates()
     }
   }
 }
 
 extension BullDetailViewController: BetBullDelegate {
-  func betSuccessFull() {
-
-    if let `round` = round, getBullModel(roundid: round.roundid) == nil {
-      addNewBull(round: round)
-    }
+  func didGrabBullPackage() {
 
     subgameStackView.isHidden = true
     hideBottomView()
+    guard let `round` = round else { return}
+
+    if getBullModel(roundid: round.roundid) == nil {
+      addNewBull(round: round)
+    }else{
+
+    }
+
+  }
+}
+
+extension BullDetailViewController: BulllPackageInfoDelegate {
+  func didFetchPackageInfo(package: BullPackageHistoryModel?) {
+    if let `package` = package {
+      if let index = getBullModel(roundid: package.roundid) {
+        datas[index].historyPackage = package
+      }
+    }
   }
 }
 

@@ -12,22 +12,22 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PackageHistoryLeftViewCell" rowHeight="375" id="KGk-i7-Jjw" customClass="PackageHistoryLeftViewCell" customModule="Gwin" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="387" height="290"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PackageHistoryLeftViewCell" rowHeight="299" id="KGk-i7-Jjw" customClass="PackageHistoryLeftViewCell" customModule="Gwin" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="392" height="214"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="387" height="289.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="392" height="213.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BO5-Yh-Pjw">
-                        <rect key="frame" x="0.0" y="0.0" width="387" height="30"/>
+                        <rect key="frame" x="0.0" y="0.0" width="392" height="30"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="z2s-c4-gv1"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vyk-uc-9CE">
-                        <rect key="frame" x="0.0" y="30" width="387" height="160"/>
+                        <rect key="frame" x="0.0" y="30" width="392" height="160"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buH-nI-DYn">
                                 <rect key="frame" x="78" y="18" width="35.5" height="17"/>
@@ -42,7 +42,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vIl-uD-08D">
-                                <rect key="frame" x="78" y="45" width="301" height="80"/>
+                                <rect key="frame" x="78" y="45" width="306" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="package_left_bg" translatesAutoresizingMaskIntoConstraints="NO" id="CbI-dn-js3">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="80"/>
@@ -110,7 +110,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Sk4-wN-r0F" firstAttribute="top" secondItem="Vyk-uc-9CE" secondAttribute="top" constant="8" id="2IU-Kt-6dj"/>
                             <constraint firstAttribute="height" constant="160" id="Iem-US-tpv"/>
@@ -128,16 +128,18 @@
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lM7-kD-ggT">
-                        <rect key="frame" x="0.0" y="190" width="387" height="20"/>
+                        <rect key="frame" x="0.0" y="190" width="392" height="20"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="g7Q-KP-cpW"/>
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="lM7-kD-ggT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="5ZC-r7-6k9"/>
                     <constraint firstItem="BO5-Yh-Pjw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6Fn-7x-TJ2"/>
+                    <constraint firstItem="lM7-kD-ggT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BO5-Yh-Pjw" secondAttribute="bottom" constant="5" id="885-6v-KLI"/>
                     <constraint firstAttribute="trailing" secondItem="Vyk-uc-9CE" secondAttribute="trailing" id="NFe-yi-1Ug"/>
                     <constraint firstAttribute="bottom" secondItem="lM7-kD-ggT" secondAttribute="bottom" id="cN6-uc-iPT"/>
                     <constraint firstItem="Vyk-uc-9CE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jSw-SU-rCU"/>
@@ -147,10 +149,12 @@
                     <constraint firstAttribute="trailing" secondItem="BO5-Yh-Pjw" secondAttribute="trailing" id="rPp-rC-WEh"/>
                     <constraint firstAttribute="trailing" secondItem="lM7-kD-ggT" secondAttribute="trailing" id="rVq-Xp-EDH"/>
                     <constraint firstItem="Vyk-uc-9CE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="umk-s1-Ibr"/>
+                    <constraint firstItem="lM7-kD-ggT" firstAttribute="top" secondItem="BO5-Yh-Pjw" secondAttribute="bottom" constant="160" id="vTF-Qd-wxP"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="umk-s1-Ibr"/>
+                        <exclude reference="885-6v-KLI"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
@@ -160,16 +164,19 @@
                 <outlet property="avatarImageView" destination="Sk4-wN-r0F" id="3PA-gN-Gnk"/>
                 <outlet property="backgroundImageView" destination="CbI-dn-js3" id="jVo-P4-42X"/>
                 <outlet property="bottomStackHeightConstraint" destination="g7Q-KP-cpW" id="EXa-LQ-8En"/>
+                <outlet property="bullInfoView" destination="Vyk-uc-9CE" id="X3f-EB-aXG"/>
                 <outlet property="evelopNameLabel" destination="SvM-SR-lEh" id="Rb3-Ar-5Ke"/>
                 <outlet property="expiredLabel" destination="B4R-qE-CYb" id="SZt-rT-h9x"/>
+                <outlet property="middleHeightConstraint" destination="Iem-US-tpv" id="TBI-xq-pXk"/>
                 <outlet property="resultWagerInfoStackView" destination="lM7-kD-ggT" id="Ajf-0K-1zl"/>
                 <outlet property="statusImageView" destination="skh-9m-roq" id="nJ0-RY-Itn"/>
+                <outlet property="top" destination="vTF-Qd-wxP" id="l0Z-mm-ZMk"/>
                 <outlet property="topStackHeightConstraint" destination="z2s-c4-gv1" id="i3s-ts-kXQ"/>
                 <outlet property="usernameLabel" destination="buH-nI-DYn" id="qyd-QO-x0O"/>
                 <outlet property="wagerStackView" destination="BO5-Yh-Pjw" id="Aui-yA-hia"/>
                 <outlet property="wagerTimeLabel" destination="6OO-gm-jby" id="145-Zl-2SH"/>
             </connections>
-            <point key="canvasLocation" x="-0.7246376811594204" y="145.98214285714286"/>
+            <point key="canvasLocation" x="-4.3478260869565224" y="120.53571428571428"/>
         </tableViewCell>
     </objects>
     <resources>

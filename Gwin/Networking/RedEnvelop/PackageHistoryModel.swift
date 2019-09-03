@@ -17,6 +17,7 @@ class PackageHistoryModel {
   var packettag: String                 // string, 雷数[0-9] ""为福利包
   var wagertime: String                   // string,
   var status: String?
+  var viewed: Bool = false
 
   init(json: JSON) {
      roomid = json["roomid"].intValue                   // int,

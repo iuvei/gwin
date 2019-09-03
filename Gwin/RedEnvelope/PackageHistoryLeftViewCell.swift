@@ -9,13 +9,16 @@
 import UIKit
 
 class PackageHistoryLeftViewCell: UITableViewCell {
-
+  enum Constants {
+    static let defaultInfoHeight: CGFloat = 150
+  }
   @IBOutlet weak var usernameLabel: UILabel!
   @IBOutlet weak var avatarImageView: UIImageView!
   @IBOutlet weak var backgroundImageView: UIImageView!
   @IBOutlet weak var amountLabel: UILabel!
   @IBOutlet weak var wagerTimeLabel: UILabel!
 
+  @IBOutlet weak var bullInfoView: UIView!
   @IBOutlet weak var statusImageView: UIImageView!
 
   @IBOutlet weak var expiredLabel: UILabel!
@@ -26,7 +29,10 @@ class PackageHistoryLeftViewCell: UITableViewCell {
 
   @IBOutlet weak var topStackHeightConstraint: NSLayoutConstraint!
 
+  @IBOutlet weak var middleHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var bottomStackHeightConstraint: NSLayoutConstraint!
+
+  @IBOutlet weak var top: NSLayoutConstraint!
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
@@ -56,7 +62,21 @@ class PackageHistoryLeftViewCell: UITableViewCell {
         let image  = UIImage(data: imageData)
         avatarImageView.image = image
       }
+    }else {
+      guard let user = RedEnvelopComponent.shared.user else { return }
+      UserAPIClient.getUserImages(ticket: user.ticket, usernos: [model.userno]) {[weak self] (data, _) in
+        guard let _data = data else { return }
+        for json in _data {
+          let userno = json["userno"].stringValue
+          let imgString = json["img"].stringValue
+          if let data = Data(base64Encoded: imgString, options: []) {
+            self?.avatarImageView.image = UIImage(data: data)
+            ImageManager.shared.saveImage(userno: userno, image: imgString)
+          }
+        }
+      }
     }
+    
     if isOpen {
       backgroundImageView.image = UIImage(named: "package_left_bg_read")
     } else {
@@ -145,7 +165,7 @@ class PackageHistoryLeftViewCell: UITableViewCell {
       let info = bull.resultWagerInfo[i]
       let label = UILabel().forAutolayout()
       label.font = UIFont.systemFont(ofSize: 12)
-      label.text = String(format: "  %@ %@ %@ %@ %.2f  ", AppText.thisRound, info.userno, AppText.betPlace,info.winning < 0 ? AppText.betTotalLose : AppText.betTotalWin,info.stake)
+      label.text = String(format: "  %@ %@ %@ %@ %.2f  ", AppText.thisRound, info.userno, AppText.betPlace,info.winning < 0 ? AppText.betTotalLose : AppText.betTotalWin,info.winning)
       label.backgroundColor = AppColors.betResultBgColor
       label.textColor = .white
       label.rounded(radius: 2, borderColor: .clear, borderwidth: 0)
@@ -162,6 +182,17 @@ class PackageHistoryLeftViewCell: UITableViewCell {
 
     topStackHeightConstraint.constant = CGFloat(height1)
     bottomStackHeightConstraint.constant = CGFloat(height2)
+
+    if bull.canbet {
+      middleHeightConstraint.constant = 0
+      bullInfoView.removeFromSuperview()
+      top.constant = 0
+    }else {
+      middleHeightConstraint.constant = Constants.defaultInfoHeight
+      top.constant = Constants.defaultInfoHeight
+      contentView.addSubview(bullInfoView)
+    }
+
     updateConstraintsIfNeeded()
     contentView.updateConstraints()
     print("result ccc \(bull.round.roundid) \(height1) - \(height2)")

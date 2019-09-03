@@ -51,6 +51,19 @@ class PackageHistoryRightViewCell: UITableViewCell {
         avatarImageView.image = image
         wagerTimeLabel.text = "\(model.packetid) \(model.wagertime)"
       }
+    }else {
+      guard let user = RedEnvelopComponent.shared.user else { return }
+      UserAPIClient.getUserImages(ticket: user.ticket, usernos: [model.userno]) {[weak self] (data, _) in
+        guard let _data = data else { return }
+        for json in _data {
+          let userno = json["userno"].stringValue
+          let imgString = json["img"].stringValue
+          if let data = Data(base64Encoded: imgString, options: []) {
+            self?.avatarImageView.image = UIImage(data: data)
+            ImageManager.shared.saveImage(userno: userno, image: imgString)
+          }
+        }
+      }
     }
 
     if isOpen {
