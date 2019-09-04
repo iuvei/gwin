@@ -146,6 +146,8 @@ extension RedEnvelopeViewController {
     let saveAction = UIAlertAction(title: "确认", style: .default, handler: { [weak self] alert -> Void in
       if let firstTextField = alertVC.textFields?[0], let roompwd = firstTextField.text, roompwd == room.roomPwd {
         self?.doLogin(room: room)
+      }else {
+        self?.showAlertMessage(message: "输入密码错误，请重新输入")
       }
     })
 

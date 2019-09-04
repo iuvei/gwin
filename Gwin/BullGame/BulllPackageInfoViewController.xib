@@ -58,9 +58,6 @@
                                 <constraint firstAttribute="width" constant="35" id="dkf-iU-RU0"/>
                             </constraints>
                             <state key="normal" image="boom_header_profile"/>
-                            <connections>
-                                <action selector="profilePressed:" destination="-1" eventType="touchUpInside" id="JsI-ke-TDL"/>
-                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

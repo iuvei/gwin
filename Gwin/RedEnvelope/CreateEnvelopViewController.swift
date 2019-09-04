@@ -21,7 +21,7 @@ class CreateEnvelopViewController: BaseViewController {
 
   @IBOutlet weak var packageSizeLabel: UILabel!
   @IBOutlet weak var titleLabel: UILabel!
-
+  
 
   var room: RoomModel
 
@@ -36,8 +36,9 @@ class CreateEnvelopViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    setTitle(title: "可发可抢")
+    setTitle(title: "扫雷红包")
     // Do any additional setup after loading the view.
+    addProfileButton()
     setupViews()
   }
 

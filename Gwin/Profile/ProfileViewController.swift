@@ -192,7 +192,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
      let item = menuItems[indexPath.row]
     if item.action == "webview" {
-      jumpURL(optType: item.key)
+      jumpURL(optType: item.key, title: item.webTitle)
     } else{
       if item.key == "logout" {
         logout()

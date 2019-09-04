@@ -44,7 +44,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="76.5"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="history_background_image" translatesAutoresizingMaskIntoConstraints="NO" id="811-Nb-DPA">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="60.5"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zMh-cZ-YEW">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="16"/>
@@ -204,17 +204,27 @@
                                         <action selector="plusPressed:" destination="-1" eventType="touchUpInside" id="Kwe-AZ-jse"/>
                                     </connections>
                                 </button>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ei-PE-cIl">
+                                    <rect key="frame" x="0.0" y="29" width="414" height="1"/>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="dIp-jc-Fjr"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="myh-nm-N36" firstAttribute="top" secondItem="jAP-dX-Rz2" secondAttribute="top" id="06k-pp-zLK"/>
                                 <constraint firstItem="myh-nm-N36" firstAttribute="leading" secondItem="J3q-XF-BgN" secondAttribute="trailing" id="5SC-1f-cSj"/>
+                                <constraint firstItem="9ei-PE-cIl" firstAttribute="leading" secondItem="jAP-dX-Rz2" secondAttribute="leading" id="86U-RX-lmg"/>
                                 <constraint firstAttribute="height" constant="30" id="I7J-pZ-IcG"/>
                                 <constraint firstAttribute="trailing" secondItem="myh-nm-N36" secondAttribute="trailing" id="JbW-W5-EwA"/>
+                                <constraint firstAttribute="bottom" secondItem="9ei-PE-cIl" secondAttribute="bottom" id="LCO-jZ-2zk"/>
                                 <constraint firstItem="J3q-XF-BgN" firstAttribute="leading" secondItem="jAP-dX-Rz2" secondAttribute="leading" id="Mat-Eg-H0A"/>
                                 <constraint firstAttribute="bottom" secondItem="J3q-XF-BgN" secondAttribute="bottom" id="SYB-FC-Hnb"/>
                                 <constraint firstAttribute="bottom" secondItem="myh-nm-N36" secondAttribute="bottom" id="aGd-iy-Xzy"/>
                                 <constraint firstItem="J3q-XF-BgN" firstAttribute="top" secondItem="jAP-dX-Rz2" secondAttribute="top" id="fzb-gj-Ir2"/>
+                                <constraint firstAttribute="trailing" secondItem="9ei-PE-cIl" secondAttribute="trailing" id="m6v-MD-Q11"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLe-ie-TNk">

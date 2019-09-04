@@ -2,66 +2,77 @@
   {
     "icon":"profile_item_1",
     "title":"个人中心",
+    "webTitle":" 快乐彩票",
     "key":"personal_center",
     "action": "webview"
   },
   {
     "icon":"profile_item_2",
     "title":"邀请码",
+    "webTitle":"",
     "key":"qrcode",
     "action": "qrcode"
   },
   {
     "icon":"profile_item_3",
     "title":"推荐APP款",
+    "webTitle":"",
     "key":"recommended_app",
     "action": "webview"
   },
   {
     "icon":"profile_item_4",
     "title":"存取款",
+    "webTitle":"快乐彩票",
     "key":"deposits",
     "action": "webview"
   },
   {
     "icon":"profile_item_5",
     "title":"报表查询",
+    "webTitle":"",
     "key":"report_query",
     "action": "webview"
   },
   {
     "icon":"profile_item_6",
     "title":"开奖结果",
+    "webTitle":"",
     "key":"opening_result",
     "action": "webview"
   },
   {
     "icon":"profile_item_7",
     "title":"百果园开奖网",
+    "webTitle":"",
     "key":"lottery_network",
     "action": "webview"
   },
   {
     "icon":"profile_item_8",
     "title":"常见问题",
+    "webTitle":"快乐彩票",
     "key":"common_problem",
     "action": "webview"
   },
   {
     "icon":"profile_item_9",
     "title":"版本",
+    "webTitle":"",
     "key":"version",
     "action": "version"
   },
   {
     "icon":"profile_item_10",
     "title":"声音",
+    "webTitle":"",
     "key":"sound",
     "action": "sound"
   },
   {
     "icon":"profile_item_11",
     "title":"退出",
+    "webTitle":"",
     "key":"logout",
     "action": "logout"
   }

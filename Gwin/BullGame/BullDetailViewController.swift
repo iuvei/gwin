@@ -47,6 +47,16 @@ class BullDetailViewController: BaseViewController {
   @IBOutlet weak var bottomBottomConstraint: NSLayoutConstraint!
 
   @IBOutlet weak var bottomHeightConstraint: NSLayoutConstraint!
+
+  private lazy var profileButton: UIButton = {
+    let button = UIButton(frame: CGRect(x: 0,y: 0,width: 35,height: 35))
+    button.imageEdgeInsets  = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    button.imageView?.contentMode = .scaleAspectFit
+    button.setImage(UIImage(named: "boom_header_profile"), for: .normal)
+    button.addTarget(self, action: #selector(profilePressed(_:)), for: .touchUpInside)
+    return button
+  }()
+
   private lazy var bankerGetButton: UIButton = {
     let button = UIButton().forAutolayout()
     button.backgroundColor = UIColor.gray.withAlphaComponent(0.2)
@@ -92,6 +102,10 @@ class BullDetailViewController: BaseViewController {
 
     // Do any additional setup after loading the view.
     setTitle(title: "牛牛红包")
+    profileButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
+    let rightItem1 = UIBarButtonItem(customView: profileButton)
+    self.navigationItem.rightBarButtonItems = [rightItem1]
+
     setupViews()
     fetchOpenPackages()
     fetchBullRound()
@@ -502,7 +516,6 @@ class BullDetailViewController: BaseViewController {
     }
   }
 
-
   @objc func bankgetGetPressed(_ button: UIButton){
     guard let `round` = round else {return}
     let vc = BankerViewController(roomid: room.roomId, roundid: round.roundid)
@@ -516,28 +529,29 @@ class BullDetailViewController: BaseViewController {
 
   @IBAction func bullSubgamePressed(_ sender: UIButton) {
     let tag = sender.tag
-    if tag == 1{
-      if let round = self.round {
-        let _wagerOdds = wagerOdds.clone()
-        
-        let vc = BetBullViewController(room: room, round: round, delegate: self, wagerOdds: _wagerOdds)
-        present(vc, animated: true, completion: nil)
-      }
-    } else  if tag == 2 {
-      if let round = round{
-        let _wagerOdds = wagerOdds.clone()
-        let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.casino.rawValue, wagerOdds: _wagerOdds)
-        present(vc, animated: true, completion: nil)
-      }
-    } else  if tag == 3 {
-      if let round = self.round {
-        let _wagerOdds = wagerOdds.clone()
-        let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.other.rawValue, wagerOdds: _wagerOdds)
-        present(vc, animated: true, completion: nil)
-      }
-    } else  if tag == 4 {
+    if tag == 4 {
       let vc = GrabBankerViewController(room: room)
       present(vc, animated: true, completion: nil)
+    } else {
+      guard let `round` = round else { return }
+
+      if coundownBet < 0 {
+        subgameStackView.isHidden = coundownBet <= 0
+      }
+
+      if tag == 1 {
+          let _wagerOdds = wagerOdds.clone()
+          let vc = BetBullViewController(room: room, round: round, delegate: self, wagerOdds: _wagerOdds)
+          present(vc, animated: true, completion: nil)
+      } else  if tag == 2 {
+          let _wagerOdds = wagerOdds.clone()
+          let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.casino.rawValue, wagerOdds: _wagerOdds)
+          present(vc, animated: true, completion: nil)
+      } else  if tag == 3 {
+        let _wagerOdds = wagerOdds.clone()
+          let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.other.rawValue, wagerOdds: _wagerOdds)
+          present(vc, animated: true, completion: nil)
+      }
     }
   }
 }
@@ -767,7 +781,7 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let bull = datas[indexPath.row]
 
-    if bull.getRoundId() == round?.roundid  && coundownBet > 0{
+    if bull.canbet{
       return
     }
 

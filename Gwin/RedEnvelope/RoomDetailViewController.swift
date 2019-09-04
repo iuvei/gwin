@@ -83,7 +83,7 @@ class RoomDetailViewController: BaseViewController {
 
   private lazy var bottomTitleLabel: ScrollLabel = {
     let title = ScrollLabel().forAutolayout()
-    title.updateContent(message: "红包炸雷")
+    title.updateContent(message: "红包炸雷100")
     return title
   }()
 
@@ -295,12 +295,6 @@ class RoomDetailViewController: BaseViewController {
     showCreatePackage()
   }
 
-  @objc func profilePressed(_ sender: UIButton) {
-    if let delegate = UIApplication.shared.delegate as? AppDelegate {
-      delegate.selectTabIndex(index: TabIndex.profile)
-    }
-  }
-
   @objc func expandPressed(_ sender: UIButton){
     plusButton.isSelected = !plusButton.isSelected
     if plusButton.isSelected {
@@ -494,6 +488,9 @@ extension RoomDetailViewController: UITableViewDelegate, UITableViewDataSource {
     let model = histories[indexPath.row]
     if isOpenPackage(packageid: model.packetid) {
       let infoVc = PackageInfoViewController(model: nil, roomid: room.roomId, packageid: model.packetid)
+      infoVc.didPressedCreateEnvelop = { [weak self] in
+          self?.showCreatePackage()
+      }
       present(infoVc, animated: true, completion: nil)
     }else {
       let vc = GrabEnvelopViewController(package: model, delegate: self)
@@ -572,6 +569,10 @@ extension RoomDetailViewController: GrabEnvelopPopupDelegate {
 
     //    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
     let infoVc = PackageInfoViewController(model: package, roomid: roomid, packageid: packageid)
+     infoVc.didPressedCreateEnvelop = { [weak self] in
+        self?.showCreatePackage()
+    }
+    
     self.present(infoVc, animated: true, completion: nil)
     //    }
   }

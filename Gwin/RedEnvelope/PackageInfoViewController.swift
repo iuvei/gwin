@@ -14,6 +14,9 @@ class PackageInfoViewController: BaseViewController {
 
   @IBOutlet weak var titleLabel: UILabel!
 
+  @IBOutlet weak var profileButton: UIButton!
+  @IBOutlet weak var envelopButton: UIButton!
+  
   @IBOutlet weak var amounLabel: UILabel!
 
   @IBOutlet weak var usernoLabel: UILabel!
@@ -25,6 +28,8 @@ class PackageInfoViewController: BaseViewController {
     let view = UIRefreshControl()
     return view
   }()
+
+  var didPressedCreateEnvelop: ()->Void = {}
 
   private var model: PackageInfoModel?
   //  private var infoPackage: PackageInfoModel?
@@ -41,12 +46,15 @@ class PackageInfoViewController: BaseViewController {
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     setTitle(title: "红包详情")
     setupViews()
     fetchPackageInfo()
     backButton.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
+    profileButton.addTarget(self, action: #selector(profilePressed(_:)), for: .touchUpInside)
+    envelopButton.addTarget(self, action: #selector(createEnvelopPressed(_:)), for: .touchUpInside)
     // Do any additional setup after loading the view.
 
   }
@@ -81,7 +89,8 @@ class PackageInfoViewController: BaseViewController {
         }
         
         this.usernoLabel.text = info.userno
-        this.wagerTimeLabel.text = "已领取\(info.packettype)／\(info.packetsize)个／共*.**／\(info.packetamount)元"
+        this.wagerTimeLabel.text = String(format: "已领取%d／%d个／共*.**／%.2f元", info.packettype, info.packetsize, info.packetamount)
+
         this.model = info
         this.tableView.reloadData()
         this.fetchAvatarImage()
@@ -125,6 +134,16 @@ class PackageInfoViewController: BaseViewController {
    // Pass the selected object to the new view controller.
    }
    */
+
+  @objc func createEnvelopPressed(_ sender: UIButton) {
+    didPressedCreateEnvelop()
+    dismiss(animated: true, completion: nil)
+  }
+
+  override func profilePressed(_ sender: UIButton) {
+    selectProfileTab()
+    dismiss(animated: true, completion: nil)
+  }
 
   override func backPressed(_ sender: UIButton) {
     dismiss(animated: true, completion: nil)

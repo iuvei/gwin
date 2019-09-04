@@ -81,6 +81,7 @@ class BulllPackageInfoViewController: BaseViewController {
 
     //
     backButton.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
+    profileButton.addTarget(self, action: #selector(profilePressed(_:)), for: .touchUpInside)
   }
 
   func updateViews(userno: String, amount: String){
@@ -178,11 +179,16 @@ class BulllPackageInfoViewController: BaseViewController {
     dismiss(animated: true, completion: nil)
   }
 
-  @IBAction func profilePressed(_ sender: Any) {
-    if let delegate =  UIApplication.shared.delegate as? AppDelegate{
-      delegate.tabbarController?.selectProfileTab()
-      dismiss(animated: true, completion: nil)
-    }
+//  @IBAction func profilePressed(_ sender: Any) {
+//    if let delegate =  UIApplication.shared.delegate as? AppDelegate{
+//      delegate.tabbarController?.selectProfileTab()
+//      dismiss(animated: true, completion: nil)
+//    }
+//  }
+
+  override func profilePressed(_ sender: UIButton) {
+    selectProfileTab()
+    dismiss(animated: true, completion: nil)
   }
 
   func reloadCell(at indexPath: IndexPath) {

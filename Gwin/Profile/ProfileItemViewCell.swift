@@ -20,6 +20,7 @@ enum ProfileItemAction: String {
 struct ProfileItemModel {
   var icon: String
   var title: String
+  var webTitle: String?
   var key: String
   var action: String
   init(json: JSON) {
@@ -27,6 +28,7 @@ struct ProfileItemModel {
     title = json["title"].stringValue
     key = json["key"].stringValue
     action = json["action"].stringValue
+    webTitle = json["webtitle"].string
   }
 }
 

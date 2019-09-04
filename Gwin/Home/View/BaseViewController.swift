@@ -31,6 +31,15 @@ class BaseViewController: UIViewController {
     return button
   }()
 
+  private lazy var profileButton: UIButton = {
+    let button = UIButton(frame: CGRect(x: 0,y: 0,width: 35,height: 35))
+    button.imageEdgeInsets  = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    button.imageView?.contentMode = .scaleAspectFit
+    button.setImage(UIImage(named: "boom_header_profile"), for: .normal)
+    button.addTarget(self, action: #selector(profilePressed(_:)), for: .touchUpInside)
+    return button
+  }()
+  
   private var loadingView: UIViewController?
 
   override func viewDidLoad() {
@@ -98,6 +107,14 @@ class BaseViewController: UIViewController {
     self.navigationItem.setHidesBackButton(true, animated:true);
   }
 
+  func addProfileButton(){
+    profileButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
+
+    let rightItem1 = UIBarButtonItem(customView: profileButton)
+    self.navigationItem.rightBarButtonItems = [rightItem1]
+  }
+
+
   func setBackTitle(title: String) {
     backButton.setTitle(title, for: .normal)
   }
@@ -119,8 +136,20 @@ class BaseViewController: UIViewController {
    }
    */
 
+  func selectProfileTab() {
+    if let delegate = UIApplication.shared.delegate as? AppDelegate {
+      delegate.selectTabIndex(index: TabIndex.profile)
+    }
+  }
+
   @objc func backPressed(_ sender: UIButton) {
     self.navigationController?.popViewController(animated: true)
+  }
+  
+  @objc func profilePressed(_ sender: UIButton) {
+    if let delegate = UIApplication.shared.delegate as? AppDelegate {
+      delegate.selectTabIndex(index: TabIndex.profile)
+    }
   }
 
   func showAlertMessage(title: String? = nil, message: String) {
