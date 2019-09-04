@@ -288,7 +288,7 @@ extension BetCasinoViewController{
       totalValue += model.money
     }
 
-    inputLabel.text = String(format: "¥ %.2f", totalValue)
+    inputLabel.text = String(format: "¥ %@", totalValue.toFormatedString())
   }
 }
 

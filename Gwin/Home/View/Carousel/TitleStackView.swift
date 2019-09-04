@@ -57,8 +57,9 @@ class TitleStackView: UIView {
       prefixLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor),
       prefixLabel.topAnchor.constraint(equalTo: stackView.topAnchor),
       prefixLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
+      prefixLabel.widthAnchor.constraint(equalToConstant: 70),
 
-      titleLabel.leftAnchor.constraint(equalTo: prefixLabel.rightAnchor, constant: 10),
+      titleLabel.leftAnchor.constraint(equalTo: prefixLabel.rightAnchor, constant: 5),
       titleLabel.topAnchor.constraint(equalTo: stackView.topAnchor),
       titleLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
     ])

@@ -28,7 +28,7 @@ struct ProfileItemModel {
     title = json["title"].stringValue
     key = json["key"].stringValue
     action = json["action"].stringValue
-    webTitle = json["webtitle"].string
+    webTitle = json["webTitle"].string
   }
 }
 

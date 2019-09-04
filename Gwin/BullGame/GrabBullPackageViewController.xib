@@ -54,19 +54,19 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Y8-Sh-HgL">
-                            <rect key="frame" x="134" y="140" width="42" height="21"/>
+                            <rect key="frame" x="134" y="130" width="42" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.98431372549999996" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发了一个扫雷红包,金额随机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbG-w0-EV5">
-                            <rect key="frame" x="48.5" y="191" width="213" height="21"/>
+                            <rect key="frame" x="48.5" y="181" width="213" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.98431372549999996" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E86-lT-tRT">
-                            <rect key="frame" x="134" y="242" width="42" height="21"/>
+                            <rect key="frame" x="134" y="232" width="42" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.98431372549999996" green="0.91764705879999997" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
@@ -91,7 +91,7 @@
                         <constraint firstItem="yCr-mw-KuI" firstAttribute="top" secondItem="Sgd-aP-Mx2" secondAttribute="top" constant="40" id="27F-OP-EiX"/>
                         <constraint firstAttribute="bottom" secondItem="Gu4-O1-qYI" secondAttribute="bottom" constant="5" id="5ME-rM-63e"/>
                         <constraint firstItem="E86-lT-tRT" firstAttribute="centerX" secondItem="Sgd-aP-Mx2" secondAttribute="centerX" id="9pM-Cn-Tce"/>
-                        <constraint firstItem="7Y8-Sh-HgL" firstAttribute="top" secondItem="yCr-mw-KuI" secondAttribute="bottom" constant="20" id="DLA-3i-w1o"/>
+                        <constraint firstItem="7Y8-Sh-HgL" firstAttribute="top" secondItem="yCr-mw-KuI" secondAttribute="bottom" constant="10" id="DLA-3i-w1o"/>
                         <constraint firstItem="E86-lT-tRT" firstAttribute="top" secondItem="xbG-w0-EV5" secondAttribute="bottom" constant="30" id="Gbo-Om-ksE"/>
                         <constraint firstItem="VW5-zL-6bz" firstAttribute="leading" secondItem="Sgd-aP-Mx2" secondAttribute="leading" id="LI0-fj-CNa"/>
                         <constraint firstItem="Miq-r6-DbA" firstAttribute="height" secondItem="Sgd-aP-Mx2" secondAttribute="height" multiplier="320:1659" id="PhQ-d5-dWs"/>

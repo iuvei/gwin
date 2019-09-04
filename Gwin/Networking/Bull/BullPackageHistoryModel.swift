@@ -58,8 +58,10 @@ class BullPackageHistoryModel {
 //  }
 
   func isExpire() -> Bool {
-    let wagerTimeInterval = wagertime.toDate().timeIntervalSinceNow
-    return wagerTimeInterval < RedEnvelopComponent.shared.systemTimeInterval
+    let wagerInteval = wagertime.toDate().timeIntervalSinceNow
+    let current  = RedEnvelopComponent.shared.systemtime?.timeIntervalSinceNow ?? 0
+    print("current \(current) --- \(wagerInteval)")
+    return  current > wagerInteval
   }
 }
 

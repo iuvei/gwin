@@ -525,6 +525,7 @@ class BullDetailViewController: BaseViewController {
 
   @IBAction func plusPressed(_ sender: Any) {
     toggleBottomView()
+    tableView.scrollToBottom()
   }
 
   @IBAction func bullSubgamePressed(_ sender: UIButton) {
@@ -593,12 +594,13 @@ extension BullDetailViewController{
 
     subgameStackView.isHidden = coundownBet <= 0
     if coundownBet <= 0 {
-//      if let `round` = round, let index = getBullModel(roundid: round.roundid) {
-//        if datas[index].canbet == true {
-//          datas[index].canbet = false
-//          reloadCell(at: index)
-//        }
-//      }
+      if let `round` = round, let index = getBullModel(roundid: round.roundid) {
+        if datas[index].canbet == true {
+          datas[index].canbet = false
+          reloadCell(at: index)
+          tableView.scrollToBottom()
+        }
+      }
 
       fetchBullRound()
       timer?.invalidate()
@@ -731,11 +733,14 @@ extension BullDetailViewController{
   private func reloadCell(at index: Int) {
 
     let indexPath = IndexPath(row: index, section: 0)
-    let bull = datas[indexPath.row]
-    let isGrab = bull.isGrabed(openPackages)
-    if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
-      cell.updateBullViews(bull: bull, isOpen: isGrab)
-    }
+//    let bull = datas[indexPath.row]
+//    let isGrab = bull.isGrabed(openPackages)
+//    if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
+//      cell.updateBullViews(bull: bull, isOpen: isGrab)
+//    }
+    tableView.beginUpdates()
+    tableView.reloadRows(at: [indexPath], with: .none)
+    tableView.endUpdates()
   }
 
 }
@@ -747,7 +752,7 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
 //  }
 
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-    return 20
+    return 5
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -763,17 +768,12 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
     let bull = datas[indexPath.row]
     let isGrab = bull.isGrabed(openPackages)
-    //    let isBoom = false//isBoomed(packageid: model.packetid)
-    //    let isKing = false//isBiggest(packageid: model.packetid)
-    //    let isExpired = false//isPackageExpeire(wagertime: model.wagertime)
-    //
 
     if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
       cell.selectionStyle = .none
       cell.updateBullViews(bull: bull, isOpen: isGrab)
       return cell
     }
-
 
     return UITableViewCell()
   }

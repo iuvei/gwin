@@ -17,6 +17,7 @@ class GrabUserModel {
   var wagertime: String
   var status: String?
   var expand: Bool = false
+  var king: Bool = false
   
   init(json: JSON) {
     userno = json["userno"].stringValue                  // string,
@@ -26,6 +27,13 @@ class GrabUserModel {
     winnings = json["winnings"].floatValue                  // Number, 盈亏
     wagertime = json["wagertime"].stringValue
     status = json["status"].string
+  }
+
+  func isExpire()-> Bool {
+    let wagerInteval = wagertime.toDate().timeIntervalSinceNow
+    let current  = RedEnvelopComponent.shared.systemtime?.timeIntervalSinceNow ?? 0
+    print("current \(current) --- \(wagerInteval)")
+    return  current - wagerInteval > 5 * 60 //5 mins
   }
 }
 

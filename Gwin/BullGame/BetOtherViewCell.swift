@@ -49,7 +49,7 @@ class BetOtherViewCell: UITableViewCell {
     self.maxValue = max
     //
 
-    oddLabel.text = String(format: "%.2f", model.odds)
+    oddLabel.text = String(format: "%@", model.odds.toFormatedString())
     nameLabel.text =  model.name
     typeLabel.text = model.objectName
     inputTextfield.backgroundColor = .white

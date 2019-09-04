@@ -21,6 +21,8 @@ class RedEnvelopeViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.edgesForExtendedLayout = []
+    self.tabBarController?.tabBar.isHidden = false
+
     setTitle(title: "扫雷")
     // Do any additional setup after loading the view.
     setupViews()

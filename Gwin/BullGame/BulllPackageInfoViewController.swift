@@ -87,8 +87,8 @@ class BulllPackageInfoViewController: BaseViewController {
   func updateViews(userno: String, amount: String){
     guard let package = grabedModel else {return}
 
-    let packageAmountText = String(format: "%.2f", (package.packetamount - package.remainamount))
-    let betAmountText = String(format: "%.2f", package.packetamount)
+    let packageAmountText = String(format: "%@", (package.packetamount - package.remainamount).toFormatedString())
+    let betAmountText = String(format: "%@", package.packetamount.toFormatedString())
 
 
     wagerTimeLabel.text = " 已领取\(package.packetsize - package.remainsize)/\(package.packetsize)个,共\(packageAmountText)/\(betAmountText)元"
@@ -124,16 +124,16 @@ class BulllPackageInfoViewController: BaseViewController {
       this.grabedModel = model
       if onlyself  == 1 {
         if model.grabuser.count == 0 {
-          this.updateViews(userno: model.userno, amount:String(format: "%.2f-%@",  model.stake,model.packettag))
+          this.updateViews(userno: model.userno, amount:String(format: "%@-%@",  model.stake.toFormatedString(),model.packettag))
         }else {
           let user = model.grabuser[0]
-          this.updateViews(userno: user.userno, amount: String(format: "%.2f%@",  user.packetamount, AppText.currency))
+          this.updateViews(userno: user.userno, amount: String(format: "%@%@",  user.packetamount.toFormatedString(), AppText.currency))
           this.fetchUserImage(userno: user.userno)
           this.grabedModel?.grabuser.remove(at: 0)
           this.tableView.reloadData()
         }
       }else{
-        this.updateViews(userno: model.userno, amount: String(format: "%.2f-%@",model.stake ,model.packettag))
+        this.updateViews(userno: model.userno, amount: String(format: "%@-%@",model.stake.toFormatedString() ,model.packettag))
         this.tableView.reloadData()
       }
     }

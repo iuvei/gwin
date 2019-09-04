@@ -16,6 +16,7 @@
                 <outlet property="avatarImageView" destination="fkd-0X-NDU" id="uVK-5Q-2Iu"/>
                 <outlet property="continueButton" destination="L2e-ic-VGT" id="pKG-ax-bEv"/>
                 <outlet property="grabButton" destination="uK9-KE-IPu" id="7xg-pe-rpZ"/>
+                <outlet property="messageLabel" destination="S4j-RF-lXC" id="9LW-Qg-x1B"/>
                 <outlet property="usernoLabel" destination="wPb-jh-y5f" id="F7e-az-r0u"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

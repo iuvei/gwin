@@ -42,8 +42,8 @@ class BetBullViewController: BaseViewController {
   var rightWagerOdds: [BullWagerOddModel] = []
 
   var oddNames: [String] = []
-  var selectedIndex:[IndexPath] = []
-  var currentTab: CurrentTab = .left
+//  var selectedIndex:[IndexPath] = []
+  var currentTab: CurrentTab = .none
   private var delegate: BetBullDelegate?
 
   init(room: RoomModel, round: BullRoundModel, delegate: BetBullDelegate? = nil, wagerOdds: [BullWagerOddModel] = []){
@@ -164,25 +164,22 @@ class BetBullViewController: BaseViewController {
     guard let user = RedEnvelopComponent.shared.user else { return }
 
     var wagers = ""
-    var models = wagerOdds.filter{$0.objectid <= 10}
-    if currentTab == .left {
+    if currentTab == .none {
+      if let money = moneyTextfield.text{
+        wagers = "1:0:\(money)"
+      }
+    }else {
 
-      for row in selectedIndex {
-        let model = models[row.row]
+      for model in wagerOdds {
         if model.money > 0 {
           let x = "\(model.wagertypeno):\(model.objectid):\(Int(model.money))"
           wagers = "\(wagers); \(x)"
         }
       }
-    }else if currentTab == .right {
-
-    }else {
-      if let money = moneyTextfield.text{
-        wagers = "1:0:\(money)"
-      }
     }
 
     showLoadingView()
+    print("do bet \(room.roomId) -- \(bullround.roundid) -- \(wagers)")
     BullAPIClient.betting(ticket: user.ticket, roomid: room.roomId, roundid: bullround.roundid, wagers: wagers){ [weak self](success, error) in
       guard let this = self else { return }
       this.hideLoadingView()
@@ -200,36 +197,36 @@ class BetBullViewController: BaseViewController {
   }
 
   func selecteRowAtIndexPath(indexPath: IndexPath) {
-    var index:IndexPath?
-    for row in selectedIndex {
-      if row == indexPath {
-        index = row
-        break
-      }
-    }
-
-    if index == nil {
-
-      selectedIndex.append(indexPath)
-    }
+//    var index:IndexPath?
+//    for row in selectedIndex {
+//      if row == indexPath {
+//        index = row
+//        break
+//      }
+//    }
+//
+//    if index == nil {
+//
+//      selectedIndex.append(indexPath)
+//    }
 
   }
 
   func removeRowAtIndexPath(indexPath: IndexPath) {
-    var index:Int? = nil
-    for i in 0 ..< selectedIndex.count {
-      let _indexPath = selectedIndex[i]
-      if _indexPath == indexPath {
-        index = i
-        break
-      }
-    }
-
-    if let _ =  index {
-      if index! < selectedIndex.count {
-        selectedIndex.remove(at: index!)
-      }
-    }
+//    var index:Int? = nil
+//    for i in 0 ..< selectedIndex.count {
+//      let _indexPath = selectedIndex[i]
+//      if _indexPath == indexPath {
+//        index = i
+//        break
+//      }
+//    }
+//
+//    if let _ =  index {
+//      if index! < selectedIndex.count {
+//        selectedIndex.remove(at: index!)
+//      }
+//    }
   }
 
   func updateInputValue() {
@@ -237,7 +234,7 @@ class BetBullViewController: BaseViewController {
     for odd in wagerOdds {
       total = total + odd.money
     }
-    inputLabel.text = String(format:"¥ %.2f",total)
+    inputLabel.text = String(format:"¥ %.\(total.countFloatPoint())f",total)
   }
 
   func  didSelectTab(at index: Int) {
@@ -258,6 +255,8 @@ class BetBullViewController: BaseViewController {
   }
   @objc func textFieldDidChange(_ textfield: UITextField) {
     inputLabel.text = "¥ \(textfield.text ?? "0.0")"
+    currentTab = .none
+    resetTableData()
   }
 
   @objc func tappedView(_ sende: UIGestureRecognizer) {
@@ -302,16 +301,16 @@ extension BetBullViewController : UITableViewDelegate, UITableViewDataSource {
     }
 
     let model = data[indexPath.row]
-    var index:Int?
-    for row in selectedIndex {
-      if row == indexPath {
-        index = row.row
-        break
-      }
-    }
+//    var index:Int?
+//    for row in selectedIndex {
+//      if row == indexPath {
+//        index = row.row
+//        break
+//      }
+//    }
 
     if let cell = tableView.dequeueReusableCell(withIdentifier: "WagerOddViewCell", for: indexPath) as? WagerOddViewCell {
-      cell.updateView(model: model, selected: indexPath.row == index, max: bullround.state2)
+      cell.updateView(model: model, selected: model.money > 0, max: bullround.state2)
       cell.completionHandler = {[weak self] in
         guard let this = self else {return }
         if tableView == this.tableView {
@@ -325,7 +324,7 @@ extension BetBullViewController : UITableViewDelegate, UITableViewDataSource {
             }
           })
 //          this.selectedIndex = []
-//          this.rightTableView.reloadData()
+          this.rightTableView.reloadData()
         }else if tableView == self?.rightTableView {
           self?.currentTab = .right
           this.wagerOdds = this.wagerOdds.map({ (odd) -> BullWagerOddModel in
@@ -336,11 +335,8 @@ extension BetBullViewController : UITableViewDelegate, UITableViewDataSource {
               return odd
             }
           })
-//          this.selectedIndex = []
-//          this.tableView.reloadData()
+          this.tableView.reloadData()
         }
-
-
 
       }
       cell.didMoneyChanged = {[weak self ]money in
@@ -365,6 +361,7 @@ extension BetBullViewController {
   fileprivate func resetTableData(){
     for ood in wagerOdds {
       ood.money = 0
+
     }
 
     tableView.reloadData()

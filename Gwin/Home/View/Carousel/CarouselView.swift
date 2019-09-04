@@ -99,7 +99,7 @@ class CarouselView: UIView {
     for i in 0 ..< dataSource.count {
       let imageView = UIImageView()
       imageView.translatesAutoresizingMaskIntoConstraints = false
-      imageView.contentMode = .scaleAspectFit
+      imageView.contentMode = .scaleAspectFill
 
       if let imageData = Data(base64Encoded: dataSource[i], options: []){
         let image  = UIImage(data: imageData)

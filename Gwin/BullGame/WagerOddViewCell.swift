@@ -44,7 +44,7 @@ class WagerOddViewCell: UITableViewCell {
     self.maxValue = max
 
     nameLabel.text = model.name
-    oddLabel.text = String(format:"%.2f",model.odds)
+    oddLabel.text = String(format:"%.\(model.odds.countFloatPoint())f",model.odds)
     
     if model.money > 0.0 {
       oddTextfield.text = "\(Int(model.money))"

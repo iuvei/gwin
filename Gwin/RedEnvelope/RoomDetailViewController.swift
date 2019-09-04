@@ -595,18 +595,32 @@ extension RoomDetailViewController {
     notifyView.isHidden = notOpenPackage <= 0
     //    }
   }
+
+  fileprivate func updateViewedStatus() {
+    if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
+      //you reached end of the table
+      for model in histories{
+        model.viewed = true
+      }
+    }
+      updateNotifyView()
+
+  }
 }
 
 extension RoomDetailViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     if scrollView == tableView {
-      updateNotifyView()
+      updateViewedStatus()
     }
   }
 
   func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-    if scrollView == tableView {
-      updateNotifyView()
+    if !decelerate{
+
+      if scrollView == tableView {
+        updateViewedStatus()
+      }
     }
   }
 }

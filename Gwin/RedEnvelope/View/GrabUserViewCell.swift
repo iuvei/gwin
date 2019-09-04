@@ -41,7 +41,12 @@ class GrabUserViewCell: UITableViewCell {
     amountLabel.text = "\(model.packetamount)"
 
     if model.userno == Constant.systemUserno {
-      amountLabel.text = "\(Int(model.packetamount)).**"
+      if model.isExpire(){
+        amountLabel.text = String(format: "%@", model.packetamount.toFormatedString())
+      }else{
+        amountLabel.text = "\(Int(model.packetamount)).**"
+
+      }
     }
 
     if model.userno == RedEnvelopComponent.shared.userno {
@@ -50,12 +55,8 @@ class GrabUserViewCell: UITableViewCell {
       usernoLabel.text = model.userno
     }
 
+    kingImageView.isHidden = !(LocalDataManager.shared.isKing(userno: model.userno, packageid: packageid) || model.king)
 
-    if let userno = RedEnvelopComponent.shared.userno, userno == model.userno || Constant.systemUserno == model.userno {
-      kingImageView.isHidden = !LocalDataManager.shared.isKing(userno: model.userno, packageid: packageid)
-    }else {
-      kingImageView.isHidden = true
-    }
 
     if let imgString = ImageManager.shared.getImage(userno: model.userno) {
       if let data = Data(base64Encoded: imgString, options: []) {

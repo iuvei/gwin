@@ -56,5 +56,40 @@ class PackageInfoModel {
 
     return false
   }
+
+  func totalPackageAmount() -> Float {
+    var total: Float = 0
+    for user in grabuser{
+      total += user.packetamount
+    }
+
+    return total
+  }
+
+  func isExpire()-> Bool {
+    let wagerInteval = wagertime.toDate().timeIntervalSinceNow
+    let current  = RedEnvelopComponent.shared.systemtime?.timeIntervalSinceNow ?? 0
+    print("current \(current) --- \(wagerInteval)")
+    return  current - wagerInteval > 5 * 60 //5 mins
+  }
+
+  func findKing(packageid: Int64) {
+    var index = -1
+    var max:Float = 0
+    for i in 0 ..< grabuser.count {
+      let model = grabuser[i]
+      if userno == model.userno || AppText.systemUserno == model.userno {
+        if model.packetamount > max {
+          max = model.packetamount
+          index = i
+        }
+
+      }
+    }
+    
+    if index != -1{
+      grabuser[index].king = true
+    }
+  }
 }
 

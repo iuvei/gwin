@@ -51,6 +51,12 @@ class HomeViewController: BaseViewController {
     return image
   }()
 
+  private lazy var volumSeperateView: UIView = {
+    let view = UIView().forAutolayout()
+    view.backgroundColor = .groupTableViewBackground
+    return view
+  }()
+
   private var scrollView: UIScrollView = {
     let scrollView = UIScrollView()
     scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -130,13 +136,20 @@ class HomeViewController: BaseViewController {
 
     messageView.addSubview(messageLabel)
     messageView.addSubview(volumeImageView)
+    messageView.addSubview(volumSeperateView)
 
     NSLayoutConstraint.activate([
       volumeImageView.leftAnchor.constraint(equalTo: messageView.leftAnchor),
       volumeImageView.topAnchor.constraint(equalTo: messageView.topAnchor, constant: 4),
       volumeImageView.centerYAnchor.constraint(equalTo: messageView.centerYAnchor),
       volumeImageView.widthAnchor.constraint(equalTo: volumeImageView.heightAnchor),
+      //
+      volumSeperateView.leftAnchor.constraint(equalTo: volumeImageView.rightAnchor),
+      volumSeperateView.widthAnchor.constraint(equalToConstant: 1),
+      volumSeperateView.centerYAnchor.constraint(equalTo: messageView.centerYAnchor),
+      volumSeperateView.topAnchor.constraint(equalTo: messageView.topAnchor, constant: 5),
 
+      //
       messageLabel.leftAnchor.constraint(equalTo: volumeImageView.rightAnchor, constant: 5),
       messageLabel.centerYAnchor.constraint(equalTo: messageView.centerYAnchor),
       messageLabel.rightAnchor.constraint(equalTo: messageView.rightAnchor),

@@ -18,6 +18,7 @@ class GrabEnvelopViewController: UIViewController {
   @IBOutlet weak var grabButton: UIButton!
   @IBOutlet weak var avatarImageView: UIImageView!
 
+  @IBOutlet weak var messageLabel: UILabel!
   @IBOutlet weak var usernoLabel: UILabel!
   @IBOutlet weak var amountLabel: UILabel!
 
@@ -58,9 +59,9 @@ class GrabEnvelopViewController: UIViewController {
       amountLabel.text = "\(package.packetamount)-\(package.packettag)"
     }else {
       amountLabel.text = "\(package.packetamount)"
+      messageLabel.text = "发了一个福利红包,金额随机"
 
     }
-    
     usernoLabel.text = package.userno
   }
 

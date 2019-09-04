@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Profile/ProfileViewController.swift"
-            timestampString = "589284498.050372"
+            timestampString = "589302924.8823251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "178"
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Profile/ProfileItemViewCell.swift"
-            timestampString = "589284498.05044"
+            timestampString = "589302924.882392"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Profile/ProfileViewController.swift"
-            timestampString = "589284498.050486"
+            timestampString = "589302924.882441"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "129"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Networking/RedEnvelop/RedEnvelopAPIClient.swift"
-            timestampString = "588999532.5348949"
+            timestampString = "589296207.412784"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Networking/RedEnvelop/RedEnvelopAPIClient.swift"
-            timestampString = "588999532.534952"
+            timestampString = "589296207.412833"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "16"
@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Networking/RedEnvelop/RedEnvelopAPIClient.swift"
-            timestampString = "588999532.534995"
+            timestampString = "589296207.412877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Networking/RedEnvelop/RedEnvelopAPIClient.swift"
-            timestampString = "588999532.5350339"
+            timestampString = "589296207.412921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
@@ -234,7 +234,7 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/Networking/RedEnvelop/RedEnvelopAPIClient.swift"
-                  timestampString = "589284498.3455451"
+                  timestampString = "589301868.028311"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "72"
@@ -249,7 +249,7 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/Networking/RedEnvelop/RedEnvelopAPIClient.swift"
-                  timestampString = "589284498.3466769"
+                  timestampString = "589301868.02957"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "73"
@@ -266,7 +266,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Networking/RedEnvelop/RedEnvelopAPIClient.swift"
-            timestampString = "588999532.535072"
+            timestampString = "589296207.412964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
@@ -282,7 +282,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Networking/RedEnvelop/RedEnvelopAPIClient.swift"
-            timestampString = "588999532.535109"
+            timestampString = "589296207.413008"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
@@ -298,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Networking/RedEnvelop/RedEnvelopAPIClient.swift"
-            timestampString = "588999532.535145"
+            timestampString = "589296207.413051"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -314,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Home/View/HomeViewController.swift"
-            timestampString = "589185599.504775"
+            timestampString = "589302924.882682"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
             landmarkName = "pressedLobbyItem(model:)"
             landmarkType = "7">
             <Locations>
@@ -362,11 +362,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Home/View/HomeViewController.swift"
-            timestampString = "589185599.504823"
+            timestampString = "589302924.882731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
+            startingLineNumber = "414"
+            endingLineNumber = "414"
             landmarkName = "pressedLobbyItem(model:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,11 +378,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Home/View/HomeViewController.swift"
-            timestampString = "589185599.504864"
+            timestampString = "589302924.882777"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "407"
-            endingLineNumber = "407"
+            startingLineNumber = "420"
+            endingLineNumber = "420"
             landmarkName = "pressedLobbyItem(model:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -394,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Networking/RedEnvelop/RedEnvelopAPIClient.swift"
-            timestampString = "588999532.535403"
+            timestampString = "589296207.413224"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
@@ -410,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Networking/RedEnvelop/RedEnvelopAPIClient.swift"
-            timestampString = "588999532.5354429"
+            timestampString = "589296207.413264"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"
@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/RedEnvelope/GrabEnvelopViewController.swift"
-            timestampString = "589210875.6090209"
+            timestampString = "589302924.88288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "grabPackagePressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Profile/ProfileViewController.swift"
-            timestampString = "589284498.050721"
+            timestampString = "589302924.8829269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "143"
@@ -458,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Profile/ProfileViewController.swift"
-            timestampString = "589284498.050768"
+            timestampString = "589302924.882969"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
@@ -474,7 +474,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Profile/ProfileViewController.swift"
-            timestampString = "589284498.050812"
+            timestampString = "589302924.883011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "131"
@@ -490,7 +490,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Profile/ProfileViewController.swift"
-            timestampString = "589284498.050854"
+            timestampString = "589302924.883052"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "140"
@@ -506,7 +506,7 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/Profile/ProfileViewController.swift"
-                  timestampString = "589284498.3766119"
+                  timestampString = "589301868.0571671"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "140"
@@ -521,7 +521,7 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/Profile/ProfileViewController.swift"
-                  timestampString = "589284498.377915"
+                  timestampString = "589301868.058283"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "140"
@@ -570,7 +570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Networking/RedEnvelop/RedEnvelopAPIClient.swift"
-            timestampString = "588999532.5356359"
+            timestampString = "589296207.413569"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/RedEnvelope/GrabEnvelopViewController.swift"
-            timestampString = "589210875.6102639"
+            timestampString = "589302924.883181"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "grabPackagePressed(_:)"
             landmarkType = "7">
             <Locations>
@@ -602,11 +602,11 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/RedEnvelope/GrabEnvelopViewController.swift"
-                  timestampString = "589284498.383634"
+                  timestampString = "589301868.063714"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
                   offsetFromSymbolStart = "325">
                </Location>
                <Location
@@ -617,11 +617,11 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/RedEnvelope/GrabEnvelopViewController.swift"
-                  timestampString = "589284498.385218"
+                  timestampString = "589301868.064971"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
                   offsetFromSymbolStart = "234">
                </Location>
             </Locations>
@@ -634,7 +634,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Networking/RedEnvelop/RedEnvelopAPIClient.swift"
-            timestampString = "588999532.535701"
+            timestampString = "589296207.413642"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
@@ -650,11 +650,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Home/View/HomeViewController.swift"
-            timestampString = "589185599.5053591"
+            timestampString = "589302924.883261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "setupViews()"
             landmarkType = "7">
          </BreakpointContent>
@@ -746,7 +746,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Flow/ImageManager.swift"
-            timestampString = "589027736.263746"
+            timestampString = "589302924.883391"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/RedEnvelope/View/GrabUserViewCell.swift"
-            timestampString = "589284498.051044"
+            timestampString = "589302924.883436"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "updateViews(model:packageid:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -784,38 +784,6 @@
             startingLineNumber = "88"
             endingLineNumber = "88"
             landmarkName = "register(accountNo:password:code:cellphone:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gwin/RedEnvelope/View/GrabUserViewCell.swift"
-            timestampString = "589284498.051107"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "updateViews(model:packageid:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gwin/Flow/LocalDataManager.swift"
-            timestampString = "589284498.0511529"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "isKing(userno:packageid:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -874,7 +842,7 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/Networking/User/UserAPIClient.swift"
-                  timestampString = "589284498.405115"
+                  timestampString = "589301868.081856"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "137"
@@ -889,7 +857,7 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/Networking/User/UserAPIClient.swift"
-                  timestampString = "589284498.406463"
+                  timestampString = "589301868.0830719"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "138"
@@ -922,7 +890,7 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/RedEnvelope/CreateEnvelopType2ViewController.swift"
-                  timestampString = "589284498.409873"
+                  timestampString = "589301868.086218"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "71"
@@ -937,7 +905,7 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/RedEnvelope/CreateEnvelopType2ViewController.swift"
-                  timestampString = "589284498.410961"
+                  timestampString = "589301868.08749"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "71"
@@ -970,11 +938,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/GrabBankerViewController.swift"
-            timestampString = "589185599.50597"
+            timestampString = "589302924.8836581"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
             landmarkName = "tableView(_:heightForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -986,11 +954,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/GrabBankerViewController.swift"
-            timestampString = "589185599.506008"
+            timestampString = "589302924.883703"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1002,11 +970,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/GrabBankerViewController.swift"
-            timestampString = "589185599.506045"
+            timestampString = "589302924.883744"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1018,7 +986,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/GrabBankerViewController.swift"
-            timestampString = "589185599.5060821"
+            timestampString = "589302924.883783"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
@@ -1034,7 +1002,7 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/BullGame/GrabBankerViewController.swift"
-                  timestampString = "589284498.421221"
+                  timestampString = "589301868.098386"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -1049,7 +1017,7 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/BullGame/GrabBankerViewController.swift"
-                  timestampString = "589284498.422507"
+                  timestampString = "589301868.09964"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -1066,11 +1034,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BetBullViewController.swift"
-            timestampString = "589274101.622283"
+            timestampString = "589302924.8838249"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1082,43 +1050,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BetBullViewController.swift"
-            timestampString = "589274101.622347"
+            timestampString = "589302924.883871"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gwin/BullGame/BetBullViewController.swift"
-            timestampString = "589274101.622393"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gwin/BullGame/BetBullViewController.swift"
-            timestampString = "589274101.622436"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "updateInputValue()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1162,11 +1098,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/RedEnvelope/PackageInfoViewController.swift"
-            timestampString = "589284498.051407"
+            timestampString = "589302924.88398"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "fetchAvatarImage()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1178,7 +1114,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/RedEnvelope/PackageInfoViewController.swift"
-            timestampString = "589284498.051461"
+            timestampString = "589302924.884045"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "82"
@@ -1210,7 +1146,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BulllPackageInfoViewController.swift"
-            timestampString = "589284498.051531"
+            timestampString = "589302924.884138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
@@ -1226,11 +1162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Profile/UploadImageViewController.swift"
-            timestampString = "589185599.506631"
+            timestampString = "589302924.8841881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "confirmPressed(_:)"
             landmarkType = "7">
             <Locations>
@@ -1242,7 +1178,7 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/Profile/UploadImageViewController.swift"
-                  timestampString = "589284498.45073"
+                  timestampString = "589301868.113867"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "117"
@@ -1257,7 +1193,7 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/Profile/UploadImageViewController.swift"
-                  timestampString = "589284498.451896"
+                  timestampString = "589301868.115119"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "117"
@@ -1274,11 +1210,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Profile/UploadImageViewController.swift"
-            timestampString = "589185599.506673"
+            timestampString = "589302924.884541"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
             landmarkName = "confirmPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1306,7 +1242,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/RedEnvelope/PackageHistoryLeftViewCell.swift"
-            timestampString = "589284498.051946"
+            timestampString = "589302924.88484"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
@@ -1321,24 +1257,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Gwin/RedEnvelope/PackageHistoryLeftViewCell.swift"
-            timestampString = "589284498.051996"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "updateBullViews(bull:isOpen:isKing:isBoomed:expired:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BullModel.swift"
-            timestampString = "589210875.6160049"
+            timestampString = "589302924.884897"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
@@ -1350,27 +1270,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gwin/BullGame/BullModel.swift"
-            timestampString = "589210875.617036"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "fetchResultWagerInfo(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BetOtherViewCell.swift"
-            timestampString = "589185599.507197"
+            timestampString = "589302924.884943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "58"
@@ -1386,7 +1290,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BetOtherViewCell.swift"
-            timestampString = "589185599.507252"
+            timestampString = "589302924.8849829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
@@ -1402,7 +1306,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BetOtherViewCell.swift"
-            timestampString = "589185599.507303"
+            timestampString = "589302924.885023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
@@ -1418,7 +1322,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BetCasinoViewController.swift"
-            timestampString = "589185599.5073479"
+            timestampString = "589302924.8850631"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "221"
@@ -1434,7 +1338,7 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/BullGame/BetCasinoViewController.swift"
-                  timestampString = "589284498.463163"
+                  timestampString = "589301868.126493"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "221"
@@ -1449,7 +1353,7 @@
                   moduleName = "Gwin"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/hai.vu/Documents/Outsource/Gwin/Gwin/BullGame/BetCasinoViewController.swift"
-                  timestampString = "589284498.464371"
+                  timestampString = "589301868.127883"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "221"
@@ -1482,7 +1386,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BullDetailViewController.swift"
-            timestampString = "589284498.052143"
+            timestampString = "589302924.8851399"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "390"
@@ -1530,7 +1434,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BullDetailViewController.swift"
-            timestampString = "589284498.052196"
+            timestampString = "589302924.885198"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "394"
@@ -1546,7 +1450,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BullDetailViewController.swift"
-            timestampString = "589284498.052243"
+            timestampString = "589302924.885251"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "398"
@@ -1562,7 +1466,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BullDetailViewController.swift"
-            timestampString = "589284498.052289"
+            timestampString = "589302924.885303"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "513"
@@ -1578,7 +1482,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BullDetailViewController.swift"
-            timestampString = "589284498.052334"
+            timestampString = "589302924.885355"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "388"
@@ -1610,11 +1514,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BullDetailViewController.swift"
-            timestampString = "589284498.052399"
+            timestampString = "589302924.885443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "727"
-            endingLineNumber = "727"
+            startingLineNumber = "729"
+            endingLineNumber = "729"
             landmarkName = "updateCellAsOpened(rounid:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1626,11 +1530,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BullDetailViewController.swift"
-            timestampString = "589284498.0524451"
+            timestampString = "589302924.885499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "722"
-            endingLineNumber = "722"
+            startingLineNumber = "724"
+            endingLineNumber = "724"
             landmarkName = "updateCellAsOpened(rounid:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1642,11 +1546,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/BullGame/BullDetailViewController.swift"
-            timestampString = "589284498.052492"
+            timestampString = "589302924.885551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "658"
-            endingLineNumber = "658"
+            startingLineNumber = "660"
+            endingLineNumber = "660"
             landmarkName = "fetchOpenPackages()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1657,24 +1561,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Gwin/BullGame/BullDetailViewController.swift"
-            timestampString = "589284498.052538"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "737"
-            endingLineNumber = "737"
-            landmarkName = "reloadCell(at:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Gwin/RedEnvelope/PackageHistoryLeftViewCell.swift"
-            timestampString = "589284498.0525841"
+            timestampString = "589302924.885604"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
@@ -1690,44 +1578,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/RedEnvelope/PackageHistoryLeftViewCell.swift"
-            timestampString = "589284498.052626"
+            timestampString = "589302924.885651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
             endingLineNumber = "63"
             landmarkName = "updateViews(model:isOpen:isKing:isBoomed:expired:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gwin/RedEnvelope/PackageHistoryLeftViewCell.swift"
-            timestampString = "589284498.052667"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "updateBullViews(bull:isOpen:isKing:isBoomed:expired:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gwin/BullGame/BullDetailViewController.swift"
-            timestampString = "589284498.052707"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "855"
-            endingLineNumber = "855"
-            landmarkName = "didGetResultWagerInfo(roundid:wagerInfos:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1798,7 +1654,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/Networking/Bull/BullWagerInfoModel.swift"
@@ -1814,27 +1670,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Gwin/BullGame/BullModel.swift"
-            timestampString = "589210875.644599"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "fetchResultWagerInfo(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/RedEnvelope/RoomDetailViewController.swift"
-            timestampString = "589284498.052845"
+            timestampString = "589302924.8858401"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "455"
@@ -1850,7 +1690,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/RedEnvelope/RoomDetailViewController.swift"
-            timestampString = "589284498.052897"
+            timestampString = "589302924.885895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "453"
@@ -1866,7 +1706,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/RedEnvelope/RoomDetailViewController.swift"
-            timestampString = "589284498.052946"
+            timestampString = "589302924.885946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "454"
@@ -1881,13 +1721,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Gwin/BullGame/BetBullViewController.swift"
-            timestampString = "589274101.623464"
+            filePath = "Gwin/RedEnvelope/PackageInfoViewController.swift"
+            timestampString = "589302924.885996"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "setupViews()"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "profilePressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1897,13 +1737,93 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Gwin/BullGame/BetBullViewController.swift"
-            timestampString = "589274101.62351"
+            filePath = "Gwin/Profile/ProfileViewController.swift"
+            timestampString = "589302924.886054"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "setupViews()"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "tableView(_:didSelectRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gwin/BullGame/BetBullViewController.swift"
+            timestampString = "589302924.8861001"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
+            landmarkName = "textFieldDidBeginEditing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gwin/RedEnvelope/View/GrabUserViewCell.swift"
+            timestampString = "589302924.8861459"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "updateViews(model:packageid:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gwin/RedEnvelope/View/GrabUserViewCell.swift"
+            timestampString = "589302924.886196"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "updateViews(model:packageid:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gwin/RedEnvelope/View/GrabUserViewCell.swift"
+            timestampString = "589302924.886245"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "updateViews(model:packageid:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gwin/Flow/LocalDataManager.swift"
+            timestampString = "589300342.998764"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "isKing(userno:packageid:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1914,12 +1834,124 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Gwin/RedEnvelope/PackageInfoViewController.swift"
-            timestampString = "589284498.0530289"
+            timestampString = "589302924.886326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "profilePressed(_:)"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "fetchPackageInfo()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gwin/Networking/RedEnvelop/PackageInfoModel.swift"
+            timestampString = "589302924.886376"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "findKing(packageid:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gwin/Networking/RedEnvelop/PackageInfoModel.swift"
+            timestampString = "589302924.886421"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "findKing(packageid:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gwin/Networking/RedEnvelop/PackageInfoModel.swift"
+            timestampString = "589302924.886465"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "findKing(packageid:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gwin/Utils/UIView+Utils.swift"
+            timestampString = "589302924.886507"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "504"
+            endingLineNumber = "504"
+            landmarkName = "countFloatPoint()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gwin/BullGame/BullDetailViewController.swift"
+            timestampString = "589302924.8865499"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "601"
+            endingLineNumber = "601"
+            landmarkName = "updateBullSubView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gwin/BullGame/BullDetailViewController.swift"
+            timestampString = "589302924.886593"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "599"
+            endingLineNumber = "599"
+            landmarkName = "updateBullSubView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gwin/BullGame/BullDetailViewController.swift"
+            timestampString = "589302924.8866349"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "742"
+            endingLineNumber = "742"
+            landmarkName = "reloadCell(at:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

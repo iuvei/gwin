@@ -64,7 +64,11 @@ class GrabBankerViewController: BaseViewController {
 
   func setBanker(setting: BankSettingModel) {
     guard  let user = RedEnvelopComponent.shared.user else { return }
-    guard let bankqty = bankqtyTextfield.text, let bankqtyValue  =  Int(bankqty) else { return }
+    guard let bankqty = bankqtyTextfield.text, let bankqtyValue  =  Int(bankqty) else {
+      showAlertMessage(message: "请选择金额以及下注区间再进行抢庄")
+      return
+    }
+    
     BullAPIClient.setbanker(ticket: user.ticket, roomid: room.roomId, bankqty: bankqtyValue , lockquota: setting.lockquota, stake1: setting.stake1, stake2: setting.stake2) {[weak self] (success, error) in
 
       if success {
@@ -93,6 +97,8 @@ class GrabBankerViewController: BaseViewController {
   @IBAction func okPressed(_ sender: Any) {
     if let setting = settingSelected {
       setBanker(setting: setting)
+    }else {
+      showAlertMessage(message: "请选择金额以及下注区间再进行抢庄")
     }
   }
 }

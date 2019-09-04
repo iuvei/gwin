@@ -10,6 +10,10 @@ import UIKit
 
 class UploadImageViewController: BaseViewController {
 
+  enum Constants {
+    static let imageSize: CGFloat = 500
+  }
+
   @IBOutlet weak var backButton: UIButton!
   @IBOutlet weak var cameraButton: UIButton!
 
@@ -112,12 +116,16 @@ class UploadImageViewController: BaseViewController {
     guard let user = RedEnvelopComponent.shared.user else { return }
     guard let userno = RedEnvelopComponent.shared.userno else { return }
     guard let image = uploadImage else { return }
-    let imageBase64 = ImageManager.convertImageToBase64(image: image)
+
+    guard let resizedImage = resizeImage(image: image, targetSize: CGSize(width: Constants.imageSize, height: Constants.imageSize)) else {return}
+
+    let imageBase64 = ImageManager.convertImageToBase64(image: resizedImage)
     showLoadingView()
     UserAPIClient.uploadImage(ticket: user.ticket, userno: userno, img: imageBase64) { [weak self] (success, error) in
       self?.hideLoadingView()
       if success {
-        self?.didUploadImage(image)
+        ImageManager.shared.saveImage(userno: userno, image: imageBase64)
+        self?.didUploadImage(resizedImage)
         self?.dismiss(animated: true, completion: nil)
       }else {
         if let message = error {
@@ -135,6 +143,33 @@ class UploadImageViewController: BaseViewController {
 
 }
 
+extension UploadImageViewController {
+ fileprivate func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage? {
+    let size = image.size
+
+    let widthRatio  = targetSize.width  / size.width
+    let heightRatio = targetSize.height / size.height
+
+    // Figure out what our orientation is, and use that to form the rectangle
+    var newSize: CGSize
+    if(widthRatio > heightRatio) {
+      newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+    } else {
+      newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+    }
+
+    // This is the rect that we've calculated out and this is what is actually used below
+  let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+
+    // Actually do the resizing to the rect using the ImageContext stuff
+    UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+  image.draw(in: rect)
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+
+    return newImage
+  }
+}
 extension UploadImageViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     imagePicker.dismiss(animated: true, completion: nil)

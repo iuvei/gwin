@@ -474,3 +474,43 @@ extension Array where Element: Copying {
     return copiedArray
   }
 }
+
+
+extension Float {
+  func countFloatPoint() -> Int {
+    let intValue: Int = Int(self * 10000)
+    let xyz  = intValue % 100
+    if xyz == 0 {
+      return 2
+    } else {
+      if xyz % 10 == 0 {
+        return 3
+      }
+      return 4
+    }
+  }
+
+  func toFormatedString() -> String {
+    return String(format: "%.\(self.countFloatPoint())f", self)
+  }
+}
+
+
+extension Int {
+  func countFloatPoint() -> Int {
+    let intValue: Int = self * 10000
+    let xyz  = intValue % 100
+    if xyz == 0 {
+      return 2
+    } else {
+      if xyz % 10 == 0 {
+        return 3
+      }
+      return 4
+    }
+  }
+
+  func toFormatedString() -> String {
+    return String(format: "%.\(self.countFloatPoint())f", Float(self))
+  }
+}

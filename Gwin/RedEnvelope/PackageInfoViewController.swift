@@ -82,6 +82,7 @@ class PackageInfoViewController: BaseViewController {
       this.refreshControl.endRefreshing()
       
       if let `info` = info {
+        info.findKing(packageid: this.packageid)
         if info.packettag.count > 0{
           this.amounLabel.text = "\(info.packetamount)-\(info.packettag)"
         }else {
@@ -89,7 +90,7 @@ class PackageInfoViewController: BaseViewController {
         }
         
         this.usernoLabel.text = info.userno
-        this.wagerTimeLabel.text = String(format: "已领取%d／%d个／共*.**／%.2f元", info.packettype, info.packetsize, info.packetamount)
+        this.wagerTimeLabel.text = String(format: "  已领取%d／%d个／共%@／%@元", info.grabuser.count, info.packetsize,  info.isExpire() ? info.totalPackageAmount().toFormatedString() : "*.**" ,info.packetamount.toFormatedString())
 
         this.model = info
         this.tableView.reloadData()
@@ -158,8 +159,16 @@ class PackageInfoViewController: BaseViewController {
 
 extension PackageInfoViewController: UITableViewDelegate, UITableViewDataSource {
 
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    return 0.1
+  }
+
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 90
+    return 80
+  }
+
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    return UIView()
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

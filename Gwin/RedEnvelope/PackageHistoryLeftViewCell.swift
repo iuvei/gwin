@@ -94,7 +94,7 @@ class PackageHistoryLeftViewCell: UITableViewCell {
       }
     }
     if expired{
-      expiredLabel.text = "红包已过期"
+      expiredLabel.text = "查看红包"
     }else{
       expiredLabel.text = "红包炸雷"
     }
@@ -146,7 +146,7 @@ class PackageHistoryLeftViewCell: UITableViewCell {
       let info = bull.betWagerInfo[i]
       let label = UILabel().forAutolayout()
       label.font = UIFont.systemFont(ofSize: 12)
-      label.text = String(format: "  %@ %@ %.2f  ", info.userno,AppText.betSuccess,info.stake)
+      label.text = String(format: "  %@ %@ %@  ", info.userno,AppText.betSuccess,info.stake.toFormatedString())
       label.backgroundColor = AppColors.betBgColor
       label.textColor = .white
       label.rounded(radius: 2, borderColor: .clear, borderwidth: 0)
@@ -166,7 +166,7 @@ class PackageHistoryLeftViewCell: UITableViewCell {
       let info = bull.resultWagerInfo[i]
       let label = UILabel().forAutolayout()
       label.font = UIFont.systemFont(ofSize: 12)
-      label.text = String(format: "  %@ %@ %@, %@ %.2f  ", AppText.thisRound, info.userno, AppText.betPlace,info.winning < 0 ? AppText.betTotalLose : AppText.betTotalWin,info.winning)
+      label.text = String(format: "  %@ %@ %@, %@ %@  ", AppText.thisRound, info.userno, AppText.betPlace,info.winning < 0 ? AppText.betTotalLose : AppText.betTotalWin,info.winning.toFormatedString())
       label.backgroundColor = AppColors.betResultBgColor
       label.textColor = .white
       label.rounded(radius: 2, borderColor: .clear, borderwidth: 0)

@@ -43,8 +43,8 @@ class BetDetailiewCell: UITableViewCell {
       usernoLabel.text = grabUser.userno
 
     }
-    packageTagLabel.text = String(format: "%@%.2f", grabUser.packettag, grabUser.winnings)
-    macketAmount.text = String(format: "%.2f", grabUser.packetamount)
+    packageTagLabel.text = String(format: "%@%@", grabUser.packettag, grabUser.winnings.toFormatedString())
+    macketAmount.text = String(format: "%@", grabUser.packetamount.toFormatedString())
     wagerTimeLabel.text = grabUser.wagertime
     //
 
@@ -141,7 +141,7 @@ class BetDetailiewCell: UITableViewCell {
 
     titleLabel.text = "下注内容"
     objectLabel.text = "\(detail.wagertypename)/\(detail.wagerobject)"
-    takeLabel.text = String(format: "%.2f", detail.stake)
+    takeLabel.text = String(format: "%@", detail.stake.toFormatedString())
     takeTitleLabel.text = "下注金额"
     return view
   }

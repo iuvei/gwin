@@ -145,6 +145,7 @@ extension GameRoomViewController {
 
       if success {
         let vc = BullDetailViewController(userno: userno , room: room)
+        vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
       }
     }
