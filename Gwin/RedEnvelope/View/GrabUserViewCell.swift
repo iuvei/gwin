@@ -18,10 +18,11 @@ class GrabUserViewCell: UITableViewCell {
   @IBOutlet weak var usernoLabel: UILabel!
   @IBOutlet weak var amountLabel: UILabel!
 
-  @IBOutlet weak var statusImageView: UIImageView!
-  @IBOutlet weak var status2ImageView: UIImageView!
-  @IBOutlet weak var status3ImageView: UIImageView!
-  
+//  @IBOutlet weak var statusImageView: UIImageView!
+//  @IBOutlet weak var status2ImageView: UIImageView!
+//  @IBOutlet weak var status3ImageView: UIImageView!
+  @IBOutlet weak var statusStackView: UIStackView!
+
   @IBOutlet weak var kingImageView: UIImageView!
   
   override func awakeFromNib() {
@@ -78,26 +79,17 @@ class GrabUserViewCell: UITableViewCell {
     }
 
     //
-    statusImageView.isHidden = true
-    status2ImageView.isHidden = true
-    status3ImageView.isHidden = true
-
+    statusStackView.removeAllArrangedSubviews()
     if let status = model.status, let statusValue = Int(status) {
-      var digits = statusValue.getDigits()
+      let digits = statusValue.getDigits()
 
       for i in 0 ..< digits.count {
         let image = UIImage(named: "grabuser_status_\(i+1)")
-        let digit = digits[i]
-        if i == 0 {
-          statusImageView.isHidden = false
-          statusImageView.image = image
-        }else if digit == 1{
-          status2ImageView.isHidden = false
-          status2ImageView.image = image
-        }else if digit == 2 {
-          status3ImageView.isHidden = false
-          status3ImageView.image = image
-        }
+        let imageView = UIImageView(image: image).forAutolayout()
+        NSLayoutConstraint.activate([
+          imageView.widthAnchor.constraint(equalToConstant: 30),
+          imageView.heightAnchor.constraint(equalToConstant: 30)])
+        statusStackView.addArrangedSubview(imageView)
       }
     }
   }
