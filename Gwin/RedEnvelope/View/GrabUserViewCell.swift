@@ -84,7 +84,8 @@ class GrabUserViewCell: UITableViewCell {
       let digits = statusValue.getDigits()
 
       for i in 0 ..< digits.count {
-        let image = UIImage(named: "grabuser_status_\(i+1)")
+        let statusValue = digits[i]
+        let image = UIImage(named: "grabuser_status_\(statusValue)")
         let imageView = UIImageView(image: image).forAutolayout()
         NSLayoutConstraint.activate([
           imageView.widthAnchor.constraint(equalToConstant: 30),

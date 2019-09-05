@@ -46,7 +46,7 @@ class BaseViewController: UIViewController {
     super.viewDidLoad()
     self.edgesForExtendedLayout = []
 
-
+    backButton.frame = CGRect(x: 0, y: 0, width: Constants.actionButtonSize, height: Constants.actionButtonSize)
     let leftItem = UIBarButtonItem(customView: backButton)
     self.navigationItem.leftBarButtonItem = leftItem
 
@@ -97,6 +97,7 @@ class BaseViewController: UIViewController {
     }else {
       backButton.frame = CGRect(x: 0, y: 0, width: Constants.actionButtonTextWidth, height: Constants.actionButtonSize)
     }
+    
     backButton.setTitle(title, for: .normal)
     let leftItem = UIBarButtonItem(customView: backButton)
     self.navigationItem.leftBarButtonItem = leftItem

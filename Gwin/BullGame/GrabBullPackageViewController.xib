@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="avatarImageView" destination="yCr-mw-KuI" id="WVu-cF-Exs"/>
                 <outlet property="grabButton" destination="gx1-Ei-y8s" id="cyQ-aj-XwM"/>
+                <outlet property="messageLabel" destination="xbG-w0-EV5" id="Lns-jI-TrP"/>
                 <outlet property="nextButton" destination="Gu4-O1-qYI" id="RQt-7p-Kc3"/>
                 <outlet property="packageTagLabel" destination="E86-lT-tRT" id="dvt-WA-Es9"/>
                 <outlet property="usernameLabel" destination="7Y8-Sh-HgL" id="GiA-Sw-wWi"/>

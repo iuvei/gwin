@@ -139,7 +139,7 @@ extension UIView {
     border.backgroundColor = color.cgColor
     border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: width)
     let sublayers =  self.layer.sublayers?.filter{$0.name == "bottomLine"}
-    
+
     if let first = sublayers?.first {
       first.removeFromSuperlayer()
     }
@@ -491,26 +491,27 @@ extension Float {
   }
 
   func toFormatedString() -> String {
-    return String(format: "%.\(self.countFloatPoint())f", self)
+    if self.countFloatPoint() == 2{
+      return String(format: "%.2f", self)
+    }
+
+    let strNumber = "\(self)"
+    if strNumber.contains("."){
+      let numbers:[String] = strNumber.components(separatedBy: ".")
+      let prefix = numbers[1].prefix(self.countFloatPoint())
+      return String(format: "%@.%@", numbers[0], String(prefix))
+    }else {
+      return String(format: "%.\(self.countFloatPoint())f", self)
+    }
   }
 }
 
 
 extension Int {
-  func countFloatPoint() -> Int {
-    let intValue: Int = self * 10000
-    let xyz  = intValue % 100
-    if xyz == 0 {
-      return 2
-    } else {
-      if xyz % 10 == 0 {
-        return 3
-      }
-      return 4
-    }
-  }
 
   func toFormatedString() -> String {
-    return String(format: "%.\(self.countFloatPoint())f", Float(self))
+    let floatValue = Float(self)
+    return floatValue.toFormatedString()
   }
 }
+

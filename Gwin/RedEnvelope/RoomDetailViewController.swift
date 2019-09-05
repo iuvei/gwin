@@ -520,6 +520,13 @@ extension RoomDetailViewController: WebSocketDelegate {
 
     let json = JSON(parseJSON: text).arrayValue
 
+    if histories.count == 0 {
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+        self?.tableView.scrollToBottom()
+        //self?.updateNotifyView()
+      }
+    }
+
     var usernos: [String] = []
     for packageJson in json {
       let package = PackageHistoryModel(json: packageJson)
@@ -529,15 +536,9 @@ extension RoomDetailViewController: WebSocketDelegate {
       }
     }
 
-//    ImageManager.shared.downloadImage(usernos: usernos) { [weak self ] in
-//      DispatchQueue.main.async {
-//        self?.tableView.reloadData()
-//      }
-//    }
+
     //
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-      self?.updateNotifyView()
-    }
+
 
     tableView.reloadData()
     //    [{"roomid":5,"packetid":158983,"userno":"steven2","username":"","packetamount":200.00,"packettag":"5","wagertime":"2019-08-24 12:03:31"},{"roomid":5,"packetid":158984,"userno":"steven2","username":"","packetamount":2006.00,"packettag":"2","wagertime":"2019-08-24 12:03:48"}]

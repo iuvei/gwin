@@ -27,6 +27,7 @@ class GrabBullPackageViewController: BaseViewController {
   @IBOutlet weak var usernameLabel: UILabel!
   @IBOutlet weak var packageTagLabel: UILabel!
 
+  @IBOutlet weak var messageLabel: UILabel!
   @IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var grabButton: UIButton!
 //  private var roundid: Int64
@@ -69,7 +70,7 @@ class GrabBullPackageViewController: BaseViewController {
       usernameLabel.text = RedEnvelopComponent.shared.userno
       packageTagLabel.isHidden = true
     }
-
+    messageLabel.text = bull.isOnleyself() ? "发了一个扫雷红包,金额随机" : "发了一个牛牛红包，金额随机"
   }
 
   func fetchPackageStatus() {

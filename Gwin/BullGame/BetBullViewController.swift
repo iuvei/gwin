@@ -188,6 +188,8 @@ class BetBullViewController: BaseViewController {
         this.dismiss(animated: true, completion: nil)
       } else {
         if let message = error {
+          print("do bet message \(message)")
+
           this.showAlertMessage(message: message)
         }
       }
