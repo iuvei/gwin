@@ -170,10 +170,15 @@ class BetBullViewController: BaseViewController {
       }
     }else {
 
-      for model in wagerOdds {
+      for i in 0 ..< wagerOdds.count {
+        let model = wagerOdds[i]
         if model.money > 0 {
           let x = "\(model.wagertypeno):\(model.objectid):\(Int(model.money))"
-          wagers = "\(wagers); \(x)"
+          if i == 0 {
+            wagers = x
+          }else {
+            wagers = "\(wagers);\(x)"
+          }
         }
       }
     }
