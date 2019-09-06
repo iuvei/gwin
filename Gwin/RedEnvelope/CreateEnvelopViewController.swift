@@ -82,6 +82,11 @@ class CreateEnvelopViewController: BaseViewController {
   }
 
   @IBAction func sendPackagePressed(_ sender: Any) {
+    if processing == true {
+      return
+    }
+
+    processing = true
     guard let amountText = packageAmountTextfield.text, let amount = Int(amountText), validateAmounInput(amount: amount) else {
       showAlertMessage(message: "发包金额 \(room.stake1)-\(room.stake2)元范围内，雷数 0-9范围内  ")
       return }
@@ -90,6 +95,7 @@ class CreateEnvelopViewController: BaseViewController {
     guard let user = RedEnvelopComponent.shared.user else { return }
 
     RedEnvelopAPIClient.sendPackage(ticket: user.ticket, roomid: room.roomId, packageamount: amount, packagesize: room.packageSize, packagetag: tag) {[weak self] (success, message) in
+      self?.processing = false
       if success {
         self?.navigationController?.popViewController(animated: true)
       }else {

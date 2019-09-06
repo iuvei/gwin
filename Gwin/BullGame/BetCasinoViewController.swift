@@ -220,11 +220,16 @@ class BetCasinoViewController: BaseViewController {
     }
 
     waggers = waggerArray.joined(separator: ";")
-    
+    if processing == true {
+      return
+    }
+
+    processing = true
     showLoadingView()
     BullAPIClient.betting(ticket: user.ticket, roomid: room.roomId, roundid: bullround.roundid, wagers: waggers){ [weak self](success, error) in
       guard let this = self else { return }
       this.hideLoadingView()
+      this.processing = false
       if success {
         this.dismiss(animated: true, completion: nil)
       } else {

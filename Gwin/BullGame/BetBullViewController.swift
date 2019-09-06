@@ -162,6 +162,11 @@ class BetBullViewController: BaseViewController {
   }
 
   func betBull(){
+    if processing == true {
+      return
+    }
+    processing = true
+
     guard let user = RedEnvelopComponent.shared.user else { return }
 
     var wagers = ""
@@ -187,6 +192,7 @@ class BetBullViewController: BaseViewController {
     BullAPIClient.betting(ticket: user.ticket, roomid: room.roomId, roundid: bullround.roundid, wagers: wagers){ [weak self](success, error) in
       guard let this = self else { return }
       this.hideLoadingView()
+      this.processing = false
       if success {
         this.delegate?.didGrabBullPackage()
         this.dismiss(animated: true, completion: nil)

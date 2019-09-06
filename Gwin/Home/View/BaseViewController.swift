@@ -41,6 +41,7 @@ class BaseViewController: UIViewController {
   }()
   
   private var loadingView: UIViewController?
+  public var processing: Bool = false
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -56,6 +57,7 @@ class BaseViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     SoundManager.shared.playBipSound()
+    processing = false
   }
 
   func showLoadingView(background color: UIColor = .white) {

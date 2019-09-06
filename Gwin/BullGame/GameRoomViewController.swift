@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameRoomViewController: UIViewController {
+class GameRoomViewController: BaseViewController {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var rollMsgView: UIView!
@@ -105,6 +105,11 @@ extension GameRoomViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if processing == true {
+      return
+    }
+
+    processing = true
     let model  = rooms[indexPath.row]
 
     if model.roomPwd.count > 0 {

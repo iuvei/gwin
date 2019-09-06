@@ -30,11 +30,11 @@ class GrabBullPackageViewController: BaseViewController {
   @IBOutlet weak var messageLabel: UILabel!
   @IBOutlet weak var nextButton: UIButton!
   @IBOutlet weak var grabButton: UIButton!
-//  private var roundid: Int64
-//  private var room: RoomModel
+  //  private var roundid: Int64
+  //  private var room: RoomModel
   private var status: Int?
-//  private var screenIndex: Int?
-//  private var history: BullPackageHistoryModel?
+  //  private var screenIndex: Int?
+  //  private var history: BullPackageHistoryModel?
   private var bull: BullModel
   var didGrabPackage: (BullPackageModel)->Void = {_ in}
   var didViewPackageInfo:()-> Void = {}
@@ -91,7 +91,7 @@ class GrabBullPackageViewController: BaseViewController {
           this.nextButton.isHidden = true
           this.messageLabel.text = "当前红包暂未结算 "
           //
-          
+
         } else if status == Constants.Packetstatus.status3 {
           this.grabButton.isHidden = true
         }else if status == Constants.Packetstatus.status21 {
@@ -100,23 +100,23 @@ class GrabBullPackageViewController: BaseViewController {
           this.grabButton.isHidden = true
         }
       }
-      
+
     }
   }
 
   func fetchPackageInfo() {
-//    guard let user = RedEnvelopComponent.shared.user else { return }
+    //    guard let user = RedEnvelopComponent.shared.user else { return }
     //let roundStatus
     // <3 -> onlyself = 1
     //else ->onlyself = 0
-//    showLoadingView()
-//    BullAPIClient.info(ticket: user.ticket, roomid: room.roomId, roundid: history.roundid, onlyself: 0) { [weak self](model, error) in
-//      guard let this = self else { return }
-//      this.hideLoadingView()
-//
-//      print("info \(model?.packettag)")
-//
-//    }
+    //    showLoadingView()
+    //    BullAPIClient.info(ticket: user.ticket, roomid: room.roomId, roundid: history.roundid, onlyself: 0) { [weak self](model, error) in
+    //      guard let this = self else { return }
+    //      this.hideLoadingView()
+    //
+    //      print("info \(model?.packettag)")
+    //
+    //    }
     didViewPackageInfo()
     dismiss(animated: true, completion: nil)
   }
@@ -132,21 +132,25 @@ class GrabBullPackageViewController: BaseViewController {
   @IBAction func grabBullPressed(_ sender: Any) {
 
     guard let user = RedEnvelopComponent.shared.user else {return}
-
-    BullAPIClient.grab(ticket: user.ticket, roomid: bull.roomid, roundid: bull.getRoundId()) { (pullPackage, error) in
+    if processing == true {
+      return
+    }
+    processing = true
+    BullAPIClient.grab(ticket: user.ticket, roomid: bull.roomid, roundid: bull.getRoundId()) { [weak self](pullPackage, error) in
+      self?.processing = false
       if let model = pullPackage {
-        self.dismiss(animated: true, completion: {
+        self?.dismiss(animated: true, completion: {
 
-          self.didGrabPackage(model)
+          self?.didGrabPackage(model)
         })
 
       }else{
         if let message = error {
-          self.packageTagLabel.text = message
-          self.packageTagLabel.isHidden = false
+          self?.packageTagLabel.text = message
+          self?.packageTagLabel.isHidden = false
           //
-          self.grabButton.isHidden = true
-          self.nextButton.isHidden = false
+          self?.grabButton.isHidden = true
+          self?.nextButton.isHidden = false
         }
       }
     }
@@ -161,4 +165,5 @@ class GrabBullPackageViewController: BaseViewController {
   }
 
 }
+
 

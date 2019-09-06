@@ -63,12 +63,16 @@ class CreateEnvelopType2ViewController: BaseViewController {
    }
    */
   @IBAction func createPressed(_ sender: Any) {
-
+    if processing == true {
+      return
+    }
+    processing = true
     guard let amountText = ammountTextfield.text, let amount = Int(amountText) else { return }
     guard let sizeText = sizeTextfield.text, let size = Int(sizeText) else { return }
     guard let user = RedEnvelopComponent.shared.user else { return }
     
     RedEnvelopAPIClient.sendPackage(ticket: user.ticket, roomid: room.roomId, packageamount: amount, packagesize: size, packagetag: "") { [weak self] (success, message) in
+      self?.processing = false
       if success {
         self?.navigationController?.popViewController(animated: true)
       } else {

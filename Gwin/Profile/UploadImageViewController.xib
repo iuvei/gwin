@@ -40,7 +40,7 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G9Y-IC-tEC">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="G9Y-IC-tEC">
                             <rect key="frame" x="162" y="86.5" width="90" height="90"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="90" id="Nwk-s7-3Ji"/>
@@ -210,6 +210,7 @@
     </objects>
     <resources>
         <image name="back_button" width="40" height="40"/>
+        <image name="default_avatar" width="91.5" height="91.5"/>
         <image name="upload_camera" width="90" height="90"/>
         <image name="upload_galary" width="90" height="90"/>
     </resources>

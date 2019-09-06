@@ -390,6 +390,10 @@ class BullDetailViewController: BaseViewController {
     BullAPIClient.packethistory(ticket: user.ticket, roomid: room.roomId, roundid: roundid, topnum: 50) {[weak self] (histoires, error) in
       guard let this = self else { return }
       this.refreshControl.endRefreshing()
+      if histoires.count == 0 {
+        return
+      }
+
       if let copyRound = round.copy() as? BullRoundModel{
         copyRound.roundid = Int64.max
         copyRound.status = BullRoundStatus.addNew.rawValue

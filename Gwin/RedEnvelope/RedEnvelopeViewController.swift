@@ -32,6 +32,7 @@ class RedEnvelopeViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     hideBackButton()
+    processing = false
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -109,6 +110,11 @@ extension RedEnvelopeViewController: UITableViewDelegate, UITableViewDataSource 
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if processing == true {
+      return
+    }
+
+    processing = true
     let model  = rooms[indexPath.row]
 
     if model.roomPwd.count > 0 {
