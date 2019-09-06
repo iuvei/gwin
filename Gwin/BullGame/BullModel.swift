@@ -78,14 +78,14 @@ class BullModel {
     resultWagerTimer = nil
   }
 
-  @objc func fetchWagerInfo(_ timer: Timer) {
+  @objc func fetchWagerInfo(_ timer: Timer? = nil) {
     guard let user = RedEnvelopComponent.shared.user else { return }
 
-    guard let userInfo = timer.userInfo as? [String: Any] else { return }
-    guard let _idno = userInfo["idno"] as? Int else  { return }
+//    guard let userInfo = timer.userInfo as? [String: Any] else { return }
+//    guard let _idno = userInfo["idno"] as? Int else  { return }
     //guard let _status = userInfo["status"]  as? Int else { return }
 
-    BullAPIClient.wagerinfo(ticket: user.ticket, roomid: roomid, roundid: round.roundid, idno: _idno) { [weak self](infos, error) in
+    BullAPIClient.wagerinfo(ticket: user.ticket, roomid: roomid, roundid: round.roundid, idno: getLastIdno()) { [weak self](infos, error) in
       guard let this = self else {return}
       print("result result 1 --- \(infos.count)")
 

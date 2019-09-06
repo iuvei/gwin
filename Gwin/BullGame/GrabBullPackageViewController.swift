@@ -89,6 +89,9 @@ class GrabBullPackageViewController: BaseViewController {
         } else if status == Constants.Packetstatus.status2 {
           this.grabButton.isHidden = true
           this.nextButton.isHidden = true
+          this.messageLabel.text = "cho elsa"
+          //
+          
         } else if status == Constants.Packetstatus.status3 {
           this.grabButton.isHidden = true
         }else if status == Constants.Packetstatus.status21 {

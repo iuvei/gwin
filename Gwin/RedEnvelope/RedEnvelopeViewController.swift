@@ -143,6 +143,7 @@ extension RedEnvelopeViewController {
     alertVC.addTextField(configurationHandler: { (textField) in
       textField.isSecureTextEntry = true
       textField.placeholder = "请输入房间密码"
+      textField.textAlignment = .center
     })
 
     let saveAction = UIAlertAction(title: "确认", style: .default, handler: { [weak self] alert -> Void in
