@@ -311,8 +311,10 @@ class BullDetailViewController: BaseViewController {
 
           if let index = this.getBullModel(roundid: round.roundid){
             let bull = this.datas[index]
-            bull.cancelWagerTimer()
+//            bull.cancelWagerTimer()
             bull.updateRoundStatus(status: .addNew)
+            bull.fetchResultWagerInfo()
+            bull.fetchWagerInfo()
             if bull.canbet {
               bull.canbet = false
               this.reloadCell(at: index)
@@ -633,8 +635,8 @@ extension BullDetailViewController {
       newBull.resultWagerInfoTimer()
     } else if newBull.round.status == BullRoundStatus.addNew.rawValue {
       if countDownRound > 0 {
-        newBull.wagerInfoTimer()
-        newBull.resultWagerInfoTimer()
+        newBull.fetchWagerInfo()
+        newBull.fetchResultWagerInfo()
       }
     }
 
