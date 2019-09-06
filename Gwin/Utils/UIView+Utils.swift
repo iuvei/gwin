@@ -491,17 +491,30 @@ extension Float {
   }
 
   func toFormatedString() -> String {
-    if self.countFloatPoint() == 2{
+    var count = self.countFloatPoint();
+    if let n = Decimal(string: "\(self)") {
+      count = n.significantFractionalDecimalDigits
+    }
+
+    if count <= 2 {
+      count = 2
+    }else if count == 3 {
+      count = 3
+    } else {
+      count = 4
+    }
+
+    if count == 2{
       return String(format: "%.2f", self)
     }
 
     let strNumber = "\(self)"
     if strNumber.contains("."){
       let numbers:[String] = strNumber.components(separatedBy: ".")
-      let prefix = numbers[1].prefix(self.countFloatPoint())
+      let prefix = numbers[1].prefix(count)
       return String(format: "%@.%@", numbers[0], String(prefix))
     }else {
-      return String(format: "%.\(self.countFloatPoint())f", self)
+      return String(format: "%.\(count)f", self)
     }
   }
 }
@@ -515,3 +528,8 @@ extension Int {
   }
 }
 
+extension Decimal {
+  var significantFractionalDecimalDigits: Int {
+    return max(-exponent, 0)
+  }
+}
