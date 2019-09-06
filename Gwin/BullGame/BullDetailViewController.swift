@@ -633,8 +633,8 @@ extension BullDetailViewController {
       newBull.resultWagerInfoTimer()
     } else if newBull.round.status == BullRoundStatus.addNew.rawValue {
       if countDownRound > 0 {
-        newBull.fetchWagerInfo()
-        newBull.fetchResultWagerInfo()
+        newBull.wagerInfoTimer()
+        newBull.resultWagerInfoTimer()
       }
     }
 

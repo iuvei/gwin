@@ -89,7 +89,7 @@ class GrabBullPackageViewController: BaseViewController {
         } else if status == Constants.Packetstatus.status2 {
           this.grabButton.isHidden = true
           this.nextButton.isHidden = true
-          this.messageLabel.text = "cho elsa"
+          this.messageLabel.text = "当前红包暂未结算 "
           //
           
         } else if status == Constants.Packetstatus.status3 {
