@@ -47,6 +47,7 @@ class GrabEnvelopViewController: UIViewController {
   }
 
   func setupViews() {
+    avatarImageView.rounded()
     ImageManager.shared.downloadImage(usernos: [package.userno]) {
       if let string = ImageManager.shared.getImage(userno: self.package.userno) {
         if let data = Data(base64Encoded: string, options: []) {

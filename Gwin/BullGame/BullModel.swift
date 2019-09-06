@@ -65,7 +65,7 @@ class BullModel {
     }
   }
 
-  func resultWagerInfoTimer() {
+  func resultWagerInfoTimer(cancelCurrent: Bool = false) {
     if resultWagerTimer == nil{
       resultWagerTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(fetchResultWagerInfo(_:)), userInfo: ["idno": 0, "status": 3], repeats: true)
     }

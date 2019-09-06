@@ -38,20 +38,20 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tiy-oJ-1Va">
-                        <rect key="frame" x="272.5" y="10" width="37.5" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="267" y="10" width="43" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grabuser_status_4" translatesAutoresizingMaskIntoConstraints="NO" id="1sB-UR-ZxI">
-                        <rect key="frame" x="260" y="31" width="50" height="25"/>
+                        <rect key="frame" x="260" y="33.5" width="50" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="MZ2-gP-8eQ"/>
                             <constraint firstAttribute="height" constant="25" id="zvc-et-O1n"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="hUb-oJ-qlS">
-                        <rect key="frame" x="228" y="28.5" width="30" height="30"/>
+                        <rect key="frame" x="228" y="31" width="30" height="30"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2mZ-2j-Cjt">
                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>

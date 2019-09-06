@@ -143,8 +143,10 @@ class PackageHistoryLeftViewCell: UITableViewCell {
       subview.removeFromSuperview()
     }
 
-    for i in 0 ..< bull.betWagerInfo.count {
-      let info = bull.betWagerInfo[i]
+    let betWagers = bull.betWagerInfo.sorted {$0.idno < $1.idno}
+
+    for i in 0 ..< betWagers.count {
+      let info = betWagers[i]
       let label = UILabel().forAutolayout()
       label.font = UIFont.systemFont(ofSize: 12)
       label.text = String(format: "  %@ %@ %@  ", info.userno,AppText.betSuccess,info.stake.toFormatedString())
@@ -162,9 +164,11 @@ class PackageHistoryLeftViewCell: UITableViewCell {
     for subview in resultWagerInfoStackView.subviews {
       subview.removeFromSuperview()
     }
-    
-    for i in 0 ..< bull.resultWagerInfo.count {
-      let info = bull.resultWagerInfo[i]
+
+    let resultWagers = bull.resultWagerInfo.sorted {$0.idno < $1.idno}
+
+    for i in 0 ..< resultWagers.count {
+      let info = resultWagers[i]
       let label = UILabel().forAutolayout()
       label.font = UIFont.systemFont(ofSize: 12)
       label.text = String(format: "  %@ %@ %@ %@, %@ %@  ", AppText.thisRound, info.userno, AppText.betPlace, info.packettag ,info.winning < 0 ? AppText.betTotalLose : AppText.betTotalWin,info.winning.toFormatedString())

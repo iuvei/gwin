@@ -141,6 +141,9 @@ class GrabBullPackageViewController: BaseViewController {
         if let message = error {
           self.packageTagLabel.text = message
           self.packageTagLabel.isHidden = false
+          //
+          self.grabButton.isHidden = true
+          self.nextButton.isHidden = false
         }
       }
     }
