@@ -210,13 +210,17 @@ class BetCasinoViewController: BaseViewController {
 
     var waggers = ""
 
+    var waggerArray:[String] = []
+
     for model in wagerOdds {
       if model.selected{
         let x = "\(model.wagertypeno):\(model.objectid):\(Int(model.money))"
-        waggers = "\(waggers) \(x);"
+        waggerArray.append(x)
       }
     }
 
+    waggers = waggerArray.joined(separator: ";")
+    
     showLoadingView()
     BullAPIClient.betting(ticket: user.ticket, roomid: room.roomId, roundid: bullround.roundid, wagers: waggers){ [weak self](success, error) in
       guard let this = self else { return }

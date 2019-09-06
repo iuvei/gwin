@@ -142,6 +142,7 @@ class PackageHistoryLeftViewCell: UITableViewCell {
     for subview in wagerStackView.subviews {
       subview.removeFromSuperview()
     }
+
     for i in 0 ..< bull.betWagerInfo.count {
       let info = bull.betWagerInfo[i]
       let label = UILabel().forAutolayout()
@@ -184,19 +185,20 @@ class PackageHistoryLeftViewCell: UITableViewCell {
     topStackHeightConstraint.constant = CGFloat(height1)
     bottomStackHeightConstraint.constant = CGFloat(height2)
 
-    if bull.canbet {
+    if bull.canbet || bull.round.status == BullRoundStatus.betClose.rawValue {
       middleHeightConstraint.constant = 0
-      bullInfoView.removeFromSuperview()
+      bullInfoView.isHidden = true
       top.constant = 0
     }else {
       middleHeightConstraint.constant = Constants.defaultInfoHeight
       top.constant = Constants.defaultInfoHeight
-      contentView.addSubview(bullInfoView)
+      bullInfoView.isHidden = false
     }
 
+    wagerStackView.updateConstraintsIfNeeded()
+    resultWagerInfoStackView.updateConstraintsIfNeeded()
     updateConstraintsIfNeeded()
-    contentView.updateConstraints()
-    print("result ccc \(bull.round.roundid) \(height1) - \(height2)")
+    contentView.updateConstraintsIfNeeded()
   }
 }
 

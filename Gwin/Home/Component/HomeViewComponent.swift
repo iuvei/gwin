@@ -12,8 +12,8 @@ import UIKit
 public enum AppColors{
   static let tabbarColor: UIColor = UIColor(hexString:"e75f48")
   static let titleColor: UIColor = UIColor(hexString: "FBEAAC")
-  static let betBgColor: UIColor = UIColor(hexString: "66c05a")
-  static let betResultBgColor: UIColor = UIColor(hexString: "e2a55e")
+  static let betBgColor: UIColor = UIColor(hexString: "#66c05a")
+  static let betResultBgColor: UIColor = UIColor(hexString: "#e2a55e")
 
 }
 

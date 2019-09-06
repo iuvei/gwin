@@ -81,9 +81,6 @@ class BullDetailViewController: BaseViewController {
   var firsttime: Bool = true
   private var timer: Timer?
   private var roundTimmer: Timer?
-
-  private var lastRound: BullRoundModel?
-  //  private var systemTime: TimeInterval?
   private var wagerInfo: [Int64: [BullWagerInfoModel]] = [:]
   private var wagerOdds: [BullWagerOddModel] = []
 
@@ -393,6 +390,7 @@ class BullDetailViewController: BaseViewController {
       this.refreshControl.endRefreshing()
       if let copyRound = round.copy() as? BullRoundModel{
         copyRound.roundid = Int64.max
+        copyRound.status = BullRoundStatus.addNew.rawValue
         let reverHistory = histoires.reversed().map{BullModel(expire: true, round: copyRound, historyPackage: $0, roomid: this.room.roomId)}
         if loadmore{
           if reverHistory.count > 0 {
@@ -613,6 +611,12 @@ extension BullDetailViewController{
         datas[index].expire = true
       }
     }
+
+    if countDownGrab <= 0 {
+      if let `round` = round, let index = getBullModel(roundid: round.roundid) {
+        datas[index].resultWagerInfoTimer()
+      }
+    }
   }
 
 
@@ -781,7 +785,7 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let bull = datas[indexPath.row]
 
-    if bull.canbet{
+    if bull.canbet || bull.round.status == BullRoundStatus.betClose.rawValue{
       return
     }
 
@@ -837,8 +841,8 @@ extension BullDetailViewController: BullModelDelegate {
       let indexPath = IndexPath(row: index, section: 0)
       tableView.beginUpdates()
       tableView.reloadRows(at: [indexPath], with: .none)
-      tableView.scrollToBottom()
       tableView.endUpdates()
+      tableView.scrollToBottom()
     }
   }
 
@@ -847,12 +851,11 @@ extension BullDetailViewController: BullModelDelegate {
       datas[index].resultWagerInfo = wagerInfos
       datas[index].canbet = false
 
-
       let indexPath = IndexPath(row: index, section: 0)
       tableView.beginUpdates()
       tableView.reloadRows(at: [indexPath], with: .none)
-      tableView.scrollToBottom()
       tableView.endUpdates()
+      tableView.scrollToBottom()
     }
   }
 }

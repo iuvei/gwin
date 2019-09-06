@@ -75,8 +75,8 @@ class ProfileViewController: BaseViewController {
           this.accountNameLabel.text = userInfo.accountno
         }
 
-        this.allowCreditLabel.text = "\(userInfo.allowcreditquota)"
-        this.creditLabel.text = "\(userInfo.usecreditquota)"
+        this.allowCreditLabel.text = "\(userInfo.allowcreditquota.toFormatedString())"
+        this.creditLabel.text = "\(userInfo.usecreditquota.toFormatedString())"
         this.fetchUserImage(ticket: user.ticket, userno: userInfo.accountno)
         this.reloadQrCodeCell()
       } else {

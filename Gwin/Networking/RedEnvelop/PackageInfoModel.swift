@@ -78,18 +78,17 @@ class PackageInfoModel {
     var max:Float = 0
     for i in 0 ..< grabuser.count {
       let model = grabuser[i]
-      if userno == model.userno || AppText.systemUserno == model.userno {
-        if model.packetamount > max {
-          max = model.packetamount
-          index = i
-        }
-
+      if model.packetamount > max {
+        max = model.packetamount
+        index = i
       }
     }
-    
+
+
     if index != -1{
       grabuser[index].king = true
     }
   }
 }
+
 

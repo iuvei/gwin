@@ -478,7 +478,7 @@ extension Array where Element: Copying {
 
 extension Float {
   func countFloatPoint() -> Int {
-    let intValue: Int = Int(self * 10000)
+    let intValue: Int64 = Int64(self * 10000)
     let xyz  = intValue % 100
     if xyz == 0 {
       return 2

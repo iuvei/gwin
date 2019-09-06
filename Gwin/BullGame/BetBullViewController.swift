@@ -160,6 +160,7 @@ class BetBullViewController: BaseViewController {
     tableView.reloadData()
     rightTableView.reloadData()
   }
+
   func betBull(){
     guard let user = RedEnvelopComponent.shared.user else { return }
 
@@ -170,17 +171,15 @@ class BetBullViewController: BaseViewController {
       }
     }else {
 
+      var wagerArray:[String] = []
       for i in 0 ..< wagerOdds.count {
         let model = wagerOdds[i]
         if model.money > 0 {
           let x = "\(model.wagertypeno):\(model.objectid):\(Int(model.money))"
-          if i == 0 {
-            wagers = x
-          }else {
-            wagers = "\(wagers);\(x)"
-          }
+          wagerArray.append(x)
         }
       }
+      wagers = wagerArray.joined(separator: ";")
     }
 
     showLoadingView()

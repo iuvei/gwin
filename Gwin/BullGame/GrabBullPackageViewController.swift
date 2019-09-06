@@ -66,11 +66,12 @@ class GrabBullPackageViewController: BaseViewController {
       usernameLabel.text = package.userno
       packageTagLabel.text = package.packettag
       packageTagLabel.isHidden = false
+      messageLabel.text = bull.isOnleyself() ? "发了一个扫雷红包,金额随机" : "发了一个牛牛红包，金额随机"
     }else {
-      usernameLabel.text = RedEnvelopComponent.shared.userno
+      usernameLabel.text = "平台"
       packageTagLabel.isHidden = true
+      messageLabel.text = "发了一个牛牛红包，金额随机"
     }
-    messageLabel.text = bull.isOnleyself() ? "发了一个扫雷红包,金额随机" : "发了一个牛牛红包，金额随机"
   }
 
   func fetchPackageStatus() {
@@ -138,7 +139,8 @@ class GrabBullPackageViewController: BaseViewController {
 
       }else{
         if let message = error {
-          self.showAlertMessage(message: message)
+          self.packageTagLabel.text = message
+          self.packageTagLabel.isHidden = false
         }
       }
     }

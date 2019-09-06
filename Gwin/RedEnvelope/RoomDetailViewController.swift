@@ -434,7 +434,7 @@ extension RoomDetailViewController {
   }
 
   private func isTableInBottom() -> Bool {
-    if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
+    if  tableView.contentSize.height - (tableView.contentOffset.y + tableView.frame.size.height) <= Constants.defaultInfoHeight / 3 {
       //you reached end of the table
       return true
     }
