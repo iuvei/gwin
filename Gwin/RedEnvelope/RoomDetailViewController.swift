@@ -110,6 +110,7 @@ class RoomDetailViewController: BaseViewController {
 
   private var histories: [PackageHistoryModel] = []
   private var openPackages: [NSManagedObject] = []
+  private var newMessage: Int = 0
 
   init(userno: String, room: RoomModel) {
     self.userno = userno
@@ -430,7 +431,14 @@ extension RoomDetailViewController {
       tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.top)
       tableView.endUpdates()
     }
+  }
 
+  private func isTableInBottom() -> Bool {
+    if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
+      //you reached end of the table
+      return true
+    }
+    return false
   }
 }
 
@@ -523,13 +531,20 @@ extension RoomDetailViewController: WebSocketDelegate {
     if histories.count == 0 {
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
         self?.tableView.scrollToBottom()
-        //self?.updateNotifyView()
+      }
+    }else {
+      if isTableInBottom(){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+          self?.tableView.scrollToBottom()
+        }
       }
     }
 
     var usernos: [String] = []
     for packageJson in json {
       let package = PackageHistoryModel(json: packageJson)
+      let viewed = isTableInBottom()
+      package.viewed = viewed
       histories.append(package)
       if ImageManager.shared.getImage(userno: package.userno) == nil {
         usernos.append(package.userno)
@@ -538,7 +553,9 @@ extension RoomDetailViewController: WebSocketDelegate {
 
 
     //
-
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+      self?.updateNotifyView()
+    }
 
     tableView.reloadData()
     //    [{"roomid":5,"packetid":158983,"userno":"steven2","username":"","packetamount":200.00,"packettag":"5","wagertime":"2019-08-24 12:03:31"},{"roomid":5,"packetid":158984,"userno":"steven2","username":"","packetamount":2006.00,"packettag":"2","wagertime":"2019-08-24 12:03:48"}]
@@ -583,17 +600,21 @@ extension RoomDetailViewController: GrabEnvelopPopupDelegate {
 
 extension RoomDetailViewController {
   fileprivate func updateNotifyView() {
-    var availableGrab = 0
-    for model in histories{
-      if !isPackageExpeire(wagertime: model.wagertime) && model.viewed == false {
-        availableGrab += 1
-      }
+//    var availableGrab = 0
+//    for model in histories{
+//      if !model.isExpire() && model.viewed == false {
+//        availableGrab += 1
+//      }
+//
+//    }
+    let availablePackages = histories.filter{!$0.viewed}
+    let newPackages = availablePackages.filter{!$0.isExpire()}
+//    let notOpenPackage = availableGrab - openPackages.count
 
-    }
-    let notOpenPackage = availableGrab - openPackages.count
+    notifyLabel.text = "\(newPackages.count)"
+    notifyView.isHidden = newPackages.count <= 0
 
-    notifyLabel.text = "\(notOpenPackage)"
-    notifyView.isHidden = notOpenPackage <= 0
+    print("updateNotifyView \(availablePackages.count) -- \(newPackages.count)")
     //    }
   }
 
