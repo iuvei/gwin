@@ -32,7 +32,7 @@ class BullModel {
   var roomid: Int
   var canbet: Bool
   private var wagerTimer: Timer?
-  private var resultWagerTimer: Timer?
+//  private var resultWagerTimer: Timer?
   var delegate: BullModelDelegate?
 
   init(canbet: Bool = false, expire: Bool = false, round: BullRoundModel, historyPackage: BullPackageHistoryModel?, roomid: Int, delegate: BullModelDelegate? = nil){
@@ -66,24 +66,22 @@ class BullModel {
   }
 
   func resultWagerInfoTimer(cancelCurrent: Bool = false) {
-    if resultWagerTimer == nil{
-      resultWagerTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(fetchResultWagerInfo(_:)), userInfo: ["idno": 0, "status": 3], repeats: true)
-    }
+//    if resultWagerTimer == nil{
+//      resultWagerTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(fetchResultWagerInfo(_:)), userInfo: ["idno": 0, "status": 3], repeats: true)
+//    }
+    fetchResultWagerInfo()
   }
 
   func cancelWagerTimer(){
     wagerTimer?.invalidate()
     wagerTimer = nil
-    resultWagerTimer?.invalidate()
-    resultWagerTimer = nil
+//    resultWagerTimer?.invalidate()
+//    resultWagerTimer = nil
   }
 
   @objc func fetchWagerInfo(_ timer: Timer? = nil) {
     guard let user = RedEnvelopComponent.shared.user else { return }
 
-//    guard let userInfo = timer.userInfo as? [String: Any] else { return }
-//    guard let _idno = userInfo["idno"] as? Int else  { return }
-    //guard let _status = userInfo["status"]  as? Int else { return }
 
     BullAPIClient.wagerinfo(ticket: user.ticket, roomid: roomid, roundid: round.roundid, idno: getLastIdno()) { [weak self](infos, error) in
       guard let this = self else {return}

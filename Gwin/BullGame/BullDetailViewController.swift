@@ -311,7 +311,7 @@ class BullDetailViewController: BaseViewController {
 
           if let index = this.getBullModel(roundid: round.roundid){
             let bull = this.datas[index]
-//            bull.cancelWagerTimer()
+            bull.cancelWagerTimer()
             bull.updateRoundStatus(status: .addNew)
             bull.fetchResultWagerInfo()
             bull.fetchWagerInfo()
