@@ -13,6 +13,8 @@ class ProfileViewController: BaseViewController {
 
   enum Constants {
     static let cellHeight: CGFloat = 40
+    static let iPadCellHeight: CGFloat = 50
+
   }
 
 
@@ -23,9 +25,20 @@ class ProfileViewController: BaseViewController {
   @IBOutlet weak var uploadAvatarButton: UIButton!
 
   @IBOutlet weak var allowCreditLabel: UILabel!
+  @IBOutlet weak var allowCreateTitleLabel: UILabel!
+  
+  
   @IBOutlet weak var creditLabel: UILabel!
+  @IBOutlet weak var creditTitleLabel: UILabel!
+
+
   @IBOutlet weak var accountnoLabel: UILabel!
+  @IBOutlet weak var accountnoTitleLabel: UILabel!
+
   @IBOutlet weak var accountNameLabel: UILabel!
+  @IBOutlet weak var acoutnameTitleLabel: UILabel!
+
+  @IBOutlet weak var infoHeightConstraint: NSLayoutConstraint!
   private var menuItems:[ProfileItemModel] = []
   private var userInfo:UserInfo?
 
@@ -101,7 +114,19 @@ class ProfileViewController: BaseViewController {
 
   func setupViews() {
 
-    
+    let font = UIDevice.current.iPad ? UIFont.systemFont(ofSize: 20) : UIFont.systemFont(ofSize: 14)
+    allowCreditLabel.font = font
+    allowCreateTitleLabel.font = font
+    creditLabel.font = font
+    creditTitleLabel.font = font
+    accountnoLabel.font = font
+    accountnoTitleLabel.font = font
+    accountNameLabel.font = font
+    acoutnameTitleLabel.font = font
+    //
+    //
+    infoHeightConstraint.constant = UIDevice.current.iPad ? 100 : 80
+
     avatarImageView.contentMode = .scaleAspectFit
     uploadAvatarButton.addTarget(self, action: #selector(avatarPressed(_:)), for: .touchUpInside)
     setupTableView()
@@ -166,6 +191,10 @@ class ProfileViewController: BaseViewController {
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    if UIDevice.current.iPad {
+      return Constants.iPadCellHeight
+    }
+
     return Constants.cellHeight
   }
 

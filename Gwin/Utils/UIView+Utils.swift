@@ -414,8 +414,13 @@ extension UIDevice {
   var iPhoneX: Bool {
     return UIScreen.main.nativeBounds.height == 2436
   }
+
   var iPhone: Bool {
     return UIDevice.current.userInterfaceIdiom == .phone
+  }
+
+  var iPad: Bool {
+    return UIDevice.current.userInterfaceIdiom == .pad
   }
 
   enum ScreenType: String {

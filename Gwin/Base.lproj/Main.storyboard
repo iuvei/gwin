@@ -499,9 +499,14 @@
                     <connections>
                         <outlet property="accountNameLabel" destination="6kM-T5-zen" id="6qr-0G-jvJ"/>
                         <outlet property="accountnoLabel" destination="8Wq-ZN-NLA" id="UC1-Zv-Pm7"/>
+                        <outlet property="accountnoTitleLabel" destination="A7T-4m-b6g" id="awb-iM-2of"/>
+                        <outlet property="acoutnameTitleLabel" destination="DnA-Yy-H7q" id="egP-G6-jCS"/>
+                        <outlet property="allowCreateTitleLabel" destination="KPT-4v-yn8" id="cBm-qQ-dX2"/>
                         <outlet property="allowCreditLabel" destination="r7a-uV-HjT" id="h6I-tK-3xH"/>
                         <outlet property="avatarImageView" destination="YHl-fT-F5X" id="PoN-3n-xdL"/>
                         <outlet property="creditLabel" destination="Oxe-Kj-3Pd" id="VOJ-72-Pht"/>
+                        <outlet property="creditTitleLabel" destination="mRL-mx-MzA" id="JLK-7o-7e8"/>
+                        <outlet property="infoHeightConstraint" destination="qqK-2l-ICj" id="k0B-PL-LLN"/>
                         <outlet property="infoView" destination="m5T-VM-zag" id="bq2-6z-cKj"/>
                         <outlet property="tableview" destination="ED5-ZC-GSr" id="o4Z-jO-o1y"/>
                         <outlet property="uploadAvatarButton" destination="g4I-oM-df9" id="aIA-YC-ehF"/>

@@ -441,7 +441,7 @@ class BullDetailViewController: BaseViewController {
     let view = UIView().forAutolayout()
 
     let padding = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 4 : 8
-    let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 9 : 10
+    let fontSize: CGFloat = UIDevice.current.iPad ? 15 : (UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 9 : 10)
 
     let button = UIButton().forAutolayout()
     let imageWidth = (UIScreen.main.bounds.width / 12) - CGFloat(padding)

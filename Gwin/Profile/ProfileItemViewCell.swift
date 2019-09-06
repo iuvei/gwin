@@ -48,7 +48,7 @@ class ProfileItemViewCell: UITableViewCell {
   private lazy var titleLabel: UILabel = {
     let view = UILabel().forAutolayout()
     view.text = "abc"
-    view.font = UIFont.systemFont(ofSize: 14)
+    view.font = UIDevice.current.iPad ?  UIFont.systemFont(ofSize: 20) : UIFont.systemFont(ofSize: 14)
     return view
   }()
 
