@@ -39,6 +39,11 @@ class ProfileViewController: BaseViewController {
   @IBOutlet weak var acoutnameTitleLabel: UILabel!
 
   @IBOutlet weak var infoHeightConstraint: NSLayoutConstraint!
+  private lazy var refreshControl:UIRefreshControl = {
+    let view = UIRefreshControl()
+    return view
+  }()
+
   private var menuItems:[ProfileItemModel] = []
   private var userInfo:UserInfo?
   private var timer: Timer?
@@ -81,10 +86,12 @@ class ProfileViewController: BaseViewController {
     }
   }
 
- @objc func fetchUserInfo() {
+  @objc func fetchUserInfo(showLoading: Bool = false) {
     guard let user = RedEnvelopComponent.shared.user else { return }
+
     UserAPIClient.userInfo(ticket: user.ticket) { [weak self] (userInfo, errorMessage) in
       guard let this = self else { return }
+      this.refreshControl.endRefreshing()
       this.userInfo = userInfo
       if let `userInfo` = userInfo {
         print("userInfo \(userInfo)")
@@ -141,6 +148,14 @@ class ProfileViewController: BaseViewController {
   }
 
   func setupTableView() {
+    if #available(iOS 10.0, *) {
+      tableview.refreshControl = refreshControl
+    } else {
+      tableview.addSubview(refreshControl)
+    }
+
+    refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+
     tableview.register(ProfileItemViewCell.self, forCellReuseIdentifier: "profileItemCell")
   }
 
@@ -193,6 +208,11 @@ class ProfileViewController: BaseViewController {
       self?.avatarImageView.image = image
     }
     present(vc, animated: true, completion: nil)
+  }
+
+  @objc private func refreshData(_ sender: Any) {
+    // Fetch Weather Data
+    fetchUserInfo(showLoading: true)
   }
 }
 
