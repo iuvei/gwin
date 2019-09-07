@@ -60,24 +60,26 @@ class LobbyItemView: UIView {
     let view = UILabel().forAutolayout()
     view.textAlignment = .center
     view.numberOfLines = 0
-    view.font = UIFont.systemFont(ofSize: 14)
+    view.font = UIFont.systemFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
     return view
   }()
 
   private var subtitleLAbel: UILabel = {
     let label = UILabel().forAutolayout()
     label.textColor = .gray
-    label.font = UIFont.systemFont(ofSize: 14)
+    label.font = UIFont.systemFont(ofSize: UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 12 : 14)
     return label
   }()
 
   private let model: LobbyItemModel!
   private var output: LobbyItemViewOuput
   private var axis: NSLayoutConstraint.Axis
-  init(model: LobbyItemModel, axis: NSLayoutConstraint.Axis = .vertical, output: LobbyItemViewOuput) {
+  private var row: Int
+  init(model: LobbyItemModel, axis: NSLayoutConstraint.Axis = .vertical, row: Int = 1, output: LobbyItemViewOuput) {
     self.model = model
     self.output = output
     self.axis = axis
+    self.row = row
     super.init(frame: .zero)
     setupViews()
     updateView()
@@ -90,6 +92,8 @@ class LobbyItemView: UIView {
   func setupViews() {
     addSubview(stackView)
     addSubview(coverButton)
+    let itemHeight = UIScreen.main.bounds.width / 4
+
     NSLayoutConstraint.activate([
       stackView.topAnchor.constraint(equalTo: topAnchor),
       stackView.leftAnchor.constraint(equalTo: leftAnchor),
@@ -109,11 +113,11 @@ class LobbyItemView: UIView {
         imageView.topAnchor.constraint(equalTo: stackView.topAnchor),
         imageView.leftAnchor.constraint(equalTo: stackView.leftAnchor),
         imageView.rightAnchor.constraint(equalTo: stackView.rightAnchor),
+        imageView.heightAnchor.constraint(equalToConstant: itemHeight - 20 ),
 
         titleLabel.leftAnchor.constraint(equalTo: stackView.leftAnchor),
         titleLabel.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
         titleLabel.rightAnchor.constraint(equalTo: stackView.rightAnchor),
-        titleLabel.heightAnchor.constraint(equalToConstant: 25),
 
         imageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor)
         ])
@@ -127,12 +131,12 @@ class LobbyItemView: UIView {
         imageView.leftAnchor.constraint(equalTo: stackView.leftAnchor),
         imageView.bottomAnchor.constraint(equalTo: stackView.bottomAnchor),
         imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
+        imageView.heightAnchor.constraint(equalToConstant: itemHeight - 20),
 
         textStackView.leftAnchor.constraint(equalTo: imageView.rightAnchor),
         textStackView.rightAnchor.constraint(equalTo: stackView.rightAnchor),
         textStackView.centerYAnchor.constraint(equalTo: stackView.centerYAnchor),
         
-        titleLabel.heightAnchor.constraint(equalToConstant: 25),
         titleLabel.centerYAnchor.constraint(equalTo: textStackView.centerYAnchor, constant: -12),
         titleLabel.leftAnchor.constraint(equalTo: textStackView.leftAnchor),
 

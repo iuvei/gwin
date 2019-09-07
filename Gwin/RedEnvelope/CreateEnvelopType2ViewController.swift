@@ -12,6 +12,7 @@ class CreateEnvelopType2ViewController: BaseViewController {
 
   enum Constans {
     static let packageTagMaxLengh: Int = 1
+    static let minPackageSize: Int = 1
   }
 
 
@@ -47,7 +48,7 @@ class CreateEnvelopType2ViewController: BaseViewController {
     ammountTextfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
 
     sizeTextfield.rounded()
-    sizeTextfield.placeholder = "10-200"
+    sizeTextfield.placeholder = "\(Constans.minPackageSize)-\(room.packageSize)"
     sizeTextfield.delegate = self
 
     stakeLabel.text = "\(room.stake1)-\(room.stake2)元"
@@ -63,14 +64,23 @@ class CreateEnvelopType2ViewController: BaseViewController {
    }
    */
   @IBAction func createPressed(_ sender: Any) {
-    if processing == true {
-      return
-    }
-    processing = true
+
     guard let amountText = ammountTextfield.text, let amount = Int(amountText) else { return }
     guard let sizeText = sizeTextfield.text, let size = Int(sizeText) else { return }
     guard let user = RedEnvelopComponent.shared.user else { return }
+
+    if size < Constans.minPackageSize || size > room.packageSize {
+      //showAlertMessage(message: "红包发包范围: \(room.stake1)-\(room.stake2)元")
+      //sizeTextfield.becomeFirstResponder()
+      sizeTextfield.addBorder(color: UIColor.red, width: 1.0)
+      return
+    }
+
+    if processing == true {
+      return
+    }
     
+    processing = true
     RedEnvelopAPIClient.sendPackage(ticket: user.ticket, roomid: room.roomId, packageamount: amount, packagesize: size, packagetag: "") { [weak self] (success, message) in
       self?.processing = false
       if success {
@@ -105,7 +115,7 @@ extension CreateEnvelopType2ViewController : UITextFieldDelegate {
     if textField == ammountTextfield {
       return count <= room.stake2.usefulDigits
     } else if textField == sizeTextfield {
-      return count <= 200.usefulDigits
+      return count <= room.packageSize.usefulDigits
     }
 
     return true

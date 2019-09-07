@@ -73,6 +73,10 @@ class PackageInfoModel {
     return  current - wagerInteval > 5 * 60 //5 mins
   }
 
+  func outOfStock() -> Bool {
+   return grabuser.count >= packetsize
+  }
+
   func findKing(packageid: Int64) {
     var index = -1
     var max:Float = 0

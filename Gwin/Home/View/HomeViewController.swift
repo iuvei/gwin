@@ -228,7 +228,7 @@ class HomeViewController: BaseViewController {
 
       NSLayoutConstraint.activate([
         button.widthAnchor.constraint(equalToConstant: buttonSize),
-        button.heightAnchor.constraint(equalToConstant: itemHeight),
+        //button.heightAnchor.constraint(equalToConstant: itemHeight),
         ])
       stackView1.addArrangedSubview(button)
       lobbyIndex += 1
@@ -267,7 +267,7 @@ class HomeViewController: BaseViewController {
       button.translatesAutoresizingMaskIntoConstraints = false
       NSLayoutConstraint.activate([
         button.widthAnchor.constraint(equalToConstant: item2Width),
-        button.heightAnchor.constraint(equalToConstant: itemHeight),
+        //button.heightAnchor.constraint(equalToConstant: itemHeight),
         ])
       stackView2.addArrangedSubview(button)
       lobbyIndex += 1
@@ -303,7 +303,7 @@ class HomeViewController: BaseViewController {
 
       NSLayoutConstraint.activate([
         button.widthAnchor.constraint(equalToConstant: item3Width),
-        button.heightAnchor.constraint(equalToConstant: itemHeight),
+        //button.heightAnchor.constraint(equalToConstant: itemHeight),
         ])
 
       stackView3.addArrangedSubview(button)
@@ -322,12 +322,11 @@ class HomeViewController: BaseViewController {
     let item4Width = view.frame.width / 4
 
     for _ in 0..<4 {
-      let button = LobbyItemView(model: lobbies[lobbyIndex], output: self)
+      let button = LobbyItemView(model: lobbies[lobbyIndex], row: 2, output: self)
       button.translatesAutoresizingMaskIntoConstraints = false
 
       NSLayoutConstraint.activate([
-        button.widthAnchor.constraint(equalToConstant: item4Width),
-        button.heightAnchor.constraint(equalToConstant: itemHeight),
+        button.widthAnchor.constraint(equalToConstant: item4Width)
         ])
 
       stackView4.addArrangedSubview(button)

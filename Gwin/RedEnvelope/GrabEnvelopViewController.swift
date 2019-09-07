@@ -105,10 +105,17 @@ class GrabEnvelopViewController: UIViewController {
 
     guard let user = RedEnvelopComponent.shared.user else { return }
 
-    RedEnvelopAPIClient.grabPackage(ticket: user.ticket, roomid: package.roomid, packageid: package.packetid) { [weak self ] (grabedPackage, message) in
+    RedEnvelopAPIClient.grabPackage(ticket: user.ticket, roomid: package.roomid, packageid: package.packetid) { [weak self ] (package, message) in
       guard let this = self else {return }
       this.dismiss(animated: true) {
-        this.delegate?.openPackageInfo(package: grabedPackage, roomid: this.package.roomid, packageid: this.package.packetid)
+        if let grabedPackage = package {
+          this.delegate?.openPackageInfo(package: grabedPackage, roomid: this.package.roomid, packageid: this.package.packetid)
+        }else {
+          if let msg = message {
+            this.messageLabel.text = msg
+            this.messageLabel.isHidden = false
+          }
+        }
       }
 
     }

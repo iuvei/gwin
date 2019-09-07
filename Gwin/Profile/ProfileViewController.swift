@@ -14,7 +14,7 @@ class ProfileViewController: BaseViewController {
   enum Constants {
     static let cellHeight: CGFloat = 40
     static let iPadCellHeight: CGFloat = 50
-
+    static let updateInfoInterval: TimeInterval = 30
   }
 
 
@@ -41,6 +41,7 @@ class ProfileViewController: BaseViewController {
   @IBOutlet weak var infoHeightConstraint: NSLayoutConstraint!
   private var menuItems:[ProfileItemModel] = []
   private var userInfo:UserInfo?
+  private var timer: Timer?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -54,6 +55,13 @@ class ProfileViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     hideBackButton()
+    timer = Timer.scheduledTimer(timeInterval: Constants.updateInfoInterval, target: self, selector: #selector(fetchUserInfo), userInfo: nil, repeats: true)
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    timer?.invalidate()
+    timer = nil
   }
 
   func initData() {
@@ -73,7 +81,7 @@ class ProfileViewController: BaseViewController {
     }
   }
 
-  func fetchUserInfo() {
+ @objc func fetchUserInfo() {
     guard let user = RedEnvelopComponent.shared.user else { return }
     UserAPIClient.userInfo(ticket: user.ticket) { [weak self] (userInfo, errorMessage) in
       guard let this = self else { return }

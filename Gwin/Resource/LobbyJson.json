@@ -66,27 +66,27 @@
     },
     {
       "icon": "game_11",
-      "name":"EPS赛马180",
+      "name":"EPS赛马\n180",
       "key":"34",
       "action": "lottery"
     },
     {
       "icon": "game_12",
-      "name":"EPS赛马300",
+      "name":"EPS赛马\n300",
       "key":"35",
       "action": "lottery"
 
     },
     {
       "icon": "game_13",
-      "name":"超级快5_3min",
+      "name":"超级快\n5_3min",
       "key":"36",
       "action": "lottery"
 
     },
     {
       "icon": "game_14",
-      "name":"超级快5_5min",
+      "name":"超级快\n5_5min",
       "key":"37",
       "action": "lottery"
     }

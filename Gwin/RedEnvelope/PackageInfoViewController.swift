@@ -21,6 +21,7 @@ class PackageInfoViewController: BaseViewController {
 
   @IBOutlet weak var usernoLabel: UILabel!
   @IBOutlet weak var avatarImageView: UIImageView!
+  @IBOutlet weak var packageIdLabel: UILabel!
   @IBOutlet weak var wagerTimeLabel: UILabel!
 
   @IBOutlet weak var tableView: UITableView!
@@ -73,6 +74,11 @@ class PackageInfoViewController: BaseViewController {
     tableView.delegate = self
     tableView.dataSource = self
     avatarImageView.rounded()
+
+    //
+    let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 17.0
+    packageIdLabel.font = UIFont.systemFont(ofSize: fontSize)
+    wagerTimeLabel.font = UIFont.systemFont(ofSize: fontSize)
   }
 
   func fetchPackageInfo() {
@@ -90,7 +96,8 @@ class PackageInfoViewController: BaseViewController {
         }
         
         this.usernoLabel.text = info.userno
-        this.wagerTimeLabel.text = String(format: "  已领取%d／%d个／共%@／%@元", info.grabuser.count, info.packetsize,  info.isExpire() ? info.totalPackageAmount().toFormatedString() : "*.**" ,info.packetamount.toFormatedString())
+        this.packageIdLabel.text = "\(this.packageid) "
+        this.wagerTimeLabel.text = String(format: "  已领取%d／%d个／共%@／%@元", info.grabuser.count, info.packetsize,   (info.outOfStock() || info.isExpire()) ? info.totalPackageAmount().toFormatedString() : "*.**" ,info.packetamount.toFormatedString())
 
         this.model = info
         this.tableView.reloadData()
@@ -181,9 +188,11 @@ extension PackageInfoViewController: UITableViewDelegate, UITableViewDataSource 
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "GrabUserViewCell", for: indexPath) as? GrabUserViewCell {
-      if let model = self.model?.grabuser[indexPath.row] {
-        cell.updateViews(model: model, packageid: packageid)
-      }
+      guard let package = self.model else { return UITableViewCell() }
+
+      let model = package.grabuser[indexPath.row]
+      cell.updateViews(model: model, packageid: packageid, outofStock: package.outOfStock())
+
 
       return cell
     }
