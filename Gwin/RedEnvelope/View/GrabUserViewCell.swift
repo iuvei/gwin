@@ -58,21 +58,25 @@ class GrabUserViewCell: UITableViewCell {
 
     kingImageView.isHidden = !(LocalDataManager.shared.isKing(userno: model.userno, packageid: packageid) || model.king)
 
+    if model.userno == Constant.systemUserno {
+      avatarImageView.image = UIImage(named: "grabuser_system")
 
-    if let imgString = ImageManager.shared.getImage(userno: model.userno) {
-      if let data = Data(base64Encoded: imgString, options: []) {
-        avatarImageView.image = UIImage(data: data)
-      }
-    } else {
-      guard let user = RedEnvelopComponent.shared.user else { return }
-      UserAPIClient.getUserImages(ticket: user.ticket, usernos: [model.userno]) {[weak self] (data, _) in
-        guard let _data = data else { return }
-        for json in _data {
-          let userno = json["userno"].stringValue
-          let imgString = json["img"].stringValue
-          if let data = Data(base64Encoded: imgString, options: []) {
-            self?.avatarImageView.image = UIImage(data: data)
-            ImageManager.shared.saveImage(userno: userno, image: imgString)
+    }else {
+      if let imgString = ImageManager.shared.getImage(userno: model.userno) {
+        if let data = Data(base64Encoded: imgString, options: []) {
+          avatarImageView.image = UIImage(data: data)
+        }
+      } else {
+        guard let user = RedEnvelopComponent.shared.user else { return }
+        UserAPIClient.getUserImages(ticket: user.ticket, usernos: [model.userno]) {[weak self] (data, _) in
+          guard let _data = data else { return }
+          for json in _data {
+            let userno = json["userno"].stringValue
+            let imgString = json["img"].stringValue
+            if let data = Data(base64Encoded: imgString, options: []) {
+              self?.avatarImageView.image = UIImage(data: data)
+              ImageManager.shared.saveImage(userno: userno, image: imgString)
+            }
           }
         }
       }

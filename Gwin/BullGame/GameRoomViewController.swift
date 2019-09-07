@@ -30,6 +30,13 @@ class GameRoomViewController: BaseViewController {
 
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    SoundManager.shared.playBipSound()
+    processing = false
+    hideBackButton()
+  }
+
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
   }
@@ -105,11 +112,7 @@ extension GameRoomViewController: UITableViewDelegate, UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if processing == true {
-      return
-    }
 
-    processing = true
     let model  = rooms[indexPath.row]
 
     if model.roomPwd.count > 0 {
@@ -131,7 +134,10 @@ extension GameRoomViewController {
 
     let saveAction = UIAlertAction(title: "确认", style: .default, handler: { [weak self] alert -> Void in
       if let firstTextField = alertVC.textFields?[0], let roompwd = firstTextField.text, roompwd == room.roomPwd {
-        self?.doLogin(room: room)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+          self?.doLogin(room: room)
+
+        })
       }
     })
 
@@ -146,13 +152,17 @@ extension GameRoomViewController {
 
     guard let user = RedEnvelopComponent.shared.user else { return }
     guard let userno = RedEnvelopComponent.shared.userno else { return }
+    if processing == true {
+      return
+    }
 
-    RedEnvelopAPIClient.roomLogin(ticket: user.ticket, roomId: room.roomId, roomPwd: room.roomPwd) { (success, message) in
-
+    processing = true
+    RedEnvelopAPIClient.roomLogin(ticket: user.ticket, roomId: room.roomId, roomPwd: room.roomPwd) { [weak self](success, message) in
+      self?.processing = false
       if success {
         let vc = BullDetailViewController(userno: userno , room: room)
         vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        self?.navigationController?.pushViewController(vc, animated: true)
       }
     }
   }

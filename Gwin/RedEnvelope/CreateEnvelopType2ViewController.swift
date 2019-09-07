@@ -67,8 +67,15 @@ class CreateEnvelopType2ViewController: BaseViewController {
    */
   @IBAction func createPressed(_ sender: Any) {
 
-    guard let amountText = ammountTextfield.text, let amount = Int(amountText) else { return }
-    guard let sizeText = sizeTextfield.text, let size = Int(sizeText) else { return }
+    guard let amountText = ammountTextfield.text, let amount = Int(amountText) else {
+      showAlertMessage(message: "请输入雷数")
+      return
+    }
+    
+    guard let sizeText = sizeTextfield.text, let size = Int(sizeText) else {
+      //showAlertMessage(message: "发包金额 \(Constans.minPackageSize)-\(Constans.maxPackageSize)元范围内，雷数 0-9范围内 ")
+      return
+    }
     guard let user = RedEnvelopComponent.shared.user else { return }
 
     if size < Constans.minPackageSize || size > Constans.maxPackageSize {

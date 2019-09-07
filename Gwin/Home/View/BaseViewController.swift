@@ -162,5 +162,17 @@ class BaseViewController: UIViewController {
     alert.addAction(okAction)
     present(alert, animated: true, completion: nil)
   }
+
+  override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {
+    let transition = CATransition()
+    transition.duration = 0.3
+    transition.type = CATransitionType.push
+    transition.subtype = CATransitionSubtype.fromRight
+    transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+    view.window!.layer.add(transition, forKey: kCATransition)
+
+
+    super.present(viewControllerToPresent, animated: false, completion: nil)
+  }
 }
 

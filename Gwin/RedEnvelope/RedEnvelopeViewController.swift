@@ -110,11 +110,6 @@ extension RedEnvelopeViewController: UITableViewDelegate, UITableViewDataSource 
   }
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if processing == true {
-      return
-    }
-
-    processing = true
     let model  = rooms[indexPath.row]
 
     if model.roomPwd.count > 0 {
@@ -127,16 +122,23 @@ extension RedEnvelopeViewController: UITableViewDelegate, UITableViewDataSource 
   func doLogin(room: RoomModel) {
     guard let user = RedEnvelopComponent.shared.user else { return }
     guard let userno = RedEnvelopComponent.shared.userno else { return }
+    if processing == true {
+      return
+    }
 
-    RedEnvelopAPIClient.roomLogin(ticket: user.ticket, roomId: room.roomId, roomPwd: room.roomPwd) { (success, message) in
+    processing = true
+    showLoadingView()
 
+    RedEnvelopAPIClient.roomLogin(ticket: user.ticket, roomId: room.roomId, roomPwd: room.roomPwd) { [weak self](success, message) in
+      self?.hideLoadingView()
+      self?.processing = false
       if success {
         let vc = RoomDetailViewController(userno: userno , room: room)
         vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        self?.navigationController?.pushViewController(vc, animated: true)
       } else {
         if let errorMsg = message {
-          self.showAlertMessage(message: errorMsg)
+          self?.showAlertMessage(message: errorMsg)
         }
       }
     }
@@ -154,7 +156,9 @@ extension RedEnvelopeViewController {
 
     let saveAction = UIAlertAction(title: "确认", style: .default, handler: { [weak self] alert -> Void in
       if let firstTextField = alertVC.textFields?[0], let roompwd = firstTextField.text, roompwd == room.roomPwd {
-        self?.doLogin(room: room)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+          self?.doLogin(room: room)
+        })
       }else {
         self?.showAlertMessage(message: "输入密码错误，请重新输入")
       }

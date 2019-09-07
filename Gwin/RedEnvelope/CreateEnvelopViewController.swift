@@ -70,9 +70,9 @@ class CreateEnvelopViewController: BaseViewController {
 
   func validateAmounInput(amount: Int) -> Bool {
     let inrange = amount >= room.stake1 && amount <= room.stake2
-    if !inrange {
-      packageAmountTextfield.showErrorIcon(viewMode: .unlessEditing)
-    }
+//    if !inrange {
+////      packageAmountTextfield.showErrorIcon(viewMode: .unlessEditing)
+//    }
 
     return inrange
   }
@@ -84,10 +84,15 @@ class CreateEnvelopViewController: BaseViewController {
   @IBAction func sendPackagePressed(_ sender: Any) {
 
     guard let amountText = packageAmountTextfield.text, let amount = Int(amountText), validateAmounInput(amount: amount) else {
-      showAlertMessage(message: "发包金额 \(room.stake1)-\(room.stake2)元范围内，雷数 0-9范围内  ")
-      return }
+      showAlertMessage(message: "请输入雷数")
+      return
+      
+    }
 
-    guard let tag = packageTagTextfield.text, tag.count > 0 else { return }
+    guard let tag = packageTagTextfield.text, tag.count > 0 else {
+      showAlertMessage(message: "发包金额 \(room.stake1)-\(room.stake2)元范围内，雷数 0-9范围内  ")
+      return
+    }
     guard let user = RedEnvelopComponent.shared.user else { return }
     
     if processing == true {
