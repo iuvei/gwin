@@ -12,7 +12,9 @@ class CreateEnvelopType2ViewController: BaseViewController {
 
   enum Constans {
     static let packageTagMaxLengh: Int = 1
-    static let minPackageSize: Int = 1
+    static let minPackageSize: Int = 10
+    static let maxPackageSize: Int = 200
+
   }
 
 
@@ -48,7 +50,7 @@ class CreateEnvelopType2ViewController: BaseViewController {
     ammountTextfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
 
     sizeTextfield.rounded()
-    sizeTextfield.placeholder = "\(Constans.minPackageSize)-\(room.packageSize)"
+    sizeTextfield.placeholder = "\(Constans.minPackageSize)-\(Constans.maxPackageSize)"
     sizeTextfield.delegate = self
 
     stakeLabel.text = "\(room.stake1)-\(room.stake2)元"
@@ -69,7 +71,7 @@ class CreateEnvelopType2ViewController: BaseViewController {
     guard let sizeText = sizeTextfield.text, let size = Int(sizeText) else { return }
     guard let user = RedEnvelopComponent.shared.user else { return }
 
-    if size < Constans.minPackageSize || size > room.packageSize {
+    if size < Constans.minPackageSize || size > Constans.maxPackageSize {
       //showAlertMessage(message: "红包发包范围: \(room.stake1)-\(room.stake2)元")
       //sizeTextfield.becomeFirstResponder()
       sizeTextfield.addBorder(color: UIColor.red, width: 1.0)
@@ -104,7 +106,7 @@ extension CreateEnvelopType2ViewController {
 }
 
 extension CreateEnvelopType2ViewController : UITextFieldDelegate {
- 
+
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     guard let textFieldText = textField.text,
       let rangeOfTextToReplace = Range(range, in: textFieldText) else {
@@ -117,7 +119,7 @@ extension CreateEnvelopType2ViewController : UITextFieldDelegate {
       return count <= room.stake2.usefulDigits
     } else if textField == sizeTextfield {
       sizeTextfield.addBorder(color: .clear, width: 0)
-      return count <= room.packageSize.usefulDigits
+      return count <= Constans.maxPackageSize.usefulDigits
     }
 
     return true
