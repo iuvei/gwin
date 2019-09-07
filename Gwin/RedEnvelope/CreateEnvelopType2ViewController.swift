@@ -104,6 +104,7 @@ extension CreateEnvelopType2ViewController {
 }
 
 extension CreateEnvelopType2ViewController : UITextFieldDelegate {
+ 
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     guard let textFieldText = textField.text,
       let rangeOfTextToReplace = Range(range, in: textFieldText) else {
@@ -115,6 +116,7 @@ extension CreateEnvelopType2ViewController : UITextFieldDelegate {
     if textField == ammountTextfield {
       return count <= room.stake2.usefulDigits
     } else if textField == sizeTextfield {
+      sizeTextfield.addBorder(color: .clear, width: 0)
       return count <= room.packageSize.usefulDigits
     }
 
