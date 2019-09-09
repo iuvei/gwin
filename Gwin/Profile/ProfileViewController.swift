@@ -56,12 +56,12 @@ class ProfileViewController: BaseViewController {
     setTitle(title: "我的")
     initData()
     setupViews()
-    fetchUserInfo()
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     hideBackButton()
+    fetchUserInfo()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
