@@ -160,7 +160,7 @@ class BaseViewController: UIViewController {
 
     let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
     alert.addAction(okAction)
-    present(alert, animated: true, completion: nil)
+    super.present(alert, animated: true, completion: nil)
   }
 
   override func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)? = nil) {

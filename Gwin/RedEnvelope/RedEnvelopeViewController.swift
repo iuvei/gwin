@@ -168,7 +168,7 @@ extension RedEnvelopeViewController {
 
     alertVC.addAction(cancelAction)
     alertVC.addAction(saveAction)
-    present(alertVC, animated: true, completion: nil)
+    super.present(alertVC, animated: true, completion: nil)
   }
 }
 

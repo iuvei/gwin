@@ -136,7 +136,6 @@ extension GameRoomViewController {
       if let firstTextField = alertVC.textFields?[0], let roompwd = firstTextField.text, roompwd == room.roomPwd {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
           self?.doLogin(room: room)
-
         })
       }
     })
@@ -145,7 +144,7 @@ extension GameRoomViewController {
 
     alertVC.addAction(cancelAction)
     alertVC.addAction(saveAction)
-    present(alertVC, animated: true, completion: nil)
+    super.present(alertVC, animated: true, completion: nil)
   }
 
   fileprivate func doLogin(room: RoomModel) {
