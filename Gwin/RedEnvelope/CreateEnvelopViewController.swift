@@ -90,7 +90,7 @@ class CreateEnvelopViewController: BaseViewController {
     }
 
     guard let tag = packageTagTextfield.text, tag.count > 0 else {
-      showAlertMessage(message: "红包个数为 10-200")
+      showAlertMessage(message: "发包金额 \(room.stake1)-\(room.stake2)元范围内，雷数 0-9范围内  ")
       return
     }
     guard let user = RedEnvelopComponent.shared.user else { return }

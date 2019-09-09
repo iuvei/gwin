@@ -73,7 +73,7 @@ class CreateEnvelopType2ViewController: BaseViewController {
     }
     
     guard let sizeText = sizeTextfield.text, let size = Int(sizeText) else {
-      //showAlertMessage(message: "发包金额 \(Constans.minPackageSize)-\(Constans.maxPackageSize)元范围内，雷数 0-9范围内 ")
+      showAlertMessage(message: "红包个数为 10-200")
       return
     }
     guard let user = RedEnvelopComponent.shared.user else { return }
