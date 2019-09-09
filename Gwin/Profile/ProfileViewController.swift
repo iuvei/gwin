@@ -28,6 +28,8 @@ class ProfileViewController: BaseViewController {
   @IBOutlet weak var allowCreateTitleLabel: UILabel!
   
   
+  @IBOutlet weak var refresh1Button: UIButton!
+  @IBOutlet weak var refresh2Button: UIButton!
   @IBOutlet weak var creditLabel: UILabel!
   @IBOutlet weak var creditTitleLabel: UILabel!
 
@@ -46,7 +48,7 @@ class ProfileViewController: BaseViewController {
 
   private var menuItems:[ProfileItemModel] = []
   private var userInfo:UserInfo?
-  private var timer: Timer?
+//  private var timer: Timer?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -60,13 +62,11 @@ class ProfileViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     hideBackButton()
-    timer = Timer.scheduledTimer(timeInterval: Constants.updateInfoInterval, target: self, selector: #selector(fetchUserInfo), userInfo: nil, repeats: true)
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-    timer?.invalidate()
-    timer = nil
+
   }
 
   func initData() {
@@ -88,9 +88,13 @@ class ProfileViewController: BaseViewController {
 
   @objc func fetchUserInfo(showLoading: Bool = false) {
     guard let user = RedEnvelopComponent.shared.user else { return }
+    if showLoading {
+      showLoadingView()
+    }
 
     UserAPIClient.userInfo(ticket: user.ticket) { [weak self] (userInfo, errorMessage) in
       guard let this = self else { return }
+      this.hideLoadingView()
       this.refreshControl.endRefreshing()
       this.userInfo = userInfo
       if let `userInfo` = userInfo {
@@ -129,7 +133,8 @@ class ProfileViewController: BaseViewController {
 
   func setupViews() {
 
-    let font = UIDevice.current.iPad ? UIFont.systemFont(ofSize: 20) : UIFont.systemFont(ofSize: 14)
+    let fontSize: CGFloat = UIDevice.current.iPad ? 20 : (UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 11 : 13)
+    let font = UIFont.systemFont(ofSize: fontSize)
     allowCreditLabel.font = font
     allowCreateTitleLabel.font = font
     creditLabel.font = font
@@ -212,8 +217,13 @@ class ProfileViewController: BaseViewController {
 
   @objc private func refreshData(_ sender: Any) {
     // Fetch Weather Data
+    fetchUserInfo()
+  }
+
+  @IBAction func refreshPressed(_ sender: Any) {
     fetchUserInfo(showLoading: true)
   }
+
 }
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
