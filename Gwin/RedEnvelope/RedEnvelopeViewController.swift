@@ -168,7 +168,11 @@ extension RedEnvelopeViewController {
 
     alertVC.addAction(cancelAction)
     alertVC.addAction(saveAction)
-    super.present(alertVC, animated: true, completion: nil)
+//    setupAnimationForAlert()
+//    DispatchQueue.main.async {  //make sure all UI updates are on the main thread.
+//      self.view.layer.add(CATransition().segueFromBottom(), forKey: nil)
+     presentAlert(alertVC, animated: true, completion: nil)
+//    }
   }
 }
 

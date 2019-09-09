@@ -144,7 +144,7 @@ extension GameRoomViewController {
 
     alertVC.addAction(cancelAction)
     alertVC.addAction(saveAction)
-    super.present(alertVC, animated: true, completion: nil)
+    presentAlert(alertVC, animated: true, completion: nil)
   }
 
   fileprivate func doLogin(room: RoomModel) {
