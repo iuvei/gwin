@@ -39,7 +39,7 @@ class GrabUserViewCell: UITableViewCell {
 
   func updateViews(model: GrabUserModel, packageid: Int64 = 0, outofStock: Bool = false) {
     wagerTimeLabel.text = model.wagertime
-    amountLabel.text = "\(model.packetamount)"
+    amountLabel.text = "\(model.packetamount.toFormatedString())"
 
     if model.userno == Constant.systemUserno {
       if model.isExpire() || outofStock {
