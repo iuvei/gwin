@@ -98,7 +98,7 @@ class BulllPackageInfoViewController: BaseViewController {
 
     wagerTimeLabel.isHidden = bull.isOnleyself()
     rounidLabel.isHidden = bull.isOnleyself()
-    let resultText = "\(userno) \(package.packettag) 牛九"
+    let resultText = "\(package.packettag)"
     onlySelfLabel.text =  bull.isOnleyself() ? "发了一个牛牛红包，金额随机 \n \(resultText)" : nil
   }
 
