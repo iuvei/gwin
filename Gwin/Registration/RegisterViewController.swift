@@ -9,6 +9,11 @@
 import UIKit
 
 class RegisterViewController: BaseViewController {
+  enum Constant {
+    static let PhonnumberLimit: Int = 11
+    static let UserNoLimit: Int = 6
+    static let PasswordLimit: Int = 6
+  }
 
   @IBOutlet weak var userImageView: UIButton!
 
@@ -54,7 +59,11 @@ class RegisterViewController: BaseViewController {
     passwordConfirmTextfield.setLeftIcon(imageName: "register_6")
 
     //
+    phoneNumberTextfield.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    linkCodeTextfield.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    userTextfield.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
 
+    //
     userTextfield.setRightIcon()
     linkCodeTextfield.setRightIcon()
     phoneNumberTextfield.setRightIcon()
@@ -79,27 +88,80 @@ class RegisterViewController: BaseViewController {
    */
 
   private func validateAccountNo() -> String? {
+    let count = userTextfield.text?.count ?? 0
+
+    if count < Constant.UserNoLimit {
+      userTextfield.showErrorIcon()
+    } else {
+      userTextfield.showCorrectIcon()
+    }
+
     return userTextfield.text
   }
 
   private func validatePassword() -> String? {
-    guard let password = passwordTextfield.text, let confirm = passwordConfirmTextfield.text else { return nil }
-    if password == confirm {
-      return password
+
+    let password = passwordTextfield.text
+    let confirm = passwordConfirmTextfield.text
+
+    let passwordcount1 = password?.count ?? 0
+    let confirmcount = confirm?.count ?? 0
+
+    if passwordcount1 < Constant.PasswordLimit {
+      passwordTextfield.showErrorIcon()
+    }else {
+      passwordTextfield.showCorrectIcon()
     }
-    
+
+    if confirmcount < Constant.PasswordLimit {
+      passwordConfirmTextfield.showErrorIcon()
+    }else {
+      passwordConfirmTextfield.showCorrectIcon()
+    }
+
+    if password == confirm && passwordcount1 >= 6 && confirmcount >= 6{
+      passwordTextfield.showCorrectIcon()
+      passwordConfirmTextfield.showCorrectIcon()
+      return password
+    }else {
+      passwordConfirmTextfield.showErrorIcon()
+    }
+
     return nil
   }
 
   private func validateCode() -> String? {
+    let count = confirmTextfield.text?.count ?? 0
+
+    if count == 0 {
+      confirmTextfield.showErrorIcon()
+    } else {
+      confirmTextfield.showCorrectIcon()
+    }
+
     return confirmTextfield.text
   }
 
   private func validatePhonenumber() -> String? {
+    let count = phoneNumberTextfield.text?.count ?? 0
+
+    if count != Constant.PhonnumberLimit {
+      phoneNumberTextfield.showErrorIcon()
+    }else {
+      phoneNumberTextfield.showCorrectIcon()
+    }
+
     return phoneNumberTextfield.text
   }
 
   private func validateRefCode() -> String? {
+
+    if let _ = prefix {
+    linkCodeTextfield.showCorrectIcon()
+    } else {
+      linkCodeTextfield.showErrorIcon()
+    }
+
     return linkCodeTextfield.text
   }
 
@@ -109,7 +171,7 @@ class RegisterViewController: BaseViewController {
 
   @IBAction func phoneNumberPressed(_ sender: Any) {
 
-    guard let phoneno = phoneNumberTextfield.text else { return }
+    guard let phoneno = validatePhonenumber() else { return }
 
     UserAPIClient.checkCellphoneNo(cellphone: phoneno) { [weak self] (checkCode, errorMessage) in
       if let code = checkCode {
@@ -162,6 +224,21 @@ class RegisterViewController: BaseViewController {
       linkCodeTextfield.showErrorIcon()
     }
   }
+
+  @objc func textFieldDidChange(_ textfield: UITextField) {
+
+    if textfield == phoneNumberTextfield {
+      let _ = validatePhonenumber()
+    }
+
+    if textfield == linkCodeTextfield {
+      let _ = validateRefCode()
+    }
+
+    if textfield == userTextfield {
+      let _ = validateAccountNo()
+    }
+  }
 }
 
 
@@ -190,13 +267,13 @@ extension RegisterViewController: UITextFieldDelegate {
         textField.showErrorIcon()
       }
     } else if textField == phoneNumberTextfield {
-      if count < 10 {
+      if count < Constant.PhonnumberLimit {
         textField.showErrorIcon()
       }else {
         textField.showCorrectIcon()
       }
     } else if textField == userTextfield {
-      if count < 6 {
+      if count < Constant.UserNoLimit {
         textField.showErrorIcon()
       }else {
         textField.showCorrectIcon()

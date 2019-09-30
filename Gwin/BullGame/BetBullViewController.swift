@@ -265,6 +265,7 @@ class BetBullViewController: BaseViewController {
 
     }
   }
+  
   @objc func textFieldDidChange(_ textfield: UITextField) {
     inputLabel.text = "¥ \(textfield.text ?? "0.0")"
     currentTab = .none
