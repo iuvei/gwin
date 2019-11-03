@@ -8,6 +8,20 @@
 
 import UIKit
 
+protocol RegisterViewInput: AnyObject {
+  func startCallAPI()
+  func endCallAPI()
+  func apiError(message: String)
+}
+
+protocol RegisterViewOutput: AnyObject {
+  func  register(accountNo: String, password: String, code: String, cellphone: String, prefix: String)
+}
+
+protocol RegisterViewControllerInput: AnyObject {
+
+}
+
 class RegisterViewController: BaseViewController {
   enum Constant {
     static let PhonnumberLimit: Int = 11
@@ -32,6 +46,8 @@ class RegisterViewController: BaseViewController {
   @IBOutlet weak var contentView: UIView!
 
   private var prefix: String?
+
+  weak var output: RegisterViewOutput?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -188,23 +204,10 @@ class RegisterViewController: BaseViewController {
     let code =  validateRefCode()
     let cellphone =  validatePhonenumber()
     guard let `prefix` = prefix else { return }
+
     showLoadingView()
     if let `accountNo` = accountNo, let `password` = password, let `code` = code, let `cellphone` = cellphone {
-      UserAPIClient.register(accountNo: "\(prefix)\(accountNo)", password: password, code: code, cellphone: cellphone) { [weak self] (user, message) in
-        guard let this = self else { return }
-        this.hideLoadingView()
-
-        if let `user` = user, let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate {
-          UserDefaultManager.sharedInstance().removeLoginInfo()
-          RedEnvelopComponent.shared.user = user
-          RedEnvelopComponent.shared.userno = "\(prefix)\(accountNo)"
-          appDelegate.setHomeAsRootViewControlelr()
-        } else {
-          if let msg = message {
-            this.showAlertMessage(message: msg)
-          }
-        }
-      }
+      output?.register(accountNo: accountNo, password: password, code: code, cellphone: cellphone, prefix: prefix)
     }
   }
 
@@ -284,4 +287,23 @@ extension RegisterViewController: UITextFieldDelegate {
       textField.showErrorIcon()
     }
   }
+}
+
+
+extension RegisterViewController: RegisterViewInput {
+  func startCallAPI() {
+    showLoadingView()
+  }
+
+  func endCallAPI() {
+    hideLoadingView()
+  }
+
+  func apiError(message: String) {
+    showAlertMessage(message: message)
+  }
+}
+
+extension RegisterViewController: RegisterViewControllerInput {
+  
 }
