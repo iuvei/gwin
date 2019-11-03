@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+  
     configureNavigator()
     let frame = UIScreen.main.bounds
     window = UIWindow(frame: frame)
@@ -188,7 +189,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   public func setLoginViewController() {
     if let window = self.window {
       if let `navigationController` = navigationController {
-        if  let viewcontroller = LoginBuilder().build(withListener: nil).viewController {
+        if  let viewcontroller = LoginBuilder().build(with: nil).viewController {
           navigationController.initRootViewController(vc: viewcontroller)
           window.rootViewController = navigationController
           window.makeKeyAndVisible()

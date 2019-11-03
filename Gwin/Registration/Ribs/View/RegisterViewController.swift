@@ -12,10 +12,12 @@ protocol RegisterViewInput: AnyObject {
   func startCallAPI()
   func endCallAPI()
   func apiError(message: String)
+  func didValidatePhoneNo(code: String)
 }
 
 protocol RegisterViewOutput: AnyObject {
   func  register(accountNo: String, password: String, code: String, cellphone: String, prefix: String)
+  func  validateCellphoneNo(phoneNo: String)
 }
 
 protocol RegisterViewControllerInput: AnyObject {
@@ -23,9 +25,10 @@ protocol RegisterViewControllerInput: AnyObject {
 }
 
 class RegisterViewController: BaseViewController {
-  enum Constant {
+  private enum Constant {
     static let PhonnumberLimit: Int = 11
-    static let UserNoLimit: Int = 6
+    static let UserMInlenght: Int = 5
+    static let UserMaxLenght: Int = 20
     static let PasswordLimit: Int = 6
   }
 
@@ -106,7 +109,7 @@ class RegisterViewController: BaseViewController {
   private func validateAccountNo() -> String? {
     let count = userTextfield.text?.count ?? 0
 
-    if count < Constant.UserNoLimit {
+    if count < Constant.UserMInlenght || count >  Constant.UserMaxLenght {
       userTextfield.showErrorIcon()
     } else {
       userTextfield.showCorrectIcon()
@@ -173,7 +176,7 @@ class RegisterViewController: BaseViewController {
   private func validateRefCode() -> String? {
 
     if let _ = prefix {
-    linkCodeTextfield.showCorrectIcon()
+      linkCodeTextfield.showCorrectIcon()
     } else {
       linkCodeTextfield.showErrorIcon()
     }
@@ -189,12 +192,8 @@ class RegisterViewController: BaseViewController {
 
     guard let phoneno = validatePhonenumber() else { return }
 
-    UserAPIClient.checkCellphoneNo(cellphone: phoneno) { [weak self] (checkCode, errorMessage) in
-      if let code = checkCode {
-        print("code \(code)")
-        self?.confirmTextfield.text = code
-      }
-    }
+    output?.validateCellphoneNo(phoneNo: phoneno)
+   
   }
 
   @IBAction func registerPressed(_ sender: Any) {
@@ -205,7 +204,6 @@ class RegisterViewController: BaseViewController {
     let cellphone =  validatePhonenumber()
     guard let `prefix` = prefix else { return }
 
-    showLoadingView()
     if let `accountNo` = accountNo, let `password` = password, let `code` = code, let `cellphone` = cellphone {
       output?.register(accountNo: accountNo, password: password, code: code, cellphone: cellphone, prefix: prefix)
     }
@@ -232,14 +230,12 @@ class RegisterViewController: BaseViewController {
 
     if textfield == phoneNumberTextfield {
       let _ = validatePhonenumber()
-    }
-
-    if textfield == linkCodeTextfield {
+    } else if textfield == linkCodeTextfield {
       let _ = validateRefCode()
-    }
-
-    if textfield == userTextfield {
+    } else if textfield == userTextfield {
       let _ = validateAccountNo()
+    } else if textfield == confirmTextfield {
+      let _ = validateCode()
     }
   }
 }
@@ -276,7 +272,7 @@ extension RegisterViewController: UITextFieldDelegate {
         textField.showCorrectIcon()
       }
     } else if textField == userTextfield {
-      if count < Constant.UserNoLimit {
+      if count < Constant.UserMInlenght || count > Constant.UserMaxLenght {
         textField.showErrorIcon()
       }else {
         textField.showCorrectIcon()
@@ -286,6 +282,21 @@ extension RegisterViewController: UITextFieldDelegate {
     if  count == 0 {
       textField.showErrorIcon()
     }
+  }
+
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    if textField == phoneNumberTextfield {
+      guard let textFieldText = textField.text,
+        let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+          return false
+      }
+
+      let substringToReplace = textFieldText[rangeOfTextToReplace]
+      let count = textFieldText.count - substringToReplace.count + string.count
+
+      return count <= Constant.PhonnumberLimit
+    }
+    return true
   }
 }
 
@@ -301,6 +312,11 @@ extension RegisterViewController: RegisterViewInput {
 
   func apiError(message: String) {
     showAlertMessage(message: message)
+  }
+
+  func didValidatePhoneNo(code: String) {
+    confirmTextfield.text = code
+    let _ = validateCode()
   }
 }
 

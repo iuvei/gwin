@@ -12,10 +12,9 @@ protocol ExampleRouterInput: AnyObject {
   func openActions(title: String, index: Int)
 }
 //
-final public class ExampleRouter: Router, ExampleRouterInput {
+final public class ExampleRouter: NSObject, ExampleRouterInput {
 
 
-  var current: Router?
 
   public weak var viewController: (UIViewController & ExampleViewControllerInput)!
   var interactor: ExampleInteractor!

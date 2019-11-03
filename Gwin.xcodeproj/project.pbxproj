@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62F19F25EB2BA3C13D707667 /* Pods_GwinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB5C89ABDADA6FB995C941F /* Pods_GwinTests.framework */; };
 		93470A1D4586D5734927ED93 /* Pods_Gwin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAEBB42F20B4154F0C30418E /* Pods_Gwin.framework */; };
 		D100679D2309AA1F00114F6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100679C2309AA1F00114F6E /* AppDelegate.swift */; };
 		D10067A22309AA1F00114F6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D10067A02309AA1F00114F6E /* Main.storyboard */; };
@@ -18,11 +19,6 @@
 		D170F385231440B700468D64 /* ScrollLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D170F384231440B700468D64 /* ScrollLabel.swift */; };
 		D175C3C5230ADDC0001B8DC6 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C3C4230ADDC0001B8DC6 /* UIView+Utils.swift */; };
 		D175C47F230BCA42001B8DC6 /* ExampleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C47E230BCA42001B8DC6 /* ExampleRouter.swift */; };
-		D175C4B9230BCD97001B8DC6 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4B1230BCCC9001B8DC6 /* Component.swift */; };
-		D175C4BA230BCD97001B8DC6 /* EmptyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4B3230BCCC9001B8DC6 /* EmptyProtocol.swift */; };
-		D175C4BB230BCD97001B8DC6 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4AF230BCCC9001B8DC6 /* Interactor.swift */; };
-		D175C4BC230BCD97001B8DC6 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4B2230BCCC9001B8DC6 /* Router.swift */; };
-		D175C4BD230BCD97001B8DC6 /* Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4B0230BCCC9001B8DC6 /* Workflow.swift */; };
 		D175C4C0230BCE31001B8DC6 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4BF230BCE31001B8DC6 /* ExampleViewController.swift */; };
 		D175C4C3230BCFD9001B8DC6 /* ExampleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4C2230BCFD9001B8DC6 /* ExampleInteractor.swift */; };
 		D175C4C6230BD0C4001B8DC6 /* ExampleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C4C5230BD0C4001B8DC6 /* ExampleBuilder.swift */; };
@@ -49,6 +45,18 @@
 		D175C525230D0DCA001B8DC6 /* HomeViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C524230D0DCA001B8DC6 /* HomeViewComponent.swift */; };
 		D175C527230D0E46001B8DC6 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C526230D0E46001B8DC6 /* HomeBuilder.swift */; };
 		D175C529230D1036001B8DC6 /* RedEnvelopTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */; };
+		D191048A2351CE2800C02F5E /* RegisterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19104892351CE2800C02F5E /* RegisterInteractor.swift */; };
+		D191048D2351CE5C00C02F5E /* RegisterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D191048C2351CE5C00C02F5E /* RegisterBuilder.swift */; };
+		D19104902351CE9200C02F5E /* RegisterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D191048F2351CE9200C02F5E /* RegisterRouter.swift */; };
+		D191049C2351E39400C02F5E /* GwinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D191049B2351E39400C02F5E /* GwinTests.swift */; };
+		D19104A32351EC2200C02F5E /* RegisterUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19104932351E33F00C02F5E /* RegisterUnitTest.swift */; };
+		D19104DA2351F8A800C02F5E /* LoginMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19104D92351F8A800C02F5E /* LoginMock.swift */; };
+		D19104E02351FD3A00C02F5E /* LoginViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19104DF2351FD3A00C02F5E /* LoginViewControllerTest.swift */; };
+		D19104E22351FE6A00C02F5E /* LoginInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19104E12351FE6A00C02F5E /* LoginInteractorTest.swift */; };
+		D19104E42352044300C02F5E /* LoginSuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = D19104E32352044300C02F5E /* LoginSuccessResponse.json */; };
+		D19104E62352060F00C02F5E /* LoginAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19104E52352060F00C02F5E /* LoginAPIMock.swift */; };
+		D19104E82352069400C02F5E /* APIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19104E72352069400C02F5E /* APIMock.swift */; };
+		D19104F023520F9300C02F5E /* GwinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D19104EF23520F9300C02F5E /* GwinUITests.swift */; };
 		D194BD85231A4D2D00AB59C3 /* GrabBullPackageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD83231A4D2D00AB59C3 /* GrabBullPackageViewController.swift */; };
 		D194BD86231A4D2D00AB59C3 /* GrabBullPackageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D194BD84231A4D2D00AB59C3 /* GrabBullPackageViewController.xib */; };
 		D194BD8B231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD89231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift */; };
@@ -136,7 +144,27 @@
 		D1EA0FA72319525C0096B7D1 /* BullInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1EA0FA62319525C0096B7D1 /* BullInfoModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D191049E2351E39400C02F5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D10067912309AA1E00114F6E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D10067982309AA1E00114F6E;
+			remoteInfo = Gwin;
+		};
+		D19104F223520F9300C02F5E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D10067912309AA1E00114F6E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D10067982309AA1E00114F6E;
+			remoteInfo = Gwin;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0E50E3C39D37D9AE9B10E8CA /* Pods-GwinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GwinTests.release.xcconfig"; path = "Target Support Files/Pods-GwinTests/Pods-GwinTests.release.xcconfig"; sourceTree = "<group>"; };
+		1CE9980A226691CEA7E59CA9 /* Pods-GwinTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GwinTests.debug.xcconfig"; path = "Target Support Files/Pods-GwinTests/Pods-GwinTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1EB5C89ABDADA6FB995C941F /* Pods_GwinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GwinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32D98C07F93022F3241400A /* Pods-Gwin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gwin.debug.xcconfig"; path = "Target Support Files/Pods-Gwin/Pods-Gwin.debug.xcconfig"; sourceTree = "<group>"; };
 		CAEBB42F20B4154F0C30418E /* Pods_Gwin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gwin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D10067992309AA1E00114F6E /* Gwin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gwin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,11 +179,6 @@
 		D170F384231440B700468D64 /* ScrollLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollLabel.swift; sourceTree = "<group>"; };
 		D175C3C4230ADDC0001B8DC6 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		D175C47E230BCA42001B8DC6 /* ExampleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleRouter.swift; sourceTree = "<group>"; };
-		D175C4AF230BCCC9001B8DC6 /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
-		D175C4B0230BCCC9001B8DC6 /* Workflow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workflow.swift; sourceTree = "<group>"; };
-		D175C4B1230BCCC9001B8DC6 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
-		D175C4B2230BCCC9001B8DC6 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		D175C4B3230BCCC9001B8DC6 /* EmptyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyProtocol.swift; sourceTree = "<group>"; };
 		D175C4BF230BCE31001B8DC6 /* ExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleViewController.swift; sourceTree = "<group>"; };
 		D175C4C2230BCFD9001B8DC6 /* ExampleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleInteractor.swift; sourceTree = "<group>"; };
 		D175C4C5230BD0C4001B8DC6 /* ExampleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleBuilder.swift; sourceTree = "<group>"; };
@@ -182,6 +205,22 @@
 		D175C524230D0DCA001B8DC6 /* HomeViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewComponent.swift; sourceTree = "<group>"; };
 		D175C526230D0E46001B8DC6 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		D175C528230D1036001B8DC6 /* RedEnvelopTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedEnvelopTabbarController.swift; sourceTree = "<group>"; };
+		D19104892351CE2800C02F5E /* RegisterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterInteractor.swift; sourceTree = "<group>"; };
+		D191048C2351CE5C00C02F5E /* RegisterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBuilder.swift; sourceTree = "<group>"; };
+		D191048F2351CE9200C02F5E /* RegisterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRouter.swift; sourceTree = "<group>"; };
+		D19104932351E33F00C02F5E /* RegisterUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUnitTest.swift; sourceTree = "<group>"; };
+		D19104992351E39400C02F5E /* GwinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GwinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D191049B2351E39400C02F5E /* GwinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GwinTests.swift; sourceTree = "<group>"; };
+		D191049D2351E39400C02F5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D19104D92351F8A800C02F5E /* LoginMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMock.swift; sourceTree = "<group>"; };
+		D19104DF2351FD3A00C02F5E /* LoginViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTest.swift; sourceTree = "<group>"; };
+		D19104E12351FE6A00C02F5E /* LoginInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractorTest.swift; sourceTree = "<group>"; };
+		D19104E32352044300C02F5E /* LoginSuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LoginSuccessResponse.json; sourceTree = "<group>"; };
+		D19104E52352060F00C02F5E /* LoginAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAPIMock.swift; sourceTree = "<group>"; };
+		D19104E72352069400C02F5E /* APIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIMock.swift; sourceTree = "<group>"; };
+		D19104ED23520F9300C02F5E /* GwinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GwinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D19104EF23520F9300C02F5E /* GwinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GwinUITests.swift; sourceTree = "<group>"; };
+		D19104F123520F9300C02F5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D194BD83231A4D2D00AB59C3 /* GrabBullPackageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrabBullPackageViewController.swift; sourceTree = "<group>"; };
 		D194BD84231A4D2D00AB59C3 /* GrabBullPackageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrabBullPackageViewController.xib; sourceTree = "<group>"; };
 		D194BD89231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulllPackageInfoViewController.swift; sourceTree = "<group>"; };
@@ -280,6 +319,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D19104962351E39400C02F5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62F19F25EB2BA3C13D707667 /* Pods_GwinTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D19104EA23520F9300C02F5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -288,6 +342,8 @@
 			children = (
 				C32D98C07F93022F3241400A /* Pods-Gwin.debug.xcconfig */,
 				F8455A52255EC42C57478B9D /* Pods-Gwin.release.xcconfig */,
+				1CE9980A226691CEA7E59CA9 /* Pods-GwinTests.debug.xcconfig */,
+				0E50E3C39D37D9AE9B10E8CA /* Pods-GwinTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -296,6 +352,8 @@
 			isa = PBXGroup;
 			children = (
 				D100679B2309AA1F00114F6E /* Gwin */,
+				D191049A2351E39400C02F5E /* GwinTests */,
+				D19104EE23520F9300C02F5E /* GwinUITests */,
 				D100679A2309AA1E00114F6E /* Products */,
 				1FC0F7F6233E61DA02F0918C /* Pods */,
 				E2E3FE475745C5AF91AA105F /* Frameworks */,
@@ -306,6 +364,8 @@
 			isa = PBXGroup;
 			children = (
 				D10067992309AA1E00114F6E /* Gwin.app */,
+				D19104992351E39400C02F5E /* GwinTests.xctest */,
+				D19104ED23520F9300C02F5E /* GwinUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -320,7 +380,6 @@
 				D175C4E9230C2984001B8DC6 /* Flow */,
 				D175C4E3230C2142001B8DC6 /* Wellcome */,
 				D175C4D5230BE836001B8DC6 /* Networking */,
-				D175C4AE230BCC6C001B8DC6 /* Shiitake */,
 				D175C47C230BCA29001B8DC6 /* Riblets */,
 				D175C47B230BC9C2001B8DC6 /* Registration */,
 				D175C47A230BC9B5001B8DC6 /* Login */,
@@ -419,8 +478,8 @@
 		D175C47B230BC9C2001B8DC6 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				D175C4EC230C35CE001B8DC6 /* RegisterViewController.swift */,
-				D175C4ED230C35CE001B8DC6 /* RegisterViewController.xib */,
+				D19104922351D58500C02F5E /* Test */,
+				D19104912351D57700C02F5E /* Ribs */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -442,18 +501,6 @@
 				D175C47E230BCA42001B8DC6 /* ExampleRouter.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		D175C4AE230BCC6C001B8DC6 /* Shiitake */ = {
-			isa = PBXGroup;
-			children = (
-				D175C4B1230BCCC9001B8DC6 /* Component.swift */,
-				D175C4B3230BCCC9001B8DC6 /* EmptyProtocol.swift */,
-				D175C4AF230BCCC9001B8DC6 /* Interactor.swift */,
-				D175C4B2230BCCC9001B8DC6 /* Router.swift */,
-				D175C4B0230BCCC9001B8DC6 /* Workflow.swift */,
-			);
-			path = Shiitake;
 			sourceTree = "<group>";
 		};
 		D175C4BE230BCE15001B8DC6 /* View */ = {
@@ -573,6 +620,122 @@
 				D175C524230D0DCA001B8DC6 /* HomeViewComponent.swift */,
 			);
 			path = Component;
+			sourceTree = "<group>";
+		};
+		D19104872351CE0A00C02F5E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D175C4EC230C35CE001B8DC6 /* RegisterViewController.swift */,
+				D175C4ED230C35CE001B8DC6 /* RegisterViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D19104882351CE1500C02F5E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				D19104892351CE2800C02F5E /* RegisterInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		D191048B2351CE4E00C02F5E /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				D191048C2351CE5C00C02F5E /* RegisterBuilder.swift */,
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		D191048E2351CE8300C02F5E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				D191048F2351CE9200C02F5E /* RegisterRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		D19104912351D57700C02F5E /* Ribs */ = {
+			isa = PBXGroup;
+			children = (
+				D191048E2351CE8300C02F5E /* Router */,
+				D191048B2351CE4E00C02F5E /* Builder */,
+				D19104882351CE1500C02F5E /* Interactor */,
+				D19104872351CE0A00C02F5E /* View */,
+			);
+			path = Ribs;
+			sourceTree = "<group>";
+		};
+		D19104922351D58500C02F5E /* Test */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		D191049A2351E39400C02F5E /* GwinTests */ = {
+			isa = PBXGroup;
+			children = (
+				D19104D82351F88A00C02F5E /* Login */,
+				D19104932351E33F00C02F5E /* RegisterUnitTest.swift */,
+				D191049B2351E39400C02F5E /* GwinTests.swift */,
+				D191049D2351E39400C02F5E /* Info.plist */,
+			);
+			path = GwinTests;
+			sourceTree = "<group>";
+		};
+		D19104D82351F88A00C02F5E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D19104DE2351FD0500C02F5E /* Builder */,
+				D19104DD2351FD0000C02F5E /* Router */,
+				D19104DC2351FCF900C02F5E /* Interactor */,
+				D19104DB2351FCEF00C02F5E /* View */,
+				D19104D92351F8A800C02F5E /* LoginMock.swift */,
+				D19104E32352044300C02F5E /* LoginSuccessResponse.json */,
+				D19104E52352060F00C02F5E /* LoginAPIMock.swift */,
+				D19104E72352069400C02F5E /* APIMock.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D19104DB2351FCEF00C02F5E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D19104DF2351FD3A00C02F5E /* LoginViewControllerTest.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D19104DC2351FCF900C02F5E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				D19104E12351FE6A00C02F5E /* LoginInteractorTest.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		D19104DD2351FD0000C02F5E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		D19104DE2351FD0500C02F5E /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Builder;
+			sourceTree = "<group>";
+		};
+		D19104EE23520F9300C02F5E /* GwinUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D19104EF23520F9300C02F5E /* GwinUITests.swift */,
+				D19104F123520F9300C02F5E /* Info.plist */,
+			);
+			path = GwinUITests;
 			sourceTree = "<group>";
 		};
 		D1E00B73230D94E800554CA4 /* Resource */ = {
@@ -704,6 +867,7 @@
 			children = (
 				D1E00DBE23140E3200554CA4 /* QuartzCore.framework */,
 				CAEBB42F20B4154F0C30418E /* Pods_Gwin.framework */,
+				1EB5C89ABDADA6FB995C941F /* Pods_GwinTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -730,6 +894,44 @@
 			productReference = D10067992309AA1E00114F6E /* Gwin.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D19104982351E39400C02F5E /* GwinTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D19104A02351E39400C02F5E /* Build configuration list for PBXNativeTarget "GwinTests" */;
+			buildPhases = (
+				CA1A99B1202D31F994F1B72B /* [CP] Check Pods Manifest.lock */,
+				D19104952351E39400C02F5E /* Sources */,
+				D19104962351E39400C02F5E /* Frameworks */,
+				D19104972351E39400C02F5E /* Resources */,
+				A62ED562DEB73F9C479C0A0C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D191049F2351E39400C02F5E /* PBXTargetDependency */,
+			);
+			name = GwinTests;
+			productName = GwinTests;
+			productReference = D19104992351E39400C02F5E /* GwinTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D19104EC23520F9300C02F5E /* GwinUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D19104F623520F9300C02F5E /* Build configuration list for PBXNativeTarget "GwinUITests" */;
+			buildPhases = (
+				D19104E923520F9300C02F5E /* Sources */,
+				D19104EA23520F9300C02F5E /* Frameworks */,
+				D19104EB23520F9300C02F5E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D19104F323520F9300C02F5E /* PBXTargetDependency */,
+			);
+			name = GwinUITests;
+			productName = GwinUITests;
+			productReference = D19104ED23520F9300C02F5E /* GwinUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -742,6 +944,14 @@
 				TargetAttributes = {
 					D10067982309AA1E00114F6E = {
 						CreatedOnToolsVersion = 10.2.1;
+					};
+					D19104982351E39400C02F5E = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = D10067982309AA1E00114F6E;
+					};
+					D19104EC23520F9300C02F5E = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = D10067982309AA1E00114F6E;
 					};
 				};
 			};
@@ -759,6 +969,8 @@
 			projectRoot = "";
 			targets = (
 				D10067982309AA1E00114F6E /* Gwin */,
+				D19104982351E39400C02F5E /* GwinTests */,
+				D19104EC23520F9300C02F5E /* GwinUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -803,6 +1015,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D19104972351E39400C02F5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D19104E42352044300C02F5E /* LoginSuccessResponse.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D19104EB23520F9300C02F5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -821,6 +1048,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Gwin/Pods-Gwin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A62ED562DEB73F9C479C0A0C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GwinTests/Pods-GwinTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GwinTests/Pods-GwinTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GwinTests/Pods-GwinTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA1A99B1202D31F994F1B72B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GwinTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D2A0CE74026D605EBA528C10 /* [CP] Check Pods Manifest.lock */ = {
@@ -852,7 +1118,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D175C4BD230BCD97001B8DC6 /* Workflow.swift in Sources */,
 				D1E00DA62311302E00554CA4 /* CreateEnvelopType2ViewController.swift in Sources */,
 				D1EA0F01231815770096B7D1 /* BankSettingViewCell.swift in Sources */,
 				D1E00D9623110A7100554CA4 /* PackageHistoryLeftViewCell.swift in Sources */,
@@ -860,12 +1125,12 @@
 				D1EA0EBB2317B0E70096B7D1 /* GrabBankerViewController.swift in Sources */,
 				D1EA0E6C23163B340096B7D1 /* LotteryViewController.swift in Sources */,
 				D175C4D4230BD5A1001B8DC6 /* LoginInteractor.swift in Sources */,
+				D191048A2351CE2800C02F5E /* RegisterInteractor.swift in Sources */,
 				D1E00D7D230FEAFB00554CA4 /* BullPackageHistoryModel.swift in Sources */,
 				D194BD8B231AB9BD00AB59C3 /* BulllPackageInfoViewController.swift in Sources */,
 				D1E00D9E2311115200554CA4 /* CreateEnvelopViewController.swift in Sources */,
 				D1E00DB12312CEA600554CA4 /* TitleStackView.swift in Sources */,
 				D194BD92231BB85300AB59C3 /* BullModel.swift in Sources */,
-				D175C4BC230BCD97001B8DC6 /* Router.swift in Sources */,
 				D175C4C0230BCE31001B8DC6 /* ExampleViewController.swift in Sources */,
 				D170F385231440B700468D64 /* ScrollLabel.swift in Sources */,
 				D1E00B79230DA05200554CA4 /* WebContainerController.swift in Sources */,
@@ -873,6 +1138,7 @@
 				D1E00DAD23118C7100554CA4 /* ImageManager.swift in Sources */,
 				D175C529230D1036001B8DC6 /* RedEnvelopTabbarController.swift in Sources */,
 				D175C4DA230C03E8001B8DC6 /* UserAPIClient.swift in Sources */,
+				D191048D2351CE5C00C02F5E /* RegisterBuilder.swift in Sources */,
 				D1EA0FA72319525C0096B7D1 /* BullInfoModel.swift in Sources */,
 				D1E00D79230FE5F600554CA4 /* BullPackageModel.swift in Sources */,
 				D1E00D7B230FE89700554CA4 /* GrabUserModel.swift in Sources */,
@@ -883,7 +1149,6 @@
 				D1E00D06230EDF1D00554CA4 /* ProfileItemViewCell.swift in Sources */,
 				D175C4D7230BE84B001B8DC6 /* UserAPIRouter.swift in Sources */,
 				D1E00D71230FD79E00554CA4 /* BullAPIRouter.swift in Sources */,
-				D175C4BB230BCD97001B8DC6 /* Interactor.swift in Sources */,
 				D1E00D9A23110A8C00554CA4 /* PackageHistoryRightViewCell.swift in Sources */,
 				D1E00D6E230FCFD600554CA4 /* GameItemCell.swift in Sources */,
 				D175C4FA230CFA9D001B8DC6 /* HomeInteractor.swift in Sources */,
@@ -898,7 +1163,6 @@
 				D1E00D77230FE11900554CA4 /* BankSettingModel.swift in Sources */,
 				D1E00D83230FED7B00554CA4 /* BullBetDetailModel.swift in Sources */,
 				D1D06F1E231D1FCA00BBEDAE /* BankerViewController.swift in Sources */,
-				D175C4BA230BCD97001B8DC6 /* EmptyProtocol.swift in Sources */,
 				D1EA0F092318373F0096B7D1 /* WagerOddViewCell.swift in Sources */,
 				D175C4DC230C0487001B8DC6 /* User.swift in Sources */,
 				D175C4C6230BD0C4001B8DC6 /* ExampleBuilder.swift in Sources */,
@@ -929,7 +1193,6 @@
 				D1E00DBD2313B77F00554CA4 /* GameRoomViewController.swift in Sources */,
 				D1EA0F7723190D860096B7D1 /* BetCasinoViewController.swift in Sources */,
 				D1E00D81230FEC1C00554CA4 /* BullWagerInfoModel.swift in Sources */,
-				D175C4B9230BCD97001B8DC6 /* Component.swift in Sources */,
 				D1E00D912310EBC100554CA4 /* RoomDetailViewController.swift in Sources */,
 				D1E00DAA23116F4700554CA4 /* GrabEnvelopViewController.swift in Sources */,
 				D194BD95231BC18700AB59C3 /* UploadImageViewController.swift in Sources */,
@@ -944,11 +1207,47 @@
 				D1E00DA2231119AC00554CA4 /* PackageInfoViewController.swift in Sources */,
 				D175C4D0230BD4B2001B8DC6 /* LoginBuilder.swift in Sources */,
 				D1E00D01230E9CFC00554CA4 /* RoomModel.swift in Sources */,
+				D19104902351CE9200C02F5E /* RegisterRouter.swift in Sources */,
 				D1E00D8F2310447E00554CA4 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D19104952351E39400C02F5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D19104E02351FD3A00C02F5E /* LoginViewControllerTest.swift in Sources */,
+				D19104E82352069400C02F5E /* APIMock.swift in Sources */,
+				D19104A32351EC2200C02F5E /* RegisterUnitTest.swift in Sources */,
+				D19104E62352060F00C02F5E /* LoginAPIMock.swift in Sources */,
+				D19104E22351FE6A00C02F5E /* LoginInteractorTest.swift in Sources */,
+				D19104DA2351F8A800C02F5E /* LoginMock.swift in Sources */,
+				D191049C2351E39400C02F5E /* GwinTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D19104E923520F9300C02F5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D19104F023520F9300C02F5E /* GwinUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D191049F2351E39400C02F5E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D10067982309AA1E00114F6E /* Gwin */;
+			targetProxy = D191049E2351E39400C02F5E /* PBXContainerItemProxy */;
+		};
+		D19104F323520F9300C02F5E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D10067982309AA1E00114F6E /* Gwin */;
+			targetProxy = D19104F223520F9300C02F5E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D10067A02309AA1F00114F6E /* Main.storyboard */ = {
@@ -1126,6 +1425,82 @@
 			};
 			name = Release;
 		};
+		D19104A12351E39400C02F5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CE9980A226691CEA7E59CA9 /* Pods-GwinTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GwinTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hai.GwinTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gwin.app/Gwin";
+			};
+			name = Debug;
+		};
+		D19104A22351E39400C02F5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E50E3C39D37D9AE9B10E8CA /* Pods-GwinTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GwinTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hai.GwinTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gwin.app/Gwin";
+			};
+			name = Release;
+		};
+		D19104F423520F9300C02F5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GwinUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hai.GwinUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Gwin;
+			};
+			name = Debug;
+		};
+		D19104F523520F9300C02F5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = GwinUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hai.GwinUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Gwin;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1143,6 +1518,24 @@
 			buildConfigurations = (
 				D10067AF2309AA2500114F6E /* Debug */,
 				D10067B02309AA2500114F6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D19104A02351E39400C02F5E /* Build configuration list for PBXNativeTarget "GwinTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D19104A12351E39400C02F5E /* Debug */,
+				D19104A22351E39400C02F5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D19104F623520F9300C02F5E /* Build configuration list for PBXNativeTarget "GwinUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D19104F423520F9300C02F5E /* Debug */,
+				D19104F523520F9300C02F5E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -13,7 +13,7 @@ DEPENDENCIES:
   - SwiftyJSON
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - MarqueeLabel
     - RxSwift
@@ -27,6 +27,6 @@ SPEC CHECKSUMS:
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: e6086165d5875cb5ce6ffa7b2983ba7f99e0148f
+PODFILE CHECKSUM: 561567f4512f248d497c23563a3abb13598884b2
 
-COCOAPODS: 1.7.4
+COCOAPODS: 1.8.3

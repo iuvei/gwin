@@ -18,6 +18,16 @@ final class RegisterInteractor {
 }
 
 extension RegisterInteractor: RegisterViewOutput {
+  func validateCellphoneNo(phoneNo: String) {
+    
+    UserAPIClient.checkCellphoneNo(cellphone: phoneNo) { [weak self] (checkCode, errorMessage) in
+      if let code = checkCode {
+        print("code \(code)")
+        self?.view?.didValidatePhoneNo(code: code)
+      }
+    }
+  }
+
   func register(accountNo: String, password: String, code: String, cellphone: String, prefix: String) {
     view.startCallAPI()
     UserAPIClient.register(accountNo: "\(prefix)\(accountNo)", password: password, code: code, cellphone: cellphone) { [weak self] (user, message) in

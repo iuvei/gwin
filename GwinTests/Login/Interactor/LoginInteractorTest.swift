@@ -7,11 +7,26 @@
 //
 
 import XCTest
+import SwiftyJSON
+
+@testable import Gwin
 
 class LoginInteractorTest: XCTestCase {
-
+  var interactor: LoginInteractor!
+  var router: LoginMock.Router!
+  var view: LoginMock.View!
+//  var listener: CategoryListingHomeMock.Listener!
+//  var analyticsService: CategoryListingHomeMock.AnalyticsService!
+//  let serviceProvider = CategoryListingServiceImp()
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+      view = LoginMock.View()
+      interactor = LoginInteractor(withListener: nil)
+
+      router = LoginMock.Router()
+
+      interactor.router = router
+      interactor.view = view
     }
 
     override func tearDown() {
@@ -29,5 +44,36 @@ class LoginInteractorTest: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+
+  func testLogin() {
+    //given
+    let accountNo = "steven1"
+    let password = "123456"
+
+    //when
+    UserDefaultManager.sharedInstance().saveLoginInfo(accountNo: accountNo, password: password)
+
+    view.startLoadingView()
+    LoginAPIMock().validLogin(accountNo: accountNo, password: password) {[weak self] (user, message) in
+      guard let `this` = self else { return }
+      this.view.endLoadingView()
+
+      if let `user` = user {
+        RedEnvelopComponent.shared.userno = accountNo
+        RedEnvelopComponent.shared.user = user
+        if let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate {
+          appDelegate.setHomeAsRootViewControlelr()
+        }
+      } else {
+        if let error = message {
+          this.view.loginFailedWithMessage(message: error)
+        }
+      }
+    }
+
+    XCTAssertTrue(view.isStartLoadingViewCalled)
+    XCTAssertTrue(view.isEndLoadingViewCalled)
+    XCTAssertNotNil(RedEnvelopComponent.shared.user)
+  }
 
 }

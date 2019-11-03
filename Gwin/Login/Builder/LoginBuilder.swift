@@ -13,7 +13,7 @@ public final class LoginBuilder {
     self.router = LoginRouter()
   }
 
-  public func build(withListener listener: LoginListner? = nil) -> LoginRouter {
+  public func build(with listener: LoginListner? = nil) -> LoginRouter {
 
     let viewController = LoginViewController(nibName: "LoginViewController", bundle: nil)
     let interactor = LoginInteractor(withListener: listener)

@@ -1,6 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-Gwin/Pods-Gwin-frameworks.sh
-${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
-${BUILT_PRODUCTS_DIR}/MarqueeLabel/MarqueeLabel.framework
-${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
-${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework
-${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
+${BUILT_PRODUCTS_DIR}/Alamofire-iOS9.0/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/MarqueeLabel-iOS9.0/MarqueeLabel.framework
+${BUILT_PRODUCTS_DIR}/RxSwift-iOS9.0/RxSwift.framework
+${BUILT_PRODUCTS_DIR}/Starscream-iOS9.0/Starscream.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON-iOS9.0/SwiftyJSON.framework

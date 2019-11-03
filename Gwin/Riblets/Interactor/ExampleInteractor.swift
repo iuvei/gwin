@@ -12,7 +12,7 @@ public protocol ExampleListner: AnyObject {
   func completeCategoryListingFlow()
 }
 
-final class ExampleInteractor: Interactor {
+final class ExampleInteractor: NSObject {
 
   weak var router: ExampleRouterInput!
   var view: ExampleViewInput!

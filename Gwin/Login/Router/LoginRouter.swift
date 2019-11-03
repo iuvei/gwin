@@ -12,15 +12,13 @@ import UIKit
 protocol LoginRouterInput: AnyObject {
   func openActions(title: String, index: Int)
 }
+
 //
-final public class LoginRouter: Router, LoginRouterInput {
+final public class LoginRouter: LoginRouterInput {
 
-
-  var current: Router?
 
   public weak var viewController: (UIViewController & LoginViewControllerInput)!
   var interactor: LoginInteractor!
-  // MARK: - CategoryListingHomeRouterInput
 
   func openActions(title: String, index: Int) {
 

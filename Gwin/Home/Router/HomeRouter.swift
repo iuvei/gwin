@@ -12,10 +12,9 @@ protocol HomeRouterInput: AnyObject {
   func homeRouterXXX()
 }
 
-final public class HomeRouter: Router, HomeRouterInput {
+final public class HomeRouter: NSObject, HomeRouterInput {
 
 
-  var current: Router?
 
   public weak var viewController: (UIViewController & HomeViewControllerInput)!
   var interactor: HomeInteractor!

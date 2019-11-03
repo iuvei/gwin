@@ -15,3 +15,16 @@ pod 'MarqueeLabel'
 pod 'Starscream'
 
 end
+
+target 'GwinTests' do
+  use_frameworks!
+
+  # Pods for Gwin
+  #  pod 'CarouselSwift'
+  pod 'RxSwift', '4.5.0'
+  pod 'Alamofire'
+  pod 'SwiftyJSON'
+  #pod 'Kingfisher', '~> 5.7'
+  pod 'MarqueeLabel'
+  pod 'Starscream'
+end

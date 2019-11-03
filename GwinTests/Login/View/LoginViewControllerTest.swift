@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Gwin
 
 class LoginViewControllerTest: XCTestCase {
 

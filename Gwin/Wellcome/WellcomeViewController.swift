@@ -13,6 +13,9 @@ class WellcomeViewController: BaseViewController {
   @IBOutlet weak var loginButton: UIButton!
   @IBOutlet weak var registerButton: UIButton!
 
+  var router: LoginRouter?
+  var registerRouter: RegisterRouter?
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -63,14 +66,20 @@ class WellcomeViewController: BaseViewController {
    */
 
   @IBAction func loginPressed(_ sender: Any) {
-    let router = LoginBuilder().build(withListener: nil)
-    self.navigationController?.pushViewController(router.viewController, animated: true)
+    router = LoginBuilder().build(with: nil)
+    
+    if let `router` = router {
+      self.navigationController?.pushViewController(router.viewController, animated: true)
+    }
   }
 
 
   @IBAction func registerPressed(_ sender: Any) {
-    let registerVC = RegisterViewController(nibName: "RegisterViewController", bundle: .main)
-    self.navigationController?.pushViewController(registerVC, animated: true)
+    registerRouter = RegisterBuilder().build()
+    
+    if let router = registerRouter {
+      self.navigationController?.pushViewController(router.viewController, animated: true)
+    }
   }
 }
 

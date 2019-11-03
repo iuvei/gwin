@@ -9,12 +9,22 @@
 import UIKit
 
 protocol LoginViewInput: AnyObject {
+  func startLoadingView()
+  func endLoadingView()
+  func loginFailedWithMessage(message: String)
+  func updateRemeberButtonState(remember: Bool)
 }
 
 protocol LoginViewOutput: AnyObject {
+  func viewDidLoad()
+  func viewDidAppear()
+  func viewDidDisAppear()
+  func loginButtonPressed(accountNo: String, password: String)
+  func rememberButtonPressed(is remember: Bool)
 }
 
 public protocol LoginViewControllerInput: AnyObject {
+  
 }
 
 class LoginViewController: BaseViewController {
@@ -28,6 +38,7 @@ class LoginViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    output?.viewDidLoad()
     setTitle(title:"登录注册")
     addBackButton(title: "红包炸雷")
     setupViews()
@@ -36,8 +47,14 @@ class LoginViewController: BaseViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    output?.viewDidAppear()
   }
 
+  override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    output?.viewDidDisAppear()
+  }
+  
   func setupViews() {
     accountNoTextfield.rounded()
     passwordTextfield.rounded()
@@ -64,36 +81,32 @@ class LoginViewController: BaseViewController {
    }
    */
   @IBAction func rememberPressed(_ sender: Any) {
-    rememberButton.isSelected = !rememberButton.isSelected
-    UserDefaultManager.sharedInstance().rememberLoginInfo(rememberButton.isSelected)
+    output?.rememberButtonPressed(is: !rememberButton.isSelected)
   }
 
   @IBAction func loginPressed(_ sender: Any) {
     guard let accountNo = accountNoTextfield.text, let password = passwordTextfield.text else { return }
 
-    UserDefaultManager.sharedInstance().saveLoginInfo(accountNo: accountNo, password: password)
-
-    showLoadingView()
-    UserAPIClient.login(accountNo: accountNo, password: password) {[weak self] (user, message) in
-      guard let `this` = self else { return }
-      this.hideLoadingView()
-      if let `user` = user {
-        RedEnvelopComponent.shared.userno = accountNo
-        RedEnvelopComponent.shared.user = user
-        if let appDelegate: AppDelegate = UIApplication.shared.delegate as? AppDelegate {
-          appDelegate.setHomeAsRootViewControlelr()
-        }
-      } else {
-        if let error = message {
-          this.showAlertMessage(message: error)
-        }
-      }
-    }
+    output?.loginButtonPressed(accountNo: accountNo, password: password)
   }
 }
 
 extension LoginViewController: LoginViewInput {
+  func startLoadingView() {
+    showLoadingView()
+  }
 
+  func endLoadingView() {
+    hideLoadingView()
+  }
+
+  func loginFailedWithMessage(message: String) {
+    showAlertMessage(message: message)
+  }
+
+  func updateRemeberButtonState(remember: Bool) {
+    rememberButton.isSelected = remember
+  }
 }
 
 extension LoginViewController: LoginViewControllerInput {
