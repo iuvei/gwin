@@ -11,7 +11,8 @@ import UIKit
 class RegisterViewController: BaseViewController {
   enum Constant {
     static let PhonnumberLimit: Int = 11
-    static let UserNoLimit: Int = 6
+    static let UserNoMinLengh: Int = 5
+    static let UserNoMaxLengh: Int = 20
     static let PasswordLimit: Int = 6
   }
 
@@ -90,7 +91,7 @@ class RegisterViewController: BaseViewController {
   private func validateAccountNo() -> String? {
     let count = userTextfield.text?.count ?? 0
 
-    if count < Constant.UserNoLimit {
+    if count < Constant.UserNoMinLengh || count > Constant.UserNoMaxLengh {
       userTextfield.showErrorIcon()
     } else {
       userTextfield.showCorrectIcon()
@@ -175,8 +176,10 @@ class RegisterViewController: BaseViewController {
 
     UserAPIClient.checkCellphoneNo(cellphone: phoneno) { [weak self] (checkCode, errorMessage) in
       if let code = checkCode {
+        guard let  this = self else {return }
         print("code \(code)")
-        self?.confirmTextfield.text = code
+        this.confirmTextfield.text = code
+        let _ = this.validateCode()
       }
     }
   }
@@ -273,7 +276,7 @@ extension RegisterViewController: UITextFieldDelegate {
         textField.showCorrectIcon()
       }
     } else if textField == userTextfield {
-      if count < Constant.UserNoLimit {
+      if count < Constant.UserNoMinLengh || count > Constant.UserNoMaxLengh {
         textField.showErrorIcon()
       }else {
         textField.showCorrectIcon()
@@ -283,5 +286,21 @@ extension RegisterViewController: UITextFieldDelegate {
     if  count == 0 {
       textField.showErrorIcon()
     }
+  }
+
+  func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    if textField == phoneNumberTextfield {
+      guard let textFieldText = textField.text,
+        let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+          return false
+      }
+
+      let substringToReplace = textFieldText[rangeOfTextToReplace]
+      let count = textFieldText.count - substringToReplace.count + string.count
+
+      return count <= Constant.PhonnumberLimit
+
+    }
+    return true
   }
 }
