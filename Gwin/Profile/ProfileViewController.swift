@@ -133,7 +133,17 @@ class ProfileViewController: BaseViewController {
 
   func setupViews() {
 
-    let fontSize: CGFloat = UIDevice.current.iPad ? 20 : (UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 11 : 13)
+    var fontSize: CGFloat = 13
+    if UIDevice.current.iPad {
+      fontSize = 20
+    } else if UIDevice.current.screenType == .iPhones_5_5s_5c_SE {
+      fontSize = 11
+    } else if UIDevice.current.screenType == .iPhones_6_6s_7_8 {
+      fontSize = 12
+    } else {
+      fontSize = 13
+    }
+
     let font = UIFont.systemFont(ofSize: fontSize)
     allowCreditLabel.font = font
     allowCreateTitleLabel.font = font

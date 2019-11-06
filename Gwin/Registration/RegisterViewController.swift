@@ -120,7 +120,7 @@ class RegisterViewController: BaseViewController {
       passwordConfirmTextfield.showCorrectIcon()
     }
 
-    if password == confirm && passwordcount1 >= 6 && confirmcount >= 6{
+    if password == confirm && passwordcount1 >= Constant.PasswordLimit && confirmcount >= Constant.PasswordLimit{
       passwordTextfield.showCorrectIcon()
       passwordConfirmTextfield.showCorrectIcon()
       return password
@@ -277,6 +277,7 @@ extension RegisterViewController: UITextFieldDelegate {
       }
     } else if textField == userTextfield {
       if count < Constant.UserNoMinLengh || count > Constant.UserNoMaxLengh {
+        showAlertMessage(message: "账号格式为5-20个字符（0-9 a-z)")
         textField.showErrorIcon()
       }else {
         textField.showCorrectIcon()
