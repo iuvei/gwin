@@ -143,13 +143,13 @@ class PackageHistoryLeftViewCell: UITableViewCell {
       subview.removeFromSuperview()
     }
 
-    let betWagers = bull.betWagerInfo.sorted {$0.idno < $1.idno}
+    let betWagers = bull.betWagerInfo.sorted {($0.idno < $1.idno) || ($0.userno == RedEnvelopComponent.shared.userno)}
 
     for i in 0 ..< betWagers.count {
       let info = betWagers[i]
       let label = UILabel().forAutolayout()
       label.font = UIFont.systemFont(ofSize: 12)
-      label.text = String(format: "  %@ %@ %@  ", info.userno,AppText.betSuccess,info.stake.toFormatedString())
+      label.text = String(format: "  %@ %@ %@ %@  ", info.userno,AppText.betSuccess, info.wagertypename, info.stake.toFormatedString())
       label.backgroundColor = AppColors.betBgColor
       label.textColor = .white
       label.rounded(radius: 2, borderColor: .clear, borderwidth: 0)
@@ -196,6 +196,7 @@ class PackageHistoryLeftViewCell: UITableViewCell {
     }else {
       middleHeightConstraint.constant = Constants.defaultInfoHeight
       top.constant = Constants.defaultInfoHeight
+
       bullInfoView.isHidden = false
     }
 

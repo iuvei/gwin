@@ -20,6 +20,7 @@ class BullWagerInfoModel: Equatable {
   var winning: Float                  // number, 盈亏
   var packetamount: Float                  // number,
   var packettag: String                // string,
+  var wagertypename: String
 
   init(json: JSON) {
      idno = json["idno"].intValue           // Int,
@@ -29,6 +30,7 @@ class BullWagerInfoModel: Equatable {
      winning = json["winnings"].floatValue                  // number, 盈亏
      packetamount = json["packetamount"].floatValue                  // number,
      packettag = json["packettag"].stringValue
+    wagertypename = json["wagertypename"].stringValue
     print("BullWagerInfoModel \(json.stringValue)")
   }
 }

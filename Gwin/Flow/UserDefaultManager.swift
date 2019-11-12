@@ -53,7 +53,9 @@ class UserDefaultManager {
     if let value =  get(key: .saveLoginInfo) as? Bool {
       return value
     }
-    return false
+    //12-11
+    //gia tri default la true
+    return true
   }
 
   func autoLogin() ->Bool {

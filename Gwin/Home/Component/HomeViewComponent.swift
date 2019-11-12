@@ -20,7 +20,7 @@ public enum AppColors{
 public enum AppText{
   static let currency: String = "元"
   static let betSuccess: String = "成功下注"
-  static let thisRound: String = "本论"
+  static let thisRound: String = "本轮"
   static let betPlace: String =  "获得"
   static let betTotalLose: String =  "共赔付"
   static let betTotalWin: String = "获利"

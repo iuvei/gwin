@@ -36,7 +36,7 @@ class RoomDetailViewController: BaseViewController {
     button.imageEdgeInsets  = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     button.imageView?.contentMode = .scaleAspectFit
     button.setImage(UIImage(named: "boom_header_envelop"), for: .normal)
-    button.addTarget(self, action: #selector(createPackagePressed(_:)), for: .touchUpInside)
+    button.addTarget(self, action: #selector(bullReportPressed(_:)), for: .touchUpInside)
     return button
   }()
 
@@ -163,10 +163,12 @@ class RoomDetailViewController: BaseViewController {
     profileButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
     newPackageButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
 
-    let rightItem1 = UIBarButtonItem(customView: profileButton)
+//    let rightItem1 = UIBarButtonItem(customView: profileButton)
     let rightItem2 = UIBarButtonItem(customView: newPackageButton)
 
-    self.navigationItem.rightBarButtonItems = [rightItem1, rightItem2]
+    self.navigationItem.rightBarButtonItems = [rightItem2]
+//    self.navigationItem.rightBarButtonItems = [rightItem1, rightItem2]
+
     self.setTitle(title: "可发可抢")
   }
 
@@ -292,8 +294,14 @@ class RoomDetailViewController: BaseViewController {
     sendMessage(jsonString)
   }
 
-  @objc func createPackagePressed(_ sender: UIButton) {
-    showCreatePackage()
+  //12-11
+  //remove create package
+//  @objc func createPackagePressed(_ sender: UIButton) {
+//    showCreatePackage()
+//  }
+
+  @objc func bullReportPressed(_ sender: UIButton) {
+    openWebview(optType: "orderdetail_1", title: "扫雷账单详情")
   }
 
   @objc func expandPressed(_ sender: UIButton){
@@ -347,13 +355,13 @@ extension RoomDetailViewController {
     self.navigationController?.pushViewController(vc, animated: true)
   }
 
-  fileprivate func openWebview(optType : String) {
+  fileprivate func openWebview(optType : String, title: String? = nil) {
     guard let `user` = RedEnvelopComponent.shared.user else { return }
     UserAPIClient.otherH5(ticket: user.ticket, optype: optType) {[weak self] (url, message) in
       guard let `this` = self else { return }
 
       if let jumpurl = url {
-        let webview = WebContainerController(url: jumpurl)
+        let webview = WebContainerController(url: jumpurl, title: title)
         this.present(webview, animated: true, completion: nil)
       }
     }

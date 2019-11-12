@@ -23,6 +23,7 @@ class CreateEnvelopViewController: BaseViewController {
   @IBOutlet weak var titleLabel: UILabel!
   
 
+  @IBOutlet weak var stakeLabel: UILabel!
   var room: RoomModel
 
   init(room: RoomModel) {
@@ -51,7 +52,7 @@ class CreateEnvelopViewController: BaseViewController {
     packageSizeLabel.text = "\(room.packageSize)"
     packageAmountTextfield.placeholder = "\(room.stake1)-\(room.stake2)"
 
-
+    stakeLabel.text = "\(room.stake1)-\(room.stake2)元"
     packageAmountTextfield.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     packageTagTextfield.delegate = self
     packageAmountTextfield.delegate = self

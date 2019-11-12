@@ -16,6 +16,7 @@
                 <outlet property="packageSizeLabel" destination="gci-7U-Mpx" id="a3q-OG-STR"/>
                 <outlet property="packageTagTextfield" destination="Hp3-nh-s4u" id="TrB-sQ-Qhx"/>
                 <outlet property="sendButton" destination="5pe-nl-gv3" id="2fb-U2-dlM"/>
+                <outlet property="stakeLabel" destination="CKr-2P-mdy" id="IO3-mn-2gZ"/>
                 <outlet property="titleLabel" destination="gUE-gb-xlQ" id="Z4g-fy-yi3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

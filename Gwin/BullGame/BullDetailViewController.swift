@@ -52,8 +52,8 @@ class BullDetailViewController: BaseViewController {
     let button = UIButton(frame: CGRect(x: 0,y: 0,width: 35,height: 35))
     button.imageEdgeInsets  = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     button.imageView?.contentMode = .scaleAspectFit
-    button.setImage(UIImage(named: "boom_header_profile"), for: .normal)
-    button.addTarget(self, action: #selector(profilePressed(_:)), for: .touchUpInside)
+    button.setImage(UIImage(named: "boom_header_envelop"), for: .normal)
+    button.addTarget(self, action: #selector(envelopReportPressed(_:)), for: .touchUpInside)
     return button
   }()
 
@@ -69,7 +69,7 @@ class BullDetailViewController: BaseViewController {
     return view
   }()
 
-  
+
   private var userno: String
   private var room: RoomModel
   private var round: BullRoundModel?
@@ -83,6 +83,7 @@ class BullDetailViewController: BaseViewController {
   private var roundTimmer: Timer?
   private var wagerInfo: [Int64: [BullWagerInfoModel]] = [:]
   private var wagerOdds: [BullWagerOddModel] = []
+  private var currentViewController: BaseViewController?
 
   init(userno: String, room: RoomModel) {
     self.room = room
@@ -536,6 +537,7 @@ class BullDetailViewController: BaseViewController {
     let tag = sender.tag
     if tag == 4 {
       let vc = GrabBankerViewController(room: room)
+      currentViewController = vc
       present(vc, animated: true, completion: nil)
     } else {
       guard let `round` = round else { return }
@@ -545,19 +547,35 @@ class BullDetailViewController: BaseViewController {
       }
 
       if tag == 1 {
-          let _wagerOdds = wagerOdds.clone()
-          let vc = BetBullViewController(room: room, round: round, delegate: self, wagerOdds: _wagerOdds)
-          present(vc, animated: true, completion: nil)
+        let _wagerOdds = wagerOdds.clone()
+        let vc = BetBullViewController(room: room, round: round, delegate: self, wagerOdds: _wagerOdds)
+        currentViewController = vc
+        present(vc, animated: true, completion: nil)
       } else  if tag == 2 {
-          let _wagerOdds = wagerOdds.clone()
-          let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.casino.rawValue, wagerOdds: _wagerOdds)
-          present(vc, animated: true, completion: nil)
+        let _wagerOdds = wagerOdds.clone()
+        let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.casino.rawValue, wagerOdds: _wagerOdds)
+        currentViewController = vc
+        present(vc, animated: true, completion: nil)
       } else  if tag == 3 {
         let _wagerOdds = wagerOdds.clone()
-          let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.other.rawValue, wagerOdds: _wagerOdds)
-          present(vc, animated: true, completion: nil)
+        let vc = BetCasinoViewController(room: room, round: round, wagertypeno: Wagertypeno.other.rawValue, wagerOdds: _wagerOdds)
+        currentViewController = vc
+        present(vc, animated: true, completion: nil)
       }
     }
+  }
+
+  @objc func envelopReportPressed(_ button: UIButton) {
+      guard let `user` = RedEnvelopComponent.shared.user else { return }
+      UserAPIClient.otherH5(ticket: user.ticket, optype: "orderdetail_2") {[weak self] (url, message) in
+        guard let `this` = self else { return }
+
+        if let jumpurl = url {
+          let webview = WebContainerController(url: jumpurl, title: "牛牛账单详情")
+          this.present(webview, animated: true, completion: nil)
+        }
+      }
+
   }
 }
 
@@ -609,17 +627,22 @@ extension BullDetailViewController{
       fetchBullRound()
       timer?.invalidate()
       timer = nil
+    }else if coundownBet == 3 {
+      //an man hinh bet khi thoi gian bet con 3s
+      currentViewController?.dismiss(animated: true, completion: nil)
     }
 
-    if countDownRound <= 0 {
-      //      setBullExpire()
-      if let `round` = round, let index = getBullModel(roundid: round.roundid) {
-        datas[index].expire = true
-      }
-    }
-
+    //12-11 khong doi het round moi cho xem chi tiet
+//    if countDownRound <= 0 {
+//      //      setBullExpire()
+//      if let `round` = round, let index = getBullModel(roundid: round.roundid) {
+//        datas[index].expire = true
+//      }
+//    }
+    //
     if countDownGrab <= 0 {
       if let `round` = round, let index = getBullModel(roundid: round.roundid) {
+        datas[index].expire = true
         datas[index].fetchResultWagerInfo()
       }
     }
@@ -748,11 +771,11 @@ extension BullDetailViewController{
   private func reloadCell(at index: Int) {
 
     let indexPath = IndexPath(row: index, section: 0)
-//    let bull = datas[indexPath.row]
-//    let isGrab = bull.isGrabed(openPackages)
-//    if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
-//      cell.updateBullViews(bull: bull, isOpen: isGrab)
-//    }
+    //    let bull = datas[indexPath.row]
+    //    let isGrab = bull.isGrabed(openPackages)
+    //    if let cell =  tableView.dequeueReusableCell(withIdentifier: "PackageHistoryLeftViewCell", for: indexPath) as? PackageHistoryLeftViewCell {
+    //      cell.updateBullViews(bull: bull, isOpen: isGrab)
+    //    }
     tableView.beginUpdates()
     tableView.reloadRows(at: [indexPath], with: .none)
     tableView.endUpdates()
@@ -761,10 +784,10 @@ extension BullDetailViewController{
 }
 extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
-//  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//    let bull = datas[indexPath.row]
-//    return CGFloat(150 + bull.countWagerInfo() * 20)
-//  }
+  //  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  //    let bull = datas[indexPath.row]
+  //    return CGFloat(150 + bull.countWagerInfo() * 20)
+  //  }
 
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
     return 5
@@ -896,6 +919,7 @@ extension BullDetailViewController: BulllPackageInfoDelegate {
     }
   }
 }
+
 
 
 

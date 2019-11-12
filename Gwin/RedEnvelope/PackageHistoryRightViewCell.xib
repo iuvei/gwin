@@ -20,13 +20,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEg-07-RRT">
-                        <rect key="frame" x="225.5" y="125" width="26.5" height="12"/>
+                        <rect key="frame" x="225.5" y="127" width="26.5" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="红包炸雷" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Js-U2-Jmi">
-                        <rect key="frame" x="27.5" y="125" width="41" height="12"/>
+                        <rect key="frame" x="22" y="127" width="41" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -45,22 +45,22 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69l-zf-aK1">
-                        <rect key="frame" x="10" y="47" width="252" height="78"/>
+                        <rect key="frame" x="10" y="47" width="252" height="80"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="package_right_bg" translatesAutoresizingMaskIntoConstraints="NO" id="G6R-Xb-qIc">
-                                <rect key="frame" x="17.5" y="0.0" width="234.5" height="78"/>
+                                <rect key="frame" x="12" y="0.0" width="240" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="G6R-Xb-qIc" secondAttribute="height" multiplier="708:236" id="xVC-fQ-XAj"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCN-SL-yxu">
-                                <rect key="frame" x="85.5" y="15" width="42" height="21"/>
+                                <rect key="frame" x="80" y="15" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="扫雷红包" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIv-ae-IJw">
-                                <rect key="frame" x="85.5" y="44" width="69.5" height="21"/>
+                                <rect key="frame" x="80" y="44" width="69.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -85,11 +85,13 @@
                             <constraint firstItem="lCN-SL-yxu" firstAttribute="leading" secondItem="G6R-Xb-qIc" secondAttribute="leading" constant="68" id="Vwe-8s-8aE"/>
                             <constraint firstItem="hZ0-9K-z7y" firstAttribute="centerY" secondItem="69l-zf-aK1" secondAttribute="centerY" id="Yht-Jq-GFo"/>
                             <constraint firstItem="hZ0-9K-z7y" firstAttribute="top" secondItem="69l-zf-aK1" secondAttribute="top" id="ewb-ml-ju7"/>
+                            <constraint firstAttribute="height" constant="80" id="f6O-ta-VA0"/>
                             <constraint firstAttribute="bottom" secondItem="G6R-Xb-qIc" secondAttribute="bottom" id="mgo-yp-s36"/>
                             <constraint firstItem="G6R-Xb-qIc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="69l-zf-aK1" secondAttribute="leading" id="pYd-Na-daM"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="9yx-ue-u6l"/>
                                 <exclude reference="Yht-Jq-GFo"/>
                             </mask>
                         </variation>
