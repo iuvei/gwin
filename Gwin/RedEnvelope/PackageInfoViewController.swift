@@ -22,7 +22,7 @@ class PackageInfoViewController: BaseViewController {
   @IBOutlet weak var usernoLabel: UILabel!
   @IBOutlet weak var avatarImageView: UIImageView!
   @IBOutlet weak var packageIdLabel: UILabel!
-  @IBOutlet weak var wagerTimeLabel: UILabel!
+  @IBOutlet weak var wagerTimeLabel: UIButton!
 
   @IBOutlet weak var tableView: UITableView!
   private lazy var refreshControl:UIRefreshControl = {
@@ -33,6 +33,7 @@ class PackageInfoViewController: BaseViewController {
   var didPressedCreateEnvelop: ()->Void = {}
 
   private var model: PackageInfoModel?
+
   //  private var infoPackage: PackageInfoModel?
   private let roomid: Int
   private let packageid: Int64
@@ -78,7 +79,7 @@ class PackageInfoViewController: BaseViewController {
     //
     let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 17.0
     packageIdLabel.font = UIFont.systemFont(ofSize: fontSize)
-    wagerTimeLabel.font = UIFont.systemFont(ofSize: fontSize)
+    wagerTimeLabel.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
   }
 
   func fetchPackageInfo() {
@@ -86,8 +87,9 @@ class PackageInfoViewController: BaseViewController {
     RedEnvelopAPIClient.infoPackage(ticket: user.ticket, roomid: roomid, packageid: packageid) { [weak self] (info, message) in
       guard let this = self else { return }
       this.refreshControl.endRefreshing()
-      
+      this.model = info
       if let `info` = info {
+
         info.findKing(packageid: this.packageid)
         if info.packettag.count > 0{
           this.amounLabel.text = "\(info.packetamount)-\(info.packettag)"
@@ -97,7 +99,8 @@ class PackageInfoViewController: BaseViewController {
         
         this.usernoLabel.text = info.userno
         this.packageIdLabel.text = "\(this.packageid) "
-        this.wagerTimeLabel.text = String(format: "  已领取%d／%d个／共%@／%@元", info.grabuser.count, info.packetsize,   (info.outOfStock() || info.isExpire()) ? info.totalPackageAmount().toFormatedString() : "*.**" ,info.packetamount.toFormatedString())
+        let title = String(format: "  已领取%d／%d个／共%@／%@元", info.grabuser.count, info.packetsize,   (info.outOfStock() || info.isExpire()) ? info.totalPackageAmount().toFormatedString() : "*.**" ,info.packetamount.toFormatedString())
+        this.wagerTimeLabel.setTitle(title, for: .normal)
 
         this.model = info
         this.tableView.reloadData()
@@ -161,6 +164,24 @@ class PackageInfoViewController: BaseViewController {
     // Fetch Weather Data
     fetchPackageInfo()
   }
+
+  @IBAction func viewMoneyPressed(_ sender: Any) {
+    if let info = model {
+      if (info.outOfStock() || info.isExpire()){
+        guard let `user` = RedEnvelopComponent.shared.user else { return }
+        UserAPIClient.otherH5(ticket: user.ticket, optype: "order_unsettled") {[weak self] (url, message) in
+          guard let `this` = self else { return }
+
+          if let jumpurl = url {
+            let webview = WebContainerController(url: jumpurl, title: "冻结金额详情")
+            this.present(webview, animated: true, completion: nil)
+          }
+        }
+
+      }
+    }
+  }
+
 }
 
 
@@ -199,5 +220,7 @@ extension PackageInfoViewController: UITableViewDelegate, UITableViewDataSource 
     
     return UITableViewCell()
   }
+
+
 }
 
