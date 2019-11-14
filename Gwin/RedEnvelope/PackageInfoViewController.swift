@@ -80,6 +80,7 @@ class PackageInfoViewController: BaseViewController {
     let fontSize: CGFloat = UIDevice.current.screenType == .iPhones_5_5s_5c_SE ? 14.0 : 17.0
     packageIdLabel.font = UIFont.systemFont(ofSize: fontSize)
     wagerTimeLabel.titleLabel?.font = UIFont.systemFont(ofSize: fontSize)
+    wagerTimeLabel.backgroundColor = .clear
   }
 
   func fetchPackageInfo() {
@@ -166,24 +167,19 @@ class PackageInfoViewController: BaseViewController {
   }
 
   @IBAction func viewMoneyPressed(_ sender: Any) {
-    if let info = model {
-      if (info.outOfStock() || info.isExpire()){
-        guard let `user` = RedEnvelopComponent.shared.user else { return }
-        UserAPIClient.otherH5(ticket: user.ticket, optype: "order_unsettled") {[weak self] (url, message) in
-          guard let `this` = self else { return }
+    if let _ = model {
+      guard let `user` = RedEnvelopComponent.shared.user else { return }
+      UserAPIClient.otherH5(ticket: user.ticket, optype: "order_unsettled") {[weak self] (url, message) in
+        guard let `this` = self else { return }
 
-          if let jumpurl = url {
-            let webview = WebContainerController(url: jumpurl, title: "冻结金额详情")
-            this.present(webview, animated: true, completion: nil)
-          }
+        if let jumpurl = url {
+          let webview = WebContainerController(url: jumpurl, title: "冻结金额详情")
+          this.present(webview, animated: true, completion: nil)
         }
-
       }
     }
   }
-
 }
-
 
 extension PackageInfoViewController: UITableViewDelegate, UITableViewDataSource {
 

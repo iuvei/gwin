@@ -41,19 +41,21 @@ class GrabUserViewCell: UITableViewCell {
     wagerTimeLabel.text = model.wagertime
     amountLabel.text = "\(model.packetamount.toFormatedString())"
 
-    if model.userno == Constant.systemUserno {
-      if model.isExpire() || outofStock {
-        amountLabel.text = String(format: "%@", model.packetamount.toFormatedString())
-      }else{
-        amountLabel.text = "\(Int(model.packetamount)).**"
-
-      }
-    }
+//    if model.userno == Constant.systemUserno {
+//      if model.isExpire() || outofStock {
+//        amountLabel.text = String(format: "%@", model.packetamount.toFormatedString())
+//      }else{
+//        amountLabel.text = "\(Int(model.packetamount)).**"
+//
+//      }
+//    }
 
     if model.userno == RedEnvelopComponent.shared.userno {
       usernoLabel.text = "\(model.userno) (我)"
+      amountLabel.text = "\(model.packetamount.toFormatedString())"
     }else {
       usernoLabel.text = model.userno
+      amountLabel.text = "*"
     }
 
     kingImageView.isHidden = !(LocalDataManager.shared.isKing(userno: model.userno, packageid: packageid) || model.king)

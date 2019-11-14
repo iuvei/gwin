@@ -143,7 +143,7 @@ class PackageHistoryLeftViewCell: UITableViewCell {
       subview.removeFromSuperview()
     }
 
-    let betWagers = bull.betWagerInfo.sorted {($0.idno < $1.idno) || ($0.userno == RedEnvelopComponent.shared.userno)}
+    let betWagers = bull.betWagerInfo.sorted {($0.idno < $1.idno) }
 
     for i in 0 ..< betWagers.count {
       let info = betWagers[i]
@@ -165,7 +165,7 @@ class PackageHistoryLeftViewCell: UITableViewCell {
       subview.removeFromSuperview()
     }
 
-    let resultWagers = bull.resultWagerInfo.sorted {$0.idno < $1.idno}
+    let resultWagers = bull.resultWagerInfo.sorted {($0.idno < $1.idno) || ($0.userno == RedEnvelopComponent.shared.userno)}
 
     for i in 0 ..< resultWagers.count {
       let info = resultWagers[i]
