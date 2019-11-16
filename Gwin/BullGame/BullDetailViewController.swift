@@ -571,16 +571,16 @@ class BullDetailViewController: BaseViewController {
   }
 
   @objc func envelopReportPressed(_ button: UIButton) {
-      guard let `user` = RedEnvelopComponent.shared.user else { return }
-      UserAPIClient.otherH5(ticket: user.ticket, optype: "orderdetail_2") {[weak self] (url, message) in
-        guard let `this` = self else { return }
-
-        if let jumpurl = url {
-          let webview = WebContainerController(url: jumpurl, title: "牛牛账单详情")
-          this.present(webview, animated: true, completion: nil)
-        }
-      }
-
+//      guard let `user` = RedEnvelopComponent.shared.user else { return }
+//      UserAPIClient.otherH5(ticket: user.ticket, optype: "orderdetail_2") {[weak self] (url, message) in
+//        guard let `this` = self else { return }
+//
+//        if let jumpurl = url {
+//          let webview = WebContainerController(url: jumpurl, title: "牛牛账单详情")
+//          this.present(webview, animated: true, completion: nil)
+//        }
+//      }
+    openWebview(optType: "orderdetail_2", with: "牛牛账单详情")
   }
 }
 

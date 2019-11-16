@@ -184,5 +184,18 @@ class BaseViewController: UIViewController {
 
     super.present(viewControllerToPresent, animated: false, completion: nil)
   }
+
+  func openWebview(optType : String, with title: String? = nil) {
+    guard let `user` = RedEnvelopComponent.shared.user else { return }
+    UserAPIClient.otherH5(ticket: user.ticket, optype: optType) {[weak self] (url, message) in
+      guard let `this` = self else { return }
+
+      if let jumpurl = url {
+        let webview = WebContainerController(url: jumpurl, title: title)
+        this.present(webview, animated: true, completion: nil)
+      }
+    }
+  }
+
 }
 

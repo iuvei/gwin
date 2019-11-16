@@ -200,6 +200,21 @@ class BulllPackageInfoViewController: BaseViewController {
       cell.updateViews(grabUser: user, details: details)
     }
   }
+  @IBAction func viewFrezzMoney(_ sender: Any) {
+    openWebview(optType: "order_unsettled", with: "冻结金额详情")
+  }
+  
+//  func openWebview(optType : String, with title: String? = nil) {
+//    guard let `user` = RedEnvelopComponent.shared.user else { return }
+//    UserAPIClient.otherH5(ticket: user.ticket, optype: optType) {[weak self] (url, message) in
+//      guard let `this` = self else { return }
+//
+//      if let jumpurl = url {
+//        let webview = WebContainerController(url: jumpurl, title: title)
+//        this.present(webview, animated: true, completion: nil)
+//      }
+//    }
+//  }
 }
 
 extension BulllPackageInfoViewController: UITableViewDelegate, UITableViewDataSource {

@@ -301,7 +301,7 @@ class RoomDetailViewController: BaseViewController {
 //  }
 
   @objc func bullReportPressed(_ sender: UIButton) {
-    openWebview(optType: "orderdetail_1", title: "扫雷账单详情")
+    openWebview(optType: "orderdetail_1", with: "扫雷账单详情")
   }
 
   @objc func expandPressed(_ sender: UIButton){
@@ -355,17 +355,17 @@ extension RoomDetailViewController {
     self.navigationController?.pushViewController(vc, animated: true)
   }
 
-  fileprivate func openWebview(optType : String, title: String? = nil) {
-    guard let `user` = RedEnvelopComponent.shared.user else { return }
-    UserAPIClient.otherH5(ticket: user.ticket, optype: optType) {[weak self] (url, message) in
-      guard let `this` = self else { return }
-
-      if let jumpurl = url {
-        let webview = WebContainerController(url: jumpurl, title: title)
-        this.present(webview, animated: true, completion: nil)
-      }
-    }
-  }
+//  fileprivate func openWebview(optType : String, title: String? = nil) {
+//    guard let `user` = RedEnvelopComponent.shared.user else { return }
+//    UserAPIClient.otherH5(ticket: user.ticket, optype: optType) {[weak self] (url, message) in
+//      guard let `this` = self else { return }
+//
+//      if let jumpurl = url {
+//        let webview = WebContainerController(url: jumpurl, title: title)
+//        this.present(webview, animated: true, completion: nil)
+//      }
+//    }
+//  }
 
   fileprivate func getHorizontalStackView() -> UIStackView {
     let stack = UIStackView().forAutolayout()

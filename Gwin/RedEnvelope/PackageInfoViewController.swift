@@ -168,15 +168,18 @@ class PackageInfoViewController: BaseViewController {
 
   @IBAction func viewMoneyPressed(_ sender: Any) {
     if let _ = model {
-      guard let `user` = RedEnvelopComponent.shared.user else { return }
-      UserAPIClient.otherH5(ticket: user.ticket, optype: "order_unsettled") {[weak self] (url, message) in
-        guard let `this` = self else { return }
+//      guard let `user` = RedEnvelopComponent.shared.user else { return }
+//      UserAPIClient.otherH5(ticket: user.ticket, optype: "order_unsettled") {[weak self] (url, message) in
+//        guard let `this` = self else { return }
+//
+//        if let jumpurl = url {
+//          let webview = WebContainerController(url: jumpurl, title: "冻结金额详情")
+//          this.present(webview, animated: true, completion: nil)
+//        }
+//      }
+//    }
 
-        if let jumpurl = url {
-          let webview = WebContainerController(url: jumpurl, title: "冻结金额详情")
-          this.present(webview, animated: true, completion: nil)
-        }
-      }
+    openWebview(optType: "order_unsettled", with: "冻结金额详情")
     }
   }
 }
