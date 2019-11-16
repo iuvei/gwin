@@ -84,6 +84,7 @@ class BullDetailViewController: BaseViewController {
   private var wagerInfo: [Int64: [BullWagerInfoModel]] = [:]
   private var wagerOdds: [BullWagerOddModel] = []
   private var currentViewController: BaseViewController?
+  private var grabedIndex: Int?
 
   init(userno: String, room: RoomModel) {
     self.room = room
@@ -115,6 +116,11 @@ class BullDetailViewController: BaseViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     hideBottomView()
+    if let index = grabedIndex {
+      //reload cell ma user da giat//
+      reloadCell(at: index)
+      grabedIndex = nil
+    }
   }
 
   deinit {
@@ -122,7 +128,6 @@ class BullDetailViewController: BaseViewController {
     timer = nil
     roundTimmer?.invalidate()
     roundTimmer = nil
-
   }
 
   func setupViews() {
@@ -834,7 +839,7 @@ extension BullDetailViewController: UITableViewDelegate, UITableViewDataSource {
       vc.didGrabPackage = {  [weak self] grabbed in
         guard let this = self else { return }
         if let userno = RedEnvelopComponent.shared.userno {
-
+          this.grabedIndex = indexPath.row
           if let saved = LocalDataManager.shared.savePackage(userno: userno, packageid: bull.getRoundId(), game: RoomType.bull) {
             this.openPackages.append(saved)
             this.updateCellAsOpened(rounid: bull.getRoundId())

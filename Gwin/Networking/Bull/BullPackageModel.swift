@@ -42,6 +42,16 @@ class BullPackageModel {
         grabuser.append(user)
       }
     }
+
+    //ket qua cua minh hien dau tien
+    let index = grabuser.firstIndex{
+      $0.userno == RedEnvelopComponent.shared.userno
+    }
+
+    if let yourIndex = index, yourIndex != 0 {
+      let grab = grabuser.remove(at: yourIndex)
+      grabuser.insert(grab, at: 0)
+    }
   }
 }
 
