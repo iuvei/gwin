@@ -63,6 +63,24 @@ class BulllPackageInfoViewController: BaseViewController {
     fetchInfo()
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    NotificationCenter.default
+      .addObserver(self,
+                   selector: #selector(updatePackageInfo),
+                   name: NSNotification.Name ("bullgame.expire"), object: nil)
+
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    NotificationCenter.default.removeObserver(self, name: NSNotification.Name ("bullgame.expire"), object: nil)
+  }
+
+  deinit {
+    NotificationCenter.default.removeObserver(self, name: NSNotification.Name ("bullgame.expire"), object: nil)
+  }
+  
   func setupViews() {
     tableView.register(UINib(nibName: "BetDetailiewCell", bundle: nil), forCellReuseIdentifier: "BetDetailiewCell")
     tableView.delegate = self
@@ -170,6 +188,16 @@ class BulllPackageInfoViewController: BaseViewController {
       }
     }
   }
+
+  @objc func updatePackageInfo(_ notif: Notification) {
+    guard let userInfo =  notif.userInfo else  { return }
+
+    guard let roundid = userInfo["roundid"]  as? Int64, roundid == bull.round.roundid else { return }
+
+    fetchInfo()
+
+  }
+
 
   @objc private func refreshData(_ sender: Any) {
     // Fetch Weather Data

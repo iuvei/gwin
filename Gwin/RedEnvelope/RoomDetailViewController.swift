@@ -31,6 +31,20 @@ class RoomDetailViewController: BaseViewController {
     return button
   }()
 
+  private lazy var historyButton: VerticalButton = {
+    let view = VerticalButton(with: "历史明细", image: UIImage(named: "header_detail"))
+    view.completionHandler = {[weak self] in
+      self?.openWebview(optType: "orderdetail_2", with: "牛牛账单详情")
+    }
+    return view
+  }()
+
+  private lazy var balanceButton: VerticalButton = {
+    let view = VerticalButton(with: "余额 \(RedEnvelopComponent.shared.userInfo?.allowcreditquota ?? 0.00)", image: UIImage(named: "header_balance"))
+
+    return view
+  }()
+
   private lazy var newPackageButton: UIButton = {
     let button = UIButton(frame: CGRect(x: 0,y: 0,width: 35,height: 35))
     button.imageEdgeInsets  = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
@@ -159,17 +173,24 @@ class RoomDetailViewController: BaseViewController {
   }
 
   func setupNavigatorViews() {
-
-    profileButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
-    newPackageButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
-
-//    let rightItem1 = UIBarButtonItem(customView: profileButton)
-    let rightItem2 = UIBarButtonItem(customView: newPackageButton)
-
-    self.navigationItem.rightBarButtonItems = [rightItem2]
-//    self.navigationItem.rightBarButtonItems = [rightItem1, rightItem2]
-
     self.setTitle(title: "可发可抢")
+
+    //    profileButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
+    //    newPackageButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
+
+    //    let rightItem1 = UIBarButtonItem(customView: profileButton)
+    //    let rightItem2 = UIBarButtonItem(customView: newPackageButton)
+    //    self.navigationItem.rightBarButtonItems = [rightItem2]
+
+    historyButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
+    balanceButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
+
+
+    let rightItem1 = UIBarButtonItem(customView: historyButton)
+    let rightItem2 = UIBarButtonItem(customView: balanceButton)
+
+    self.navigationItem.rightBarButtonItems = [rightItem1, rightItem2]
+
   }
 
   func setupViews() {

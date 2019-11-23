@@ -14,7 +14,7 @@ public enum AppColors{
   static let titleColor: UIColor = UIColor(hexString: "FBEAAC")
   static let betBgColor: UIColor = UIColor(hexString: "#66c05a")
   static let betResultBgColor: UIColor = UIColor(hexString: "#e2a55e")
-
+  static let bankerInfoColor: UIColor = UIColor(hexString: "#990000")
 }
 
 public enum AppText{
@@ -54,6 +54,8 @@ class RedEnvelopComponent: RedEnvelopDependency  {
 
   var userno: String?
   var rollMsg: String?
+  var userInfo: UserInfo?
+  var appInfo: AppVerstion?
 
   init(user: User? = nil) {
     self.user = user
@@ -64,6 +66,7 @@ class RedEnvelopComponent: RedEnvelopDependency  {
     user = nil
     userno = nil
     rollMsg = nil
+    userInfo = nil
   }
 
   func doTick(){

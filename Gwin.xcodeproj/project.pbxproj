@@ -58,6 +58,8 @@
 		D194BD92231BB85300AB59C3 /* BullModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD91231BB85300AB59C3 /* BullModel.swift */; };
 		D194BD95231BC18700AB59C3 /* UploadImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D194BD93231BC18700AB59C3 /* UploadImageViewController.swift */; };
 		D194BD96231BC18700AB59C3 /* UploadImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D194BD94231BC18700AB59C3 /* UploadImageViewController.xib */; };
+		D1C785DD2388FE7C0090FF8F /* CountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C785DC2388FE7C0090FF8F /* CountDownView.swift */; };
+		D1C785DF238906430090FF8F /* VerticalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C785DE238906430090FF8F /* VerticalButton.swift */; };
 		D1D06F1E231D1FCA00BBEDAE /* BankerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D06F1C231D1FCA00BBEDAE /* BankerViewController.swift */; };
 		D1D06F1F231D1FCA00BBEDAE /* BankerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1D06F1D231D1FCA00BBEDAE /* BankerViewController.xib */; };
 		D1D06F22231D247500BBEDAE /* BankerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D06F20231D247500BBEDAE /* BankerViewCell.swift */; };
@@ -191,6 +193,8 @@
 		D194BD91231BB85300AB59C3 /* BullModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullModel.swift; sourceTree = "<group>"; };
 		D194BD93231BC18700AB59C3 /* UploadImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageViewController.swift; sourceTree = "<group>"; };
 		D194BD94231BC18700AB59C3 /* UploadImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UploadImageViewController.xib; sourceTree = "<group>"; };
+		D1C785DC2388FE7C0090FF8F /* CountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownView.swift; sourceTree = "<group>"; };
+		D1C785DE238906430090FF8F /* VerticalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalButton.swift; sourceTree = "<group>"; };
 		D1D06F1C231D1FCA00BBEDAE /* BankerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankerViewController.swift; sourceTree = "<group>"; };
 		D1D06F1D231D1FCA00BBEDAE /* BankerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BankerViewController.xib; sourceTree = "<group>"; };
 		D1D06F20231D247500BBEDAE /* BankerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankerViewCell.swift; sourceTree = "<group>"; };
@@ -401,6 +405,8 @@
 				D175C3C4230ADDC0001B8DC6 /* UIView+Utils.swift */,
 				D175C4F0230C36B3001B8DC6 /* KeyboardLayoutConstraint.swift */,
 				D170F384231440B700468D64 /* ScrollLabel.swift */,
+				D1C785DC2388FE7C0090FF8F /* CountDownView.swift */,
+				D1C785DE238906430090FF8F /* VerticalButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -895,6 +901,7 @@
 				D175C4F6230CF60F001B8DC6 /* NoticeAPIRouter.swift in Sources */,
 				D1E00B72230D8F0E00554CA4 /* LobbyItemView.swift in Sources */,
 				D1EA0EB723177F4F0096B7D1 /* BullDetailViewController.swift in Sources */,
+				D1C785DF238906430090FF8F /* VerticalButton.swift in Sources */,
 				D1E00D77230FE11900554CA4 /* BankSettingModel.swift in Sources */,
 				D1E00D83230FED7B00554CA4 /* BullBetDetailModel.swift in Sources */,
 				D1D06F1E231D1FCA00BBEDAE /* BankerViewController.swift in Sources */,
@@ -914,6 +921,7 @@
 				D1E00D46230F9DDD00554CA4 /* RedEnvelopeViewController.swift in Sources */,
 				D175C4C3230BCFD9001B8DC6 /* ExampleInteractor.swift in Sources */,
 				D1E00D7F230FEBBE00554CA4 /* BullHistoryModel.swift in Sources */,
+				D1C785DD2388FE7C0090FF8F /* CountDownView.swift in Sources */,
 				D1E00D75230FDEEC00554CA4 /* BullRoundModel.swift in Sources */,
 				D175C4FC230CFB7F001B8DC6 /* HomeRouter.swift in Sources */,
 				D1E00CFD230E931D00554CA4 /* RedEnvelopAPIRouter.swift in Sources */,

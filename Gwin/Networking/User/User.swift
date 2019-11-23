@@ -19,3 +19,13 @@ public struct User {
     guid = data["guid"].string ?? ""
   }
 }
+
+struct AppVerstion {
+  let version: String
+  let url: String
+  init(json: JSON) {
+    let data =  json["data"]
+    version = data["ios"].string ?? ""
+    url = data["ios_url"].string ?? ""
+  }
+}

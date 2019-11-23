@@ -183,6 +183,27 @@ class PackageHistoryLeftViewCell: UITableViewCell {
         ])
     }
 
+    if let bankerInfo = bull.bankerInfo {
+      let label = UILabel().forAutolayout()
+      label.font = UIFont.systemFont(ofSize: 12)
+      var winloseText: String = ""
+      if bankerInfo.winnings < 0 {
+        winloseText = AppText.betTotalLose
+      } else {
+        winloseText = AppText.betTotalWin
+      }
+
+      label.text = String(format: "本轮庄家 %@ 获得 %@，%@ %@", bankerInfo.userno, bankerInfo.packettag, winloseText, bankerInfo.winnings.toFormatedString())
+      label.textColor = AppColors.bankerInfoColor
+      label.rounded(radius: 2, borderColor: .clear, borderwidth: 0)
+      resultWagerInfoStackView.addSubview(label)
+      NSLayoutConstraint.activate([
+        label.heightAnchor.constraint(equalToConstant: 18),
+        label.centerXAnchor.constraint(equalTo: resultWagerInfoStackView.centerXAnchor),
+        label.topAnchor.constraint(equalTo: resultWagerInfoStackView.topAnchor, constant: CGFloat(20 * resultWagers.count))
+        ])
+    }
+
     let height1 =  bull.betWagerInfo.count * 20
     let height2 =  bull.resultWagerInfo.count * 20
 

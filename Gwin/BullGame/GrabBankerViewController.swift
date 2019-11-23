@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol GrabBankerViewOutput: class {
+  func didGetBanker()
+}
+
 class GrabBankerViewController: BaseViewController {
 
   @IBOutlet weak var backButton: UIButton!
@@ -22,6 +26,9 @@ class GrabBankerViewController: BaseViewController {
   var settingSelected: BankSettingModel?
 
   var room: RoomModel
+  var fetchBankerInfo: ()->Void = {}
+  weak var output: GrabBankerViewOutput?
+
   init(room: RoomModel){
     self.room = room
     super.init(nibName: "GrabBankerViewController", bundle: nil)
@@ -72,6 +79,7 @@ class GrabBankerViewController: BaseViewController {
     BullAPIClient.setbanker(ticket: user.ticket, roomid: room.roomId, bankqty: bankqtyValue , lockquota: setting.lockquota, stake1: setting.stake1, stake2: setting.stake2) {[weak self] (success, error) in
 
       if success {
+        self?.output?.didGetBanker()
         self?.dismiss(animated: true, completion: nil)
       }else {
         if let message = error {

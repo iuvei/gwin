@@ -16,6 +16,12 @@ class BullDetailViewController: BaseViewController {
     static let historyItemWidth: CGFloat = 35
     static let bakerGetText:[String] = ["当前庄家","庄家金额","下注区间","连庄局数","","","","","连庄局数","庄家金额","下注区间","已抢局数"]
     static let bullUserno: String = "平台"
+    enum GameIndex{
+      static let bull: Int = 1
+      static let banker: Int = 4
+    }
+
+    static let bankerTag: String = "牛三"
   }
 
   @IBOutlet weak var tableView: UITableView!
@@ -48,13 +54,18 @@ class BullDetailViewController: BaseViewController {
 
   @IBOutlet weak var bottomHeightConstraint: NSLayoutConstraint!
 
-  private lazy var profileButton: UIButton = {
-    let button = UIButton(frame: CGRect(x: 0,y: 0,width: 35,height: 35))
-    button.imageEdgeInsets  = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
-    button.imageView?.contentMode = .scaleAspectFit
-    button.setImage(UIImage(named: "boom_header_envelop"), for: .normal)
-    button.addTarget(self, action: #selector(envelopReportPressed(_:)), for: .touchUpInside)
-    return button
+  private lazy var historyButton: VerticalButton = {
+    let view = VerticalButton(with: "历史明细", image: UIImage(named: "header_detail"))
+    view.completionHandler = {[weak self] in
+      self?.openWebview(optType: "orderdetail_2", with: "牛牛账单详情")
+    }
+    return view
+  }()
+
+  private lazy var balanceButton: VerticalButton = {
+    let view = VerticalButton(with: "余额 \(RedEnvelopComponent.shared.userInfo?.allowcreditquota ?? 0.00)", image: UIImage(named: "header_balance"))
+
+    return view
   }()
 
   private lazy var bankerGetButton: UIButton = {
@@ -69,6 +80,11 @@ class BullDetailViewController: BaseViewController {
     return view
   }()
 
+  private lazy var coundownView: CountDownView = {
+    let view =  CountDownView().forAutolayout()
+
+    return view
+  }()
 
   private var userno: String
   private var room: RoomModel
@@ -85,6 +101,7 @@ class BullDetailViewController: BaseViewController {
   private var wagerOdds: [BullWagerOddModel] = []
   private var currentViewController: BaseViewController?
   private var grabedIndex: Int?
+  private var gameIndex: Int = 0
 
   init(userno: String, room: RoomModel) {
     self.room = room
@@ -101,9 +118,14 @@ class BullDetailViewController: BaseViewController {
 
     // Do any additional setup after loading the view.
     setTitle(title: "牛牛红包")
-    profileButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
-    let rightItem1 = UIBarButtonItem(customView: profileButton)
-    self.navigationItem.rightBarButtonItems = [rightItem1]
+    historyButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
+    balanceButton.frame = CGRect(x: 0, y: 0, width: 35, height: 56)
+
+
+    let rightItem1 = UIBarButtonItem(customView: historyButton)
+    let rightItem2 = UIBarButtonItem(customView: balanceButton)
+
+    self.navigationItem.rightBarButtonItems = [rightItem1, rightItem2]
 
     setupViews()
     fetchOpenPackages()
@@ -135,6 +157,7 @@ class BullDetailViewController: BaseViewController {
     setupTableView()
     setupBottomView()
     setupBankerGetView()
+    
   }
 
   func setupTableView() {
@@ -345,6 +368,7 @@ class BullDetailViewController: BaseViewController {
         } else if round.status == 0 {
           //remove your package
           //          this.cancelWagerTimer()
+
           if let index = this.getBullModel(roundid: round.roundid) {
             let bull = this.datas[index]
             bull.updateRoundStatus(status: .betClose)
@@ -355,6 +379,7 @@ class BullDetailViewController: BaseViewController {
           //get wagerInfo
           print("result 3 ------")
           //          this.resultWagerInfoTimer()
+
           if let index = this.getBullModel(roundid: round.roundid) {
             let bull = this.datas[index]
             bull.resultWagerInfoTimer()
@@ -517,6 +542,19 @@ class BullDetailViewController: BaseViewController {
 
   }
 
+  func showCoundowView() {
+    view.addSubview(coundownView)
+
+    NSLayoutConstraint.activate([
+      coundownView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      coundownView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+      coundownView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width / 2),
+      coundownView.heightAnchor.constraint(equalTo:coundownView.widthAnchor , multiplier:
+      1.5),
+      ])
+    coundownView.startAnimation()
+  }
+
   @objc private func refreshData(_ sender: Any) {
     // Fetch Weather Data
     if let first = datas.first{
@@ -540,8 +578,11 @@ class BullDetailViewController: BaseViewController {
 
   @IBAction func bullSubgamePressed(_ sender: UIButton) {
     let tag = sender.tag
+    gameIndex = tag
+
     if tag == 4 {
       let vc = GrabBankerViewController(room: room)
+      vc.output = self
       currentViewController = vc
       present(vc, animated: true, completion: nil)
     } else {
@@ -637,6 +678,9 @@ extension BullDetailViewController{
       currentViewController?.dismiss(animated: true, completion: nil)
     }
 
+    if coundownBet == 5 {
+      showCoundowView()
+    }
     //12-11 khong doi het round moi cho xem chi tiet
 //    if countDownRound <= 0 {
 //      //      setBullExpire()
@@ -653,6 +697,18 @@ extension BullDetailViewController{
     }
   }
 
+  //banker
+  func getPackageInfo(bullModel: BullModel){
+    guard let user = RedEnvelopComponent.shared.user else { return }
+    guard bullModel.isBanker else { return }
+
+    BullAPIClient.info(ticket: user.ticket, roomid: room.roomId, roundid: bullModel.round.roundid, onlyself: 1, completion: { [weak self](packageModel, historyModel, error) in
+      guard let `historyModel` = historyModel else { return }
+      bullModel.bankerInfo = historyModel
+      self?.tableView.reloadData()
+      self?.tableView.scrollToBottom()
+    })
+  }
 
 }
 extension BullDetailViewController {
@@ -887,8 +943,10 @@ extension BullDetailViewController: BullModelDelegate {
 
   func didGetResultWagerInfo(roundid: Int64, wagerInfos: [BullWagerInfoModel]) {
     if let index = getBullModel(roundid: roundid) {
-      datas[index].resultWagerInfo = wagerInfos
-      datas[index].canbet = false
+      let bullModel = datas[index]
+      bullModel.resultWagerInfo = wagerInfos
+      bullModel.canbet = false
+      getPackageInfo(bullModel: bullModel)
 
       let indexPath = IndexPath(row: index, section: 0)
       tableView.beginUpdates()
@@ -896,6 +954,7 @@ extension BullDetailViewController: BullModelDelegate {
       tableView.endUpdates()
       tableView.scrollToBottom()
     }
+
   }
 }
 
@@ -925,7 +984,11 @@ extension BullDetailViewController: BulllPackageInfoDelegate {
   }
 }
 
-
-
-
-
+extension BullDetailViewController: GrabBankerViewOutput {
+  func didGetBanker() {
+    guard let `round` = round else { return}
+    guard let index = getBullModel(roundid: round.roundid) else  { return }
+    let bull = datas[index]
+    bull.isBanker = true
+  }
+}

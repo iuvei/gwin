@@ -82,6 +82,15 @@ class ProfileItemViewCell: UITableViewCell {
     return label
   }()
 
+  private var actionStackView: UIStackView = {
+    let stackView = UIStackView().forAutolayout()
+    stackView.axis = .horizontal
+    stackView.distribution = .fill
+    stackView.spacing = 8
+
+    return stackView
+  }()
+
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     setupViews()
@@ -106,6 +115,10 @@ class ProfileItemViewCell: UITableViewCell {
     addSubview(actionButton)
     addSubview(copyButton)
     addSubview(qrcodeLabel)
+    addSubview(actionStackView)
+
+    actionStackView.addArrangedSubview(qrcodeLabel)
+    actionStackView.addArrangedSubview(copyButton)
 
     NSLayoutConstraint.activate([
       iconImageView.leftAnchor.constraint(equalTo: leftAnchor, constant: Constants.defaultMargin),
@@ -120,13 +133,17 @@ class ProfileItemViewCell: UITableViewCell {
       actionButton.centerYAnchor.constraint(equalTo: centerYAnchor),
       actionButton.heightAnchor.constraint(equalToConstant: 30),
 
-      copyButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -Constants.buttonRightMargin),
-      copyButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+      actionStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -Constants.buttonRightMargin),
+      actionStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+      actionStackView.heightAnchor.constraint(equalToConstant: 30),
+
+//      copyButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -Constants.buttonRightMargin),
+//      copyButton.centerYAnchor.constraint(equalTo: centerYAnchor),
       copyButton.heightAnchor.constraint(equalToConstant: 30),
       copyButton.widthAnchor.constraint(equalToConstant: 60),
-
-      qrcodeLabel.rightAnchor.constraint(equalTo: copyButton.leftAnchor, constant: -Constants.buttonRightMargin),
-      qrcodeLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+//
+//      qrcodeLabel.rightAnchor.constraint(equalTo: copyButton.leftAnchor, constant: -Constants.buttonRightMargin),
+//      qrcodeLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
       ])
   }
 
@@ -152,10 +169,32 @@ class ProfileItemViewCell: UITableViewCell {
     }
 
     let isQRCodeItem  = data.key == ProfileItemAction.qrcode.rawValue
-    copyButton.isHidden = !isQRCodeItem
-    qrcodeLabel.isHidden = !isQRCodeItem
-    actionButton.isHidden = isQRCodeItem || data.action == ProfileItemAction.logout.rawValue
-    qrcodeLabel.text = qrcode
+    qrcodeLabel.textColor =  UIColor(hexString: "e75f48")
+    if data.key == ProfileItemAction.version.rawValue {
+      actionStackView.addArrangedSubview(qrcodeLabel)
+
+      let latestVersion = RedEnvelopComponent.shared.appInfo?.version ?? ""
+      let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+      if latestVersion !=  appVersion{
+        actionStackView.addArrangedSubview(copyButton)
+      }else {
+        copyButton.removeFromSuperview()
+      }
+      copyButton.setTitle("确认", for: .normal)
+      qrcodeLabel.text = appVersion
+      qrcodeLabel.textColor =  .black
+      actionButton.isHidden = true
+
+    } else if data.key == ProfileItemAction.qrcode.rawValue {
+      actionStackView.addArrangedSubview(qrcodeLabel)
+      actionStackView.addArrangedSubview(copyButton)
+      qrcodeLabel.text = qrcode
+    } else {
+      qrcodeLabel.removeFromSuperview()
+      copyButton.removeFromSuperview()
+    }
+    actionButton.isHidden = isQRCodeItem || data.action == ProfileItemAction.logout.rawValue || data.key == ProfileItemAction.version.rawValue
+
   }
 
   @objc func actionButtonPressed(_ sender: UIButton) {
@@ -168,8 +207,8 @@ class ProfileItemViewCell: UITableViewCell {
   }
 
   @objc func copyPressed(_ sender: UIButton) {
-
-    if let `model` = model, model.action == ProfileItemAction.qrcode.rawValue {
+    guard let `model` = model  else { return }
+    if model.action == ProfileItemAction.version.rawValue ||  model.action == ProfileItemAction.qrcode.rawValue {
       didCopyQRCode()
     }
   }

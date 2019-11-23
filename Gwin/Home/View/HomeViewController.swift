@@ -93,6 +93,7 @@ class HomeViewController: BaseViewController {
     fetchPopupMessage()
     fetchUserStatus()
     bindDataToView()
+    fetchUserInfo()
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -394,6 +395,15 @@ class HomeViewController: BaseViewController {
   func fetchUserStatus() {
     if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
       appDelegate.startFetchUserStatus()
+    }
+  }
+
+  func fetchUserInfo() {
+    guard let user = RedEnvelopComponent.shared.user else { return }
+
+
+    UserAPIClient.userInfo(ticket: user.ticket) {(userInfo, errorMessage) in
+      RedEnvelopComponent.shared.userInfo = userInfo
     }
   }
 }

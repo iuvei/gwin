@@ -33,5 +33,16 @@ class BullWagerInfoModel: Equatable {
     wagertypename = json["wagertypename"].stringValue
     print("BullWagerInfoModel \(json.stringValue)")
   }
+
+  init(idno: Int = 999, userno: String, username: String, stake: Float, winning: Float, packetamount: Float, packagetag: String = "", wagertypename: String = "") {
+    self.idno = idno
+    self.userno = userno
+    self.username = username
+    self.stake = stake
+    self.winning = winning
+    self.packetamount = packetamount
+    self.packettag = packagetag
+    self.wagertypename = wagertypename
+  }
 }
 

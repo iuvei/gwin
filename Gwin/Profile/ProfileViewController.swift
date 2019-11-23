@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import Alamofire
 
 class ProfileViewController: BaseViewController {
 
@@ -174,6 +175,10 @@ class ProfileViewController: BaseViewController {
     tableview.register(ProfileItemViewCell.self, forCellReuseIdentifier: "profileItemCell")
   }
 
+  func fetchappVersion() {
+
+  }
+
   /*
    // MARK: - Navigation
 
@@ -259,6 +264,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
           UIPasteboard.general.string = self?.userInfo?.refercode
           self?.jumpURL(optType: "recommended_app", title: "快乐彩票")
         }
+      }else if item.action == ProfileItemAction.version.rawValue {
+        cell.didCopyQRCode = { [weak self] in
+         self?.downloadapp()
+        }
       }
       return cell
     }
@@ -276,5 +285,24 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
       }
     }
   }
+
+  func downloadapp() {
+
+    guard let `user` = RedEnvelopComponent.shared.user else { return }
+    showLoadingView()
+    UserAPIClient.otherH5(ticket: user.ticket, optype: "recommended_app") {[weak self] (url, message) in
+      guard let `this` = self else { return }
+      this.hideLoadingView()
+      guard let `url` = url, let updateURL = URL(string: url) else {  return }
+      UIApplication.shared.openURL(updateURL)
+
+    }
+
+//    jumpURL(optType: "recommended_app", title: "确认")
+//    guard let app = RedEnvelopComponent.shared.appInfo else { return }
+//    guard let url = URL(string: "itms-services://?action=download-manifest&amp;url=\(app.url)") else { return }
+//    UIApplication.shared.openURL(url)
+  }
+
 }
 

@@ -100,6 +100,7 @@ class UserAPIClient {
       if((responseData.result.value) != nil) {
         let jsonResponse = JSON(responseData.result.value!)
         let user = UserInfo(dictionary: jsonResponse)
+        RedEnvelopComponent.shared.userInfo = user
         completion(user,nil)
       } else {
         completion(nil,responseData.error?.localizedDescription)
@@ -231,6 +232,22 @@ class UserAPIClient {
         }
       } else {
         completion(nil)
+      }
+    }
+  }
+
+  static func getappversion() {
+    Alamofire.request(UserAPIRouter.appVersion).responseJSON { (responseData) in
+      if((responseData.result.value) != nil) {
+        let jsonResponse = JSON(responseData.result.value!)
+        let _ = jsonResponse["msg"].stringValue
+        let code = jsonResponse["code"].intValue
+
+        if code == 1 {
+          let app = AppVerstion(json: jsonResponse)
+          RedEnvelopComponent.shared.appInfo = app
+        } else {
+        }
       }
     }
   }

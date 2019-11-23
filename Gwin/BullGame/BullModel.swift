@@ -28,9 +28,18 @@ class BullModel {
   var historyPackage: BullPackageHistoryModel?
   var betWagerInfo: [BullWagerInfoModel] = []
   var resultWagerInfo: [BullWagerInfoModel] = []
-  var expire: Bool
+  var bankerInfo: BullPackageModel?
+  
+  var expire: Bool {
+    willSet(newValue) {
+      if newValue && newValue != expire{
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "bullgame.expire"), object: nil, userInfo: ["roundid": round.roundid])
+      }
+    }
+  }
   var roomid: Int
   var canbet: Bool
+  var isBanker: Bool = false
   private var wagerTimer: Timer?
 //  private var resultWagerTimer: Timer?
   var delegate: BullModelDelegate?
