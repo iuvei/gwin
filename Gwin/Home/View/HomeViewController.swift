@@ -400,11 +400,7 @@ class HomeViewController: BaseViewController {
 
   func fetchUserInfo() {
     guard let user = RedEnvelopComponent.shared.user else { return }
-
-
-    UserAPIClient.userInfo(ticket: user.ticket) {(userInfo, errorMessage) in
-      RedEnvelopComponent.shared.userInfo = userInfo
-    }
+    UserAPIClient.userInfo(ticket: user.ticket) {_, _ in }
   }
 }
 
